@@ -26,6 +26,8 @@ public class Compiler {
 		System.out.println("\t-o\t<outname>\t\t<outname> es el archivo");
 		System.out.println("\t-target\t<stage>\t\t\t<stage> es el archivo");
 		System.out.println("\t-opt\t<optimization>\t\t<optimization> es el archivo");
+		System.out.println("\t-debug\t<stage>\t\t\t<stage> es el archivo");
+		System.out.println("\t-h\t\t\t la opcion para desplegar el menu de ayuda.");
 		System.out.println("----------------------------------------------------");
 		System.exit(1);
 	}
