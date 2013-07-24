@@ -1,5 +1,7 @@
 package compiler.irt;
 
+import compiler.semantic.Semantic;
+
 public class Irt {
 	
 	public Semantic semantic;

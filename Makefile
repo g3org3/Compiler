@@ -1,4 +1,4 @@
-#Jorge Adolfo Gonzalez 12002034
+#12002034
 make: Compiler
 	
 Compiler: Compiler.java

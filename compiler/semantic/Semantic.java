@@ -1,5 +1,7 @@
 package compiler.semantic;
 
+import compiler.ast.Ast;
+
 public class Semantic {
 	
 	public Ast ast;
