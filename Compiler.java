@@ -60,12 +60,13 @@ public class Compiler {
 
 	public static void main(String[] args) {
 		// Define variables
-		int x=0;
-		String str = "";
-		String filename = "";
-		String[] options = {"-o", "-target", "-opt", "-debug", "-h"};
-		String[] targets = {"scan", "parser", "ast", "-debug", "-h"};
-		String[] targetsP = {"-o", "-target", "-opt", "-debug", "-h"};
+		int x				= 0;
+		String str 			= "";
+		String filename 	= "";
+		String output		= "";
+		String[] options 	= {"-o", "-target", "-opt", "-debug", "-h"};
+		String[] targets 	= {"scan", "parser", "ast", "-debug", "-h"};
+		String[] targetsP 	= {"-o", "-target", "-opt", "-debug", "-h"};
 
 		// Create a compiler
 		Compiler compilador = new Compiler(args);
@@ -83,25 +84,6 @@ public class Compiler {
 		if(o==0&&target==0&&opt==0&&debug==0)
 			compilador.error(1, 55);
 
-		// checks if the options have valid arguments
-		for (int i=0; i<options.length; i++) {
-			x = compilador.position(options[i]);
-			str = args[x+1];
-			if(x>=0 && i==0){							//VERIFY -O
-				System.out.println(x);
-				compilador.verificar("-o");
-				if(str.indexOf(".s")<0)
-					compilador.error(1,92);
-			}
-			if(x>=0 && i==1){							//VERIFY -TARGET
-				x = -1;
-				for (int j=0; j<targets.length; j++)
-					if(str.equals(targets[j])) x=1;
-				if(x<0) compilador.error(1,98);
-			}
-		}
-
-
 		// checks for filename
 		if(args.length<3) compilador.error(1, 76);
 		else if(args[args.length-3].substring(0,1).equals("-"))
@@ -111,21 +93,63 @@ public class Compiler {
 				if(args[args.length-1].indexOf(".txt")>0)
 					filename = args[args.length-1];
 				else
-					compilador.error(1,83);
+					compilador.error(1,114);
+
+		// checks if the options have valid arguments
+		for (int i=0; i<options.length; i++) {
+			x = compilador.position(options[i]);
+			str = args[x+1];
+			if(x>=0 && i==0){								//VERIFY -O
+				compilador.verificar("-o");
+				if(str.indexOf(".s")<0)
+					compilador.error(1,94);
+			}
+			else if(x>=0 && i==1){							//VERIFY -TARGET
+				x = -1;
+				for (int j=0; j<targets.length; j++)
+					if(str.equals(targets[j])) x=1;
+				if(x<0) compilador.error(1,100);
+			} else if (x>=0 && i==2){						//VERIFY -OPT
+				if(!(str.equals("algebraic")||str.equals("constant")))
+					compilador.error(1, 103);
+			}
+		}
 
 		// all ok!
+		System.out.println("------------------------------");
+		System.out.println("Input  File: "+filename);
+
 
 		// o
 		if(o>0){
 			x = compilador.position("-o");
+			output = args[x+1];
+			System.out.println("Output File: "+output);
 		} else {
 			x = filename.indexOf(".");
 			str = filename.substring(0, x);
 			str = str + ".s";
-			System.out.println("output: "+str);
+			output = str;
+			System.out.println("Output File: "+str);
+		}
+
+		// target
+		if(target>0){
+
+		} else{
+			System.out.println("stage: scanning");
+			System.out.println("stage: parsing");
+			System.out.println("stage: ast");
+			System.out.println("stage: semantic");
+			System.out.println("stage: irt");
+			System.out.println("stage: codegen");
 		}
 
 
+
+
+
+		System.out.println("------------------------------");
 	}
 }
 
