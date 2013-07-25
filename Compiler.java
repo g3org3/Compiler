@@ -27,7 +27,7 @@ public class Compiler {
 	public void error(int o, int d){
 		//System.out.println("-------------------------------------------------------------------------------------");
 		//	DEBUG
-		System.out.println("*Error on line "+d+".");
+		//System.out.println("*Error on line "+d+".");
 		System.out.println("\n\t\t\t\t::Ayuda::");
 		System.out.println("Para poder ejecuar el compilador correctamente necesita ingresar en la linea de");
 		System.out.println("comandos 'java Compiler <opcion> <filename>' donde <opcion> puede ser una lista");
@@ -255,7 +255,7 @@ public class Compiler {
 			str = args[x+1];
 			String[] stages = compilador.separate(str);
 			
-			for (int i=0; i<stages.length; i++)	{
+			for (int i=0; i<stages.length; i++)
 				System.out.println("debugging: "+stages[i]);
 		}
 
