@@ -1,11 +1,10 @@
 make: Compiler
 
 
-Compiler: Compiler.java
+Compiler:	Compiler.java
 	javac Compiler.java
 
-clean:
+clean: 
 	rm *.class
 	rm *.s
 	rm readme.txt
-	clear
