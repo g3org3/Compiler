@@ -17,7 +17,6 @@ public class Compiler {
 		this.size = args.length;
 	}
 
-
 	// METODOS
 	public void error(int o, int d, PrintWriter a){
 		a.close();
@@ -212,6 +211,8 @@ public class Compiler {
 				outputFile = new PrintWriter(outFile);
 			} catch (Exception e) {compilador.error(1, 135);}
 		}
+		System.out.println(" ");
+
 
 		// target
 		if(target>0){
@@ -250,6 +251,10 @@ public class Compiler {
 		if(debug>0){
 			x = compilador.position("-debug");
 			str = args[x+1];
+			int nscan = 0; int npar=0; int nast =0; int nsem =0; int nirt =0; int ncode = 0;
+			String[] stages = compilador.separate(str);
+			for (int i=0; i<stages.length; i++)
+				System.out.println("debugging: "+stages[i]);
 		}
 
 
