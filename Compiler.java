@@ -6,6 +6,7 @@ import compiler.semantic.*;
 import compiler.codegen.*;
 import compiler.opt.*;
 import compiler.lib.*;
+import java.io.*;
 
 public class Compiler {
 	public String[] args;
@@ -58,15 +59,17 @@ public class Compiler {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// Define variables
-		int x				= 0;
-		String str 			= "";
-		String filename 	= "";
-		String output		= "";
-		String[] options 	= {"-o", "-target", "-opt", "-debug", "-h"};
-		String[] targets 	= {"scan", "parser", "ast", "-debug", "-h"};
-		String[] targetsP 	= {"-o", "-target", "-opt", "-debug", "-h"};
+		int x					= 0;
+		String str 				= "";
+		String filename 		= "";
+		String output			= "";
+		File outFile 			= new File("a.s");
+		PrintWriter outputFile	= new PrintWriter("a.s");
+		String[] options 		= {"-o", "-target", "-opt", "-debug", "-h"};
+		String[] targets 		= {"scan", "parser", "ast", "semantic", "irt", "codegen"};
+		String[] targetsP 		= {"Scanner", "Parser", "Ast", "Semantic", "Irt", "Codegen"};
 
 		// Create a compiler
 		Compiler compilador = new Compiler(args);
@@ -94,6 +97,9 @@ public class Compiler {
 					filename = args[args.length-1];
 				else
 					compilador.error(1,114);
+		// exists?
+		File file = new File(filename);
+		if(!(file.exists())) compilador.error(1, 99);
 
 		// checks if the options have valid arguments
 		for (int i=0; i<options.length; i++) {
@@ -125,30 +131,60 @@ public class Compiler {
 			x = compilador.position("-o");
 			output = args[x+1];
 			System.out.println("Output File: "+output);
+			try {
+				outFile = new File(output);
+				outputFile = new PrintWriter(outFile);
+			} catch (Exception e) {compilador.error(1, 135);}
 		} else {
 			x = filename.indexOf(".");
 			str = filename.substring(0, x);
 			str = str + ".s";
 			output = str;
 			System.out.println("Output File: "+str);
+			
+			try {
+				outFile = new File(output);
+				outputFile = new PrintWriter(outFile);
+			} catch (Exception e) {compilador.error(1, 135);}
 		}
 
 		// target
 		if(target>0){
+			x = compilador.position("-target");
+			str = args[x+1];
+			for (int i=0; i<targets.length; i++)
+				if(str.equals(targets[i])) x=i;
 
+			for (int i=0; i<=x; i++)
+				outputFile.println("stage: "+targetsP[i]);
 		} else{
-			System.out.println("stage: scanning");
-			System.out.println("stage: parsing");
-			System.out.println("stage: ast");
-			System.out.println("stage: semantic");
-			System.out.println("stage: irt");
-			System.out.println("stage: codegen");
+			try {
+				outputFile.println("stage: Scanner");
+				outputFile.println("stage: Parser");
+				outputFile.println("stage: Ast");
+				outputFile.println("stage: Semantic");
+				outputFile.println("stage: Irt");
+				outputFile.println("stage: Codegen");
+			} catch (Exception e) {compilador.error(1, 135);}
+		}
+
+		// opt
+		if(opt>0){
+			x = compilador.position("-opt");
+			str = args[x+1];
+			if(str.equals("algebraic")){
+				outputFile.println("\noptimizing: algebraic simplification");
+				Algebraic al = new Algebraic();
+			} else {
+				outputFile.println("\noptimizing: constant folding");
+				ConstantFolding cf = new ConstantFolding();
+			}
 		}
 
 
 
 
-
+		outputFile.close();
 		System.out.println("------------------------------");
 	}
 }

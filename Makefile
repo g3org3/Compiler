@@ -6,5 +6,5 @@ Compiler: Compiler.java
 
 #OS X commands
 clean:
-	rm Compiler.class
 	rm *.s
+	rm *.class
