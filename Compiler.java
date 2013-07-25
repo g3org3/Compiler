@@ -19,6 +19,10 @@ public class Compiler {
 
 
 	// METODOS
+	public void error(int o, int d, PrintWriter a){
+		a.close();
+		error(o, d);
+	}
 	public void error(int o, int d){
 		System.out.println("----------------------------------------------------");
 		//	DEBUG
@@ -58,6 +62,37 @@ public class Compiler {
 			this.error(1,55);
 
 	}
+	public String[] separate(String str){
+		int n = 1;
+		int x = -1;
+		int i = 0;
+		String aux = str;
+
+		// cuantos stages hay!
+		x = aux.indexOf(":");
+		while (x>=0) {
+			aux = aux.substring(x+1);
+			x = aux.indexOf(":");
+			n++;
+		}
+
+		// creamos el arreglo
+		String stages[] = new String[n];
+
+		// guardarlos a un arreglo
+		x = str.indexOf(":");
+		while (x>=0) {
+			stages[i] = str.substring(0,x);
+			str = str.substring(x+1);
+			x = str.indexOf(":");
+			i++;
+		}
+
+		// el ultimo o primero
+		stages[i] = str;
+		
+		return stages;
+	}
 
 	public static void main(String[] args) throws Exception {
 		// Define variables
@@ -65,8 +100,8 @@ public class Compiler {
 		String str 				= "";
 		String filename 		= "";
 		String output			= "";
-		File outFile 			= new File("a.s");
-		PrintWriter outputFile	= new PrintWriter("a.s");
+		File outFile 			= new File("");
+		PrintWriter outputFile	= new PrintWriter("readme.txt");
 		String[] options 		= {"-o", "-target", "-opt", "-debug", "-h"};
 		String[] targets 		= {"scan", "parser", "ast", "semantic", "irt", "codegen"};
 		String[] targetsP 		= {"Scanner", "Parser", "Ast", "Semantic", "Irt", "Codegen"};
@@ -118,6 +153,14 @@ public class Compiler {
 			} else if (x>=0 && i==2){						//VERIFY -OPT
 				if(!(str.equals("algebraic")||str.equals("constant")))
 					compilador.error(1, 103);
+			} else if (x>=0 && i==3){						//VERIFY -DEGUB
+				x = 0;
+				String[] stages = compilador.separate(str);
+				for (int k=0; k<stages.length; k++)
+					for (int j=0; j<targets.length; j++)
+						if(stages[k].equals(targets[j]))
+							x++;
+				if (!(x==stages.length)) compilador.error(1, 166);
 			}
 		}
 
@@ -181,6 +224,11 @@ public class Compiler {
 			}
 		}
 
+		// debug
+		if(debug>0){
+			x = compilador.position("-debug");
+			str = args[x+1];
+		}
 
 
 
