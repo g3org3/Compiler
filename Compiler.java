@@ -9,6 +9,7 @@ import compiler.codegen.*;
 import compiler.opt.*;
 import compiler.lib.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public class Compiler {
 	public String[] args;
@@ -117,6 +118,55 @@ public class Compiler {
 		return stages;
 	}
 
+	public String[] insertionSort(String[] arreglo, String[] targets){
+
+		int aux, j;
+		String aux2;
+		int[] positions = new int[arreglo.length];
+		ArrayList<String> fill = new ArrayList<String>(1);
+
+		// array of indexs
+		for (int i=0; i<positions.length; i++)
+			for (int k=0; k<targets.length; k++)
+				if(arreglo[i].equals(targets[k]))
+					positions[i] = k;
+
+		// insertion sort
+		for (int i=1; i<positions.length; i++) {
+			aux = positions[i];
+			aux2 = arreglo[i];
+			j = i-1;
+			while (j>=0 && positions[j]>aux){
+				positions[j+1] = positions[j];
+				arreglo[j+1] = arreglo[j];		//fix
+				j = j-1;
+			}
+			positions[j+1] = aux;
+			arreglo[j+1] = aux2;
+		}
+
+		aux2 = "";
+		// remove repeated stages
+		for (int i=0; i<arreglo.length; i++) {
+			if (aux2.equals(arreglo[i]));
+			else
+				fill.add(arreglo[i]);
+
+			aux2 = arreglo[i];
+
+		}
+
+		// list to array
+		String[] a = new String[fill.size()];
+		for (int i=0; i<fill.size(); i++) {
+			a[i] = fill.get(i);
+		}
+
+		// done
+		return a;
+		
+	}
+
 	public static void main(String[] args) throws Exception {
 		// Define variables
 		int x					= 0;
@@ -128,7 +178,8 @@ public class Compiler {
 		String[] options 		= {"-o", "-target", "-opt", "-debug", "-h"};
 		String[] targets 		= {"scan", "parser", "ast", "semantic", "irt", "codegen"};
 		String[] targetsP 		= {"Scanner", "Parser", "Ast", "Semantic", "Irt", "Codegen"};
-		String[] myOptions;
+	ArrayList<String> myOptions	= new ArrayList<String>(1);
+	ArrayList<String> debugList	= new ArrayList<String>(1);
 		
 		// Create a compiler
 		Compiler compilador = new Compiler(args);
@@ -144,47 +195,47 @@ public class Compiler {
 
 		// if no option recognized
 		if(o==0&&target==0&&opt==0&&debug==0)
-			compilador.error(1, 55);
+			compilador.error(1, 149);
 
 		// checks for filename
-		if(args.length<3) compilador.error(1, 76);
+		if(args.length<3) compilador.error(1, 152);
 		else if(args[args.length-3].substring(0,1).equals("-"))
 			if(args[args.length-2].substring(0,1).equals("-"))
-				compilador.error(1, 79);
+				compilador.error(1, 155);
 			else
 				if(args[args.length-1].indexOf(".txt")>0)
 					filename = args[args.length-1];
 				else
-					compilador.error(1,114);
+					compilador.error(1,160);
 		// exists?
 		File file = new File(filename);
-		if(!(file.exists())) compilador.error(1, 99);
+		if(!(file.exists())) compilador.error(1, 163);
 
 		// checks if the options have valid arguments
 		for (int i=0; i<options.length; i++) {
 			x = compilador.position(options[i]);
 			str = args[x+1];
-			if(x>=0 && i==0){								//VERIFY -O
+			if(x>=0 && i==0){										//VERIFY -O
 				compilador.verificar("-o");
 				if(str.indexOf(".s")<0)
-					compilador.error(1,94);
+					compilador.error(1,172);
 			}
-			else if(x>=0 && i==1){							//VERIFY -TARGET
+			else if(x>=0 && i==1){									//VERIFY -TARGET
 				x = -1;
 				for (int j=0; j<targets.length; j++)
 					if(str.equals(targets[j])) x=1;
-				if(x<0) compilador.error(1,100);
-			} else if (x>=0 && i==2){						//VERIFY -OPT
+				if(x<0) compilador.error(1,178);
+			} else if (x>=0 && i==2){								//VERIFY -OPT
 				if(!(str.equals("algebraic")||str.equals("constant")))
-					compilador.error(1, 103);
-			} else if (x>=0 && i==3){						//VERIFY -DEGUB
+					compilador.error(1, 181);
+			} else if (x>=0 && i==3){								//VERIFY -DEGUB
 				x = 0;
 				String[] stages = compilador.separate(str);
 				for (int k=0; k<stages.length; k++)
 					for (int j=0; j<targets.length; j++)
 						if(stages[k].equals(targets[j]))
 							x++;
-				if (!(x==stages.length)) compilador.error(1, 166);
+				if (!(x==stages.length)) compilador.error(1, 191);
 			}
 		}
 
@@ -201,7 +252,7 @@ public class Compiler {
 			try {
 				outFile = new File(output);
 				outputFile = new PrintWriter(outFile);
-			} catch (Exception e) {compilador.error(1, 135);}
+			} catch (Exception e) {compilador.error(1, 208);}
 		} else {
 			x = filename.indexOf(".");
 			str = filename.substring(0, x);
@@ -212,7 +263,7 @@ public class Compiler {
 			try {
 				outFile = new File(output);
 				outputFile = new PrintWriter(outFile);
-			} catch (Exception e) {compilador.error(1, 135);}
+			} catch (Exception e) {compilador.error(1, 219);}
 		}
 		System.out.println(" ");
 
@@ -224,12 +275,9 @@ public class Compiler {
 			for (int i=0; i<targets.length; i++)
 				if(str.equals(targets[i])) x=i;
 
-			//array
-			myOptions = new String[x+1];
-
 			for (int i=0; i<=x; i++){
 				outputFile.println("stage: "+targetsP[i]);
-				myOptions[i]=targets[i];
+				myOptions.add(targets[i]);
 			}
 		} else{
 			try {
@@ -239,8 +287,9 @@ public class Compiler {
 				outputFile.println("stage: Semantic");
 				outputFile.println("stage: Irt");
 				outputFile.println("stage: Codegen");
-				myOptions = targets;
-			} catch (Exception e) {compilador.error(1, 135);}
+				for (int i=0; i<targets.length; i++)
+					myOptions.add(targets[i]);
+			} catch (Exception e) {compilador.error(1, 245);}
 		}
 
 		// opt
@@ -262,11 +311,13 @@ public class Compiler {
 			str = args[x+1];
 			String[] stages = compilador.separate(str);
 			
-			for (int i=0; i<stages.length; i++)
-				System.out.println("debugging: "+stages[i]);
-				
-			for(int i=0, i<myOptions.length; i++)
-				System.out.println(i+1+": "+myOptions[i]);
+			String debugin[] = compilador.insertionSort(stages, targets);
+
+			for (int i=0; i<debugin.length; i++) {
+				if(myOptions.indexOf(debugin[i])>=0)
+					System.out.println("Debugging: "+debugin[i]);
+			}
+			
 		}
 
 
