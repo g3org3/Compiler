@@ -1,37 +1,45 @@
-make: Scan Par Irt Ast Se Co Op Op2 Li Compiler
+make: uno dos tres cuatro cinco seis siete ocho nueve Main
 
-Scan:	scanner\Scanner.java
+uno:	scanner\Scanner.java
 	javac ..\compiler\scanner\Scanner.java
 
-Par:	parser\CC4Parser.java
+dos:	parser\CC4Parser.java
 	javac ..\compiler\parser\CC4Parser.java
-	
-Irt:	irt\Irt.java
-	javac ..\compiler\irt\Irt.java
 
-Ast:	ast\Ast.java
+tres:	ast\Ast.java
 	javac ..\compiler\ast\Ast.java
-	
-Se:		semantic\Semantic.java
+
+cuatro:	semantic\Semantic.java
 	javac ..\compiler\semantic\Semantic.java
 	
-Co:		codegen\Codegen.java
+cinco:	irt\Irt.java
+	javac ..\compiler\irt\Irt.java
+	
+seis:	codegen\Codegen.java
 	javac ..\compiler\codegen\Codegen.java
 
-Op:		opt\ConstantFolding.java
+siete:		compiler\opt\ConstantFolding.java
 	javac ..\compiler\opt\ConstantFolding.java
 
-Op2:	opt\Algebraic.java
+ocho:	opt\Algebraic.java
 	javac ..\compiler\opt\Algebraic.java
 	
-Li:		lib\Debug.java
+nueve:		lib\Debug.java
 	javac ..\compiler\lib\Debug.java
 
-Compiler:
+Main:
 	javac Compiler.java
 
 clean: 
 	del *.class
 	del *.s
 	del readme.txt
+	del scanner\*.class
+	del parser\*.class
+	del irt\*.class
+	del ast\*.class
+	del semantic\*.class
+	del codegen\*.class
+	del opt\*.class
+	del lib\*.class
 	cls
