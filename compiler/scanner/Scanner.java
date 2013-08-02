@@ -8,4 +8,6 @@ public class Scanner {
 	public Scanner(String fileInput){
 		this.file = fileInput;
 	}
+
+
 }
