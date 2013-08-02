@@ -1,7 +1,13 @@
-make: Main
+make: part1 part2 Main
+
+part1: scanner\Scanner.java
+	javac ..\compiler\scanner\Scanner.java
+
+part2: parser\CC4Parser.java
+	javac ..\compiler\parser\CC4Parser.java
 
 Main:
-	javac Compiler.java
+	dir
 
 clean: 
 	del *.class
