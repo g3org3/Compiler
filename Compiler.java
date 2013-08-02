@@ -128,11 +128,12 @@ public class Compiler {
 		String[] options 		= {"-o", "-target", "-opt", "-debug", "-h"};
 		String[] targets 		= {"scan", "parser", "ast", "semantic", "irt", "codegen"};
 		String[] targetsP 		= {"Scanner", "Parser", "Ast", "Semantic", "Irt", "Codegen"};
-
+		String[] myOptions;
+		
 		// Create a compiler
 		Compiler compilador = new Compiler(args);
 
-		// checks if there is no arguments
+		// checks if there are no arguments
 		compilador.noArguments();
 
 		int o = compilador.counter("-o");
@@ -223,8 +224,13 @@ public class Compiler {
 			for (int i=0; i<targets.length; i++)
 				if(str.equals(targets[i])) x=i;
 
-			for (int i=0; i<=x; i++)
+			//array
+			myOptions = new String[x+1];
+
+			for (int i=0; i<=x; i++){
 				outputFile.println("stage: "+targetsP[i]);
+				myOptions[i]=targets[i];
+			}
 		} else{
 			try {
 				outputFile.println("stage: Scanner");
@@ -233,6 +239,7 @@ public class Compiler {
 				outputFile.println("stage: Semantic");
 				outputFile.println("stage: Irt");
 				outputFile.println("stage: Codegen");
+				myOptions = targets;
 			} catch (Exception e) {compilador.error(1, 135);}
 		}
 
@@ -257,6 +264,9 @@ public class Compiler {
 			
 			for (int i=0; i<stages.length; i++)
 				System.out.println("debugging: "+stages[i]);
+				
+			for(int i=0, i<myOptions.length; i++)
+				System.out.println(i+1+": "+myOptions[i]);
 		}
 
 
