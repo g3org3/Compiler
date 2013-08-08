@@ -174,7 +174,7 @@ public class Compiler {
 		String filename 		= "";
 		String output			= "";
 		File outFile 			= new File("");
-		PrintWriter outputFile	= new PrintWriter("readme.txt");
+		PrintWriter outputFile	= new PrintWriter("compiler/test/readme.txt");
 		String[] options 		= {"-o", "-target", "-opt", "-debug", "-h"};
 		String[] targets 		= {"scan", "parser", "ast", "semantic", "irt", "codegen"};
 		String[] targetsP 		= {"Scanner", "Parser", "Ast", "Semantic", "Irt", "Codegen"};

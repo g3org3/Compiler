@@ -15,4 +15,4 @@ clean:
 	rm compiler\codegen\*.class
 	rm compiler\opt\*.class
 	rm compiler\lib\*.class
-	cls
+	clear
