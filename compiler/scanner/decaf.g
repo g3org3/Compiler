@@ -32,7 +32,8 @@ KWTRUE		: 'true' ;
 KWVOID		: 'void' ;
 
 //identifier
-IDENTIFIER  : (SPACE CHAR* SPACE | CHAR* SPACE | SPACE CHAR* );
+IDENTIFIER  : (SPACE CHAR* SPACE | CHAR* SPACE | SPACE CHAR* ) ;
+ID 			: (CHAR)(UNDERSCORE (CHAR | DIGIT) )* ;
 
 //token
 TOKEN 		: (CHAR | UNDERSCORE)(CHAR)* ;
@@ -45,11 +46,13 @@ ASCIICHAR	: (ASCCI) ;
 LITERALCHAR : (SQUOTE ASCCI SQUOTE) ;
 
 //number
-INT 		: ( '-' DIGIT+ | DIGIT+ ) ;
-HEXINT		: ('0x' (DIGIT|HEXCHAR)* );
+//number
+INT 		: (DECIMAL | HEX) ;
+DECIMAL     : (DIGIT) (DIGIT)* ;
+HEX 		: ('0x' (DIGIT | HEXCHAR) (DIGIT | HEXCHAR)* ) ;
 
 //comentarios
-COMMENT		: (BACKSLASH BACKSLASH)(CHAR | UNICODE| DIGIT)*(NEWLINE) { skip(); };
+COMMENT		: (BACKSLASH BACKSLASH)(CHAR | UNICODE| DIGIT)*(NEWLINE) { skip(); } ;
 
 //white spaces
 WHITESPACE 	: ( TAB | SPACE | '\r' | NEWLINE)* { skip(); } ;
