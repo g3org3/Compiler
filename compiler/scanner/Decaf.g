@@ -1,9 +1,10 @@
-lexer grammar DecafLexer;
+lexer grammar Decaf;
 
 @lexer::header{
   
 }
 
+fragment ESC   	  :  '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\') ;
 fragment CHAR     :  ('A'..'Z' | 'a'..'z');
 fragment HEXCHAR  :  ('A'..'F' | 'a'..'f');
 fragment DIGIT    :  ('0'..'9');
@@ -30,25 +31,48 @@ KWINT		: 'int' ;
 KWRETURN	: 'return' ;
 KWTRUE		: 'true' ;
 KWVOID		: 'void' ;
+KWFLOAT     : 'float';
+
+//simbolos
+COMMA       :   ',';
+SEMI        :   ';';
+LPAREN      :   '(';
+RPAREN      :   ')';
+
+//operadores
+PLUS		:	'+';
+MINUS		: 	'-';
+MULT		: 	'*';
+DIV			: 	'/';
+AND			: 	'&';
+OR			: 	'|';
+EQ			: 	'=';
+MAYORQ		:	'>';
+MENORQ		:	'<';
+NEG			:	'!';
 
 //identifier
 IDENTIFIER  : (SPACE CHAR* SPACE | CHAR* SPACE | SPACE CHAR* ) ;
-ID 			: (CHAR)(UNDERSCORE (CHAR | DIGIT) )* ;
+ID 			: (CHAR)(CHAR | DIGIT)* ;
 
 //token
 TOKEN 		: (CHAR | UNDERSCORE)(CHAR)* ;
 
+//variales
+VAR         : (CHAR)(CHAR|DIGIT)*;
+
 //string
-STRING		: (QUOTE ASCCI* QUOTE) ;
+STR 		: (QUOTE ASCCI* QUOTE) ;
+LITERALSTR  : (QUOTE (ESC | ~('\\'|'"') )* QUOTE);
 
 //char
-ASCIICHAR	: (ASCCI) ;
-LITERALCHAR : (SQUOTE ASCCI SQUOTE) ;
+CHR 		: (SQUOTE ASCCI SQUOTE) ;
+LITERALCHAR : (SQUOTE (ESC | ~('\''|'\\') ) SQUOTE) ;
 
 //number
-INT 		: (DECIMAL | HEX) ;
-DECIMAL     : (DIGIT) (DIGIT)* ;
-HEX 		: ('0x' (DIGIT | HEXCHAR) (DIGIT | HEXCHAR)* ) ;
+NUMBER		: (DIGIT)+;
+REAL		: (DIGIT)+ '.' (DIGIT)+;
+HEX 		: ('0x' | '0X') (DIGIT | HEXCHAR) (DIGIT | HEXCHAR)*  ;
 
 //comentarios
 COMMENT		: (BACKSLASH BACKSLASH)(CHAR | UNICODE| DIGIT)*(NEWLINE) { skip(); };
