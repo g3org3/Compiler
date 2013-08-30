@@ -4,15 +4,14 @@ programa:
 	javac Compiler.java
 
 clean: 
-	del *.class
-	del *.s
-	del readme.txt
-	del compiler\scanner\*.class
-	del compiler\parser\*.class
-	del compiler\irt\*.class
-	del compiler\ast\*.class
-	del compiler\semantic\*.class
-	del compiler\codegen\*.class
-	del compiler\opt\*.class
-	del compiler\lib\*.class
-	cls
+	rm *.class
+	rm *.s
+	rm compiler/scanner/*.class
+	rm compiler/parser/*.class
+	rm compiler/irt/*.class
+	rm compiler/ast/*.class
+	rm compiler/semantic/*.class
+	rm compiler/codegen/*.class
+	rm compiler/opt/*.class
+	rm compiler/lib/*.class
+	clear

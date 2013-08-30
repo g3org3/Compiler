@@ -4,9 +4,14 @@ public class Scanner {
 
 	public String file;
 
-	//contructor
+	//constructor
 	public Scanner(String fileInput){
 		this.file = fileInput;
+	}
+
+	// metodo
+	public void lexer(){
+		
 	}
 
 

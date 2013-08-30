@@ -134,11 +134,11 @@ public class Compiler {
 		// insertion sort
 		for (int i=1; i<positions.length; i++) {
 			aux = positions[i];
-			aux2 = arreglo[i];
+			aux2 = arreglo[i];					// fix
 			j = i-1;
 			while (j>=0 && positions[j]>aux){
 				positions[j+1] = positions[j];
-				arreglo[j+1] = arreglo[j];		//fix
+				arreglo[j+1] = arreglo[j];		// fix
 				j = j-1;
 			}
 			positions[j+1] = aux;
@@ -274,10 +274,30 @@ public class Compiler {
 			str = args[x+1];
 			for (int i=0; i<targets.length; i++)
 				if(str.equals(targets[i])) x=i;
-
-			for (int i=0; i<=x; i++){
-				outputFile.println("stage: "+targetsP[i]);
-				myOptions.add(targets[i]);
+			if(x>-1){
+				//SCANNER
+				outputFile.println("stage: Scanner");
+				Scanner scanFile = new Scanner(filename);
+			}
+			if(x>0){
+				//PARSER
+				outputFile.println("stage: Parser");
+			}
+			if(x>1){
+				//AST
+				outputFile.println("stage: Ast");
+			}
+			if(x>2){
+				//SEMANTIC
+				outputFile.println("stage: Semantic");
+			}
+			if(x>3){
+				//IRT
+				outputFile.println("stage: Irt");
+			}
+			if(x>4){
+				//CODEGEN
+				outputFile.println("stage: Codegen");
 			}
 		} else{
 			try {
