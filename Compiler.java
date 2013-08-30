@@ -274,14 +274,27 @@ public class Compiler {
 			str = args[x+1];
 			for (int i=0; i<targets.length; i++)
 				if(str.equals(targets[i])) x=i;
+			for (int i=0; i<=x; i++){
+				myOptions.add(targets[i]);
+			}
 			if(x>-1){
 				//SCANNER
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Scanner");
+				outputFile.println("------------------------------");
 				Scanner scanFile = new Scanner(filename);
+				scanFile.scanIt(2);
+				ArrayList<String> targetout = scanFile.getList();
+				for (int i=0; i<targetout.size(); i++) {
+					outputFile.println(targetout.get(i));
+				}
+				outputFile.println("\n");
 			}
 			if(x>0){
 				//PARSER
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Parser");
+				outputFile.println("------------------------------");
 			}
 			if(x>1){
 				//AST
@@ -330,12 +343,41 @@ public class Compiler {
 			x = compilador.position("-debug");
 			str = args[x+1];
 			String[] stages = compilador.separate(str);
-			
 			String debugin[] = compilador.insertionSort(stages, targets);
 
-			for (int i=0; i<debugin.length; i++) {
-				if(myOptions.indexOf(debugin[i])>=0)
-					System.out.println("Debugging: "+debugin[i]);
+			for (int i=0; i<debugin.length; i++){
+				if(myOptions.indexOf(debugin[i])>=0){
+
+					if(debugin[i].equals("scan")){
+						//SCANNER
+						System.out.println("  Debug: Scanner -tokens");
+						System.out.println("  ----------------------------");
+						Scanner scanFile = new Scanner(filename);
+						scanFile.scanIt(1);
+						System.out.println("\n");
+					}
+					else if(debugin[i].equals("parser")){
+						//PARSER
+						System.out.println("Debug: Parser");
+					}
+					else if(debugin[i].equals("ast")){
+						//AST
+						System.out.println("Debug: Ast");
+					}
+					else if(debugin[i].equals("semantic")){
+						//SEMANTIC
+						System.out.println("Debug: Semantic");
+					}
+					else if(debugin[i].equals("irt")){
+						//IRT
+						System.out.println("Debug: Irt");
+					}
+					else if(debugin[i].equals("codegen")){
+						//CODEGEN
+						System.out.println("Debug: Codegen");
+					}
+
+				}
 			}
 			
 		}
