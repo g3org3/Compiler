@@ -1,7 +1,6 @@
 ------------------------------
 stage: Scanner
 ------------------------------
-3: unexpected char: '
-'
+4: unexpected char: '\n'
 
 

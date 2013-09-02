@@ -17,7 +17,7 @@ lexer grammar Decaf;
 
 	public static void debug(String str, int line, String text){
 		if (Decaf.x==1)
-			System.out.println("    "+line+": "+str+" "+text);
+			System.out.println("    line:"+line+": "+str+" "+text);
 		else if (Decaf.x==2)
 			Decaf.strList.add(line+": "+str+" "+text);
 	}
@@ -30,7 +30,7 @@ fragment ESC   	  	: '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\') ;
 fragment CHAR     	: ('A'..'Z' | 'a'..'z');
 fragment HEXCHAR  	: ('A'..'F' | 'a'..'f');
 fragment DIGIT    	: ('0'..'9');
-fragment ASCCI	  	: ('\n'..'\~');
+fragment ASCCI	  	: (' '..'!')|('#'..'&')|('('..'.')|('0'..'~');
 fragment SQUOTE	  	: ('\'');
 fragment QUOTE	  	: ('\"');
 fragment BACKSLASH	: ('\\');
