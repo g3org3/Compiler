@@ -1,4 +1,4 @@
-make: GRAMATICA DECAF SCANNER GRAPARSER PARSERprograma
+make: GRAMATICA DECAF SCANNER programa
 
 GRAMATICA: compiler/scanner/Decaf.g
 	java org.antlr.Tool compiler/scanner/Decaf.g

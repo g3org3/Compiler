@@ -27,11 +27,11 @@ lexer grammar Decaf;
 	}
 }
 fragment PERC		: ('%');
-fragment ESC   	  	: '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\') ;
+fragment ESC   	  	: '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\'') ;
 fragment CHAR     	: ('A'..'Z' | 'a'..'z');
 fragment HEXCHAR  	: ('A'..'F' | 'a'..'f');
 fragment DIGIT    	: ('0'..'9');
-fragment ASCCI	  	: (' '..'!')|('#'..'&')|('('..'.')|('0'..'~');
+fragment ASCCI	  	: (' '..'!')|('#'..'&')|('('..'\.')|('0'..'~');
 fragment CHAR2		: ('a'|'c'..'e'|'g'..'m'|'p'..'q'|'s'|'u'..'z'|'A'|'C'..'E'|'G'..'M'|'P'..'Q'|'S'|'U'..'Z');
 fragment SQUOTE	  	: ('\'');
 fragment QUOTE	  	: ('\"');
@@ -43,18 +43,21 @@ fragment UNDERSCORE	: ('_');
 fragment UNICODE	: ('_');
 fragment WHITE 		: (SPACE | TAB | '\r' | NEWLINE | '\b');
 fragment WHITESPACE1: (SPACE | TAB | '\r');
-fragment POINT		: ('.' | ':' | ';'|',');
+fragment POINT		: ('\.' | ':' | ';'|',');
 fragment CHARS 		: (CHAR|DIGIT|SPACE|ESC);
+fragment NOTCHAR	: (' '..'~');
 
 //comentarios
 COMMENT		: ('//') ~('\r'|'\n')* (NEWLINE) {skip();};
 
 //ERRORES
+
+//STRFIX1		: (QUOTE (ASCCI|'\'') QUOTE){Decaf.debug("unexpected char:1", getLine(), getText());};;
 MISMATCH	: ('\'\'\'') {Decaf.debug("unexpected char:1", getLine(), getText());};
 WRONGCHAR	: ('\'' ('0x'|'0X')(DIGIT|HEXCHAR)(DIGIT|HEXCHAR)* '\'') {Decaf.debug("unexpected char:2", getLine(), getText());};
 WRONGBACK	: ('\'\\'(DIGIT|CHAR2)+'\''){Decaf.debug("unexpected char:3", getLine(), getText());};
 WRONGQUOTE	: ('\''('\"')+'\''){Decaf.debug("unexpected char:4", getLine(), getText());};
-LONGCHR 	: (SQUOTE (ASCCI)(ASCCI)+ SQUOTE){Decaf.debug("unexpected char:5", getLine(), getText());};
+//LONGCHR 	: (SQUOTE (ASCCI)(ASCCI)+ SQUOTE){Decaf.debug("unexpected char:5", getLine(), getText());};
 NOQUOTE		: ('\'\\\''){Decaf.debug("unexpected char:6", getLine(), getText());};
 NOHEX		: ('0x'){Decaf.debug("unexpected hex:", getLine(), getText());};
 INVALID		: ((UNDERSCORE) (CHAR|DIGIT|UNDERSCORE)*){Decaf.debug("invalid:", getLine(), getText());};
@@ -84,8 +87,8 @@ KWFLOAT     : 'float'		{ Decaf.debug("KW: FLOAT ", getLine(), getText()); } ;
 fragment PROGRAM: ('A'..'Z' ('A'..'Z'|'a'..'z')*);
 
 //simbolos
-COMMA       :   ',' { Decaf.debug("COMMA", getLine(), getText()); } ;
-SEMI        :   ';' { Decaf.debug("SEMI", getLine(), getText()); } ;
+COMMA       :   ',' { Decaf.debug("COMMA",  getLine(), getText()); } ;
+SEMI        :   ';' { Decaf.debug("SEMI",   getLine(), getText()); } ;
 LPAREN      :   '(' { Decaf.debug("LPAREN", getLine(), getText()); } ;
 RPAREN      :   ')' { Decaf.debug("RPAREN", getLine(), getText()); } ;
 LBRAKE      :   '[' { Decaf.debug("LBRAKE", getLine(), getText()); } ;
@@ -115,12 +118,12 @@ fragment OPERADORES :	('+'|'-'|'*'|'/'|'&'|'|'|'='|'>'|'<'|'!');
 VAR         : (CHAR)(CHAR|DIGIT)* { Decaf.debug("VAR", getLine(), getText()); } ;
 
 //string
-STR 		: (QUOTE ASCCI* QUOTE) { Decaf.debug("STR", getLine(), getText()); } ;
+STR 		: (QUOTE (ASCCI)* QUOTE) { Decaf.debug("STR", getLine(), getText()); } ;
 LITERALSTR  : (QUOTE (ESC | ~('\\'|'"') )* QUOTE) { Decaf.debug("STR", getLine(), getText()); } ;
 
 //char
 CHR 		: (SQUOTE ASCCI SQUOTE) { Decaf.debug("CHARLITERAL", getLine(), getText()); } ;
-LITERALCHAR : (SQUOTE (ESC | ~('\''|'\\') ) SQUOTE) { Decaf.debug("CHARLITERAL", getLine(), getText()); } ;
+LITERALCHAR : (SQUOTE (ESC | ~('\\'|'"')  ) SQUOTE) { Decaf.debug("CHARLITERAL", getLine(), getText()); } ;
 
 //number
 NUMBER		: (DIGIT)+ { Decaf.debug("NUMBER", getLine(), getText()); } ;
@@ -131,7 +134,7 @@ HEX 		: ('0x' | '0X') (DIGIT | HEXCHAR) (DIGIT | HEXCHAR)*  { Decaf.debug("HEX",
 
 //white spaces
 WHITESPACE 	: ( TAB | SPACE | '\r' |NEWLINE ) { skip(); } ;
-FIX         : (~(ASCCI)) {Decaf.debug("invalid:", getLine(), getText());};
+FIX         : (~(NOTCHAR)) {Decaf.debug("invalid:", getLine(), getText());};
 //IFTAB		: (TAB)* {Decaf.debug("\t", getLine(), getText());};
 //IFSPACE		: (SPACE)* {Decaf.debug(" ");};
 //IFBKS		: ('\r')* {Decaf.debug("\r");};
