@@ -70,6 +70,7 @@ KWCONTINUE	: 'continue' 	{ Decaf.debug("KW: CONTINUE", getLine(), getText()); } 
 KWELSE		: 'else' 		{ Decaf.debug("KW: ELSE", getLine(), getText()); } ;
 KWFALSE		: 'false' 		{ Decaf.debug("KW: FALSE", getLine(), getText()); } ;
 KWFOR		: 'for' 		{ Decaf.debug("KW: FOR", getLine(), getText()); } ;
+KWFORPAR	: 'forpar' 		{ Decaf.debug("KW: FORPAR", getLine(), getText()); } ;
 KWIF		: 'if' 			{ Decaf.debug("KW: IF", getLine(), getText()); } ;
 KWINT		: 'int' 		{ Decaf.debug("KW: INT", getLine(), getText()); } ;
 KWRETURN	: 'return' 		{ Decaf.debug("KW: RETURN", getLine(), getText()); } ;

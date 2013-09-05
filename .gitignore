@@ -2,3 +2,4 @@ Compiler.class
 *.class
 *.s
 *.tokens
+compiler/scanner/*.class
