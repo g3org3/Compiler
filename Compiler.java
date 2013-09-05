@@ -269,6 +269,7 @@ public class Compiler {
 
 
 		// target
+		Scanner scanFile = new Scanner(filename);
 		if(target>0){
 			x = compilador.position("-target");
 			str = args[x+1];
@@ -282,7 +283,7 @@ public class Compiler {
 				outputFile.println("------------------------------");
 				outputFile.println("stage: Scanner");
 				outputFile.println("------------------------------");
-				Scanner scanFile = new Scanner(filename);
+				
 				scanFile.scanIt(2);
 				ArrayList<String> targetout = scanFile.getList();
 				for (int i=0; i<targetout.size(); i++) {
@@ -295,6 +296,8 @@ public class Compiler {
 				outputFile.println("------------------------------");
 				outputFile.println("stage: Parser");
 				outputFile.println("------------------------------");
+				//CC4Parser parser = new CC4Parser(scanFile);
+
 			}
 			if(x>1){
 				//AST
@@ -352,13 +355,15 @@ public class Compiler {
 						//SCANNER
 						System.out.println("  Debug: Scanner -tokens");
 						System.out.println("  ----------------------------");
-						Scanner scanFile = new Scanner(filename);
+						//Scanner scanFile = new Scanner(filename);
 						scanFile.scanIt(1);
 						System.out.println("\n");
 					}
 					else if(debugin[i].equals("parser")){
 						//PARSER
 						System.out.println("Debug: Parser");
+						System.out.println("  ----------------------------");
+						//CC4Parser parser = new CC4Parser(scanFile);
 					}
 					else if(debugin[i].equals("ast")){
 						//AST

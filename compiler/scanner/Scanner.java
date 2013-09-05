@@ -36,5 +36,9 @@ public class Scanner {
 		return this.targetList;
 	}
 
+	public String getPath(){
+		return this.file;
+	}
+
 
 }

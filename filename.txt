@@ -1,4 +1,5 @@
-//'a'
-int x = 2
+// commnet
 
-boolean
+class MiPrograma {
+	
+}
