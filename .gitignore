@@ -1,1 +1,4 @@
 Compiler.class
+*.class
+*.s
+*.tokens
