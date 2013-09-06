@@ -1,0 +1,9 @@
+class MiPrograma {
+	int x = 0;
+	// entonces
+	for i, i<2 {
+		int[] array = int[12];
+		array.length();
+		@#!%$^&*(^$%#@)
+	}
+}

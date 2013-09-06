@@ -1,4 +1,4 @@
-make: GRAMATICA DECAF SCANNER programa
+make: GRAMATICA DECAF SCANNER GRAPARSER PARSER CC4PARSER programa
 
 GRAMATICA: compiler/scanner/Decaf.g
 	java org.antlr.Tool compiler/scanner/Decaf.g
@@ -11,13 +11,14 @@ SCANNER: compiler/scanner/Scanner.java
 	javac compiler/scanner/Scanner.java
 
 GRAPARSER: compiler/parser/Parser.g
-	java org.antlr.Tool compiler/scanner/Decaf.g
-	mv Decaf.tokens compiler/parser
-	java org.antlr.Tool compiler/parser/Parser.g
+	java org.antlr.Tool -lib compiler/scanner compiler/parser/Parser.g
 	mv Parser.tokens compiler/parser
 
 PARSER: compiler/parser/Parser.java
 	javac compiler/parser/Parser.java
+
+CC4PARSER: compiler/parser/CC4Parser.java
+	javac compiler/parser/CC4Parser.java
 
 programa:
 	javac Compiler.java
