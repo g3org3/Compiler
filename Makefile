@@ -10,12 +10,12 @@ DECAF: compiler/scanner/Decaf.java
 SCANNER: compiler/scanner/Scanner.java
 	javac compiler/scanner/Scanner.java
 
-GRAPARSER: compiler/parser/Parser.g
-	java org.antlr.Tool -lib compiler/scanner compiler/parser/Parser.g
-	mv Parser.tokens compiler/parser
+GRAPARSER: compiler/parser/GramaticaParser.g
+	java org.antlr.Tool -lib compiler/scanner compiler/parser/GramaticaParser.g
+	mv GramaticaParser.tokens compiler/parser
 
-PARSER: compiler/parser/Parser.java
-	javac compiler/parser/Parser.java
+PARSER: compiler/parser/GramaticaParser.java
+	javac compiler/parser/GramaticaParser.java
 
 CC4PARSER: compiler/parser/CC4Parser.java
 	javac compiler/parser/CC4Parser.java

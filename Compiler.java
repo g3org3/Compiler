@@ -203,10 +203,11 @@ public class Compiler {
 			if(args[args.length-2].substring(0,1).equals("-"))
 				compilador.error(1, 155);
 			else
-				if(args[args.length-1].indexOf(".txt")>0)
+				//if(args[args.length-1].indexOf(".txt")>0)
 					filename = args[args.length-1];
-				else
-					compilador.error(1,160);
+				//else
+				//	compilador.error(1,160);
+
 		// exists?
 		File file = new File(filename);
 		if(!(file.exists())) compilador.error(1, 163);
@@ -255,7 +256,10 @@ public class Compiler {
 			} catch (Exception e) {compilador.error(1, 208);}
 		} else {
 			x = filename.indexOf(".");
-			str = filename.substring(0, x);
+			if(x<0)
+				str = filename;
+			else
+				str = filename.substring(0, x);
 			str = str + ".s";
 			output = str;
 			System.out.println("Output File: "+str);
@@ -268,8 +272,11 @@ public class Compiler {
 		System.out.println(" ");
 
 
+		// Creating objects
+		Scanner myScanner = new Scanner(filename);
+		CC4Parser myParser = new CC4Parser(myScanner);
+
 		// target
-		Scanner scanFile = new Scanner(filename);
 		if(target>0){
 			x = compilador.position("-target");
 			str = args[x+1];
@@ -284,8 +291,8 @@ public class Compiler {
 				outputFile.println("stage: Scanner");
 				outputFile.println("------------------------------");
 				
-				scanFile.scanIt(2);
-				ArrayList<String> targetout = scanFile.getList();
+				myScanner.scanIt(2);
+				ArrayList<String> targetout = myScanner.getList();
 				for (int i=0; i<targetout.size(); i++) {
 					outputFile.println(targetout.get(i));
 				}
@@ -296,7 +303,7 @@ public class Compiler {
 				outputFile.println("------------------------------");
 				outputFile.println("stage: Parser");
 				outputFile.println("------------------------------");
-				//CC4Parser parser = new CC4Parser(scanFile);
+				myParser.parserIt();
 
 			}
 			if(x>1){
@@ -355,15 +362,15 @@ public class Compiler {
 						//SCANNER
 						System.out.println("  Debug: Scanner -tokens");
 						System.out.println("  ----------------------------");
-						//Scanner scanFile = new Scanner(filename);
-						scanFile.scanIt(1);
+						//Scanner myScanner = new Scanner(filename);
+						myScanner.scanIt(1);
 						System.out.println("\n");
 					}
 					else if(debugin[i].equals("parser")){
 						//PARSER
 						System.out.println("Debug: Parser");
 						System.out.println("  ----------------------------");
-						//CC4Parser parser = new CC4Parser(scanFile);
+						//CC4Parser parser = new CC4Parser(myScanner);
 					}
 					else if(debugin[i].equals("ast")){
 						//AST

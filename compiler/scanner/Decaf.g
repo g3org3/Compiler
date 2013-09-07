@@ -15,12 +15,14 @@ lexer grammar Decaf;
         Decaf.x = a;
         Decaf.strList = new ArrayList<String>(1);
     }
-
-	public static void debug(String str, int line, String text){
+    public static void debug(String str, int line, String text){
+    	Decaf.debug(str, line, 0, text, 0);
+	}
+	public static void debug(String str, int line, int charpos, String text, int e){
+		String er = (e==1)? charpos+" ": " ";
 		if (Decaf.x==1)
-			System.out.println("    "+line+": "+str+": "+text);
-		else if (Decaf.x==2)
-			Decaf.strList.add(line+": "+str+": "+text);
+			System.out.println("    "+line+":"+ er + str+": "+text);
+		Decaf.strList.add(line+":"+ er + str + ": " + text);
 	}
 	public ArrayList<String> getList(){
 		return Decaf.strList;
@@ -112,19 +114,20 @@ WHITESPACE		: (' '|'\b'|'\t'|'\n'|'\r')+ {skip();};
 
 
 // ERROR FIX
-NOTCHAR1		: ('\'' ('\b'|'\t'|'\n'|'\r') '\'') 			{ Decaf.debug("unexpected char", getLine(), getText()); };
-NOTCHAR2		: ('\'' ('\''|'\"') '\'') 						{ Decaf.debug("unexpected char", getLine(), getText()); };
-NOTCHAR3		: ('\'' '0'('X'|'x')(HEXCHAR|DIGIT)+ '\'') 		{ Decaf.debug("unexpected char", getLine(), getText()); };
-NOTCHAR4		: ('\'' '\\'(ASCII) '\'') 						{ Decaf.debug("unexpected char", getLine(), getText()); };
-NOTCHAR5		: ('\'' '\\' '\'')		 						{ Decaf.debug("unexpected char", getLine(), getText()); };
-NOTCHAR6		: ('\'' (ASCII)(ASCII)+ '\'')					{ Decaf.debug("unexpected char", getLine(), getText()); };
-NOTHEX1			: ('0'('x'|'X'))								{ Decaf.debug("invalid hex", getLine(), getText()); };
-NOTHEX2			: ('0'('x'|'X') (CHAR|NUM)+ )					{ Decaf.debug("invalid hex", getLine(), getText()); };
-NOTINDEN		: (CHAR|UNDERSCORE)(CHAR|UNDERSCORE|NUM|'\.')+	{ Decaf.debug("invalid indentifier", getLine(), getText()); };
-QMARK			: '?'											{ Decaf.debug("unexpected char", getLine(), getText()); };
-NOTSTR1 		: ('\"' (ASCII|ESC)+ '\'')		 				{ Decaf.debug("expecting \'\"\', invalid string", getLine(), getText()); };
-NOTSTR2 		: ('\''|'\"')					 				{ Decaf.debug("unexpected char", getLine(), getText()); };
+NOTCHAR1		: ('\'' ('\b'|'\t'|'\n'|'\r') '\'') 			{ Decaf.debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTCHAR2		: ('\'' ('\''|'\"') '\'') 						{ Decaf.debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTCHAR3		: ('\'' '0'('X'|'x')(HEXCHAR|DIGIT)+ '\'') 		{ Decaf.debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTCHAR4		: ('\'' '\\'(ASCII) '\'') 						{ Decaf.debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTCHAR5		: ('\'' '\\' '\'')		 						{ Decaf.debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTCHAR6		: ('\'' (ASCII)(ASCII)+ '\'')					{ Decaf.debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTHEX1			: ('0'('x'|'X'))								{ Decaf.debug("invalid hex", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTHEX2			: ('0'('x'|'X') (CHAR|NUM)+ )					{ Decaf.debug("invalid hex", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTINDEN		: (CHAR|UNDERSCORE)(CHAR|UNDERSCORE|NUM|'\.')+	{ Decaf.debug("invalid indentifier", getLine(), getCharPositionInLine(), getText(), 1); };
+QMARK			: '?'											{ Decaf.debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTSTR1 		: ('\"' (ASCII|ESC)+ '\'')		 				{ Decaf.debug("expecting \'\"\', invalid string", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTSTR2 		: ('\'' (ASCII|ESC)+ '\"')		 				{ Decaf.debug("expecting \'\'\', invalid char", getLine(), getCharPositionInLine(), getText(), 1); };
+NOTSTR3 		: ('\''|'\"')					 				{ Decaf.debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
 UNICODE1		: ('\u000C')									{ Decaf.debug("unexpected char", getLine(), "0xC"); };
 UNICODE2		: (('\u0000'..'\u001F')|'\u007F')				{ Decaf.debug("unexpected char", getLine(), ""); };
-UNICODE3		: ('\u0020'..'\u007E')							{ Decaf.debug("unexpected char", getLine(), getText()); };
+UNICODE3		: ('\u0020'..'\u007E')							{ Decaf.debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
 
