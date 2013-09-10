@@ -77,8 +77,8 @@ POINT			: '.'			{debug("POINT", getLine(), getText()); };
 DPOINTS			: ':'			{debug("DPOINTS", getLine(), getText()); };
 
 // NUMBERS
-DIGIT			: NUM+			{debug("INT", getLine(), getText()); };
-NEGNUM			: '-'NUM+		{debug("INT", getLine(), getText()); };
+DIGIT			: '-'? NUM+			{debug("INT", getLine(), getText()); };
+//NEGNUM			: '-'NUM+		{debug("INT", getLine(), getText()); };
 
 // OPERATORS
 ADD1 			: '++'			{debug("ADD 1", getLine(), getText()); };

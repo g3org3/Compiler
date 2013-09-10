@@ -40,7 +40,7 @@ options {
 
 start 			: CLASS PROGRAM LBRACE field_decl* method_decl* RBRACE {addtoList("Start");};
 
-field_decl		: type (id | id LBRAKE int_literal RBRAKE) (COMA (id | id LBRAKE int_literal RBRAKE))* SEMICO{addtoList("Field Declaration");};
+field_decl		: type (id | id LBRAKET int_literal RBRAKET) (COMA (id | id LBRAKET int_literal RBRAKET))* SEMICO{addtoList("Field Declaration");};
 
 method_decl 	: (type | VOID) id LPAREN ((type id) (COMA type id)* )? RPAREN block{addtoList("Method Declaration");};
 
@@ -69,14 +69,14 @@ method_call 	: method_name LPAREN (expr(COMA expr)*)? RPAREN
 method_name 	: id;
 
 location		: id
-				| id LBRAKE expr RBRAKE {addtoList("Location");};
+				| id LBRAKET expr RBRAKET {addtoList("Location");};
 
-expr 			: l = expr_and (OR r = expr_and);
-expr_and		: l = expr_eq  (AND r = expr_eq);
-expr_eq			: l = expr_rel  (eq_op r = expr_rel);
-expr_rel		: l = expr_add  (rel_op r = expr_add);
-expr_add		: l = expr_arith  (sumsub_op r = expr_arith);
-expr_arith		: l = expr_factor  (arith_op r = expr_factor);
+expr 			: l = expr_and (OR r = expr_and)*;
+expr_and		: l = expr_eq  (AND r = expr_eq)*;
+expr_eq			: l = expr_rel  (eq_op r = expr_rel)*;
+expr_rel		: l = expr_add  (rel_op r = expr_add)*;
+expr_add		: l = expr_arith  (sumsub_op r = expr_arith)*;
+expr_arith		: l = expr_factor  (arith_op r = expr_factor)*;
 
 expr_factor		: location
 				| method_call
