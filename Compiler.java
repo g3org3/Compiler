@@ -275,6 +275,7 @@ public class Compiler {
 		// Creating objects
 		Scanner myScanner = new Scanner(filename);
 		CC4Parser myParser = new CC4Parser(myScanner);
+		ArrayList<String> targetout = new ArrayList<String>(1);
 
 		// target
 		if(target>0){
@@ -291,8 +292,8 @@ public class Compiler {
 				outputFile.println("stage: Scanner");
 				outputFile.println("------------------------------");
 				
-				myScanner.scanIt(2);
-				ArrayList<String> targetout = myScanner.getList();
+				myScanner.scanIt();
+				targetout = myScanner.getList();
 				for (int i=0; i<targetout.size(); i++) {
 					outputFile.println(targetout.get(i));
 				}
@@ -303,8 +304,20 @@ public class Compiler {
 				outputFile.println("------------------------------");
 				outputFile.println("stage: Parser");
 				outputFile.println("------------------------------");
+				myScanner = new Scanner(filename);
+				myParser = new CC4Parser(myScanner);
 				myParser.parserIt();
-
+				targetout = myParser.getErrors();
+				String msg = (targetout.size()==1)?"  Invalido, se ha detecdado "+targetout.size()+" error.": "";
+				msg = (targetout.size()>1)?"  Invalido, se han detecdado "+targetout.size()+" errores.": msg;
+				if (targetout.size()!=0){
+					outputFile.println(msg);
+					outputFile.println(myParser);
+				} else {
+					outputFile.println("  Valido, no se han detecdado errores.");
+					outputFile.print(myParser.toStringX());
+				}
+				outputFile.println("\n");
 			}
 			if(x>1){
 				//AST
@@ -324,8 +337,38 @@ public class Compiler {
 			}
 		} else{
 			try {
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Scanner");
+				outputFile.println("------------------------------");
+				
+				myScanner.scanIt();
+				targetout = myScanner.getList();
+				for (int i=0; i<targetout.size(); i++) {
+					outputFile.println(targetout.get(i));
+				}
+				outputFile.println("\n");
+				
+
+				//PARSER
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Parser");
+				outputFile.println("------------------------------");
+				myScanner = new Scanner(filename);
+				myParser = new CC4Parser(myScanner);
+				myParser.parserIt();
+				targetout = myParser.getErrors();
+				String msg = (targetout.size()==1)?"  Invalido, se ha detecdado "+targetout.size()+" error.": "";
+				msg = (targetout.size()>1)?"  Invalido, se han detecdado "+targetout.size()+" errores.": msg;
+				if (targetout.size()!=0){
+					outputFile.println(msg);
+					outputFile.println(myParser);
+				} else {
+					outputFile.println("  Valido, no se han detecdado errores.");
+					outputFile.print(myParser.toStringX());
+				}
+				outputFile.println("\n");
+				
+				//AST
 				outputFile.println("stage: Ast");
 				outputFile.println("stage: Semantic");
 				outputFile.println("stage: Irt");
@@ -354,7 +397,8 @@ public class Compiler {
 			str = args[x+1];
 			String[] stages = compilador.separate(str);
 			String debugin[] = compilador.insertionSort(stages, targets);
-
+			int setS, setP, setA;
+			setS = setP = setA = 0;
 			for (int i=0; i<debugin.length; i++){
 				if(myOptions.indexOf(debugin[i])>=0){
 
@@ -362,19 +406,35 @@ public class Compiler {
 						//SCANNER
 						System.out.println("  Debug: Scanner -tokens");
 						System.out.println("  ----------------------------");
-						//Scanner myScanner = new Scanner(filename);
-						myScanner.scanIt(1);
-						System.out.println("\n");
+						myScanner = new Scanner(filename);
+						myScanner.set(true);
+						myScanner.scanIt();
+						System.out.println(myScanner);
+						System.out.print("\n");
 					}
 					else if(debugin[i].equals("parser")){
 						//PARSER
-						System.out.println("Debug: Parser");
+						System.out.println("  Debug: Parser");
 						System.out.println("  ----------------------------");
-						//CC4Parser parser = new CC4Parser(myScanner);
+						myScanner = new Scanner(filename);
+						myParser = new CC4Parser(myScanner);
+						myParser.parserIt();
+						targetout = myParser.getErrors();
+						String msg = (targetout.size()==1)?"  Invalido, se ha detecdado "+targetout.size()+" error.": "";
+						msg = (targetout.size()>1)?"  Invalido, se han detecdado "+targetout.size()+" errores.": msg;
+						if (targetout.size()!=0){
+							System.out.println(msg);
+							System.out.println(myParser);
+						} else {
+							System.out.println("  Valido, no se han detecdado errores.");
+							System.out.print(myParser.toStringX());
+						}
+						System.out.print("\n");
 					}
 					else if(debugin[i].equals("ast")){
 						//AST
-						System.out.println("Debug: Ast");
+						System.out.println("  Debug: AST");
+						System.out.println("  ----------------------------");
 					}
 					else if(debugin[i].equals("semantic")){
 						//SEMANTIC

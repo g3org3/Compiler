@@ -8,19 +8,47 @@ options {
 	package compiler.parser;
 	import compiler.scanner.*;
 	import java.util.ArrayList;
+	import org.antlr.runtime.*;
 }
 
-start 			: CLASS INDENTI LBRACE field_decl* method_decl* RBRACE;
+@members {
+	public ArrayList<String> errors = new ArrayList<String>();
+	public ArrayList<String> rules = new ArrayList<String>();
 
-field_decl		: type (id | id LBRAKE int_literal RBRAKE) (COMA (id | id LBRAKE int_literal RBRAKE))* SEMICO;
+	public void displayRecognitionError(String[] tokenNames, RecognitionException e){
+		String hdr = getErrorHeader(e);
+		String msg = getErrorMessage(e, tokenNames);
+		int x = hdr.indexOf("line");
+		String line = hdr.substring(x);
+		errors.add(line+" "+msg);
+	}
+	public void addtoList(String str){
+		rules.add(str);
+	}
+	public ArrayList<String> getErrors(){
+		return errors;
+	}
+	public ArrayList<String> getRules(){
+		ArrayList<String> rulez = new ArrayList<String>(rules.size());
+		for (int i=rules.size()-1; i>=0; i--) {
+			rulez.add(rules.get(i));
+		}
+		return rulez;
+	}
+}
 
-method_decl 	: (type | VOID) id LPAREN ((type id)(COMA type id)*)? RPAREN block;
 
-block			: LBRACE var_decl* statement* RBRACE;
+start 			: CLASS PROGRAM LBRACE field_decl* method_decl* RBRACE {addtoList("Start");};
 
-var_decl		: type id (COMA id)* SEMICO;
+field_decl		: type (id | id LBRAKE int_literal RBRAKE) (COMA (id | id LBRAKE int_literal RBRAKE))* SEMICO{addtoList("Field Declaration");};
 
-type 			: INT | BOOLEAN ;
+method_decl 	: (type | VOID) id LPAREN ((type id) (COMA type id)* )? RPAREN block{addtoList("Method Declaration");};
+
+block			: LBRACE var_decl* statement* RBRACE{addtoList("Block");};
+
+var_decl		: type id (COMA id)* SEMICO{addtoList("Variable Declaration");};
+
+type 			: INT | BOOLEAN {addtoList("Type");};
 
 statement		: location assign_op expr SEMICO
 				| method_call SEMICO
@@ -29,19 +57,19 @@ statement		: location assign_op expr SEMICO
 				| RETURN (expr)? SEMICO
 				| BREAK SEMICO
 				| CONTINUE SEMICO
-				| block;
+				| block {addtoList("Statement");};
 
 assign_op		: ASSIGN 
 				| ASSIGNADD
-				| ASSIGNSUB;
+				| ASSIGNSUB {addtoList("Assign Operator");};
 
 method_call 	: method_name LPAREN (expr(COMA expr)*)? RPAREN
-				| CALLOUT LPAREN string_literal ((COMA callout_arg)+)? RPAREN;
+				| CALLOUT LPAREN string_literal ((COMA callout_arg)+)? RPAREN {addtoList("Method Call");};
 
 method_name 	: id;
 
 location		: id
-				| id LBRAKE expr RBRAKE;
+				| id LBRAKE expr RBRAKE {addtoList("Location");};
 
 expr 			: l = expr_and (OR r = expr_and);
 expr_and		: l = expr_eq  (AND r = expr_eq);
@@ -55,7 +83,7 @@ expr_factor		: location
 				| literal
 				| MINUS expr
 				| NOT expr
-				| LPAREN expr RPAREN;
+				| LPAREN expr RPAREN {addtoList("Expression");};
 
 callout_arg 	: expr | string_literal;
 
@@ -68,21 +96,13 @@ cond_op			: AND | OR;
 
 literal 		: int_literal | char_literal | bool_literal;
 
-id 				: alpha alpha_num*;
+id 				: INDENTIFIER {addtoList("Indentifier");};
 
-alpha_num		: alpha | digit;
+alpha_num		: CHAR | UNDERSCORE | NUM;
 
-alpha 			: CHAR | UNDERSCORE;
+hex_digit 		: NUM | HEXCHAR;
 
-digit 			: NUM;
-
-hex_digit 		: digit | HEXCHAR;
-
-int_literal 	: decimal_literal | hex_literal;
-
-decimal_literal : DIGIT;
-
-hex_literal		: HEX;
+int_literal 	: DIGIT | HEX;
 
 bool_literal    : TRUE | FALSE;
 

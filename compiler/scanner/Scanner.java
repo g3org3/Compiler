@@ -5,15 +5,13 @@ import compiler.scanner.Decaf;
 import java.util.ArrayList;
 
 public class Scanner {
-
 	private String file;
-	private ArrayList<String> targetList;
+	private ArrayList<String> targetList = new ArrayList<String>();
 	private Decaf lexer;
 
 	//constructor
 	public Scanner(String fileInput){
 		this.file = fileInput;
-		this.targetList = new ArrayList<String>(1);
 		try{
 			this.lexer = new Decaf(new ANTLRFileStream(fileInput));
 		} catch(ArrayIndexOutOfBoundsException aiobe){
@@ -24,26 +22,33 @@ public class Scanner {
 	}
 
 	// metodo
-	public void scanIt(int n) throws Exception{
+	public void scanIt() throws Exception{
 		Token tk;
 		try{
-	    	Decaf scLexer = new Decaf(new ANTLRFileStream(this.file), n);
-	    	tk = scLexer.nextToken();
+	    	tk = lexer.nextToken();
 	    	while(!(tk.getType()==Token.EOF)){
-	    		tk = scLexer.nextToken();
+	    		tk = lexer.nextToken();
 	    	}
-	    	this.targetList = scLexer.getList();
+	    	this.targetList = lexer.getList();
 		} catch(ArrayIndexOutOfBoundsException aiobe){
 	   		System.exit(1);
 		} catch(Exception e){
 	    	System.exit(1);
 		}
 	}
+	public void set(boolean bool){
+		this.lexer.set(bool);
+	}
 
 	public ArrayList<String> getList(){
 		return this.targetList;
 	}
-
+	public String toString(){
+		String str = "";
+		for (int i=0; i<lexer.getDebug().size(); i++)
+			str = str+lexer.getDebug().get(i)+"\n";
+		return str;
+	}
 	public Decaf getLexer(){
 		return lexer;
 	}

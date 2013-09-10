@@ -1,11 +1,5 @@
 // commnet
 
-class MiPrograma {
-	boolean getList(){
-		int x = 3;
-		return x+1;
-	"hola"
-	"adf'
-	'aasdf"
-	}
+class Program {
+	int x;
 }

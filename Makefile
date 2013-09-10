@@ -25,10 +25,12 @@ programa:
 
 clean: 
 	rm *.class
-	rm *.s
 	rm compiler/scanner/*.class
 	rm compiler/scanner/*.tokens
-#	rm compiler/parser/*.class
+	rm compiler/scanner/Decaf.java
+	rm compiler/parser/*.class
+	rm compiler/parser/*.tokens
+	rm compiler/parser/GramaticaParser.java
 #	rm compiler/ast/*.class
 #	rm compiler/semantic/*.class
 #	rm compiler/irt/*.class

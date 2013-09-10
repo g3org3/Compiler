@@ -22,7 +22,23 @@ public class CC4Parser {
 		this.gparser.start();
 	}
 
-	public ArrayList<String> getList(){
-		return this.parserList;
+	public GramaticaParser getParser(){
+		return gparser;
+	}
+	public ArrayList<String> getErrors(){
+		return gparser.getErrors();
+	}
+	
+	public String toString(){
+		String str = "";
+		for (int i=0; i<gparser.getErrors().size(); i++)
+			str = str+"    "+gparser.getErrors().get(i)+"\n";
+		return str;
+	}
+	public String toStringX(){
+		String str = "";
+		for (int i=0; i<gparser.getRules().size(); i++)
+			str = str+"    "+(i+1)+". "+gparser.getRules().get(i)+"\n";
+		return str;
 	}
 }
