@@ -1,0 +1,6 @@
+// commnet
+
+class Program {
+	int x;
+
+}

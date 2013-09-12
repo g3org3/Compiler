@@ -73,7 +73,7 @@ LBRAKET			: '['			{debug("LBRAKET", getLine(), getText()); };
 RBRAKET			: ']'			{debug("RBRAKET", getLine(), getText()); };
 SEMICO			: ';'			{debug("SEMICOLON", getLine(), getText()); };
 COMA			: ','			{debug("COMA", getLine(), getText()); };
-POINT			: '.'			{debug("POINT", getLine(), getText()); };
+POINT			: '.'			{debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
 DPOINTS			: ':'			{debug("DPOINTS", getLine(), getText()); };
 
 // NUMBERS
@@ -128,7 +128,6 @@ NOTCHAR5		: ('\'' '\\' '\'')		 						{debug("unexpected char", getLine(), getCha
 NOTCHAR6		: ('\'' (ASCII)(ASCII)+ '\'')					{debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
 NOTHEX1			: ('0'('x'|'X'))								{debug("invalid hex", getLine(), getCharPositionInLine(), getText(), 1); };
 NOTHEX2			: ('0'('x'|'X') (CHAR|NUM)+ )					{debug("invalid hex", getLine(), getCharPositionInLine(), getText(), 1); };
-NOTINDEN		: (CHAR|UNDERSCORE)(CHAR|UNDERSCORE|NUM|'\.')+	{debug("invalid indentifier", getLine(), getCharPositionInLine(), getText(), 1); };
 QMARK			: '?'											{debug("unexpected char", getLine(), getCharPositionInLine(), getText(), 1); };
 NOTSTR1 		: ('\"' (ASCII|ESC)+ '\'')		 				{debug("expecting \'\"\', invalid string", getLine(), getCharPositionInLine(), getText(), 1); };
 NOTSTR2 		: ('\'' (ASCII|ESC)+ '\"')		 				{debug("expecting \'\'\', invalid char", getLine(), getCharPositionInLine(), getText(), 1); };

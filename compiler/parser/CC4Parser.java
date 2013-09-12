@@ -21,7 +21,9 @@ public class CC4Parser {
 	public void parserIt() throws Exception{
 		this.gparser.start();
 	}
-
+	public Scanner getScanner(){
+		return scan;
+	}
 	public GramaticaParser getParser(){
 		return gparser;
 	}

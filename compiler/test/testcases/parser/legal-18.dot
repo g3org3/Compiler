@@ -1,0 +1,27 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="METHOD"];
+  n1 [label="METHOD"];
+  n2 [label="void"];
+  n3 [label="main"];
+  n4 [label="METHOD"];
+  n4 [label="METHOD"];
+  n5 [label="void"];
+  n6 [label="foo"];
+
+  n0 -> n1 // "ROOT" -> "METHOD"
+  n1 -> n2 // "METHOD" -> "void"
+  n1 -> n3 // "METHOD" -> "main"
+  n0 -> n4 // "ROOT" -> "METHOD"
+  n4 -> n5 // "METHOD" -> "void"
+  n4 -> n6 // "METHOD" -> "foo"
+
+}
+

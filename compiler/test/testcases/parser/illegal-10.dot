@@ -1,0 +1,55 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="void"];
+  n2 [label="foo"];
+  n3 [label="("];
+  n4 [label=")"];
+  n5 [label="{"];
+  n6 [label="int"];
+  n7 [label="a"];
+  n8 [label=";"];
+  n9 [label="a"];
+  n10 [label="="];
+  n11 [label=";"];
+  n12 [label="<missing RBRACE>"];
+  n13 [label="void"];
+  n14 [label="main"];
+  n15 [label="("];
+  n16 [label=")"];
+  n17 [label="{"];
+  n18 [label="int"];
+  n19 [label="b"];
+  n20 [label=";"];
+  n21 [label="}"];
+
+  n0 -> n1 // "ROOT" -> "void"
+  n0 -> n2 // "ROOT" -> "foo"
+  n0 -> n3 // "ROOT" -> "("
+  n0 -> n4 // "ROOT" -> ")"
+  n0 -> n5 // "ROOT" -> "{"
+  n0 -> n6 // "ROOT" -> "int"
+  n0 -> n7 // "ROOT" -> "a"
+  n0 -> n8 // "ROOT" -> ";"
+  n0 -> n9 // "ROOT" -> "a"
+  n0 -> n10 // "ROOT" -> "="
+  n0 -> n11 // "ROOT" -> ";"
+  n0 -> n12 // "ROOT" -> "<missing RBRACE>"
+  n0 -> n13 // "ROOT" -> "void"
+  n0 -> n14 // "ROOT" -> "main"
+  n0 -> n15 // "ROOT" -> "("
+  n0 -> n16 // "ROOT" -> ")"
+  n0 -> n17 // "ROOT" -> "{"
+  n0 -> n18 // "ROOT" -> "int"
+  n0 -> n19 // "ROOT" -> "b"
+  n0 -> n20 // "ROOT" -> ";"
+  n0 -> n21 // "ROOT" -> "}"
+
+}
+

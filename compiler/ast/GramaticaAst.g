@@ -1,11 +1,22 @@
-parser grammar GramaticaParser;
+parser grammar GramaticaAst;
 
 options {
 	tokenVocab=Decaf;
+	output=AST;
+}
+
+tokens {
+	ROOT;
+	FIELD;
+	METHOD;
+	VARS;
+	BLOCK;
+	EX;
+	STATEMENT;
 }
 
 @parser::header{
-	package compiler.parser;
+	package compiler.ast;
 	import compiler.scanner.*;
 	import java.util.ArrayList;
 	import org.antlr.runtime.*;
@@ -38,38 +49,45 @@ options {
 }
 
 
-start 			: CLASS PROGRAM LBRACE field_decl* method_decl* RBRACE {addtoList("Start");};
+start 			: CLASS PROGRAM LBRACE field_decl* method_decl* RBRACE 
+					-> ^(ROOT field_decl* method_decl* );
 
-field_decl		: type (id | id LBRAKET int_literal RBRAKET) (COMA (id | id LBRAKET int_literal RBRAKET))* SEMICO{addtoList("Field Declaration");};
+field_decl		: type (id | id LBRAKET int_literal RBRAKET) (COMA (id | id LBRAKET int_literal RBRAKET))* SEMICO 
+					-> ^(FIELD type (id LBRAKET? int_literal? RBRAKET?)+ );
 
-method_decl 	: (type | VOID) id LPAREN ((type id) (COMA type id)* )? RPAREN block{addtoList("Method Declaration");};
+method_decl 	: ((VOID) id LPAREN ((type id) (COMA type id)* )? RPAREN block
+					-> ^(METHOD VOID id  (type id)* block))
+				| ((type) id LPAREN ((type id) (COMA type id)* )? RPAREN block
+					-> ^(METHOD type id  (type id)* block));
 
-block			: LBRACE var_decl* statement* RBRACE{addtoList("Block");};
+block			: LBRACE var_decl* statement* RBRACE 
+					-> ^(BLOCK var_decl* statement* );
 
-var_decl		: type id (COMA id)* SEMICO{addtoList("Variable Declaration");};
+var_decl		: type id (COMA id)* SEMICO 
+					-> ^(VARS type id (COMA id)* );
 
-type 			: INT | BOOLEAN {addtoList("Type");};
+type 			: INT | BOOLEAN ;
 
 statement		: location assign_op expr SEMICO
-				| method_call SEMICO
-				| IF LPAREN expr RPAREN block (ELSE block)?
+				| method_call SEMICO 						//-> ^(STATEMENT method_call)
+				| IF LPAREN expr RPAREN block (ELSE block)? //-> ^(STATEMENT  IF expr block (ELSE block)?)
 				| FOR id ASSIGN expr COMA expr block
 				| RETURN (expr)? SEMICO
 				| BREAK SEMICO
 				| CONTINUE SEMICO
-				| block {addtoList("Statement");};
+				| block ;
 
 assign_op		: ASSIGN 
 				| ASSIGNADD
-				| ASSIGNSUB {addtoList("Assign Operator");};
+				| ASSIGNSUB ;
 
 method_call 	: method_name LPAREN (expr(COMA expr)*)? RPAREN
-				| CALLOUT LPAREN string_literal ((COMA callout_arg)+)? RPAREN {addtoList("Method Call");};
+				| CALLOUT LPAREN string_literal ((COMA callout_arg)+)? RPAREN ;
 
-method_name 	: id;
+method_name 	: id ;
 
 location		: id
-				| id LBRAKET expr RBRAKET {addtoList("Location");};
+				| id LBRAKET expr RBRAKET ;
 
 expr 			: l = expr_and (OR r = expr_and)*;
 expr_and		: l = expr_eq  (AND r = expr_eq)*;
@@ -78,16 +96,17 @@ expr_rel		: l = expr_add  (rel_op r = expr_add)*;
 expr_add		: l = expr_arith  (sumsub_op r = expr_arith)*;
 expr_arith		: l = expr_factor  (arith_op r = expr_factor)*;
 
-expr_factor		: location
-				| method_call
-				| literal
-				| MINUS expr
-				| NOT expr
-				| LPAREN expr RPAREN {addtoList("Expression");};
+expr_factor		: location 			//-> ^(EX location)
+				| method_call 		//-> ^(EX method_call)
+				| int_literal		//-> ^(EX int_literal)
+				| char_literal 		//-> ^(EX char_literal)
+				| bool_literal 		//-> ^(EX bool_literal)
+				| MINUS expr 		//-> ^(EX MINUS expr)
+				| NOT expr 			//-> ^(EX NOT expr)
+				| LPAREN expr RPAREN ;//-> ^(EX expr);
 
 callout_arg 	: expr | string_literal;
 
-bin_op			: arith_op | rel_op | eq_op | cond_op;
 arith_op 		: MULT | DIV | MOD;
 sumsub_op		: ADD | MINUS;
 rel_op			: LESSTHAN | GREATHAN | LTOEQ | GTOEQ;
@@ -96,7 +115,7 @@ cond_op			: AND | OR;
 
 literal 		: int_literal | char_literal | bool_literal;
 
-id 				: INDENTIFIER {addtoList("Indentifier");};
+id 				: INDENTIFIER ;
 
 alpha_num		: CHAR | UNDERSCORE | NUM;
 

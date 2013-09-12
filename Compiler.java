@@ -275,7 +275,8 @@ public class Compiler {
 		// Creating objects
 		Scanner myScanner = new Scanner(filename);
 		CC4Parser myParser = new CC4Parser(myScanner);
-		ArrayList<String> targetout = new ArrayList<String>(1);
+		Ast myAst = new Ast(myParser);
+		ArrayList<String> targetout = new ArrayList<String>();
 
 		// target
 		if(target>0){
@@ -321,7 +322,15 @@ public class Compiler {
 			}
 			if(x>1){
 				//AST
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Ast");
+				outputFile.println("------------------------------");
+				myScanner = new Scanner(filename);
+				myParser = new CC4Parser(myScanner);
+				myAst = new Ast(myParser);
+				myAst.makeTree();
+				outputFile.println(myAst);
+				outputFile.println("\n");
 			}
 			if(x>2){
 				//SEMANTIC
@@ -369,7 +378,17 @@ public class Compiler {
 				outputFile.println("\n");
 				
 				//AST
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Ast");
+				outputFile.println("------------------------------");
+				myScanner = new Scanner(filename);
+				myParser = new CC4Parser(myScanner);
+				myAst = new Ast(myParser);
+				myAst.makeTree();
+				outputFile.println(myAst);
+				outputFile.println("\n");
+
+
 				outputFile.println("stage: Semantic");
 				outputFile.println("stage: Irt");
 				outputFile.println("stage: Codegen");
@@ -435,6 +454,7 @@ public class Compiler {
 						//AST
 						System.out.println("  Debug: AST");
 						System.out.println("  ----------------------------");
+						System.out.println("  "+myAst);
 					}
 					else if(debugin[i].equals("semantic")){
 						//SEMANTIC

@@ -1,0 +1,68 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="VARS"];
+  n1 [label="VARS"];
+  n2 [label="int"];
+  n3 [label="a"];
+  n4 [label="int"];
+  n5 [label="add"];
+  n6 [label="("];
+  n7 [label="int"];
+  n8 [label="a"];
+  n9 [label=","];
+  n10 [label="int"];
+  n11 [label="b"];
+  n12 [label=")"];
+  n13 [label="{"];
+  n14 [label="return"];
+  n15 [label=";"];
+  n16 [label="}"];
+  n17 [label="int"];
+  n18 [label="main"];
+  n19 [label="("];
+  n20 [label=")"];
+  n21 [label="{"];
+  n22 [label="a"];
+  n23 [label="="];
+  n24 [label=";"];
+  n25 [label="return"];
+  n26 [label=";"];
+  n27 [label="}"];
+
+  n0 -> n1 // "ROOT" -> "VARS"
+  n1 -> n2 // "VARS" -> "int"
+  n1 -> n3 // "VARS" -> "a"
+  n0 -> n4 // "ROOT" -> "int"
+  n0 -> n5 // "ROOT" -> "add"
+  n0 -> n6 // "ROOT" -> "("
+  n0 -> n7 // "ROOT" -> "int"
+  n0 -> n8 // "ROOT" -> "a"
+  n0 -> n9 // "ROOT" -> ","
+  n0 -> n10 // "ROOT" -> "int"
+  n0 -> n11 // "ROOT" -> "b"
+  n0 -> n12 // "ROOT" -> ")"
+  n0 -> n13 // "ROOT" -> "{"
+  n0 -> n14 // "ROOT" -> "return"
+  n0 -> n15 // "ROOT" -> ";"
+  n0 -> n16 // "ROOT" -> "}"
+  n0 -> n17 // "ROOT" -> "int"
+  n0 -> n18 // "ROOT" -> "main"
+  n0 -> n19 // "ROOT" -> "("
+  n0 -> n20 // "ROOT" -> ")"
+  n0 -> n21 // "ROOT" -> "{"
+  n0 -> n22 // "ROOT" -> "a"
+  n0 -> n23 // "ROOT" -> "="
+  n0 -> n24 // "ROOT" -> ";"
+  n0 -> n25 // "ROOT" -> "return"
+  n0 -> n26 // "ROOT" -> ";"
+  n0 -> n27 // "ROOT" -> "}"
+
+}
+

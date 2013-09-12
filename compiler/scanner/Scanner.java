@@ -39,6 +39,9 @@ public class Scanner {
 	public void set(boolean bool){
 		this.lexer.set(bool);
 	}
+	public String getFilepath(){
+		return file;
+	}
 
 	public ArrayList<String> getList(){
 		return this.targetList;

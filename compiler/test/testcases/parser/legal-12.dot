@@ -1,0 +1,40 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="VARS"];
+  n1 [label="VARS"];
+  n2 [label="int"];
+  n3 [label="A"];
+  n4 [label="["];
+  n5 [label="0xA"];
+  n6 [label="]"];
+  n7 [label="METHOD"];
+  n7 [label="METHOD"];
+  n8 [label="void"];
+  n9 [label="bar"];
+  n10 [label="METHOD"];
+  n10 [label="METHOD"];
+  n11 [label="void"];
+  n12 [label="main"];
+
+  n0 -> n1 // "ROOT" -> "VARS"
+  n1 -> n2 // "VARS" -> "int"
+  n1 -> n3 // "VARS" -> "A"
+  n1 -> n4 // "VARS" -> "["
+  n1 -> n5 // "VARS" -> "0xA"
+  n1 -> n6 // "VARS" -> "]"
+  n0 -> n7 // "ROOT" -> "METHOD"
+  n7 -> n8 // "METHOD" -> "void"
+  n7 -> n9 // "METHOD" -> "bar"
+  n0 -> n10 // "ROOT" -> "METHOD"
+  n10 -> n11 // "METHOD" -> "void"
+  n10 -> n12 // "METHOD" -> "main"
+
+}
+
