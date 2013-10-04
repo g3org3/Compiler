@@ -1,4 +1,4 @@
-// $ANTLR 3.4 compiler/parser/GramaticaParser.g 2013-09-12 11:06:54
+// $ANTLR 3.4 compiler/parser/GramaticaParser.g 2013-10-04 08:07:02
 
 	package compiler.parser;
 	import compiler.scanner.*;
@@ -1465,16 +1465,16 @@ public class GramaticaParser extends Parser {
     // compiler/parser/GramaticaParser.g:74:1: expr : l= expr_and ( OR r= expr_and )* ;
     public final void expr() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:74:9: (l= expr_and ( OR r= expr_and )* )
-            // compiler/parser/GramaticaParser.g:74:11: l= expr_and ( OR r= expr_and )*
+            // compiler/parser/GramaticaParser.g:74:10: (l= expr_and ( OR r= expr_and )* )
+            // compiler/parser/GramaticaParser.g:74:12: l= expr_and ( OR r= expr_and )*
             {
-            pushFollow(FOLLOW_expr_and_in_expr440);
+            pushFollow(FOLLOW_expr_and_in_expr441);
             expr_and();
 
             state._fsp--;
 
 
-            // compiler/parser/GramaticaParser.g:74:24: ( OR r= expr_and )*
+            // compiler/parser/GramaticaParser.g:74:25: ( OR r= expr_and )*
             loop23:
             do {
                 int alt23=2;
@@ -1487,11 +1487,11 @@ public class GramaticaParser extends Parser {
 
                 switch (alt23) {
             	case 1 :
-            	    // compiler/parser/GramaticaParser.g:74:25: OR r= expr_and
+            	    // compiler/parser/GramaticaParser.g:74:26: OR r= expr_and
             	    {
-            	    match(input,OR,FOLLOW_OR_in_expr443); 
+            	    match(input,OR,FOLLOW_OR_in_expr444); 
 
-            	    pushFollow(FOLLOW_expr_and_in_expr449);
+            	    pushFollow(FOLLOW_expr_and_in_expr450);
             	    expr_and();
 
             	    state._fsp--;
@@ -1530,7 +1530,7 @@ public class GramaticaParser extends Parser {
             // compiler/parser/GramaticaParser.g:75:11: (l= expr_eq ( AND r= expr_eq )* )
             // compiler/parser/GramaticaParser.g:75:13: l= expr_eq ( AND r= expr_eq )*
             {
-            pushFollow(FOLLOW_expr_eq_in_expr_and463);
+            pushFollow(FOLLOW_expr_eq_in_expr_and464);
             expr_eq();
 
             state._fsp--;
@@ -1551,9 +1551,9 @@ public class GramaticaParser extends Parser {
             	case 1 :
             	    // compiler/parser/GramaticaParser.g:75:27: AND r= expr_eq
             	    {
-            	    match(input,AND,FOLLOW_AND_in_expr_and467); 
+            	    match(input,AND,FOLLOW_AND_in_expr_and468); 
 
-            	    pushFollow(FOLLOW_expr_eq_in_expr_and473);
+            	    pushFollow(FOLLOW_expr_eq_in_expr_and474);
             	    expr_eq();
 
             	    state._fsp--;
@@ -1586,40 +1586,52 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "expr_eq"
-    // compiler/parser/GramaticaParser.g:76:1: expr_eq : l= expr_rel ( eq_op r= expr_rel )* ;
+    // compiler/parser/GramaticaParser.g:76:1: expr_eq : l= expr_rel ( EQUAL r= expr_rel | NEQUAL r= expr_rel )* ;
     public final void expr_eq() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:76:11: (l= expr_rel ( eq_op r= expr_rel )* )
-            // compiler/parser/GramaticaParser.g:76:13: l= expr_rel ( eq_op r= expr_rel )*
+            // compiler/parser/GramaticaParser.g:76:11: (l= expr_rel ( EQUAL r= expr_rel | NEQUAL r= expr_rel )* )
+            // compiler/parser/GramaticaParser.g:76:13: l= expr_rel ( EQUAL r= expr_rel | NEQUAL r= expr_rel )*
             {
-            pushFollow(FOLLOW_expr_rel_in_expr_eq488);
+            pushFollow(FOLLOW_expr_rel_in_expr_eq489);
             expr_rel();
 
             state._fsp--;
 
 
-            // compiler/parser/GramaticaParser.g:76:27: ( eq_op r= expr_rel )*
+            // compiler/parser/GramaticaParser.g:76:27: ( EQUAL r= expr_rel | NEQUAL r= expr_rel )*
             loop25:
             do {
-                int alt25=2;
+                int alt25=3;
                 int LA25_0 = input.LA(1);
 
-                if ( (LA25_0==EQUAL||LA25_0==NEQUAL) ) {
+                if ( (LA25_0==EQUAL) ) {
                     alt25=1;
+                }
+                else if ( (LA25_0==NEQUAL) ) {
+                    alt25=2;
                 }
 
 
                 switch (alt25) {
             	case 1 :
-            	    // compiler/parser/GramaticaParser.g:76:28: eq_op r= expr_rel
+            	    // compiler/parser/GramaticaParser.g:76:28: EQUAL r= expr_rel
             	    {
-            	    pushFollow(FOLLOW_eq_op_in_expr_eq492);
-            	    eq_op();
+            	    match(input,EQUAL,FOLLOW_EQUAL_in_expr_eq493); 
+
+            	    pushFollow(FOLLOW_expr_rel_in_expr_eq499);
+            	    expr_rel();
 
             	    state._fsp--;
 
 
-            	    pushFollow(FOLLOW_expr_rel_in_expr_eq498);
+            	    }
+            	    break;
+            	case 2 :
+            	    // compiler/parser/GramaticaParser.g:76:49: NEQUAL r= expr_rel
+            	    {
+            	    match(input,NEQUAL,FOLLOW_NEQUAL_in_expr_eq503); 
+
+            	    pushFollow(FOLLOW_expr_rel_in_expr_eq509);
             	    expr_rel();
 
             	    state._fsp--;
@@ -1652,40 +1664,92 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "expr_rel"
-    // compiler/parser/GramaticaParser.g:77:1: expr_rel : l= expr_add ( rel_op r= expr_add )* ;
+    // compiler/parser/GramaticaParser.g:77:1: expr_rel : l= expr_add ( LESSTHAN r= expr_add | GREATHAN r= expr_add | LTOEQ r= expr_add | GTOEQ r= expr_add )* ;
     public final void expr_rel() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:77:11: (l= expr_add ( rel_op r= expr_add )* )
-            // compiler/parser/GramaticaParser.g:77:13: l= expr_add ( rel_op r= expr_add )*
+            // compiler/parser/GramaticaParser.g:77:11: (l= expr_add ( LESSTHAN r= expr_add | GREATHAN r= expr_add | LTOEQ r= expr_add | GTOEQ r= expr_add )* )
+            // compiler/parser/GramaticaParser.g:77:13: l= expr_add ( LESSTHAN r= expr_add | GREATHAN r= expr_add | LTOEQ r= expr_add | GTOEQ r= expr_add )*
             {
-            pushFollow(FOLLOW_expr_add_in_expr_rel512);
+            pushFollow(FOLLOW_expr_add_in_expr_rel523);
             expr_add();
 
             state._fsp--;
 
 
-            // compiler/parser/GramaticaParser.g:77:27: ( rel_op r= expr_add )*
+            // compiler/parser/GramaticaParser.g:77:27: ( LESSTHAN r= expr_add | GREATHAN r= expr_add | LTOEQ r= expr_add | GTOEQ r= expr_add )*
             loop26:
             do {
-                int alt26=2;
-                int LA26_0 = input.LA(1);
-
-                if ( ((LA26_0 >= GREATHAN && LA26_0 <= GTOEQ)||LA26_0==LESSTHAN||LA26_0==LTOEQ) ) {
+                int alt26=5;
+                switch ( input.LA(1) ) {
+                case LESSTHAN:
+                    {
                     alt26=1;
-                }
+                    }
+                    break;
+                case GREATHAN:
+                    {
+                    alt26=2;
+                    }
+                    break;
+                case LTOEQ:
+                    {
+                    alt26=3;
+                    }
+                    break;
+                case GTOEQ:
+                    {
+                    alt26=4;
+                    }
+                    break;
 
+                }
 
                 switch (alt26) {
             	case 1 :
-            	    // compiler/parser/GramaticaParser.g:77:28: rel_op r= expr_add
+            	    // compiler/parser/GramaticaParser.g:77:28: LESSTHAN r= expr_add
             	    {
-            	    pushFollow(FOLLOW_rel_op_in_expr_rel516);
-            	    rel_op();
+            	    match(input,LESSTHAN,FOLLOW_LESSTHAN_in_expr_rel527); 
+
+            	    pushFollow(FOLLOW_expr_add_in_expr_rel533);
+            	    expr_add();
 
             	    state._fsp--;
 
 
-            	    pushFollow(FOLLOW_expr_add_in_expr_rel522);
+            	    }
+            	    break;
+            	case 2 :
+            	    // compiler/parser/GramaticaParser.g:77:52: GREATHAN r= expr_add
+            	    {
+            	    match(input,GREATHAN,FOLLOW_GREATHAN_in_expr_rel537); 
+
+            	    pushFollow(FOLLOW_expr_add_in_expr_rel543);
+            	    expr_add();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+            	case 3 :
+            	    // compiler/parser/GramaticaParser.g:77:76: LTOEQ r= expr_add
+            	    {
+            	    match(input,LTOEQ,FOLLOW_LTOEQ_in_expr_rel547); 
+
+            	    pushFollow(FOLLOW_expr_add_in_expr_rel553);
+            	    expr_add();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+            	case 4 :
+            	    // compiler/parser/GramaticaParser.g:77:97: GTOEQ r= expr_add
+            	    {
+            	    match(input,GTOEQ,FOLLOW_GTOEQ_in_expr_rel557); 
+
+            	    pushFollow(FOLLOW_expr_add_in_expr_rel563);
             	    expr_add();
 
             	    state._fsp--;
@@ -1718,40 +1782,52 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "expr_add"
-    // compiler/parser/GramaticaParser.g:78:1: expr_add : l= expr_arith ( sumsub_op r= expr_arith )* ;
+    // compiler/parser/GramaticaParser.g:78:1: expr_add : l= expr_arith ( ADD r= expr_arith | MINUS r= expr_arith )* ;
     public final void expr_add() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:78:11: (l= expr_arith ( sumsub_op r= expr_arith )* )
-            // compiler/parser/GramaticaParser.g:78:13: l= expr_arith ( sumsub_op r= expr_arith )*
+            // compiler/parser/GramaticaParser.g:78:11: (l= expr_arith ( ADD r= expr_arith | MINUS r= expr_arith )* )
+            // compiler/parser/GramaticaParser.g:78:13: l= expr_arith ( ADD r= expr_arith | MINUS r= expr_arith )*
             {
-            pushFollow(FOLLOW_expr_arith_in_expr_add536);
+            pushFollow(FOLLOW_expr_arith_in_expr_add577);
             expr_arith();
 
             state._fsp--;
 
 
-            // compiler/parser/GramaticaParser.g:78:29: ( sumsub_op r= expr_arith )*
+            // compiler/parser/GramaticaParser.g:78:29: ( ADD r= expr_arith | MINUS r= expr_arith )*
             loop27:
             do {
-                int alt27=2;
+                int alt27=3;
                 int LA27_0 = input.LA(1);
 
-                if ( (LA27_0==ADD||LA27_0==MINUS) ) {
+                if ( (LA27_0==ADD) ) {
                     alt27=1;
+                }
+                else if ( (LA27_0==MINUS) ) {
+                    alt27=2;
                 }
 
 
                 switch (alt27) {
             	case 1 :
-            	    // compiler/parser/GramaticaParser.g:78:30: sumsub_op r= expr_arith
+            	    // compiler/parser/GramaticaParser.g:78:30: ADD r= expr_arith
             	    {
-            	    pushFollow(FOLLOW_sumsub_op_in_expr_add540);
-            	    sumsub_op();
+            	    match(input,ADD,FOLLOW_ADD_in_expr_add581); 
+
+            	    pushFollow(FOLLOW_expr_arith_in_expr_add587);
+            	    expr_arith();
 
             	    state._fsp--;
 
 
-            	    pushFollow(FOLLOW_expr_arith_in_expr_add546);
+            	    }
+            	    break;
+            	case 2 :
+            	    // compiler/parser/GramaticaParser.g:78:51: MINUS r= expr_arith
+            	    {
+            	    match(input,MINUS,FOLLOW_MINUS_in_expr_add591); 
+
+            	    pushFollow(FOLLOW_expr_arith_in_expr_add597);
             	    expr_arith();
 
             	    state._fsp--;
@@ -1784,41 +1860,75 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "expr_arith"
-    // compiler/parser/GramaticaParser.g:79:1: expr_arith : l= expr_factor ( arith_op r= expr_factor )* ;
+    // compiler/parser/GramaticaParser.g:79:1: expr_arith : l= expr_minus ( MULT r= expr_minus | DIV r= expr_minus | MOD r= expr_minus )* ;
     public final void expr_arith() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:79:13: (l= expr_factor ( arith_op r= expr_factor )* )
-            // compiler/parser/GramaticaParser.g:79:15: l= expr_factor ( arith_op r= expr_factor )*
+            // compiler/parser/GramaticaParser.g:79:13: (l= expr_minus ( MULT r= expr_minus | DIV r= expr_minus | MOD r= expr_minus )* )
+            // compiler/parser/GramaticaParser.g:79:15: l= expr_minus ( MULT r= expr_minus | DIV r= expr_minus | MOD r= expr_minus )*
             {
-            pushFollow(FOLLOW_expr_factor_in_expr_arith560);
-            expr_factor();
+            pushFollow(FOLLOW_expr_minus_in_expr_arith611);
+            expr_minus();
 
             state._fsp--;
 
 
-            // compiler/parser/GramaticaParser.g:79:32: ( arith_op r= expr_factor )*
+            // compiler/parser/GramaticaParser.g:79:31: ( MULT r= expr_minus | DIV r= expr_minus | MOD r= expr_minus )*
             loop28:
             do {
-                int alt28=2;
-                int LA28_0 = input.LA(1);
-
-                if ( (LA28_0==DIV||(LA28_0 >= MOD && LA28_0 <= MULT)) ) {
+                int alt28=4;
+                switch ( input.LA(1) ) {
+                case MULT:
+                    {
                     alt28=1;
-                }
+                    }
+                    break;
+                case DIV:
+                    {
+                    alt28=2;
+                    }
+                    break;
+                case MOD:
+                    {
+                    alt28=3;
+                    }
+                    break;
 
+                }
 
                 switch (alt28) {
             	case 1 :
-            	    // compiler/parser/GramaticaParser.g:79:33: arith_op r= expr_factor
+            	    // compiler/parser/GramaticaParser.g:79:32: MULT r= expr_minus
             	    {
-            	    pushFollow(FOLLOW_arith_op_in_expr_arith564);
-            	    arith_op();
+            	    match(input,MULT,FOLLOW_MULT_in_expr_arith615); 
+
+            	    pushFollow(FOLLOW_expr_minus_in_expr_arith621);
+            	    expr_minus();
 
             	    state._fsp--;
 
 
-            	    pushFollow(FOLLOW_expr_factor_in_expr_arith570);
-            	    expr_factor();
+            	    }
+            	    break;
+            	case 2 :
+            	    // compiler/parser/GramaticaParser.g:79:54: DIV r= expr_minus
+            	    {
+            	    match(input,DIV,FOLLOW_DIV_in_expr_arith625); 
+
+            	    pushFollow(FOLLOW_expr_minus_in_expr_arith631);
+            	    expr_minus();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+            	case 3 :
+            	    // compiler/parser/GramaticaParser.g:79:75: MOD r= expr_minus
+            	    {
+            	    match(input,MOD,FOLLOW_MOD_in_expr_arith635); 
+
+            	    pushFollow(FOLLOW_expr_minus_in_expr_arith641);
+            	    expr_minus();
 
             	    state._fsp--;
 
@@ -1849,26 +1959,164 @@ public class GramaticaParser extends Parser {
 
 
 
-    // $ANTLR start "expr_factor"
-    // compiler/parser/GramaticaParser.g:81:1: expr_factor : ( location | method_call | literal | MINUS expr | NOT expr | LPAREN expr RPAREN );
-    public final void expr_factor() throws RecognitionException {
+    // $ANTLR start "expr_minus"
+    // compiler/parser/GramaticaParser.g:80:1: expr_minus : (l= expr_not | ( MINUS r= expr_not ) );
+    public final void expr_minus() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:81:14: ( location | method_call | literal | MINUS expr | NOT expr | LPAREN expr RPAREN )
-            int alt29=6;
+            // compiler/parser/GramaticaParser.g:80:13: (l= expr_not | ( MINUS r= expr_not ) )
+            int alt29=2;
+            int LA29_0 = input.LA(1);
+
+            if ( (LA29_0==CALLOUT||LA29_0==CHR||LA29_0==DIGIT||LA29_0==FALSE||LA29_0==HEX||LA29_0==INDENTIFIER||LA29_0==LPAREN||LA29_0==NOT||LA29_0==TRUE) ) {
+                alt29=1;
+            }
+            else if ( (LA29_0==MINUS) ) {
+                alt29=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 29, 0, input);
+
+                throw nvae;
+
+            }
+            switch (alt29) {
+                case 1 :
+                    // compiler/parser/GramaticaParser.g:80:15: l= expr_not
+                    {
+                    pushFollow(FOLLOW_expr_not_in_expr_minus653);
+                    expr_not();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+                case 2 :
+                    // compiler/parser/GramaticaParser.g:81:7: ( MINUS r= expr_not )
+                    {
+                    // compiler/parser/GramaticaParser.g:81:7: ( MINUS r= expr_not )
+                    // compiler/parser/GramaticaParser.g:81:8: MINUS r= expr_not
+                    {
+                    match(input,MINUS,FOLLOW_MINUS_in_expr_minus663); 
+
+                    pushFollow(FOLLOW_expr_not_in_expr_minus667);
+                    expr_not();
+
+                    state._fsp--;
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
+    // $ANTLR end "expr_minus"
+
+
+
+    // $ANTLR start "expr_not"
+    // compiler/parser/GramaticaParser.g:82:1: expr_not : (l= factorExpr | ( NOT r= factorExpr ) );
+    public final void expr_not() throws RecognitionException {
+        try {
+            // compiler/parser/GramaticaParser.g:82:11: (l= factorExpr | ( NOT r= factorExpr ) )
+            int alt30=2;
+            int LA30_0 = input.LA(1);
+
+            if ( (LA30_0==CALLOUT||LA30_0==CHR||LA30_0==DIGIT||LA30_0==FALSE||LA30_0==HEX||LA30_0==INDENTIFIER||LA30_0==LPAREN||LA30_0==TRUE) ) {
+                alt30=1;
+            }
+            else if ( (LA30_0==NOT) ) {
+                alt30=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 30, 0, input);
+
+                throw nvae;
+
+            }
+            switch (alt30) {
+                case 1 :
+                    // compiler/parser/GramaticaParser.g:82:13: l= factorExpr
+                    {
+                    pushFollow(FOLLOW_factorExpr_in_expr_not678);
+                    factorExpr();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+                case 2 :
+                    // compiler/parser/GramaticaParser.g:83:7: ( NOT r= factorExpr )
+                    {
+                    // compiler/parser/GramaticaParser.g:83:7: ( NOT r= factorExpr )
+                    // compiler/parser/GramaticaParser.g:83:8: NOT r= factorExpr
+                    {
+                    match(input,NOT,FOLLOW_NOT_in_expr_not687); 
+
+                    pushFollow(FOLLOW_factorExpr_in_expr_not691);
+                    factorExpr();
+
+                    state._fsp--;
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
+    // $ANTLR end "expr_not"
+
+
+
+    // $ANTLR start "factorExpr"
+    // compiler/parser/GramaticaParser.g:85:1: factorExpr : ( location | method_call | DIGIT | HEX | CHR | TRUE | FALSE | LPAREN expr RPAREN );
+    public final void factorExpr() throws RecognitionException {
+        try {
+            // compiler/parser/GramaticaParser.g:85:13: ( location | method_call | DIGIT | HEX | CHR | TRUE | FALSE | LPAREN expr RPAREN )
+            int alt31=8;
             switch ( input.LA(1) ) {
             case INDENTIFIER:
                 {
-                int LA29_1 = input.LA(2);
+                int LA31_1 = input.LA(2);
 
-                if ( (LA29_1==ADD||LA29_1==AND||LA29_1==COMA||LA29_1==DIV||LA29_1==EQUAL||(LA29_1 >= GREATHAN && LA29_1 <= GTOEQ)||(LA29_1 >= LBRACE && LA29_1 <= LESSTHAN)||(LA29_1 >= LTOEQ && LA29_1 <= MINUS)||(LA29_1 >= MOD && LA29_1 <= NEQUAL)||LA29_1==OR||LA29_1==RBRAKET||(LA29_1 >= RPAREN && LA29_1 <= SEMICO)) ) {
-                    alt29=1;
+                if ( (LA31_1==ADD||LA31_1==AND||LA31_1==COMA||LA31_1==DIV||LA31_1==EQUAL||(LA31_1 >= GREATHAN && LA31_1 <= GTOEQ)||(LA31_1 >= LBRACE && LA31_1 <= LESSTHAN)||(LA31_1 >= LTOEQ && LA31_1 <= MINUS)||(LA31_1 >= MOD && LA31_1 <= NEQUAL)||LA31_1==OR||LA31_1==RBRAKET||(LA31_1 >= RPAREN && LA31_1 <= SEMICO)) ) {
+                    alt31=1;
                 }
-                else if ( (LA29_1==LPAREN) ) {
-                    alt29=2;
+                else if ( (LA31_1==LPAREN) ) {
+                    alt31=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 29, 1, input);
+                        new NoViableAltException("", 31, 1, input);
 
                     throw nvae;
 
@@ -1877,46 +2125,52 @@ public class GramaticaParser extends Parser {
                 break;
             case CALLOUT:
                 {
-                alt29=2;
+                alt31=2;
+                }
+                break;
+            case DIGIT:
+                {
+                alt31=3;
+                }
+                break;
+            case HEX:
+                {
+                alt31=4;
                 }
                 break;
             case CHR:
-            case DIGIT:
-            case FALSE:
-            case HEX:
+                {
+                alt31=5;
+                }
+                break;
             case TRUE:
                 {
-                alt29=3;
+                alt31=6;
                 }
                 break;
-            case MINUS:
+            case FALSE:
                 {
-                alt29=4;
-                }
-                break;
-            case NOT:
-                {
-                alt29=5;
+                alt31=7;
                 }
                 break;
             case LPAREN:
                 {
-                alt29=6;
+                alt31=8;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 29, 0, input);
+                    new NoViableAltException("", 31, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt29) {
+            switch (alt31) {
                 case 1 :
-                    // compiler/parser/GramaticaParser.g:81:16: location
+                    // compiler/parser/GramaticaParser.g:85:15: location
                     {
-                    pushFollow(FOLLOW_location_in_expr_factor581);
+                    pushFollow(FOLLOW_location_in_factorExpr701);
                     location();
 
                     state._fsp--;
@@ -1925,9 +2179,9 @@ public class GramaticaParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // compiler/parser/GramaticaParser.g:82:7: method_call
+                    // compiler/parser/GramaticaParser.g:86:7: method_call
                     {
-                    pushFollow(FOLLOW_method_call_in_expr_factor589);
+                    pushFollow(FOLLOW_method_call_in_factorExpr714);
                     method_call();
 
                     state._fsp--;
@@ -1936,54 +2190,52 @@ public class GramaticaParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // compiler/parser/GramaticaParser.g:83:7: literal
+                    // compiler/parser/GramaticaParser.g:87:7: DIGIT
                     {
-                    pushFollow(FOLLOW_literal_in_expr_factor597);
-                    literal();
-
-                    state._fsp--;
-
+                    match(input,DIGIT,FOLLOW_DIGIT_in_factorExpr725); 
 
                     }
                     break;
                 case 4 :
-                    // compiler/parser/GramaticaParser.g:84:7: MINUS expr
+                    // compiler/parser/GramaticaParser.g:88:7: HEX
                     {
-                    match(input,MINUS,FOLLOW_MINUS_in_expr_factor605); 
-
-                    pushFollow(FOLLOW_expr_in_expr_factor607);
-                    expr();
-
-                    state._fsp--;
-
+                    match(input,HEX,FOLLOW_HEX_in_factorExpr738); 
 
                     }
                     break;
                 case 5 :
-                    // compiler/parser/GramaticaParser.g:85:7: NOT expr
+                    // compiler/parser/GramaticaParser.g:89:7: CHR
                     {
-                    match(input,NOT,FOLLOW_NOT_in_expr_factor615); 
-
-                    pushFollow(FOLLOW_expr_in_expr_factor617);
-                    expr();
-
-                    state._fsp--;
-
+                    match(input,CHR,FOLLOW_CHR_in_factorExpr752); 
 
                     }
                     break;
                 case 6 :
-                    // compiler/parser/GramaticaParser.g:86:7: LPAREN expr RPAREN
+                    // compiler/parser/GramaticaParser.g:90:7: TRUE
                     {
-                    match(input,LPAREN,FOLLOW_LPAREN_in_expr_factor625); 
+                    match(input,TRUE,FOLLOW_TRUE_in_factorExpr767); 
 
-                    pushFollow(FOLLOW_expr_in_expr_factor627);
+                    }
+                    break;
+                case 7 :
+                    // compiler/parser/GramaticaParser.g:91:7: FALSE
+                    {
+                    match(input,FALSE,FOLLOW_FALSE_in_factorExpr782); 
+
+                    }
+                    break;
+                case 8 :
+                    // compiler/parser/GramaticaParser.g:92:7: LPAREN expr RPAREN
+                    {
+                    match(input,LPAREN,FOLLOW_LPAREN_in_factorExpr796); 
+
+                    pushFollow(FOLLOW_expr_in_factorExpr798);
                     expr();
 
                     state._fsp--;
 
 
-                    match(input,RPAREN,FOLLOW_RPAREN_in_expr_factor629); 
+                    match(input,RPAREN,FOLLOW_RPAREN_in_factorExpr800); 
 
                     addtoList("Expression");
 
@@ -2002,36 +2254,36 @@ public class GramaticaParser extends Parser {
         }
         return ;
     }
-    // $ANTLR end "expr_factor"
+    // $ANTLR end "factorExpr"
 
 
 
     // $ANTLR start "callout_arg"
-    // compiler/parser/GramaticaParser.g:88:1: callout_arg : ( expr | string_literal );
+    // compiler/parser/GramaticaParser.g:94:1: callout_arg : ( expr | string_literal );
     public final void callout_arg() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:88:14: ( expr | string_literal )
-            int alt30=2;
-            int LA30_0 = input.LA(1);
+            // compiler/parser/GramaticaParser.g:94:14: ( expr | string_literal )
+            int alt32=2;
+            int LA32_0 = input.LA(1);
 
-            if ( (LA30_0==CALLOUT||LA30_0==CHR||LA30_0==DIGIT||LA30_0==FALSE||LA30_0==HEX||LA30_0==INDENTIFIER||LA30_0==LPAREN||LA30_0==MINUS||LA30_0==NOT||LA30_0==TRUE) ) {
-                alt30=1;
+            if ( (LA32_0==CALLOUT||LA32_0==CHR||LA32_0==DIGIT||LA32_0==FALSE||LA32_0==HEX||LA32_0==INDENTIFIER||LA32_0==LPAREN||LA32_0==MINUS||LA32_0==NOT||LA32_0==TRUE) ) {
+                alt32=1;
             }
-            else if ( (LA30_0==STR) ) {
-                alt30=2;
+            else if ( (LA32_0==STR) ) {
+                alt32=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 30, 0, input);
+                    new NoViableAltException("", 32, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt30) {
+            switch (alt32) {
                 case 1 :
-                    // compiler/parser/GramaticaParser.g:88:16: expr
+                    // compiler/parser/GramaticaParser.g:94:16: expr
                     {
-                    pushFollow(FOLLOW_expr_in_callout_arg640);
+                    pushFollow(FOLLOW_expr_in_callout_arg811);
                     expr();
 
                     state._fsp--;
@@ -2040,9 +2292,9 @@ public class GramaticaParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // compiler/parser/GramaticaParser.g:88:23: string_literal
+                    // compiler/parser/GramaticaParser.g:94:23: string_literal
                     {
-                    pushFollow(FOLLOW_string_literal_in_callout_arg644);
+                    pushFollow(FOLLOW_string_literal_in_callout_arg815);
                     string_literal();
 
                     state._fsp--;
@@ -2068,17 +2320,17 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "bin_op"
-    // compiler/parser/GramaticaParser.g:90:1: bin_op : ( arith_op | rel_op | eq_op | cond_op );
+    // compiler/parser/GramaticaParser.g:96:1: bin_op : ( arith_op | rel_op | eq_op | cond_op );
     public final void bin_op() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:90:10: ( arith_op | rel_op | eq_op | cond_op )
-            int alt31=4;
+            // compiler/parser/GramaticaParser.g:96:10: ( arith_op | rel_op | eq_op | cond_op )
+            int alt33=4;
             switch ( input.LA(1) ) {
             case DIV:
             case MOD:
             case MULT:
                 {
-                alt31=1;
+                alt33=1;
                 }
                 break;
             case GREATHAN:
@@ -2086,34 +2338,34 @@ public class GramaticaParser extends Parser {
             case LESSTHAN:
             case LTOEQ:
                 {
-                alt31=2;
+                alt33=2;
                 }
                 break;
             case EQUAL:
             case NEQUAL:
                 {
-                alt31=3;
+                alt33=3;
                 }
                 break;
             case AND:
             case OR:
                 {
-                alt31=4;
+                alt33=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 31, 0, input);
+                    new NoViableAltException("", 33, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt31) {
+            switch (alt33) {
                 case 1 :
-                    // compiler/parser/GramaticaParser.g:90:12: arith_op
+                    // compiler/parser/GramaticaParser.g:96:12: arith_op
                     {
-                    pushFollow(FOLLOW_arith_op_in_bin_op654);
+                    pushFollow(FOLLOW_arith_op_in_bin_op825);
                     arith_op();
 
                     state._fsp--;
@@ -2122,9 +2374,9 @@ public class GramaticaParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // compiler/parser/GramaticaParser.g:90:23: rel_op
+                    // compiler/parser/GramaticaParser.g:96:23: rel_op
                     {
-                    pushFollow(FOLLOW_rel_op_in_bin_op658);
+                    pushFollow(FOLLOW_rel_op_in_bin_op829);
                     rel_op();
 
                     state._fsp--;
@@ -2133,9 +2385,9 @@ public class GramaticaParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // compiler/parser/GramaticaParser.g:90:32: eq_op
+                    // compiler/parser/GramaticaParser.g:96:32: eq_op
                     {
-                    pushFollow(FOLLOW_eq_op_in_bin_op662);
+                    pushFollow(FOLLOW_eq_op_in_bin_op833);
                     eq_op();
 
                     state._fsp--;
@@ -2144,9 +2396,9 @@ public class GramaticaParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // compiler/parser/GramaticaParser.g:90:40: cond_op
+                    // compiler/parser/GramaticaParser.g:96:40: cond_op
                     {
-                    pushFollow(FOLLOW_cond_op_in_bin_op666);
+                    pushFollow(FOLLOW_cond_op_in_bin_op837);
                     cond_op();
 
                     state._fsp--;
@@ -2172,10 +2424,10 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "arith_op"
-    // compiler/parser/GramaticaParser.g:91:1: arith_op : ( MULT | DIV | MOD );
+    // compiler/parser/GramaticaParser.g:97:1: arith_op : ( MULT | DIV | MOD );
     public final void arith_op() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:91:12: ( MULT | DIV | MOD )
+            // compiler/parser/GramaticaParser.g:97:12: ( MULT | DIV | MOD )
             // compiler/parser/GramaticaParser.g:
             {
             if ( input.LA(1)==DIV||(input.LA(1) >= MOD && input.LA(1) <= MULT) ) {
@@ -2206,10 +2458,10 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "sumsub_op"
-    // compiler/parser/GramaticaParser.g:92:1: sumsub_op : ( ADD | MINUS );
+    // compiler/parser/GramaticaParser.g:98:1: sumsub_op : ( ADD | MINUS );
     public final void sumsub_op() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:92:12: ( ADD | MINUS )
+            // compiler/parser/GramaticaParser.g:98:12: ( ADD | MINUS )
             // compiler/parser/GramaticaParser.g:
             {
             if ( input.LA(1)==ADD||input.LA(1)==MINUS ) {
@@ -2240,10 +2492,10 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "rel_op"
-    // compiler/parser/GramaticaParser.g:93:1: rel_op : ( LESSTHAN | GREATHAN | LTOEQ | GTOEQ );
+    // compiler/parser/GramaticaParser.g:99:1: rel_op : ( LESSTHAN | GREATHAN | LTOEQ | GTOEQ );
     public final void rel_op() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:93:10: ( LESSTHAN | GREATHAN | LTOEQ | GTOEQ )
+            // compiler/parser/GramaticaParser.g:99:10: ( LESSTHAN | GREATHAN | LTOEQ | GTOEQ )
             // compiler/parser/GramaticaParser.g:
             {
             if ( (input.LA(1) >= GREATHAN && input.LA(1) <= GTOEQ)||input.LA(1)==LESSTHAN||input.LA(1)==LTOEQ ) {
@@ -2274,10 +2526,10 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "eq_op"
-    // compiler/parser/GramaticaParser.g:94:1: eq_op : ( EQUAL | NEQUAL );
+    // compiler/parser/GramaticaParser.g:100:1: eq_op : ( EQUAL | NEQUAL );
     public final void eq_op() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:94:9: ( EQUAL | NEQUAL )
+            // compiler/parser/GramaticaParser.g:100:9: ( EQUAL | NEQUAL )
             // compiler/parser/GramaticaParser.g:
             {
             if ( input.LA(1)==EQUAL||input.LA(1)==NEQUAL ) {
@@ -2308,10 +2560,10 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "cond_op"
-    // compiler/parser/GramaticaParser.g:95:1: cond_op : ( AND | OR );
+    // compiler/parser/GramaticaParser.g:101:1: cond_op : ( AND | OR );
     public final void cond_op() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:95:11: ( AND | OR )
+            // compiler/parser/GramaticaParser.g:101:11: ( AND | OR )
             // compiler/parser/GramaticaParser.g:
             {
             if ( input.LA(1)==AND||input.LA(1)==OR ) {
@@ -2342,42 +2594,42 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "literal"
-    // compiler/parser/GramaticaParser.g:97:1: literal : ( int_literal | char_literal | bool_literal );
+    // compiler/parser/GramaticaParser.g:103:1: literal : ( int_literal | char_literal | bool_literal );
     public final void literal() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:97:11: ( int_literal | char_literal | bool_literal )
-            int alt32=3;
+            // compiler/parser/GramaticaParser.g:103:11: ( int_literal | char_literal | bool_literal )
+            int alt34=3;
             switch ( input.LA(1) ) {
             case DIGIT:
             case HEX:
                 {
-                alt32=1;
+                alt34=1;
                 }
                 break;
             case CHR:
                 {
-                alt32=2;
+                alt34=2;
                 }
                 break;
             case FALSE:
             case TRUE:
                 {
-                alt32=3;
+                alt34=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 32, 0, input);
+                    new NoViableAltException("", 34, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt32) {
+            switch (alt34) {
                 case 1 :
-                    // compiler/parser/GramaticaParser.g:97:13: int_literal
+                    // compiler/parser/GramaticaParser.g:103:13: int_literal
                     {
-                    pushFollow(FOLLOW_int_literal_in_literal752);
+                    pushFollow(FOLLOW_int_literal_in_literal923);
                     int_literal();
 
                     state._fsp--;
@@ -2386,9 +2638,9 @@ public class GramaticaParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // compiler/parser/GramaticaParser.g:97:27: char_literal
+                    // compiler/parser/GramaticaParser.g:103:27: char_literal
                     {
-                    pushFollow(FOLLOW_char_literal_in_literal756);
+                    pushFollow(FOLLOW_char_literal_in_literal927);
                     char_literal();
 
                     state._fsp--;
@@ -2397,9 +2649,9 @@ public class GramaticaParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // compiler/parser/GramaticaParser.g:97:42: bool_literal
+                    // compiler/parser/GramaticaParser.g:103:42: bool_literal
                     {
-                    pushFollow(FOLLOW_bool_literal_in_literal760);
+                    pushFollow(FOLLOW_bool_literal_in_literal931);
                     bool_literal();
 
                     state._fsp--;
@@ -2425,13 +2677,13 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "id"
-    // compiler/parser/GramaticaParser.g:99:1: id : INDENTIFIER ;
+    // compiler/parser/GramaticaParser.g:105:1: id : INDENTIFIER ;
     public final void id() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:99:8: ( INDENTIFIER )
-            // compiler/parser/GramaticaParser.g:99:10: INDENTIFIER
+            // compiler/parser/GramaticaParser.g:105:8: ( INDENTIFIER )
+            // compiler/parser/GramaticaParser.g:105:10: INDENTIFIER
             {
-            match(input,INDENTIFIER,FOLLOW_INDENTIFIER_in_id772); 
+            match(input,INDENTIFIER,FOLLOW_INDENTIFIER_in_id943); 
 
             addtoList("Indentifier");
 
@@ -2453,10 +2705,10 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "alpha_num"
-    // compiler/parser/GramaticaParser.g:101:1: alpha_num : ( CHAR | UNDERSCORE | NUM );
+    // compiler/parser/GramaticaParser.g:107:1: alpha_num : ( CHAR | UNDERSCORE | NUM );
     public final void alpha_num() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:101:12: ( CHAR | UNDERSCORE | NUM )
+            // compiler/parser/GramaticaParser.g:107:12: ( CHAR | UNDERSCORE | NUM )
             // compiler/parser/GramaticaParser.g:
             {
             if ( input.LA(1)==CHAR||input.LA(1)==NUM||input.LA(1)==UNDERSCORE ) {
@@ -2487,10 +2739,10 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "hex_digit"
-    // compiler/parser/GramaticaParser.g:103:1: hex_digit : ( NUM | HEXCHAR );
+    // compiler/parser/GramaticaParser.g:109:1: hex_digit : ( NUM | HEXCHAR );
     public final void hex_digit() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:103:13: ( NUM | HEXCHAR )
+            // compiler/parser/GramaticaParser.g:109:13: ( NUM | HEXCHAR )
             // compiler/parser/GramaticaParser.g:
             {
             if ( input.LA(1)==HEXCHAR||input.LA(1)==NUM ) {
@@ -2521,10 +2773,10 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "int_literal"
-    // compiler/parser/GramaticaParser.g:105:1: int_literal : ( DIGIT | HEX );
+    // compiler/parser/GramaticaParser.g:111:1: int_literal : ( DIGIT | HEX );
     public final void int_literal() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:105:14: ( DIGIT | HEX )
+            // compiler/parser/GramaticaParser.g:111:14: ( DIGIT | HEX )
             // compiler/parser/GramaticaParser.g:
             {
             if ( input.LA(1)==DIGIT||input.LA(1)==HEX ) {
@@ -2555,10 +2807,10 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "bool_literal"
-    // compiler/parser/GramaticaParser.g:107:1: bool_literal : ( TRUE | FALSE );
+    // compiler/parser/GramaticaParser.g:113:1: bool_literal : ( TRUE | FALSE );
     public final void bool_literal() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:107:17: ( TRUE | FALSE )
+            // compiler/parser/GramaticaParser.g:113:17: ( TRUE | FALSE )
             // compiler/parser/GramaticaParser.g:
             {
             if ( input.LA(1)==FALSE||input.LA(1)==TRUE ) {
@@ -2589,13 +2841,13 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "char_literal"
-    // compiler/parser/GramaticaParser.g:109:1: char_literal : CHR ;
+    // compiler/parser/GramaticaParser.g:115:1: char_literal : CHR ;
     public final void char_literal() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:109:14: ( CHR )
-            // compiler/parser/GramaticaParser.g:109:16: CHR
+            // compiler/parser/GramaticaParser.g:115:14: ( CHR )
+            // compiler/parser/GramaticaParser.g:115:16: CHR
             {
-            match(input,CHR,FOLLOW_CHR_in_char_literal841); 
+            match(input,CHR,FOLLOW_CHR_in_char_literal1012); 
 
             }
 
@@ -2615,13 +2867,13 @@ public class GramaticaParser extends Parser {
 
 
     // $ANTLR start "string_literal"
-    // compiler/parser/GramaticaParser.g:111:1: string_literal : STR ;
+    // compiler/parser/GramaticaParser.g:117:1: string_literal : STR ;
     public final void string_literal() throws RecognitionException {
         try {
-            // compiler/parser/GramaticaParser.g:111:17: ( STR )
-            // compiler/parser/GramaticaParser.g:111:19: STR
+            // compiler/parser/GramaticaParser.g:117:17: ( STR )
+            // compiler/parser/GramaticaParser.g:117:19: STR
             {
-            match(input,STR,FOLLOW_STR_in_string_literal850); 
+            match(input,STR,FOLLOW_STR_in_string_literal1021); 
 
             }
 
@@ -2733,45 +2985,65 @@ public class GramaticaParser extends Parser {
     public static final BitSet FOLLOW_LBRAKET_in_location419 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
     public static final BitSet FOLLOW_expr_in_location421 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
     public static final BitSet FOLLOW_RBRAKET_in_location423 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_and_in_expr440 = new BitSet(new long[]{0x1000000000000002L});
-    public static final BitSet FOLLOW_OR_in_expr443 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_and_in_expr449 = new BitSet(new long[]{0x1000000000000002L});
-    public static final BitSet FOLLOW_expr_eq_in_expr_and463 = new BitSet(new long[]{0x0000000000000082L});
-    public static final BitSet FOLLOW_AND_in_expr_and467 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_eq_in_expr_and473 = new BitSet(new long[]{0x0000000000000082L});
-    public static final BitSet FOLLOW_expr_rel_in_expr_eq488 = new BitSet(new long[]{0x0000400004000002L});
-    public static final BitSet FOLLOW_eq_op_in_expr_eq492 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_rel_in_expr_eq498 = new BitSet(new long[]{0x0000400004000002L});
-    public static final BitSet FOLLOW_expr_add_in_expr_rel512 = new BitSet(new long[]{0x00000280C0000002L});
-    public static final BitSet FOLLOW_rel_op_in_expr_rel516 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_add_in_expr_rel522 = new BitSet(new long[]{0x00000280C0000002L});
-    public static final BitSet FOLLOW_expr_arith_in_expr_add536 = new BitSet(new long[]{0x0000040000000012L});
-    public static final BitSet FOLLOW_sumsub_op_in_expr_add540 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_arith_in_expr_add546 = new BitSet(new long[]{0x0000040000000012L});
-    public static final BitSet FOLLOW_expr_factor_in_expr_arith560 = new BitSet(new long[]{0x0000300000800002L});
-    public static final BitSet FOLLOW_arith_op_in_expr_arith564 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_factor_in_expr_arith570 = new BitSet(new long[]{0x0000300000800002L});
-    public static final BitSet FOLLOW_location_in_expr_factor581 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_method_call_in_expr_factor589 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_literal_in_expr_factor597 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_expr_factor605 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_expr_factor607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NOT_in_expr_factor615 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_expr_factor617 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LPAREN_in_expr_factor625 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_expr_factor627 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RPAREN_in_expr_factor629 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_callout_arg640 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_string_literal_in_callout_arg644 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_arith_op_in_bin_op654 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rel_op_in_bin_op658 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_eq_op_in_bin_op662 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_cond_op_in_bin_op666 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_int_literal_in_literal752 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_char_literal_in_literal756 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bool_literal_in_literal760 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INDENTIFIER_in_id772 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CHR_in_char_literal841 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STR_in_string_literal850 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_and_in_expr441 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_OR_in_expr444 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_and_in_expr450 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_expr_eq_in_expr_and464 = new BitSet(new long[]{0x0000000000000082L});
+    public static final BitSet FOLLOW_AND_in_expr_and468 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_eq_in_expr_and474 = new BitSet(new long[]{0x0000000000000082L});
+    public static final BitSet FOLLOW_expr_rel_in_expr_eq489 = new BitSet(new long[]{0x0000400004000002L});
+    public static final BitSet FOLLOW_EQUAL_in_expr_eq493 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_rel_in_expr_eq499 = new BitSet(new long[]{0x0000400004000002L});
+    public static final BitSet FOLLOW_NEQUAL_in_expr_eq503 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_rel_in_expr_eq509 = new BitSet(new long[]{0x0000400004000002L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel523 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_LESSTHAN_in_expr_rel527 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel533 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_GREATHAN_in_expr_rel537 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel543 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_LTOEQ_in_expr_rel547 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel553 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_GTOEQ_in_expr_rel557 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel563 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_expr_arith_in_expr_add577 = new BitSet(new long[]{0x0000040000000012L});
+    public static final BitSet FOLLOW_ADD_in_expr_add581 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_arith_in_expr_add587 = new BitSet(new long[]{0x0000040000000012L});
+    public static final BitSet FOLLOW_MINUS_in_expr_add591 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_arith_in_expr_add597 = new BitSet(new long[]{0x0000040000000012L});
+    public static final BitSet FOLLOW_expr_minus_in_expr_arith611 = new BitSet(new long[]{0x0000300000800002L});
+    public static final BitSet FOLLOW_MULT_in_expr_arith615 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_minus_in_expr_arith621 = new BitSet(new long[]{0x0000300000800002L});
+    public static final BitSet FOLLOW_DIV_in_expr_arith625 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_minus_in_expr_arith631 = new BitSet(new long[]{0x0000300000800002L});
+    public static final BitSet FOLLOW_MOD_in_expr_arith635 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_minus_in_expr_arith641 = new BitSet(new long[]{0x0000300000800002L});
+    public static final BitSet FOLLOW_expr_not_in_expr_minus653 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_expr_minus663 = new BitSet(new long[]{0x0000810910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_not_in_expr_minus667 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_factorExpr_in_expr_not678 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NOT_in_expr_not687 = new BitSet(new long[]{0x0000010910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_factorExpr_in_expr_not691 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_location_in_factorExpr701 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_method_call_in_factorExpr714 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DIGIT_in_factorExpr725 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_HEX_in_factorExpr738 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHR_in_factorExpr752 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRUE_in_factorExpr767 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FALSE_in_factorExpr782 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LPAREN_in_factorExpr796 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_in_factorExpr798 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RPAREN_in_factorExpr800 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_callout_arg811 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_string_literal_in_callout_arg815 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_arith_op_in_bin_op825 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rel_op_in_bin_op829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_eq_op_in_bin_op833 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_cond_op_in_bin_op837 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_int_literal_in_literal923 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_char_literal_in_literal927 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bool_literal_in_literal931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INDENTIFIER_in_id943 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHR_in_char_literal1012 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STR_in_string_literal1021 = new BitSet(new long[]{0x0000000000000002L});
 
 }

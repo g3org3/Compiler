@@ -1,0 +1,91 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="METHOD"];
+  n1 [label="METHOD"];
+  n2 [label="void"];
+  n3 [label="bar"];
+  n4 [label="int"];
+  n5 [label="a"];
+  n6 [label="BLOCK"];
+  n6 [label="BLOCK"];
+  n7 [label="STATEMENT"];
+  n7 [label="STATEMENT"];
+  n8 [label="for"];
+  n9 [label="i"];
+  n10 [label="="];
+  n11 [label="0"];
+  n12 [label=","];
+  n13 [label="EX"];
+  n13 [label="EX"];
+  n14 [label="a"];
+  n15 [label="BLOCK"];
+  n15 [label="BLOCK"];
+  n16 [label="STATEMENT"];
+  n16 [label="STATEMENT"];
+  n17 [label="callout"];
+  n18 [label="("];
+  n19 [label="\"printf\""];
+  n20 [label=","];
+  n21 [label="\"%d\n\""];
+  n22 [label=","];
+  n23 [label="EX"];
+  n23 [label="EX"];
+  n24 [label="i"];
+  n25 [label=")"];
+  n26 [label="METHOD"];
+  n26 [label="METHOD"];
+  n27 [label="void"];
+  n28 [label="main"];
+  n29 [label="BLOCK"];
+  n29 [label="BLOCK"];
+  n30 [label="STATEMENT"];
+  n30 [label="STATEMENT"];
+  n31 [label="bar"];
+  n32 [label="("];
+  n33 [label="10"];
+  n34 [label=")"];
+
+  n0 -> n1 // "ROOT" -> "METHOD"
+  n1 -> n2 // "METHOD" -> "void"
+  n1 -> n3 // "METHOD" -> "bar"
+  n1 -> n4 // "METHOD" -> "int"
+  n1 -> n5 // "METHOD" -> "a"
+  n1 -> n6 // "METHOD" -> "BLOCK"
+  n6 -> n7 // "BLOCK" -> "STATEMENT"
+  n7 -> n8 // "STATEMENT" -> "for"
+  n7 -> n9 // "STATEMENT" -> "i"
+  n7 -> n10 // "STATEMENT" -> "="
+  n7 -> n11 // "STATEMENT" -> "0"
+  n7 -> n12 // "STATEMENT" -> ","
+  n7 -> n13 // "STATEMENT" -> "EX"
+  n13 -> n14 // "EX" -> "a"
+  n7 -> n15 // "STATEMENT" -> "BLOCK"
+  n15 -> n16 // "BLOCK" -> "STATEMENT"
+  n16 -> n17 // "STATEMENT" -> "callout"
+  n16 -> n18 // "STATEMENT" -> "("
+  n16 -> n19 // "STATEMENT" -> "\"printf\""
+  n16 -> n20 // "STATEMENT" -> ","
+  n16 -> n21 // "STATEMENT" -> "\"%d\n\""
+  n16 -> n22 // "STATEMENT" -> ","
+  n16 -> n23 // "STATEMENT" -> "EX"
+  n23 -> n24 // "EX" -> "i"
+  n16 -> n25 // "STATEMENT" -> ")"
+  n0 -> n26 // "ROOT" -> "METHOD"
+  n26 -> n27 // "METHOD" -> "void"
+  n26 -> n28 // "METHOD" -> "main"
+  n26 -> n29 // "METHOD" -> "BLOCK"
+  n29 -> n30 // "BLOCK" -> "STATEMENT"
+  n30 -> n31 // "STATEMENT" -> "bar"
+  n30 -> n32 // "STATEMENT" -> "("
+  n30 -> n33 // "STATEMENT" -> "10"
+  n30 -> n34 // "STATEMENT" -> ")"
+
+}
+

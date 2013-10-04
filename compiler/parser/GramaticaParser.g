@@ -71,18 +71,24 @@ method_name 	: id;
 location		: id
 				| id LBRAKET expr RBRAKET {addtoList("Location");};
 
-expr 			: l = expr_and (OR r = expr_and)*;
+expr 	 		: l = expr_and (OR r = expr_and)*;
 expr_and		: l = expr_eq  (AND r = expr_eq)*;
-expr_eq			: l = expr_rel  (eq_op r = expr_rel)*;
-expr_rel		: l = expr_add  (rel_op r = expr_add)*;
-expr_add		: l = expr_arith  (sumsub_op r = expr_arith)*;
-expr_arith		: l = expr_factor  (arith_op r = expr_factor)*;
+expr_eq			: l = expr_rel  (EQUAL r = expr_rel | NEQUAL r = expr_rel)*;
+expr_rel		: l = expr_add  (LESSTHAN r = expr_add | GREATHAN r = expr_add | LTOEQ r = expr_add | GTOEQ r = expr_add)*;
+expr_add		: l = expr_arith  (ADD r = expr_arith | MINUS r = expr_arith)*;
+expr_arith		: l = expr_minus  (MULT r = expr_minus | DIV r = expr_minus | MOD r = expr_minus)*;
+expr_minus		: l=expr_not 
+				| (MINUS r=expr_not);
+expr_not		: l=factorExpr
+				| (NOT r=factorExpr);
 
-expr_factor		: location
-				| method_call
-				| literal
-				| MINUS expr
-				| NOT expr
+factorExpr		: location 			 
+				| method_call 		
+				| DIGIT 			 
+				| HEX 				 
+				| CHR 		 		 
+				| TRUE 		 		 
+				| FALSE 		 	 
 				| LPAREN expr RPAREN {addtoList("Expression");};
 
 callout_arg 	: expr | string_literal;

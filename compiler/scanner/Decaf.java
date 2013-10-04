@@ -1,4 +1,4 @@
-// $ANTLR 3.4 compiler/scanner/Decaf.g 2013-09-12 11:06:51
+// $ANTLR 3.4 compiler/scanner/Decaf.g 2013-10-04 08:06:57
 
 	package compiler.scanner;
 	import java.util.ArrayList;
@@ -1122,41 +1122,22 @@ public class Decaf extends Lexer {
         try {
             int _type = DIGIT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:80:9: ( ( '-' )? ( NUM )+ )
-            // compiler/scanner/Decaf.g:80:11: ( '-' )? ( NUM )+
+            // compiler/scanner/Decaf.g:80:9: ( ( NUM )+ )
+            // compiler/scanner/Decaf.g:80:11: ( NUM )+
             {
-            // compiler/scanner/Decaf.g:80:11: ( '-' )?
-            int alt4=2;
-            int LA4_0 = input.LA(1);
-
-            if ( (LA4_0=='-') ) {
-                alt4=1;
-            }
-            switch (alt4) {
-                case 1 :
-                    // compiler/scanner/Decaf.g:80:11: '-'
-                    {
-                    match('-'); 
-
-                    }
-                    break;
-
-            }
-
-
-            // compiler/scanner/Decaf.g:80:16: ( NUM )+
-            int cnt5=0;
-            loop5:
+            // compiler/scanner/Decaf.g:80:11: ( NUM )+
+            int cnt4=0;
+            loop4:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( ((LA5_0 >= '0' && LA5_0 <= '9')) ) {
-                    alt5=1;
+                if ( ((LA4_0 >= '0' && LA4_0 <= '9')) ) {
+                    alt4=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt4) {
             	case 1 :
             	    // compiler/scanner/Decaf.g:
             	    {
@@ -1174,12 +1155,12 @@ public class Decaf extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt5 >= 1 ) break loop5;
+            	    if ( cnt4 >= 1 ) break loop4;
                         EarlyExitException eee =
-                            new EarlyExitException(5, input);
+                            new EarlyExitException(4, input);
                         throw eee;
                 }
-                cnt5++;
+                cnt4++;
             } while (true);
 
 
@@ -1746,18 +1727,18 @@ public class Decaf extends Lexer {
 
 
             // compiler/scanner/Decaf.g:109:24: ( HEXCHAR | NUM )+
-            int cnt6=0;
-            loop6:
+            int cnt5=0;
+            loop5:
             do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
+                int alt5=2;
+                int LA5_0 = input.LA(1);
 
-                if ( ((LA6_0 >= '0' && LA6_0 <= '9')||(LA6_0 >= 'A' && LA6_0 <= 'F')||(LA6_0 >= 'a' && LA6_0 <= 'f')) ) {
-                    alt6=1;
+                if ( ((LA5_0 >= '0' && LA5_0 <= '9')||(LA5_0 >= 'A' && LA5_0 <= 'F')||(LA5_0 >= 'a' && LA5_0 <= 'f')) ) {
+                    alt5=1;
                 }
 
 
-                switch (alt6) {
+                switch (alt5) {
             	case 1 :
             	    // compiler/scanner/Decaf.g:
             	    {
@@ -1775,12 +1756,12 @@ public class Decaf extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt6 >= 1 ) break loop6;
+            	    if ( cnt5 >= 1 ) break loop5;
                         EarlyExitException eee =
-                            new EarlyExitException(6, input);
+                            new EarlyExitException(5, input);
                         throw eee;
                 }
-                cnt6++;
+                cnt5++;
             } while (true);
 
 
@@ -1819,17 +1800,17 @@ public class Decaf extends Lexer {
 
 
             // compiler/scanner/Decaf.g:112:33: ( CHAR | UNDERSCORE | NUM )*
-            loop7:
+            loop6:
             do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( ((LA7_0 >= '0' && LA7_0 <= '9')||(LA7_0 >= 'A' && LA7_0 <= 'Z')||LA7_0=='_'||(LA7_0 >= 'a' && LA7_0 <= 'z')) ) {
-                    alt7=1;
+                if ( ((LA6_0 >= '0' && LA6_0 <= '9')||(LA6_0 >= 'A' && LA6_0 <= 'Z')||LA6_0=='_'||(LA6_0 >= 'a' && LA6_0 <= 'z')) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt7) {
+                switch (alt6) {
             	case 1 :
             	    // compiler/scanner/Decaf.g:
             	    {
@@ -1847,7 +1828,7 @@ public class Decaf extends Lexer {
             	    break;
 
             	default :
-            	    break loop7;
+            	    break loop6;
                 }
             } while (true);
 
@@ -1874,21 +1855,21 @@ public class Decaf extends Lexer {
             // compiler/scanner/Decaf.g:115:10: ( '\\\"' '\\\"' | ( '\\\"' ( ASCII | ESC )+ '\\\"' ) )
             {
             // compiler/scanner/Decaf.g:115:10: ( '\\\"' '\\\"' | ( '\\\"' ( ASCII | ESC )+ '\\\"' ) )
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            if ( (LA9_0=='\"') ) {
-                int LA9_1 = input.LA(2);
+            if ( (LA8_0=='\"') ) {
+                int LA8_1 = input.LA(2);
 
-                if ( (LA9_1=='\"') ) {
-                    alt9=1;
+                if ( (LA8_1=='\"') ) {
+                    alt8=1;
                 }
-                else if ( ((LA9_1 >= ' ' && LA9_1 <= '!')||(LA9_1 >= '#' && LA9_1 <= '&')||(LA9_1 >= '(' && LA9_1 <= '~')) ) {
-                    alt9=2;
+                else if ( ((LA8_1 >= ' ' && LA8_1 <= '!')||(LA8_1 >= '#' && LA8_1 <= '&')||(LA8_1 >= '(' && LA8_1 <= '~')) ) {
+                    alt8=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 9, 1, input);
+                        new NoViableAltException("", 8, 1, input);
 
                     throw nvae;
 
@@ -1896,12 +1877,12 @@ public class Decaf extends Lexer {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 9, 0, input);
+                    new NoViableAltException("", 8, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt9) {
+            switch (alt8) {
                 case 1 :
                     // compiler/scanner/Decaf.g:115:11: '\\\"' '\\\"'
                     {
@@ -1920,21 +1901,21 @@ public class Decaf extends Lexer {
                     match('\"'); 
 
                     // compiler/scanner/Decaf.g:115:26: ( ASCII | ESC )+
-                    int cnt8=0;
-                    loop8:
+                    int cnt7=0;
+                    loop7:
                     do {
-                        int alt8=3;
-                        int LA8_0 = input.LA(1);
+                        int alt7=3;
+                        int LA7_0 = input.LA(1);
 
-                        if ( ((LA8_0 >= ' ' && LA8_0 <= '!')||(LA8_0 >= '#' && LA8_0 <= '&')||(LA8_0 >= '(' && LA8_0 <= '[')||(LA8_0 >= ']' && LA8_0 <= '~')) ) {
-                            alt8=1;
+                        if ( ((LA7_0 >= ' ' && LA7_0 <= '!')||(LA7_0 >= '#' && LA7_0 <= '&')||(LA7_0 >= '(' && LA7_0 <= '[')||(LA7_0 >= ']' && LA7_0 <= '~')) ) {
+                            alt7=1;
                         }
-                        else if ( (LA8_0=='\\') ) {
-                            alt8=2;
+                        else if ( (LA7_0=='\\') ) {
+                            alt7=2;
                         }
 
 
-                        switch (alt8) {
+                        switch (alt7) {
                     	case 1 :
                     	    // compiler/scanner/Decaf.g:115:27: ASCII
                     	    {
@@ -1953,12 +1934,12 @@ public class Decaf extends Lexer {
                     	    break;
 
                     	default :
-                    	    if ( cnt8 >= 1 ) break loop8;
+                    	    if ( cnt7 >= 1 ) break loop7;
                                 EarlyExitException eee =
-                                    new EarlyExitException(8, input);
+                                    new EarlyExitException(7, input);
                                 throw eee;
                         }
-                        cnt8++;
+                        cnt7++;
                     } while (true);
 
 
@@ -1995,21 +1976,21 @@ public class Decaf extends Lexer {
             // compiler/scanner/Decaf.g:116:10: ( '\\'' '\\'' | ( '\\'' ( ASCII | ESC ) '\\'' ) )
             {
             // compiler/scanner/Decaf.g:116:10: ( '\\'' '\\'' | ( '\\'' ( ASCII | ESC ) '\\'' ) )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA11_0=='\'') ) {
-                int LA11_1 = input.LA(2);
+            if ( (LA10_0=='\'') ) {
+                int LA10_1 = input.LA(2);
 
-                if ( (LA11_1=='\'') ) {
-                    alt11=1;
+                if ( (LA10_1=='\'') ) {
+                    alt10=1;
                 }
-                else if ( ((LA11_1 >= ' ' && LA11_1 <= '!')||(LA11_1 >= '#' && LA11_1 <= '&')||(LA11_1 >= '(' && LA11_1 <= '~')) ) {
-                    alt11=2;
+                else if ( ((LA10_1 >= ' ' && LA10_1 <= '!')||(LA10_1 >= '#' && LA10_1 <= '&')||(LA10_1 >= '(' && LA10_1 <= '~')) ) {
+                    alt10=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 11, 1, input);
+                        new NoViableAltException("", 10, 1, input);
 
                     throw nvae;
 
@@ -2017,12 +1998,12 @@ public class Decaf extends Lexer {
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 11, 0, input);
+                    new NoViableAltException("", 10, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt11) {
+            switch (alt10) {
                 case 1 :
                     // compiler/scanner/Decaf.g:116:11: '\\'' '\\''
                     {
@@ -2041,23 +2022,23 @@ public class Decaf extends Lexer {
                     match('\''); 
 
                     // compiler/scanner/Decaf.g:116:26: ( ASCII | ESC )
-                    int alt10=2;
-                    int LA10_0 = input.LA(1);
+                    int alt9=2;
+                    int LA9_0 = input.LA(1);
 
-                    if ( ((LA10_0 >= ' ' && LA10_0 <= '!')||(LA10_0 >= '#' && LA10_0 <= '&')||(LA10_0 >= '(' && LA10_0 <= '[')||(LA10_0 >= ']' && LA10_0 <= '~')) ) {
-                        alt10=1;
+                    if ( ((LA9_0 >= ' ' && LA9_0 <= '!')||(LA9_0 >= '#' && LA9_0 <= '&')||(LA9_0 >= '(' && LA9_0 <= '[')||(LA9_0 >= ']' && LA9_0 <= '~')) ) {
+                        alt9=1;
                     }
-                    else if ( (LA10_0=='\\') ) {
-                        alt10=2;
+                    else if ( (LA9_0=='\\') ) {
+                        alt9=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 10, 0, input);
+                            new NoViableAltException("", 9, 0, input);
 
                         throw nvae;
 
                     }
-                    switch (alt10) {
+                    switch (alt9) {
                         case 1 :
                             // compiler/scanner/Decaf.g:116:27: ASCII
                             {
@@ -2111,18 +2092,18 @@ public class Decaf extends Lexer {
             // compiler/scanner/Decaf.g:119:15: ( ' ' | '\\b' | '\\t' | '\\n' | '\\r' )+
             {
             // compiler/scanner/Decaf.g:119:15: ( ' ' | '\\b' | '\\t' | '\\n' | '\\r' )+
-            int cnt12=0;
-            loop12:
+            int cnt11=0;
+            loop11:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( ((LA12_0 >= '\b' && LA12_0 <= '\n')||LA12_0=='\r'||LA12_0==' ') ) {
-                    alt12=1;
+                if ( ((LA11_0 >= '\b' && LA11_0 <= '\n')||LA11_0=='\r'||LA11_0==' ') ) {
+                    alt11=1;
                 }
 
 
-                switch (alt12) {
+                switch (alt11) {
             	case 1 :
             	    // compiler/scanner/Decaf.g:
             	    {
@@ -2140,12 +2121,12 @@ public class Decaf extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt12 >= 1 ) break loop12;
+            	    if ( cnt11 >= 1 ) break loop11;
                         EarlyExitException eee =
-                            new EarlyExitException(12, input);
+                            new EarlyExitException(11, input);
                         throw eee;
                 }
-                cnt12++;
+                cnt11++;
             } while (true);
 
 
@@ -2270,21 +2251,21 @@ public class Decaf extends Lexer {
 
 
             // compiler/scanner/Decaf.g:125:31: ( HEXCHAR | DIGIT )+
-            int cnt13=0;
-            loop13:
+            int cnt12=0;
+            loop12:
             do {
-                int alt13=3;
-                int LA13_0 = input.LA(1);
+                int alt12=3;
+                int LA12_0 = input.LA(1);
 
-                if ( ((LA13_0 >= 'A' && LA13_0 <= 'F')||(LA13_0 >= 'a' && LA13_0 <= 'f')) ) {
-                    alt13=1;
+                if ( ((LA12_0 >= 'A' && LA12_0 <= 'F')||(LA12_0 >= 'a' && LA12_0 <= 'f')) ) {
+                    alt12=1;
                 }
-                else if ( (LA13_0=='-'||(LA13_0 >= '0' && LA13_0 <= '9')) ) {
-                    alt13=2;
+                else if ( ((LA12_0 >= '0' && LA12_0 <= '9')) ) {
+                    alt12=2;
                 }
 
 
-                switch (alt13) {
+                switch (alt12) {
             	case 1 :
             	    // compiler/scanner/Decaf.g:125:32: HEXCHAR
             	    {
@@ -2303,12 +2284,12 @@ public class Decaf extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt13 >= 1 ) break loop13;
+            	    if ( cnt12 >= 1 ) break loop12;
                         EarlyExitException eee =
-                            new EarlyExitException(13, input);
+                            new EarlyExitException(12, input);
                         throw eee;
                 }
-                cnt13++;
+                cnt12++;
             } while (true);
 
 
@@ -2430,18 +2411,18 @@ public class Decaf extends Lexer {
 
 
             // compiler/scanner/Decaf.g:128:26: ( ASCII )+
-            int cnt14=0;
-            loop14:
+            int cnt13=0;
+            loop13:
             do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( ((LA14_0 >= ' ' && LA14_0 <= '!')||(LA14_0 >= '#' && LA14_0 <= '&')||(LA14_0 >= '(' && LA14_0 <= '[')||(LA14_0 >= ']' && LA14_0 <= '~')) ) {
-                    alt14=1;
+                if ( ((LA13_0 >= ' ' && LA13_0 <= '!')||(LA13_0 >= '#' && LA13_0 <= '&')||(LA13_0 >= '(' && LA13_0 <= '[')||(LA13_0 >= ']' && LA13_0 <= '~')) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt14) {
+                switch (alt13) {
             	case 1 :
             	    // compiler/scanner/Decaf.g:
             	    {
@@ -2459,12 +2440,12 @@ public class Decaf extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt14 >= 1 ) break loop14;
+            	    if ( cnt13 >= 1 ) break loop13;
                         EarlyExitException eee =
-                            new EarlyExitException(14, input);
+                            new EarlyExitException(13, input);
                         throw eee;
                 }
-                cnt14++;
+                cnt13++;
             } while (true);
 
 
@@ -2549,18 +2530,18 @@ public class Decaf extends Lexer {
 
 
             // compiler/scanner/Decaf.g:130:27: ( CHAR | NUM )+
-            int cnt15=0;
-            loop15:
+            int cnt14=0;
+            loop14:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt14=2;
+                int LA14_0 = input.LA(1);
 
-                if ( ((LA15_0 >= '0' && LA15_0 <= '9')||(LA15_0 >= 'A' && LA15_0 <= 'Z')||(LA15_0 >= 'a' && LA15_0 <= 'z')) ) {
-                    alt15=1;
+                if ( ((LA14_0 >= '0' && LA14_0 <= '9')||(LA14_0 >= 'A' && LA14_0 <= 'Z')||(LA14_0 >= 'a' && LA14_0 <= 'z')) ) {
+                    alt14=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt14) {
             	case 1 :
             	    // compiler/scanner/Decaf.g:
             	    {
@@ -2578,12 +2559,12 @@ public class Decaf extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt15 >= 1 ) break loop15;
+            	    if ( cnt14 >= 1 ) break loop14;
                         EarlyExitException eee =
-                            new EarlyExitException(15, input);
+                            new EarlyExitException(14, input);
                         throw eee;
                 }
-                cnt15++;
+                cnt14++;
             } while (true);
 
 
@@ -2640,21 +2621,21 @@ public class Decaf extends Lexer {
             match('\"'); 
 
             // compiler/scanner/Decaf.g:132:19: ( ASCII | ESC )+
-            int cnt16=0;
-            loop16:
+            int cnt15=0;
+            loop15:
             do {
-                int alt16=3;
-                int LA16_0 = input.LA(1);
+                int alt15=3;
+                int LA15_0 = input.LA(1);
 
-                if ( ((LA16_0 >= ' ' && LA16_0 <= '!')||(LA16_0 >= '#' && LA16_0 <= '&')||(LA16_0 >= '(' && LA16_0 <= '[')||(LA16_0 >= ']' && LA16_0 <= '~')) ) {
-                    alt16=1;
+                if ( ((LA15_0 >= ' ' && LA15_0 <= '!')||(LA15_0 >= '#' && LA15_0 <= '&')||(LA15_0 >= '(' && LA15_0 <= '[')||(LA15_0 >= ']' && LA15_0 <= '~')) ) {
+                    alt15=1;
                 }
-                else if ( (LA16_0=='\\') ) {
-                    alt16=2;
+                else if ( (LA15_0=='\\') ) {
+                    alt15=2;
                 }
 
 
-                switch (alt16) {
+                switch (alt15) {
             	case 1 :
             	    // compiler/scanner/Decaf.g:132:20: ASCII
             	    {
@@ -2673,12 +2654,12 @@ public class Decaf extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt16 >= 1 ) break loop16;
+            	    if ( cnt15 >= 1 ) break loop15;
                         EarlyExitException eee =
-                            new EarlyExitException(16, input);
+                            new EarlyExitException(15, input);
                         throw eee;
                 }
-                cnt16++;
+                cnt15++;
             } while (true);
 
 
@@ -2714,21 +2695,21 @@ public class Decaf extends Lexer {
             match('\''); 
 
             // compiler/scanner/Decaf.g:133:19: ( ASCII | ESC )+
-            int cnt17=0;
-            loop17:
+            int cnt16=0;
+            loop16:
             do {
-                int alt17=3;
-                int LA17_0 = input.LA(1);
+                int alt16=3;
+                int LA16_0 = input.LA(1);
 
-                if ( ((LA17_0 >= ' ' && LA17_0 <= '!')||(LA17_0 >= '#' && LA17_0 <= '&')||(LA17_0 >= '(' && LA17_0 <= '[')||(LA17_0 >= ']' && LA17_0 <= '~')) ) {
-                    alt17=1;
+                if ( ((LA16_0 >= ' ' && LA16_0 <= '!')||(LA16_0 >= '#' && LA16_0 <= '&')||(LA16_0 >= '(' && LA16_0 <= '[')||(LA16_0 >= ']' && LA16_0 <= '~')) ) {
+                    alt16=1;
                 }
-                else if ( (LA17_0=='\\') ) {
-                    alt17=2;
+                else if ( (LA16_0=='\\') ) {
+                    alt16=2;
                 }
 
 
-                switch (alt17) {
+                switch (alt16) {
             	case 1 :
             	    // compiler/scanner/Decaf.g:133:20: ASCII
             	    {
@@ -2747,12 +2728,12 @@ public class Decaf extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt17 >= 1 ) break loop17;
+            	    if ( cnt16 >= 1 ) break loop16;
                         EarlyExitException eee =
-                            new EarlyExitException(17, input);
+                            new EarlyExitException(16, input);
                         throw eee;
                 }
-                cnt17++;
+                cnt16++;
             } while (true);
 
 
@@ -2898,9 +2879,9 @@ public class Decaf extends Lexer {
 
     public void mTokens() throws RecognitionException {
         // compiler/scanner/Decaf.g:1:8: ( COMMENTS | BOOLEAN | BREAK | CALLOUT | CLASS | CONTINUE | ELSE | FOR | IF | INT | RETURN | VOID | PROGRAM | TRUE | FALSE | LPAREN | RPAREN | LBRACE | RBRACE | LBRAKET | RBRAKET | SEMICO | COMA | POINT | DPOINTS | DIGIT | ADD1 | ASSIGNADD | ASSIGNSUB | MINUS1 | LTOEQ | GTOEQ | EQUAL | NEQUAL | AND | OR | LESSTHAN | GREATHAN | ASSIGN | ADD | MINUS | MULT | DIV | MOD | NOT | RAISE | ORBITWISE | ANDBITWISE | HEX | INDENTIFIER | STR | CHR | WHITESPACE | NOTCHAR1 | NOTCHAR2 | NOTCHAR3 | NOTCHAR4 | NOTCHAR5 | NOTCHAR6 | NOTHEX1 | NOTHEX2 | QMARK | NOTSTR1 | NOTSTR2 | NOTSTR3 | UNICODE1 | UNICODE2 | UNICODE3 )
-        int alt18=68;
-        alt18 = dfa18.predict(input);
-        switch (alt18) {
+        int alt17=68;
+        alt17 = dfa17.predict(input);
+        switch (alt17) {
             case 1 :
                 // compiler/scanner/Decaf.g:1:10: COMMENTS
                 {
@@ -3451,59 +3432,59 @@ public class Decaf extends Lexer {
     }
 
 
-    protected DFA18 dfa18 = new DFA18(this);
-    static final String DFA18_eotS =
-        "\1\uffff\1\54\11\57\12\uffff\1\111\1\110\1\115\1\117\1\121\1\123"+
+    protected DFA17 dfa17 = new DFA17(this);
+    static final String DFA17_eotS =
+        "\1\uffff\1\54\11\57\12\uffff\1\107\1\112\1\115\1\117\1\121\1\123"+
         "\1\125\1\127\1\131\5\uffff\2\140\10\uffff\2\57\1\uffff\6\57\1\162"+
-        "\5\57\16\uffff\1\171\26\uffff\1\u0083\10\uffff\6\57\1\u0095\1\57"+
-        "\1\uffff\1\u0097\4\57\1\u009c\17\uffff\1\u00a2\6\uffff\5\57\1\u00a8"+
-        "\1\uffff\1\57\1\uffff\1\57\1\u00ab\1\57\1\u00ad\7\uffff\1\57\1\u00b0"+
-        "\1\57\1\u00b2\1\57\1\uffff\1\u00b4\1\57\1\uffff\1\57\2\uffff\1\57"+
-        "\1\uffff\1\57\1\uffff\1\57\1\uffff\1\u00bb\1\57\1\uffff\1\u00bd"+
-        "\1\u00be\1\57\1\uffff\1\u00c0\2\uffff\1\u00c1\2\uffff";
-    static final String DFA18_eofS =
-        "\u00c2\uffff";
-    static final String DFA18_minS =
+        "\5\57\12\uffff\1\171\32\uffff\1\u0083\10\uffff\6\57\1\u0095\1\57"+
+        "\1\uffff\1\u0097\4\57\1\u009c\17\uffff\1\u00a1\6\uffff\5\57\1\u00a7"+
+        "\1\uffff\1\57\1\uffff\1\57\1\u00aa\1\57\1\u00ac\6\uffff\1\57\1\u00af"+
+        "\1\57\1\u00b1\1\57\1\uffff\1\u00b3\1\57\1\uffff\1\57\2\uffff\1\57"+
+        "\1\uffff\1\57\1\uffff\1\57\1\uffff\1\u00ba\1\57\1\uffff\1\u00bc"+
+        "\1\u00bd\1\57\1\uffff\1\u00bf\2\uffff\1\u00c0\2\uffff";
+    static final String DFA17_eofS =
+        "\u00c1\uffff";
+    static final String DFA17_minS =
         "\1\0\1\57\1\157\1\141\1\154\1\141\1\146\1\145\1\157\2\162\12\uffff"+
-        "\1\55\1\130\1\53\4\75\1\46\1\174\5\uffff\1\40\1\10\10\uffff\1\157"+
+        "\1\130\1\53\1\55\4\75\1\46\1\174\5\uffff\1\40\1\10\10\uffff\1\157"+
         "\1\145\1\uffff\1\154\1\141\1\156\1\163\1\162\1\154\1\60\2\164\1"+
-        "\151\1\157\1\165\16\uffff\1\60\23\uffff\1\40\1\42\1\uffff\1\47\2"+
+        "\151\1\157\1\165\12\uffff\1\60\27\uffff\1\40\1\42\1\uffff\1\47\2"+
         "\uffff\3\40\3\uffff\1\154\1\141\1\154\1\163\1\164\1\145\1\60\1\163"+
         "\1\uffff\1\60\1\165\1\144\1\147\1\145\1\60\3\uffff\7\40\1\uffff"+
         "\2\40\1\uffff\5\40\1\uffff\2\40\1\145\1\153\1\157\1\163\1\151\1"+
-        "\60\1\uffff\1\145\1\uffff\1\162\1\60\1\162\1\60\1\uffff\3\40\3\uffff"+
+        "\60\1\uffff\1\145\1\uffff\1\162\1\60\1\162\1\60\1\uffff\2\40\3\uffff"+
         "\1\141\1\60\1\165\1\60\1\156\1\uffff\1\60\1\156\1\uffff\1\141\2"+
         "\uffff\1\156\1\uffff\1\164\1\uffff\1\165\1\uffff\1\60\1\155\1\uffff"+
         "\2\60\1\145\1\uffff\1\60\2\uffff\1\60\2\uffff";
-    static final String DFA18_maxS =
+    static final String DFA17_maxS =
         "\1\177\1\57\1\162\1\157\1\154\1\157\1\156\1\145\1\157\2\162\12\uffff"+
-        "\1\75\1\170\5\75\1\46\1\174\5\uffff\2\176\10\uffff\1\157\1\145\1"+
-        "\uffff\1\154\1\141\1\156\1\163\1\162\1\154\1\172\2\164\1\151\1\157"+
-        "\1\165\16\uffff\1\172\23\uffff\1\176\1\164\1\uffff\1\47\2\uffff"+
-        "\3\176\3\uffff\1\154\1\141\1\154\1\163\1\164\1\145\1\172\1\163\1"+
-        "\uffff\1\172\1\165\1\144\1\147\1\145\1\172\3\uffff\7\176\1\uffff"+
-        "\2\176\1\uffff\5\176\1\uffff\2\176\1\145\1\153\1\157\1\163\1\151"+
-        "\1\172\1\uffff\1\145\1\uffff\1\162\1\172\1\162\1\172\1\uffff\3\176"+
-        "\3\uffff\1\141\1\172\1\165\1\172\1\156\1\uffff\1\172\1\156\1\uffff"+
-        "\1\141\2\uffff\1\156\1\uffff\1\164\1\uffff\1\165\1\uffff\1\172\1"+
-        "\155\1\uffff\2\172\1\145\1\uffff\1\172\2\uffff\1\172\2\uffff";
-    static final String DFA18_acceptS =
+        "\1\170\6\75\1\46\1\174\5\uffff\2\176\10\uffff\1\157\1\145\1\uffff"+
+        "\1\154\1\141\1\156\1\163\1\162\1\154\1\172\2\164\1\151\1\157\1\165"+
+        "\12\uffff\1\172\27\uffff\1\176\1\164\1\uffff\1\47\2\uffff\3\176"+
+        "\3\uffff\1\154\1\141\1\154\1\163\1\164\1\145\1\172\1\163\1\uffff"+
+        "\1\172\1\165\1\144\1\147\1\145\1\172\3\uffff\7\176\1\uffff\2\176"+
+        "\1\uffff\5\176\1\uffff\2\176\1\145\1\153\1\157\1\163\1\151\1\172"+
+        "\1\uffff\1\145\1\uffff\1\162\1\172\1\162\1\172\1\uffff\2\176\3\uffff"+
+        "\1\141\1\172\1\165\1\172\1\156\1\uffff\1\172\1\156\1\uffff\1\141"+
+        "\2\uffff\1\156\1\uffff\1\164\1\uffff\1\165\1\uffff\1\172\1\155\1"+
+        "\uffff\2\172\1\145\1\uffff\1\172\2\uffff\1\172\2\uffff";
+    static final String DFA17_acceptS =
         "\13\uffff\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\11\uffff"+
         "\1\52\1\54\1\56\1\32\1\62\2\uffff\1\65\1\76\1\102\1\65\1\103\1\104"+
         "\1\1\1\53\2\uffff\1\62\14\uffff\1\20\1\21\1\22\1\23\1\24\1\25\1"+
-        "\26\1\27\1\30\1\31\1\35\1\36\1\32\1\51\1\uffff\1\33\1\34\1\50\1"+
+        "\26\1\27\1\30\1\31\1\uffff\1\32\1\33\1\34\1\50\1\35\1\36\1\51\1"+
         "\37\1\45\1\40\1\46\1\41\1\47\1\42\1\55\1\43\1\60\1\44\1\57\1\52"+
         "\1\54\1\56\1\63\2\uffff\1\101\1\uffff\1\66\1\67\3\uffff\1\65\1\76"+
         "\1\102\10\uffff\1\11\6\uffff\1\74\1\75\1\77\7\uffff\1\64\2\uffff"+
-        "\1\100\5\uffff\1\71\10\uffff\1\10\1\uffff\1\12\4\uffff\1\61\3\uffff"+
+        "\1\100\5\uffff\1\71\10\uffff\1\10\1\uffff\1\12\4\uffff\1\61\2\uffff"+
         "\1\73\1\64\1\72\5\uffff\1\7\2\uffff\1\14\1\uffff\1\16\1\70\1\uffff"+
         "\1\3\1\uffff\1\5\1\uffff\1\17\2\uffff\1\70\3\uffff\1\13\1\uffff"+
         "\1\2\1\4\1\uffff\1\15\1\6";
-    static final String DFA18_specialS =
-        "\u00c2\uffff}>";
-    static final String[] DFA18_transitionS = {
+    static final String DFA17_specialS =
+        "\u00c1\uffff}>";
+    static final String[] DFA17_transitionS = {
             "\10\51\3\45\1\51\1\47\1\45\22\51\1\50\1\33\1\43\2\52\1\37\1"+
-            "\34\1\44\1\13\1\14\1\36\1\27\1\22\1\25\1\23\1\1\1\26\11\41\1"+
+            "\34\1\44\1\13\1\14\1\36\1\26\1\22\1\27\1\23\1\1\1\25\11\41\1"+
             "\24\1\21\1\30\1\32\1\31\1\46\1\52\17\42\1\11\12\42\1\17\1\52"+
             "\1\20\1\40\1\42\1\52\1\42\1\2\1\3\1\42\1\4\1\5\2\42\1\6\10\42"+
             "\1\7\1\42\1\12\1\42\1\10\4\42\1\15\1\35\1\16\1\52\1\51",
@@ -3527,9 +3508,9 @@ public class Decaf extends Lexer {
             "",
             "",
             "",
-            "\1\107\2\uffff\12\110\3\uffff\1\106",
-            "\1\112\37\uffff\1\112",
-            "\1\113\21\uffff\1\114",
+            "\1\106\37\uffff\1\106",
+            "\1\110\21\uffff\1\111",
+            "\1\114\17\uffff\1\113",
             "\1\116",
             "\1\120",
             "\1\122",
@@ -3577,11 +3558,11 @@ public class Decaf extends Lexer {
             "",
             "",
             "",
-            "",
-            "",
-            "",
-            "",
             "\12\170\7\uffff\6\170\24\172\6\uffff\6\170\24\172",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -3642,65 +3623,63 @@ public class Decaf extends Lexer {
             "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
             "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
             "",
-            "\2\u0085\1\u0086\4\u0085\1\u00a0\5\u0085\1\u009e\2\u0085\12"+
-            "\u009f\7\u0085\6\u009d\25\u0085\1\u0086\4\u0085\6\u009d\30\u0085",
-            "\2\u0085\1\u0086\4\u0085\1\u00a0\64\u0085\1\u0086\42\u0085",
+            "\2\u0085\1\u0086\4\u0085\1\u009f\10\u0085\12\u009e\7\u0085"+
+            "\6\u009d\25\u0085\1\u0086\4\u0085\6\u009d\30\u0085",
+            "\2\u0085\1\u0086\4\u0085\1\u009f\64\u0085\1\u0086\42\u0085",
             "",
-            "\7\u0086\1\u00a1\127\u0086",
+            "\7\u0086\1\u00a0\127\u0086",
             "\7\u0086\1\u0083\127\u0086",
-            "\7\u0086\1\u00a1\127\u0086",
-            "\7\u0086\1\u00a1\127\u0086",
-            "\7\u0086\1\u00a1\127\u0086",
+            "\7\u0086\1\u00a0\127\u0086",
+            "\7\u0086\1\u00a0\127\u0086",
+            "\7\u0086\1\u00a0\127\u0086",
             "",
             "\7\u0086\1\u0083\127\u0086",
             "\7\u0086\1\u0083\127\u0086",
+            "\1\u00a2",
             "\1\u00a3",
             "\1\u00a4",
             "\1\u00a5",
             "\1\u00a6",
-            "\1\u00a7",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
+            "",
+            "\1\u00a8",
             "",
             "\1\u00a9",
-            "",
-            "\1\u00aa",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00ac",
+            "\1\u00ab",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
             "",
-            "\2\u0085\1\u0086\4\u0085\1\u00ae\5\u0085\1\u009e\2\u0085\12"+
-            "\u009f\7\u0085\6\u009d\25\u0085\1\u0086\4\u0085\6\u009d\30\u0085",
-            "\2\u0085\1\u0086\4\u0085\1\u00a0\10\u0085\12\u009f\42\u0085"+
-            "\1\u0086\42\u0085",
-            "\2\u0085\1\u0086\4\u0085\1\u00ae\5\u0085\1\u009e\2\u0085\12"+
-            "\u009f\7\u0085\6\u009d\25\u0085\1\u0086\4\u0085\6\u009d\30\u0085",
+            "\2\u0085\1\u0086\4\u0085\1\u00ad\10\u0085\12\u009e\7\u0085"+
+            "\6\u009d\25\u0085\1\u0086\4\u0085\6\u009d\30\u0085",
+            "\2\u0085\1\u0086\4\u0085\1\u00ad\10\u0085\12\u009e\7\u0085"+
+            "\6\u009d\25\u0085\1\u0086\4\u0085\6\u009d\30\u0085",
             "",
             "",
             "",
-            "\1\u00af",
+            "\1\u00ae",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00b1",
+            "\1\u00b0",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00b3",
+            "\1\u00b2",
             "",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
+            "\1\u00b4",
+            "",
             "\1\u00b5",
             "",
-            "\1\u00b6",
             "",
+            "\1\u00b7",
             "",
             "\1\u00b8",
             "",
             "\1\u00b9",
             "",
-            "\1\u00ba",
+            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
+            "\1\u00bb",
             "",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00bc",
-            "",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00bf",
+            "\1\u00be",
             "",
             "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
             "",
@@ -3710,34 +3689,34 @@ public class Decaf extends Lexer {
             ""
     };
 
-    static final short[] DFA18_eot = DFA.unpackEncodedString(DFA18_eotS);
-    static final short[] DFA18_eof = DFA.unpackEncodedString(DFA18_eofS);
-    static final char[] DFA18_min = DFA.unpackEncodedStringToUnsignedChars(DFA18_minS);
-    static final char[] DFA18_max = DFA.unpackEncodedStringToUnsignedChars(DFA18_maxS);
-    static final short[] DFA18_accept = DFA.unpackEncodedString(DFA18_acceptS);
-    static final short[] DFA18_special = DFA.unpackEncodedString(DFA18_specialS);
-    static final short[][] DFA18_transition;
+    static final short[] DFA17_eot = DFA.unpackEncodedString(DFA17_eotS);
+    static final short[] DFA17_eof = DFA.unpackEncodedString(DFA17_eofS);
+    static final char[] DFA17_min = DFA.unpackEncodedStringToUnsignedChars(DFA17_minS);
+    static final char[] DFA17_max = DFA.unpackEncodedStringToUnsignedChars(DFA17_maxS);
+    static final short[] DFA17_accept = DFA.unpackEncodedString(DFA17_acceptS);
+    static final short[] DFA17_special = DFA.unpackEncodedString(DFA17_specialS);
+    static final short[][] DFA17_transition;
 
     static {
-        int numStates = DFA18_transitionS.length;
-        DFA18_transition = new short[numStates][];
+        int numStates = DFA17_transitionS.length;
+        DFA17_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA18_transition[i] = DFA.unpackEncodedString(DFA18_transitionS[i]);
+            DFA17_transition[i] = DFA.unpackEncodedString(DFA17_transitionS[i]);
         }
     }
 
-    class DFA18 extends DFA {
+    class DFA17 extends DFA {
 
-        public DFA18(BaseRecognizer recognizer) {
+        public DFA17(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 18;
-            this.eot = DFA18_eot;
-            this.eof = DFA18_eof;
-            this.min = DFA18_min;
-            this.max = DFA18_max;
-            this.accept = DFA18_accept;
-            this.special = DFA18_special;
-            this.transition = DFA18_transition;
+            this.decisionNumber = 17;
+            this.eot = DFA17_eot;
+            this.eof = DFA17_eof;
+            this.min = DFA17_min;
+            this.max = DFA17_max;
+            this.accept = DFA17_accept;
+            this.special = DFA17_special;
+            this.transition = DFA17_transition;
         }
         public String getDescription() {
             return "1:1: Tokens : ( COMMENTS | BOOLEAN | BREAK | CALLOUT | CLASS | CONTINUE | ELSE | FOR | IF | INT | RETURN | VOID | PROGRAM | TRUE | FALSE | LPAREN | RPAREN | LBRACE | RBRACE | LBRAKET | RBRAKET | SEMICO | COMA | POINT | DPOINTS | DIGIT | ADD1 | ASSIGNADD | ASSIGNSUB | MINUS1 | LTOEQ | GTOEQ | EQUAL | NEQUAL | AND | OR | LESSTHAN | GREATHAN | ASSIGN | ADD | MINUS | MULT | DIV | MOD | NOT | RAISE | ORBITWISE | ANDBITWISE | HEX | INDENTIFIER | STR | CHR | WHITESPACE | NOTCHAR1 | NOTCHAR2 | NOTCHAR3 | NOTCHAR4 | NOTCHAR5 | NOTCHAR6 | NOTHEX1 | NOTHEX2 | QMARK | NOTSTR1 | NOTSTR2 | NOTSTR3 | UNICODE1 | UNICODE2 | UNICODE3 );";

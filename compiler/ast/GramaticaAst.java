@@ -1,4 +1,4 @@
-// $ANTLR 3.4 compiler/ast/GramaticaAst.g 2013-09-12 11:06:57
+// $ANTLR 3.4 compiler/ast/GramaticaAst.g 2013-10-04 08:07:05
 
 	package compiler.ast;
 	import compiler.scanner.*;
@@ -17,7 +17,7 @@ import org.antlr.runtime.tree.*;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class GramaticaAst extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ADD", "ADD1", "ALPHA", "AND", "ANDBITWISE", "ASCII", "ASSIGN", "ASSIGNADD", "ASSIGNSUB", "BOOLEAN", "BREAK", "CALLOUT", "CHAR", "CHR", "CLASS", "COMA", "COMMENTS", "CONTINUE", "DIGIT", "DIV", "DPOINTS", "ELSE", "EQUAL", "ESC", "FALSE", "FOR", "GREATHAN", "GTOEQ", "HEX", "HEXCHAR", "IF", "INDENTIFIER", "INT", "LBRACE", "LBRAKET", "LESSTHAN", "LPAREN", "LTOEQ", "MINUS", "MINUS1", "MOD", "MULT", "NEQUAL", "NOT", "NOTCHAR1", "NOTCHAR2", "NOTCHAR3", "NOTCHAR4", "NOTCHAR5", "NOTCHAR6", "NOTHEX1", "NOTHEX2", "NOTSTR1", "NOTSTR2", "NOTSTR3", "NUM", "OR", "ORBITWISE", "POINT", "PROGRAM", "QMARK", "RAISE", "RBRACE", "RBRAKET", "RETURN", "RPAREN", "SEMICO", "STR", "TRUE", "UCASE", "UNDERSCORE", "UNICODE1", "UNICODE2", "UNICODE3", "VOID", "WHITESPACE", "BLOCK", "EX", "FIELD", "METHOD", "ROOT", "STATEMENT", "VARS"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ADD", "ADD1", "ALPHA", "AND", "ANDBITWISE", "ASCII", "ASSIGN", "ASSIGNADD", "ASSIGNSUB", "BOOLEAN", "BREAK", "CALLOUT", "CHAR", "CHR", "CLASS", "COMA", "COMMENTS", "CONTINUE", "DIGIT", "DIV", "DPOINTS", "ELSE", "EQUAL", "ESC", "FALSE", "FOR", "GREATHAN", "GTOEQ", "HEX", "HEXCHAR", "IF", "INDENTIFIER", "INT", "LBRACE", "LBRAKET", "LESSTHAN", "LPAREN", "LTOEQ", "MINUS", "MINUS1", "MOD", "MULT", "NEQUAL", "NOT", "NOTCHAR1", "NOTCHAR2", "NOTCHAR3", "NOTCHAR4", "NOTCHAR5", "NOTCHAR6", "NOTHEX1", "NOTHEX2", "NOTSTR1", "NOTSTR2", "NOTSTR3", "NUM", "OR", "ORBITWISE", "POINT", "PROGRAM", "QMARK", "RAISE", "RBRACE", "RBRAKET", "RETURN", "RPAREN", "SEMICO", "STR", "TRUE", "UCASE", "UNDERSCORE", "UNICODE1", "UNICODE2", "UNICODE3", "VOID", "WHITESPACE", "ARGS", "BLOCK", "EX", "FIELD", "METHOD", "ROOT", "STATEMENT", "VARS"
     };
 
     public static final int EOF=-1;
@@ -97,13 +97,14 @@ public class GramaticaAst extends Parser {
     public static final int UNICODE3=77;
     public static final int VOID=78;
     public static final int WHITESPACE=79;
-    public static final int BLOCK=80;
-    public static final int EX=81;
-    public static final int FIELD=82;
-    public static final int METHOD=83;
-    public static final int ROOT=84;
-    public static final int STATEMENT=85;
-    public static final int VARS=86;
+    public static final int ARGS=80;
+    public static final int BLOCK=81;
+    public static final int EX=82;
+    public static final int FIELD=83;
+    public static final int METHOD=84;
+    public static final int ROOT=85;
+    public static final int STATEMENT=86;
+    public static final int VARS=87;
 
     // delegates
     public Parser[] getDelegates() {
@@ -164,7 +165,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "start"
-    // compiler/ast/GramaticaAst.g:52:1: start : CLASS PROGRAM LBRACE ( field_decl )* ( method_decl )* RBRACE -> ^( ROOT ( field_decl )* ( method_decl )* ) ;
+    // compiler/ast/GramaticaAst.g:53:1: start : CLASS PROGRAM LBRACE ( field_decl )* ( method_decl )* RBRACE -> ^( ROOT ( field_decl )* ( method_decl )* ) ;
     public final GramaticaAst.start_return start() throws RecognitionException {
         GramaticaAst.start_return retval = new GramaticaAst.start_return();
         retval.start = input.LT(1);
@@ -192,22 +193,22 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_field_decl=new RewriteRuleSubtreeStream(adaptor,"rule field_decl");
         RewriteRuleSubtreeStream stream_method_decl=new RewriteRuleSubtreeStream(adaptor,"rule method_decl");
         try {
-            // compiler/ast/GramaticaAst.g:52:10: ( CLASS PROGRAM LBRACE ( field_decl )* ( method_decl )* RBRACE -> ^( ROOT ( field_decl )* ( method_decl )* ) )
-            // compiler/ast/GramaticaAst.g:52:12: CLASS PROGRAM LBRACE ( field_decl )* ( method_decl )* RBRACE
+            // compiler/ast/GramaticaAst.g:53:10: ( CLASS PROGRAM LBRACE ( field_decl )* ( method_decl )* RBRACE -> ^( ROOT ( field_decl )* ( method_decl )* ) )
+            // compiler/ast/GramaticaAst.g:53:12: CLASS PROGRAM LBRACE ( field_decl )* ( method_decl )* RBRACE
             {
-            CLASS1=(Token)match(input,CLASS,FOLLOW_CLASS_in_start80);  
+            CLASS1=(Token)match(input,CLASS,FOLLOW_CLASS_in_start84);  
             stream_CLASS.add(CLASS1);
 
 
-            PROGRAM2=(Token)match(input,PROGRAM,FOLLOW_PROGRAM_in_start82);  
+            PROGRAM2=(Token)match(input,PROGRAM,FOLLOW_PROGRAM_in_start86);  
             stream_PROGRAM.add(PROGRAM2);
 
 
-            LBRACE3=(Token)match(input,LBRACE,FOLLOW_LBRACE_in_start84);  
+            LBRACE3=(Token)match(input,LBRACE,FOLLOW_LBRACE_in_start88);  
             stream_LBRACE.add(LBRACE3);
 
 
-            // compiler/ast/GramaticaAst.g:52:33: ( field_decl )*
+            // compiler/ast/GramaticaAst.g:53:33: ( field_decl )*
             loop1:
             do {
                 int alt1=2;
@@ -232,9 +233,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt1) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:52:33: field_decl
+            	    // compiler/ast/GramaticaAst.g:53:33: field_decl
             	    {
-            	    pushFollow(FOLLOW_field_decl_in_start86);
+            	    pushFollow(FOLLOW_field_decl_in_start90);
             	    field_decl4=field_decl();
 
             	    state._fsp--;
@@ -250,7 +251,7 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            // compiler/ast/GramaticaAst.g:52:45: ( method_decl )*
+            // compiler/ast/GramaticaAst.g:53:45: ( method_decl )*
             loop2:
             do {
                 int alt2=2;
@@ -263,9 +264,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt2) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:52:45: method_decl
+            	    // compiler/ast/GramaticaAst.g:53:45: method_decl
             	    {
-            	    pushFollow(FOLLOW_method_decl_in_start89);
+            	    pushFollow(FOLLOW_method_decl_in_start93);
             	    method_decl5=method_decl();
 
             	    state._fsp--;
@@ -281,12 +282,12 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            RBRACE6=(Token)match(input,RBRACE,FOLLOW_RBRACE_in_start92);  
+            RBRACE6=(Token)match(input,RBRACE,FOLLOW_RBRACE_in_start96);  
             stream_RBRACE.add(RBRACE6);
 
 
             // AST REWRITE
-            // elements: field_decl, method_decl
+            // elements: method_decl, field_decl
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -296,23 +297,23 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 53:6: -> ^( ROOT ( field_decl )* ( method_decl )* )
+            // 54:6: -> ^( ROOT ( field_decl )* ( method_decl )* )
             {
-                // compiler/ast/GramaticaAst.g:53:9: ^( ROOT ( field_decl )* ( method_decl )* )
+                // compiler/ast/GramaticaAst.g:54:9: ^( ROOT ( field_decl )* ( method_decl )* )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
                 (Object)adaptor.create(ROOT, "ROOT")
                 , root_1);
 
-                // compiler/ast/GramaticaAst.g:53:16: ( field_decl )*
+                // compiler/ast/GramaticaAst.g:54:16: ( field_decl )*
                 while ( stream_field_decl.hasNext() ) {
                     adaptor.addChild(root_1, stream_field_decl.nextTree());
 
                 }
                 stream_field_decl.reset();
 
-                // compiler/ast/GramaticaAst.g:53:28: ( method_decl )*
+                // compiler/ast/GramaticaAst.g:54:28: ( method_decl )*
                 while ( stream_method_decl.hasNext() ) {
                     adaptor.addChild(root_1, stream_method_decl.nextTree());
 
@@ -358,7 +359,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "field_decl"
-    // compiler/ast/GramaticaAst.g:55:1: field_decl : type ( id | id LBRAKET int_literal RBRAKET ) ( COMA ( id | id LBRAKET int_literal RBRAKET ) )* SEMICO -> ^( FIELD type ( id ( LBRAKET )? ( int_literal )? ( RBRAKET )? )+ ) ;
+    // compiler/ast/GramaticaAst.g:56:1: field_decl : type ( id | id LBRAKET int_literal RBRAKET ) ( COMA ( id | id LBRAKET int_literal RBRAKET ) )* SEMICO -> ^( FIELD type ( id ( LBRAKET )? ( int_literal )? ( RBRAKET )? )+ ) ;
     public final GramaticaAst.field_decl_return field_decl() throws RecognitionException {
         GramaticaAst.field_decl_return retval = new GramaticaAst.field_decl_return();
         retval.start = input.LT(1);
@@ -401,17 +402,17 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_int_literal=new RewriteRuleSubtreeStream(adaptor,"rule int_literal");
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         try {
-            // compiler/ast/GramaticaAst.g:55:13: ( type ( id | id LBRAKET int_literal RBRAKET ) ( COMA ( id | id LBRAKET int_literal RBRAKET ) )* SEMICO -> ^( FIELD type ( id ( LBRAKET )? ( int_literal )? ( RBRAKET )? )+ ) )
-            // compiler/ast/GramaticaAst.g:55:15: type ( id | id LBRAKET int_literal RBRAKET ) ( COMA ( id | id LBRAKET int_literal RBRAKET ) )* SEMICO
+            // compiler/ast/GramaticaAst.g:56:13: ( type ( id | id LBRAKET int_literal RBRAKET ) ( COMA ( id | id LBRAKET int_literal RBRAKET ) )* SEMICO -> ^( FIELD type ( id ( LBRAKET )? ( int_literal )? ( RBRAKET )? )+ ) )
+            // compiler/ast/GramaticaAst.g:56:15: type ( id | id LBRAKET int_literal RBRAKET ) ( COMA ( id | id LBRAKET int_literal RBRAKET ) )* SEMICO
             {
-            pushFollow(FOLLOW_type_in_field_decl120);
+            pushFollow(FOLLOW_type_in_field_decl124);
             type7=type();
 
             state._fsp--;
 
             stream_type.add(type7.getTree());
 
-            // compiler/ast/GramaticaAst.g:55:20: ( id | id LBRAKET int_literal RBRAKET )
+            // compiler/ast/GramaticaAst.g:56:20: ( id | id LBRAKET int_literal RBRAKET )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -441,9 +442,9 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt3) {
                 case 1 :
-                    // compiler/ast/GramaticaAst.g:55:21: id
+                    // compiler/ast/GramaticaAst.g:56:21: id
                     {
-                    pushFollow(FOLLOW_id_in_field_decl123);
+                    pushFollow(FOLLOW_id_in_field_decl127);
                     id8=id();
 
                     state._fsp--;
@@ -453,27 +454,27 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // compiler/ast/GramaticaAst.g:55:26: id LBRAKET int_literal RBRAKET
+                    // compiler/ast/GramaticaAst.g:56:26: id LBRAKET int_literal RBRAKET
                     {
-                    pushFollow(FOLLOW_id_in_field_decl127);
+                    pushFollow(FOLLOW_id_in_field_decl131);
                     id9=id();
 
                     state._fsp--;
 
                     stream_id.add(id9.getTree());
 
-                    LBRAKET10=(Token)match(input,LBRAKET,FOLLOW_LBRAKET_in_field_decl129);  
+                    LBRAKET10=(Token)match(input,LBRAKET,FOLLOW_LBRAKET_in_field_decl133);  
                     stream_LBRAKET.add(LBRAKET10);
 
 
-                    pushFollow(FOLLOW_int_literal_in_field_decl131);
+                    pushFollow(FOLLOW_int_literal_in_field_decl135);
                     int_literal11=int_literal();
 
                     state._fsp--;
 
                     stream_int_literal.add(int_literal11.getTree());
 
-                    RBRAKET12=(Token)match(input,RBRAKET,FOLLOW_RBRAKET_in_field_decl133);  
+                    RBRAKET12=(Token)match(input,RBRAKET,FOLLOW_RBRAKET_in_field_decl137);  
                     stream_RBRAKET.add(RBRAKET12);
 
 
@@ -483,7 +484,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            // compiler/ast/GramaticaAst.g:55:58: ( COMA ( id | id LBRAKET int_literal RBRAKET ) )*
+            // compiler/ast/GramaticaAst.g:56:58: ( COMA ( id | id LBRAKET int_literal RBRAKET ) )*
             loop5:
             do {
                 int alt5=2;
@@ -496,13 +497,13 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt5) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:55:59: COMA ( id | id LBRAKET int_literal RBRAKET )
+            	    // compiler/ast/GramaticaAst.g:56:59: COMA ( id | id LBRAKET int_literal RBRAKET )
             	    {
-            	    COMA13=(Token)match(input,COMA,FOLLOW_COMA_in_field_decl137);  
+            	    COMA13=(Token)match(input,COMA,FOLLOW_COMA_in_field_decl141);  
             	    stream_COMA.add(COMA13);
 
 
-            	    // compiler/ast/GramaticaAst.g:55:64: ( id | id LBRAKET int_literal RBRAKET )
+            	    // compiler/ast/GramaticaAst.g:56:64: ( id | id LBRAKET int_literal RBRAKET )
             	    int alt4=2;
             	    int LA4_0 = input.LA(1);
 
@@ -532,9 +533,9 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    switch (alt4) {
             	        case 1 :
-            	            // compiler/ast/GramaticaAst.g:55:65: id
+            	            // compiler/ast/GramaticaAst.g:56:65: id
             	            {
-            	            pushFollow(FOLLOW_id_in_field_decl140);
+            	            pushFollow(FOLLOW_id_in_field_decl144);
             	            id14=id();
 
             	            state._fsp--;
@@ -544,27 +545,27 @@ public TreeAdaptor getTreeAdaptor() {
             	            }
             	            break;
             	        case 2 :
-            	            // compiler/ast/GramaticaAst.g:55:70: id LBRAKET int_literal RBRAKET
+            	            // compiler/ast/GramaticaAst.g:56:70: id LBRAKET int_literal RBRAKET
             	            {
-            	            pushFollow(FOLLOW_id_in_field_decl144);
+            	            pushFollow(FOLLOW_id_in_field_decl148);
             	            id15=id();
 
             	            state._fsp--;
 
             	            stream_id.add(id15.getTree());
 
-            	            LBRAKET16=(Token)match(input,LBRAKET,FOLLOW_LBRAKET_in_field_decl146);  
+            	            LBRAKET16=(Token)match(input,LBRAKET,FOLLOW_LBRAKET_in_field_decl150);  
             	            stream_LBRAKET.add(LBRAKET16);
 
 
-            	            pushFollow(FOLLOW_int_literal_in_field_decl148);
+            	            pushFollow(FOLLOW_int_literal_in_field_decl152);
             	            int_literal17=int_literal();
 
             	            state._fsp--;
 
             	            stream_int_literal.add(int_literal17.getTree());
 
-            	            RBRAKET18=(Token)match(input,RBRAKET,FOLLOW_RBRAKET_in_field_decl150);  
+            	            RBRAKET18=(Token)match(input,RBRAKET,FOLLOW_RBRAKET_in_field_decl154);  
             	            stream_RBRAKET.add(RBRAKET18);
 
 
@@ -583,12 +584,12 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            SEMICO19=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_field_decl155);  
+            SEMICO19=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_field_decl159);  
             stream_SEMICO.add(SEMICO19);
 
 
             // AST REWRITE
-            // elements: RBRAKET, int_literal, LBRAKET, id, type
+            // elements: LBRAKET, type, id, int_literal, RBRAKET
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -598,9 +599,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 56:6: -> ^( FIELD type ( id ( LBRAKET )? ( int_literal )? ( RBRAKET )? )+ )
+            // 57:6: -> ^( FIELD type ( id ( LBRAKET )? ( int_literal )? ( RBRAKET )? )+ )
             {
-                // compiler/ast/GramaticaAst.g:56:9: ^( FIELD type ( id ( LBRAKET )? ( int_literal )? ( RBRAKET )? )+ )
+                // compiler/ast/GramaticaAst.g:57:9: ^( FIELD type ( id ( LBRAKET )? ( int_literal )? ( RBRAKET )? )+ )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
@@ -615,7 +616,7 @@ public TreeAdaptor getTreeAdaptor() {
                 while ( stream_id.hasNext() ) {
                     adaptor.addChild(root_1, stream_id.nextTree());
 
-                    // compiler/ast/GramaticaAst.g:56:26: ( LBRAKET )?
+                    // compiler/ast/GramaticaAst.g:57:26: ( LBRAKET )?
                     if ( stream_LBRAKET.hasNext() ) {
                         adaptor.addChild(root_1, 
                         stream_LBRAKET.nextNode()
@@ -624,14 +625,14 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     stream_LBRAKET.reset();
 
-                    // compiler/ast/GramaticaAst.g:56:35: ( int_literal )?
+                    // compiler/ast/GramaticaAst.g:57:35: ( int_literal )?
                     if ( stream_int_literal.hasNext() ) {
                         adaptor.addChild(root_1, stream_int_literal.nextTree());
 
                     }
                     stream_int_literal.reset();
 
-                    // compiler/ast/GramaticaAst.g:56:48: ( RBRAKET )?
+                    // compiler/ast/GramaticaAst.g:57:48: ( RBRAKET )?
                     if ( stream_RBRAKET.hasNext() ) {
                         adaptor.addChild(root_1, 
                         stream_RBRAKET.nextNode()
@@ -682,7 +683,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "method_decl"
-    // compiler/ast/GramaticaAst.g:58:1: method_decl : ( ( ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD VOID id ( type id )* block ) ) | ( ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD type id ( type id )* block ) ) );
+    // compiler/ast/GramaticaAst.g:59:1: method_decl : ( ( ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD VOID id ( type id )* block ) ) | ( ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD type id ( type id )* block ) ) );
     public final GramaticaAst.method_decl_return method_decl() throws RecognitionException {
         GramaticaAst.method_decl_return retval = new GramaticaAst.method_decl_return();
         retval.start = input.LT(1);
@@ -739,7 +740,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_block=new RewriteRuleSubtreeStream(adaptor,"rule block");
         RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
         try {
-            // compiler/ast/GramaticaAst.g:58:14: ( ( ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD VOID id ( type id )* block ) ) | ( ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD type id ( type id )* block ) ) )
+            // compiler/ast/GramaticaAst.g:59:14: ( ( ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD VOID id ( type id )* block ) ) | ( ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD type id ( type id )* block ) ) )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -758,33 +759,33 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt10) {
                 case 1 :
-                    // compiler/ast/GramaticaAst.g:58:16: ( ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD VOID id ( type id )* block ) )
+                    // compiler/ast/GramaticaAst.g:59:16: ( ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD VOID id ( type id )* block ) )
                     {
-                    // compiler/ast/GramaticaAst.g:58:16: ( ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD VOID id ( type id )* block ) )
-                    // compiler/ast/GramaticaAst.g:58:17: ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block
+                    // compiler/ast/GramaticaAst.g:59:16: ( ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD VOID id ( type id )* block ) )
+                    // compiler/ast/GramaticaAst.g:59:17: ( VOID ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block
                     {
-                    // compiler/ast/GramaticaAst.g:58:17: ( VOID )
-                    // compiler/ast/GramaticaAst.g:58:18: VOID
+                    // compiler/ast/GramaticaAst.g:59:17: ( VOID )
+                    // compiler/ast/GramaticaAst.g:59:18: VOID
                     {
-                    VOID20=(Token)match(input,VOID,FOLLOW_VOID_in_method_decl195);  
+                    VOID20=(Token)match(input,VOID,FOLLOW_VOID_in_method_decl199);  
                     stream_VOID.add(VOID20);
 
 
                     }
 
 
-                    pushFollow(FOLLOW_id_in_method_decl198);
+                    pushFollow(FOLLOW_id_in_method_decl202);
                     id21=id();
 
                     state._fsp--;
 
                     stream_id.add(id21.getTree());
 
-                    LPAREN22=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_method_decl200);  
+                    LPAREN22=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_method_decl204);  
                     stream_LPAREN.add(LPAREN22);
 
 
-                    // compiler/ast/GramaticaAst.g:58:34: ( ( type id ) ( COMA type id )* )?
+                    // compiler/ast/GramaticaAst.g:59:34: ( ( type id ) ( COMA type id )* )?
                     int alt7=2;
                     int LA7_0 = input.LA(1);
 
@@ -793,19 +794,19 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     switch (alt7) {
                         case 1 :
-                            // compiler/ast/GramaticaAst.g:58:35: ( type id ) ( COMA type id )*
+                            // compiler/ast/GramaticaAst.g:59:35: ( type id ) ( COMA type id )*
                             {
-                            // compiler/ast/GramaticaAst.g:58:35: ( type id )
-                            // compiler/ast/GramaticaAst.g:58:36: type id
+                            // compiler/ast/GramaticaAst.g:59:35: ( type id )
+                            // compiler/ast/GramaticaAst.g:59:36: type id
                             {
-                            pushFollow(FOLLOW_type_in_method_decl204);
+                            pushFollow(FOLLOW_type_in_method_decl208);
                             type23=type();
 
                             state._fsp--;
 
                             stream_type.add(type23.getTree());
 
-                            pushFollow(FOLLOW_id_in_method_decl206);
+                            pushFollow(FOLLOW_id_in_method_decl210);
                             id24=id();
 
                             state._fsp--;
@@ -815,7 +816,7 @@ public TreeAdaptor getTreeAdaptor() {
                             }
 
 
-                            // compiler/ast/GramaticaAst.g:58:45: ( COMA type id )*
+                            // compiler/ast/GramaticaAst.g:59:45: ( COMA type id )*
                             loop6:
                             do {
                                 int alt6=2;
@@ -828,20 +829,20 @@ public TreeAdaptor getTreeAdaptor() {
 
                                 switch (alt6) {
                             	case 1 :
-                            	    // compiler/ast/GramaticaAst.g:58:46: COMA type id
+                            	    // compiler/ast/GramaticaAst.g:59:46: COMA type id
                             	    {
-                            	    COMA25=(Token)match(input,COMA,FOLLOW_COMA_in_method_decl210);  
+                            	    COMA25=(Token)match(input,COMA,FOLLOW_COMA_in_method_decl214);  
                             	    stream_COMA.add(COMA25);
 
 
-                            	    pushFollow(FOLLOW_type_in_method_decl212);
+                            	    pushFollow(FOLLOW_type_in_method_decl216);
                             	    type26=type();
 
                             	    state._fsp--;
 
                             	    stream_type.add(type26.getTree());
 
-                            	    pushFollow(FOLLOW_id_in_method_decl214);
+                            	    pushFollow(FOLLOW_id_in_method_decl218);
                             	    id27=id();
 
                             	    state._fsp--;
@@ -863,11 +864,11 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    RPAREN28=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_method_decl221);  
+                    RPAREN28=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_method_decl225);  
                     stream_RPAREN.add(RPAREN28);
 
 
-                    pushFollow(FOLLOW_block_in_method_decl223);
+                    pushFollow(FOLLOW_block_in_method_decl227);
                     block29=block();
 
                     state._fsp--;
@@ -875,7 +876,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_block.add(block29.getTree());
 
                     // AST REWRITE
-                    // elements: id, block, VOID, type, id
+                    // elements: block, id, VOID, type, id
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -885,9 +886,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 59:6: -> ^( METHOD VOID id ( type id )* block )
+                    // 60:6: -> ^( METHOD VOID id ( type id )* block )
                     {
-                        // compiler/ast/GramaticaAst.g:59:9: ^( METHOD VOID id ( type id )* block )
+                        // compiler/ast/GramaticaAst.g:60:9: ^( METHOD VOID id ( type id )* block )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -900,15 +901,15 @@ public TreeAdaptor getTreeAdaptor() {
 
                         adaptor.addChild(root_1, stream_id.nextTree());
 
-                        // compiler/ast/GramaticaAst.g:59:27: ( type id )*
-                        while ( stream_id.hasNext()||stream_type.hasNext() ) {
+                        // compiler/ast/GramaticaAst.g:60:27: ( type id )*
+                        while ( stream_type.hasNext()||stream_id.hasNext() ) {
                             adaptor.addChild(root_1, stream_type.nextTree());
 
                             adaptor.addChild(root_1, stream_id.nextTree());
 
                         }
-                        stream_id.reset();
                         stream_type.reset();
+                        stream_id.reset();
 
                         adaptor.addChild(root_1, stream_block.nextTree());
 
@@ -926,15 +927,15 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // compiler/ast/GramaticaAst.g:60:7: ( ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD type id ( type id )* block ) )
+                    // compiler/ast/GramaticaAst.g:61:7: ( ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD type id ( type id )* block ) )
                     {
-                    // compiler/ast/GramaticaAst.g:60:7: ( ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD type id ( type id )* block ) )
-                    // compiler/ast/GramaticaAst.g:60:8: ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block
+                    // compiler/ast/GramaticaAst.g:61:7: ( ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block -> ^( METHOD type id ( type id )* block ) )
+                    // compiler/ast/GramaticaAst.g:61:8: ( type ) id LPAREN ( ( type id ) ( COMA type id )* )? RPAREN block
                     {
-                    // compiler/ast/GramaticaAst.g:60:8: ( type )
-                    // compiler/ast/GramaticaAst.g:60:9: type
+                    // compiler/ast/GramaticaAst.g:61:8: ( type )
+                    // compiler/ast/GramaticaAst.g:61:9: type
                     {
-                    pushFollow(FOLLOW_type_in_method_decl259);
+                    pushFollow(FOLLOW_type_in_method_decl263);
                     type30=type();
 
                     state._fsp--;
@@ -944,18 +945,18 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    pushFollow(FOLLOW_id_in_method_decl262);
+                    pushFollow(FOLLOW_id_in_method_decl266);
                     id31=id();
 
                     state._fsp--;
 
                     stream_id.add(id31.getTree());
 
-                    LPAREN32=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_method_decl264);  
+                    LPAREN32=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_method_decl268);  
                     stream_LPAREN.add(LPAREN32);
 
 
-                    // compiler/ast/GramaticaAst.g:60:25: ( ( type id ) ( COMA type id )* )?
+                    // compiler/ast/GramaticaAst.g:61:25: ( ( type id ) ( COMA type id )* )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -964,19 +965,19 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     switch (alt9) {
                         case 1 :
-                            // compiler/ast/GramaticaAst.g:60:26: ( type id ) ( COMA type id )*
+                            // compiler/ast/GramaticaAst.g:61:26: ( type id ) ( COMA type id )*
                             {
-                            // compiler/ast/GramaticaAst.g:60:26: ( type id )
-                            // compiler/ast/GramaticaAst.g:60:27: type id
+                            // compiler/ast/GramaticaAst.g:61:26: ( type id )
+                            // compiler/ast/GramaticaAst.g:61:27: type id
                             {
-                            pushFollow(FOLLOW_type_in_method_decl268);
+                            pushFollow(FOLLOW_type_in_method_decl272);
                             type33=type();
 
                             state._fsp--;
 
                             stream_type.add(type33.getTree());
 
-                            pushFollow(FOLLOW_id_in_method_decl270);
+                            pushFollow(FOLLOW_id_in_method_decl274);
                             id34=id();
 
                             state._fsp--;
@@ -986,7 +987,7 @@ public TreeAdaptor getTreeAdaptor() {
                             }
 
 
-                            // compiler/ast/GramaticaAst.g:60:36: ( COMA type id )*
+                            // compiler/ast/GramaticaAst.g:61:36: ( COMA type id )*
                             loop8:
                             do {
                                 int alt8=2;
@@ -999,20 +1000,20 @@ public TreeAdaptor getTreeAdaptor() {
 
                                 switch (alt8) {
                             	case 1 :
-                            	    // compiler/ast/GramaticaAst.g:60:37: COMA type id
+                            	    // compiler/ast/GramaticaAst.g:61:37: COMA type id
                             	    {
-                            	    COMA35=(Token)match(input,COMA,FOLLOW_COMA_in_method_decl274);  
+                            	    COMA35=(Token)match(input,COMA,FOLLOW_COMA_in_method_decl278);  
                             	    stream_COMA.add(COMA35);
 
 
-                            	    pushFollow(FOLLOW_type_in_method_decl276);
+                            	    pushFollow(FOLLOW_type_in_method_decl280);
                             	    type36=type();
 
                             	    state._fsp--;
 
                             	    stream_type.add(type36.getTree());
 
-                            	    pushFollow(FOLLOW_id_in_method_decl278);
+                            	    pushFollow(FOLLOW_id_in_method_decl282);
                             	    id37=id();
 
                             	    state._fsp--;
@@ -1034,11 +1035,11 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    RPAREN38=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_method_decl285);  
+                    RPAREN38=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_method_decl289);  
                     stream_RPAREN.add(RPAREN38);
 
 
-                    pushFollow(FOLLOW_block_in_method_decl287);
+                    pushFollow(FOLLOW_block_in_method_decl291);
                     block39=block();
 
                     state._fsp--;
@@ -1046,7 +1047,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_block.add(block39.getTree());
 
                     // AST REWRITE
-                    // elements: block, type, id, id, type
+                    // elements: id, type, id, block, type
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1056,9 +1057,9 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (Object)adaptor.nil();
-                    // 61:6: -> ^( METHOD type id ( type id )* block )
+                    // 62:6: -> ^( METHOD type id ( type id )* block )
                     {
-                        // compiler/ast/GramaticaAst.g:61:9: ^( METHOD type id ( type id )* block )
+                        // compiler/ast/GramaticaAst.g:62:9: ^( METHOD type id ( type id )* block )
                         {
                         Object root_1 = (Object)adaptor.nil();
                         root_1 = (Object)adaptor.becomeRoot(
@@ -1069,7 +1070,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                         adaptor.addChild(root_1, stream_id.nextTree());
 
-                        // compiler/ast/GramaticaAst.g:61:27: ( type id )*
+                        // compiler/ast/GramaticaAst.g:62:27: ( type id )*
                         while ( stream_id.hasNext()||stream_type.hasNext() ) {
                             adaptor.addChild(root_1, stream_type.nextTree());
 
@@ -1125,7 +1126,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "block"
-    // compiler/ast/GramaticaAst.g:63:1: block : LBRACE ( var_decl )* ( statement )* RBRACE -> ^( BLOCK ( var_decl )* ( statement )* ) ;
+    // compiler/ast/GramaticaAst.g:64:1: block : LBRACE ( var_decl )* ( statement )* RBRACE -> ^( BLOCK ( var_decl )* ( statement )* ) ;
     public final GramaticaAst.block_return block() throws RecognitionException {
         GramaticaAst.block_return retval = new GramaticaAst.block_return();
         retval.start = input.LT(1);
@@ -1147,14 +1148,14 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_statement=new RewriteRuleSubtreeStream(adaptor,"rule statement");
         RewriteRuleSubtreeStream stream_var_decl=new RewriteRuleSubtreeStream(adaptor,"rule var_decl");
         try {
-            // compiler/ast/GramaticaAst.g:63:9: ( LBRACE ( var_decl )* ( statement )* RBRACE -> ^( BLOCK ( var_decl )* ( statement )* ) )
-            // compiler/ast/GramaticaAst.g:63:11: LBRACE ( var_decl )* ( statement )* RBRACE
+            // compiler/ast/GramaticaAst.g:64:9: ( LBRACE ( var_decl )* ( statement )* RBRACE -> ^( BLOCK ( var_decl )* ( statement )* ) )
+            // compiler/ast/GramaticaAst.g:64:11: LBRACE ( var_decl )* ( statement )* RBRACE
             {
-            LBRACE40=(Token)match(input,LBRACE,FOLLOW_LBRACE_in_block323);  
+            LBRACE40=(Token)match(input,LBRACE,FOLLOW_LBRACE_in_block327);  
             stream_LBRACE.add(LBRACE40);
 
 
-            // compiler/ast/GramaticaAst.g:63:18: ( var_decl )*
+            // compiler/ast/GramaticaAst.g:64:18: ( var_decl )*
             loop11:
             do {
                 int alt11=2;
@@ -1167,9 +1168,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt11) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:63:18: var_decl
+            	    // compiler/ast/GramaticaAst.g:64:18: var_decl
             	    {
-            	    pushFollow(FOLLOW_var_decl_in_block325);
+            	    pushFollow(FOLLOW_var_decl_in_block329);
             	    var_decl41=var_decl();
 
             	    state._fsp--;
@@ -1185,7 +1186,7 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            // compiler/ast/GramaticaAst.g:63:28: ( statement )*
+            // compiler/ast/GramaticaAst.g:64:28: ( statement )*
             loop12:
             do {
                 int alt12=2;
@@ -1198,9 +1199,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt12) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:63:28: statement
+            	    // compiler/ast/GramaticaAst.g:64:28: statement
             	    {
-            	    pushFollow(FOLLOW_statement_in_block328);
+            	    pushFollow(FOLLOW_statement_in_block332);
             	    statement42=statement();
 
             	    state._fsp--;
@@ -1216,7 +1217,7 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            RBRACE43=(Token)match(input,RBRACE,FOLLOW_RBRACE_in_block331);  
+            RBRACE43=(Token)match(input,RBRACE,FOLLOW_RBRACE_in_block335);  
             stream_RBRACE.add(RBRACE43);
 
 
@@ -1231,23 +1232,23 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (Object)adaptor.nil();
-            // 64:6: -> ^( BLOCK ( var_decl )* ( statement )* )
+            // 65:6: -> ^( BLOCK ( var_decl )* ( statement )* )
             {
-                // compiler/ast/GramaticaAst.g:64:9: ^( BLOCK ( var_decl )* ( statement )* )
+                // compiler/ast/GramaticaAst.g:65:9: ^( BLOCK ( var_decl )* ( statement )* )
                 {
                 Object root_1 = (Object)adaptor.nil();
                 root_1 = (Object)adaptor.becomeRoot(
                 (Object)adaptor.create(BLOCK, "BLOCK")
                 , root_1);
 
-                // compiler/ast/GramaticaAst.g:64:17: ( var_decl )*
+                // compiler/ast/GramaticaAst.g:65:17: ( var_decl )*
                 while ( stream_var_decl.hasNext() ) {
                     adaptor.addChild(root_1, stream_var_decl.nextTree());
 
                 }
                 stream_var_decl.reset();
 
-                // compiler/ast/GramaticaAst.g:64:27: ( statement )*
+                // compiler/ast/GramaticaAst.g:65:27: ( statement )*
                 while ( stream_statement.hasNext() ) {
                     adaptor.addChild(root_1, stream_statement.nextTree());
 
@@ -1293,7 +1294,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "var_decl"
-    // compiler/ast/GramaticaAst.g:66:1: var_decl : type id ( COMA id )* SEMICO -> ^( VARS type id ( COMA id )* ) ;
+    // compiler/ast/GramaticaAst.g:67:1: var_decl : type id ( COMA id )* SEMICO ;
     public final GramaticaAst.var_decl_return var_decl() throws RecognitionException {
         GramaticaAst.var_decl_return retval = new GramaticaAst.var_decl_return();
         retval.start = input.LT(1);
@@ -1312,29 +1313,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object COMA46_tree=null;
         Object SEMICO48_tree=null;
-        RewriteRuleTokenStream stream_SEMICO=new RewriteRuleTokenStream(adaptor,"token SEMICO");
-        RewriteRuleTokenStream stream_COMA=new RewriteRuleTokenStream(adaptor,"token COMA");
-        RewriteRuleSubtreeStream stream_id=new RewriteRuleSubtreeStream(adaptor,"rule id");
-        RewriteRuleSubtreeStream stream_type=new RewriteRuleSubtreeStream(adaptor,"rule type");
+
         try {
-            // compiler/ast/GramaticaAst.g:66:11: ( type id ( COMA id )* SEMICO -> ^( VARS type id ( COMA id )* ) )
-            // compiler/ast/GramaticaAst.g:66:13: type id ( COMA id )* SEMICO
+            // compiler/ast/GramaticaAst.g:67:11: ( type id ( COMA id )* SEMICO )
+            // compiler/ast/GramaticaAst.g:67:13: type id ( COMA id )* SEMICO
             {
-            pushFollow(FOLLOW_type_in_var_decl359);
+            root_0 = (Object)adaptor.nil();
+
+
+            pushFollow(FOLLOW_type_in_var_decl362);
             type44=type();
 
             state._fsp--;
 
-            stream_type.add(type44.getTree());
+            adaptor.addChild(root_0, type44.getTree());
 
-            pushFollow(FOLLOW_id_in_var_decl361);
+            pushFollow(FOLLOW_id_in_var_decl364);
             id45=id();
 
             state._fsp--;
 
-            stream_id.add(id45.getTree());
+            adaptor.addChild(root_0, id45.getTree());
 
-            // compiler/ast/GramaticaAst.g:66:21: ( COMA id )*
+            // compiler/ast/GramaticaAst.g:67:21: ( COMA id )*
             loop13:
             do {
                 int alt13=2;
@@ -1347,18 +1348,21 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt13) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:66:22: COMA id
+            	    // compiler/ast/GramaticaAst.g:67:22: COMA id
             	    {
-            	    COMA46=(Token)match(input,COMA,FOLLOW_COMA_in_var_decl364);  
-            	    stream_COMA.add(COMA46);
+            	    COMA46=(Token)match(input,COMA,FOLLOW_COMA_in_var_decl367); 
+            	    COMA46_tree = 
+            	    (Object)adaptor.create(COMA46)
+            	    ;
+            	    adaptor.addChild(root_0, COMA46_tree);
 
 
-            	    pushFollow(FOLLOW_id_in_var_decl366);
+            	    pushFollow(FOLLOW_id_in_var_decl369);
             	    id47=id();
 
             	    state._fsp--;
 
-            	    stream_id.add(id47.getTree());
+            	    adaptor.addChild(root_0, id47.getTree());
 
             	    }
             	    break;
@@ -1369,53 +1373,12 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            SEMICO48=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_var_decl370);  
-            stream_SEMICO.add(SEMICO48);
+            SEMICO48=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_var_decl373); 
+            SEMICO48_tree = 
+            (Object)adaptor.create(SEMICO48)
+            ;
+            adaptor.addChild(root_0, SEMICO48_tree);
 
-
-            // AST REWRITE
-            // elements: COMA, type, id, id
-            // token labels: 
-            // rule labels: retval
-            // token list labels: 
-            // rule list labels: 
-            // wildcard labels: 
-            retval.tree = root_0;
-            RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
-
-            root_0 = (Object)adaptor.nil();
-            // 67:6: -> ^( VARS type id ( COMA id )* )
-            {
-                // compiler/ast/GramaticaAst.g:67:9: ^( VARS type id ( COMA id )* )
-                {
-                Object root_1 = (Object)adaptor.nil();
-                root_1 = (Object)adaptor.becomeRoot(
-                (Object)adaptor.create(VARS, "VARS")
-                , root_1);
-
-                adaptor.addChild(root_1, stream_type.nextTree());
-
-                adaptor.addChild(root_1, stream_id.nextTree());
-
-                // compiler/ast/GramaticaAst.g:67:24: ( COMA id )*
-                while ( stream_COMA.hasNext()||stream_id.hasNext() ) {
-                    adaptor.addChild(root_1, 
-                    stream_COMA.nextNode()
-                    );
-
-                    adaptor.addChild(root_1, stream_id.nextTree());
-
-                }
-                stream_COMA.reset();
-                stream_id.reset();
-
-                adaptor.addChild(root_0, root_1);
-                }
-
-            }
-
-
-            retval.tree = root_0;
 
             }
 
@@ -1513,7 +1476,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "statement"
-    // compiler/ast/GramaticaAst.g:71:1: statement : ( location assign_op expr SEMICO | method_call SEMICO | IF LPAREN expr RPAREN block ( ELSE block )? | FOR id ASSIGN expr COMA expr block | RETURN ( expr )? SEMICO | BREAK SEMICO | CONTINUE SEMICO | block );
+    // compiler/ast/GramaticaAst.g:71:1: statement : ( location assign_op expr SEMICO -> ^( STATEMENT location assign_op expr ) | method_call SEMICO -> ^( STATEMENT method_call ) | IF LPAREN expr RPAREN block ( ELSE block )? -> ^( STATEMENT IF expr block ( ELSE block )? ) | FOR id ASSIGN expr COMA expr block -> ^( STATEMENT FOR id ASSIGN expr COMA expr block ) | RETURN ( expr )? SEMICO -> ^( STATEMENT RETURN ( expr )? ) | BREAK SEMICO -> ^( STATEMENT BREAK ) | CONTINUE SEMICO -> ^( STATEMENT CONTINUE ) | block );
     public final GramaticaAst.statement_return statement() throws RecognitionException {
         GramaticaAst.statement_return retval = new GramaticaAst.statement_return();
         retval.start = input.LT(1);
@@ -1578,9 +1541,25 @@ public TreeAdaptor getTreeAdaptor() {
         Object SEMICO74_tree=null;
         Object CONTINUE75_tree=null;
         Object SEMICO76_tree=null;
-
+        RewriteRuleTokenStream stream_FOR=new RewriteRuleTokenStream(adaptor,"token FOR");
+        RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
+        RewriteRuleTokenStream stream_SEMICO=new RewriteRuleTokenStream(adaptor,"token SEMICO");
+        RewriteRuleTokenStream stream_CONTINUE=new RewriteRuleTokenStream(adaptor,"token CONTINUE");
+        RewriteRuleTokenStream stream_COMA=new RewriteRuleTokenStream(adaptor,"token COMA");
+        RewriteRuleTokenStream stream_BREAK=new RewriteRuleTokenStream(adaptor,"token BREAK");
+        RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
+        RewriteRuleTokenStream stream_IF=new RewriteRuleTokenStream(adaptor,"token IF");
+        RewriteRuleTokenStream stream_ELSE=new RewriteRuleTokenStream(adaptor,"token ELSE");
+        RewriteRuleTokenStream stream_RETURN=new RewriteRuleTokenStream(adaptor,"token RETURN");
+        RewriteRuleTokenStream stream_ASSIGN=new RewriteRuleTokenStream(adaptor,"token ASSIGN");
+        RewriteRuleSubtreeStream stream_id=new RewriteRuleSubtreeStream(adaptor,"rule id");
+        RewriteRuleSubtreeStream stream_location=new RewriteRuleSubtreeStream(adaptor,"rule location");
+        RewriteRuleSubtreeStream stream_block=new RewriteRuleSubtreeStream(adaptor,"rule block");
+        RewriteRuleSubtreeStream stream_method_call=new RewriteRuleSubtreeStream(adaptor,"rule method_call");
+        RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
+        RewriteRuleSubtreeStream stream_assign_op=new RewriteRuleSubtreeStream(adaptor,"rule assign_op");
         try {
-            // compiler/ast/GramaticaAst.g:71:12: ( location assign_op expr SEMICO | method_call SEMICO | IF LPAREN expr RPAREN block ( ELSE block )? | FOR id ASSIGN expr COMA expr block | RETURN ( expr )? SEMICO | BREAK SEMICO | CONTINUE SEMICO | block )
+            // compiler/ast/GramaticaAst.g:71:12: ( location assign_op expr SEMICO -> ^( STATEMENT location assign_op expr ) | method_call SEMICO -> ^( STATEMENT method_call ) | IF LPAREN expr RPAREN block ( ELSE block )? -> ^( STATEMENT IF expr block ( ELSE block )? ) | FOR id ASSIGN expr COMA expr block -> ^( STATEMENT FOR id ASSIGN expr COMA expr block ) | RETURN ( expr )? SEMICO -> ^( STATEMENT RETURN ( expr )? ) | BREAK SEMICO -> ^( STATEMENT BREAK ) | CONTINUE SEMICO -> ^( STATEMENT CONTINUE ) | block )
             int alt16=8;
             switch ( input.LA(1) ) {
             case INDENTIFIER:
@@ -1649,79 +1628,122 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // compiler/ast/GramaticaAst.g:71:14: location assign_op expr SEMICO
                     {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    pushFollow(FOLLOW_location_in_statement419);
+                    pushFollow(FOLLOW_location_in_statement398);
                     location50=location();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, location50.getTree());
+                    stream_location.add(location50.getTree());
 
-                    pushFollow(FOLLOW_assign_op_in_statement421);
+                    pushFollow(FOLLOW_assign_op_in_statement400);
                     assign_op51=assign_op();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, assign_op51.getTree());
+                    stream_assign_op.add(assign_op51.getTree());
 
-                    pushFollow(FOLLOW_expr_in_statement423);
+                    pushFollow(FOLLOW_expr_in_statement402);
                     expr52=expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr52.getTree());
+                    stream_expr.add(expr52.getTree());
 
-                    SEMICO53=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement425); 
-                    SEMICO53_tree = 
-                    (Object)adaptor.create(SEMICO53)
-                    ;
-                    adaptor.addChild(root_0, SEMICO53_tree);
+                    SEMICO53=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement404);  
+                    stream_SEMICO.add(SEMICO53);
 
+
+                    // AST REWRITE
+                    // elements: expr, location, assign_op
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 71:47: -> ^( STATEMENT location assign_op expr )
+                    {
+                        // compiler/ast/GramaticaAst.g:71:50: ^( STATEMENT location assign_op expr )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(STATEMENT, "STATEMENT")
+                        , root_1);
+
+                        adaptor.addChild(root_1, stream_location.nextTree());
+
+                        adaptor.addChild(root_1, stream_assign_op.nextTree());
+
+                        adaptor.addChild(root_1, stream_expr.nextTree());
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
 
                     }
                     break;
                 case 2 :
                     // compiler/ast/GramaticaAst.g:72:7: method_call SEMICO
                     {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    pushFollow(FOLLOW_method_call_in_statement433);
+                    pushFollow(FOLLOW_method_call_in_statement426);
                     method_call54=method_call();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, method_call54.getTree());
+                    stream_method_call.add(method_call54.getTree());
 
-                    SEMICO55=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement435); 
-                    SEMICO55_tree = 
-                    (Object)adaptor.create(SEMICO55)
-                    ;
-                    adaptor.addChild(root_0, SEMICO55_tree);
+                    SEMICO55=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement428);  
+                    stream_SEMICO.add(SEMICO55);
 
+
+                    // AST REWRITE
+                    // elements: method_call
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 72:32: -> ^( STATEMENT method_call )
+                    {
+                        // compiler/ast/GramaticaAst.g:72:35: ^( STATEMENT method_call )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(STATEMENT, "STATEMENT")
+                        , root_1);
+
+                        adaptor.addChild(root_1, stream_method_call.nextTree());
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
 
                     }
                     break;
                 case 3 :
                     // compiler/ast/GramaticaAst.g:73:7: IF LPAREN expr RPAREN block ( ELSE block )?
                     {
-                    root_0 = (Object)adaptor.nil();
+                    IF56=(Token)match(input,IF,FOLLOW_IF_in_statement450);  
+                    stream_IF.add(IF56);
 
 
-                    IF56=(Token)match(input,IF,FOLLOW_IF_in_statement450); 
-                    IF56_tree = 
-                    (Object)adaptor.create(IF56)
-                    ;
-                    adaptor.addChild(root_0, IF56_tree);
-
-
-                    LPAREN57=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_statement452); 
-                    LPAREN57_tree = 
-                    (Object)adaptor.create(LPAREN57)
-                    ;
-                    adaptor.addChild(root_0, LPAREN57_tree);
+                    LPAREN57=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_statement452);  
+                    stream_LPAREN.add(LPAREN57);
 
 
                     pushFollow(FOLLOW_expr_in_statement454);
@@ -1729,13 +1751,10 @@ public TreeAdaptor getTreeAdaptor() {
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr58.getTree());
+                    stream_expr.add(expr58.getTree());
 
-                    RPAREN59=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_statement456); 
-                    RPAREN59_tree = 
-                    (Object)adaptor.create(RPAREN59)
-                    ;
-                    adaptor.addChild(root_0, RPAREN59_tree);
+                    RPAREN59=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_statement456);  
+                    stream_RPAREN.add(RPAREN59);
 
 
                     pushFollow(FOLLOW_block_in_statement458);
@@ -1743,7 +1762,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, block60.getTree());
+                    stream_block.add(block60.getTree());
 
                     // compiler/ast/GramaticaAst.g:73:35: ( ELSE block )?
                     int alt14=2;
@@ -1756,11 +1775,8 @@ public TreeAdaptor getTreeAdaptor() {
                         case 1 :
                             // compiler/ast/GramaticaAst.g:73:36: ELSE block
                             {
-                            ELSE61=(Token)match(input,ELSE,FOLLOW_ELSE_in_statement461); 
-                            ELSE61_tree = 
-                            (Object)adaptor.create(ELSE61)
-                            ;
-                            adaptor.addChild(root_0, ELSE61_tree);
+                            ELSE61=(Token)match(input,ELSE,FOLLOW_ELSE_in_statement461);  
+                            stream_ELSE.add(ELSE61);
 
 
                             pushFollow(FOLLOW_block_in_statement463);
@@ -1768,7 +1784,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, block62.getTree());
+                            stream_block.add(block62.getTree());
 
                             }
                             break;
@@ -1776,76 +1792,154 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
+                    // AST REWRITE
+                    // elements: IF, block, ELSE, expr, block
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 73:49: -> ^( STATEMENT IF expr block ( ELSE block )? )
+                    {
+                        // compiler/ast/GramaticaAst.g:73:52: ^( STATEMENT IF expr block ( ELSE block )? )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(STATEMENT, "STATEMENT")
+                        , root_1);
+
+                        adaptor.addChild(root_1, 
+                        stream_IF.nextNode()
+                        );
+
+                        adaptor.addChild(root_1, stream_expr.nextTree());
+
+                        adaptor.addChild(root_1, stream_block.nextTree());
+
+                        // compiler/ast/GramaticaAst.g:73:79: ( ELSE block )?
+                        if ( stream_block.hasNext()||stream_ELSE.hasNext() ) {
+                            adaptor.addChild(root_1, 
+                            stream_ELSE.nextNode()
+                            );
+
+                            adaptor.addChild(root_1, stream_block.nextTree());
+
+                        }
+                        stream_block.reset();
+                        stream_ELSE.reset();
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
+
                     }
                     break;
                 case 4 :
                     // compiler/ast/GramaticaAst.g:74:7: FOR id ASSIGN expr COMA expr block
                     {
-                    root_0 = (Object)adaptor.nil();
+                    FOR63=(Token)match(input,FOR,FOLLOW_FOR_in_statement493);  
+                    stream_FOR.add(FOR63);
 
 
-                    FOR63=(Token)match(input,FOR,FOLLOW_FOR_in_statement474); 
-                    FOR63_tree = 
-                    (Object)adaptor.create(FOR63)
-                    ;
-                    adaptor.addChild(root_0, FOR63_tree);
-
-
-                    pushFollow(FOLLOW_id_in_statement476);
+                    pushFollow(FOLLOW_id_in_statement495);
                     id64=id();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, id64.getTree());
+                    stream_id.add(id64.getTree());
 
-                    ASSIGN65=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_statement478); 
-                    ASSIGN65_tree = 
-                    (Object)adaptor.create(ASSIGN65)
-                    ;
-                    adaptor.addChild(root_0, ASSIGN65_tree);
+                    ASSIGN65=(Token)match(input,ASSIGN,FOLLOW_ASSIGN_in_statement497);  
+                    stream_ASSIGN.add(ASSIGN65);
 
 
-                    pushFollow(FOLLOW_expr_in_statement480);
+                    pushFollow(FOLLOW_expr_in_statement499);
                     expr66=expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr66.getTree());
+                    stream_expr.add(expr66.getTree());
 
-                    COMA67=(Token)match(input,COMA,FOLLOW_COMA_in_statement482); 
-                    COMA67_tree = 
-                    (Object)adaptor.create(COMA67)
-                    ;
-                    adaptor.addChild(root_0, COMA67_tree);
+                    COMA67=(Token)match(input,COMA,FOLLOW_COMA_in_statement501);  
+                    stream_COMA.add(COMA67);
 
 
-                    pushFollow(FOLLOW_expr_in_statement484);
+                    pushFollow(FOLLOW_expr_in_statement503);
                     expr68=expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr68.getTree());
+                    stream_expr.add(expr68.getTree());
 
-                    pushFollow(FOLLOW_block_in_statement486);
+                    pushFollow(FOLLOW_block_in_statement505);
                     block69=block();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, block69.getTree());
+                    stream_block.add(block69.getTree());
+
+                    // AST REWRITE
+                    // elements: expr, id, block, ASSIGN, COMA, expr, FOR
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 74:44: -> ^( STATEMENT FOR id ASSIGN expr COMA expr block )
+                    {
+                        // compiler/ast/GramaticaAst.g:74:47: ^( STATEMENT FOR id ASSIGN expr COMA expr block )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(STATEMENT, "STATEMENT")
+                        , root_1);
+
+                        adaptor.addChild(root_1, 
+                        stream_FOR.nextNode()
+                        );
+
+                        adaptor.addChild(root_1, stream_id.nextTree());
+
+                        adaptor.addChild(root_1, 
+                        stream_ASSIGN.nextNode()
+                        );
+
+                        adaptor.addChild(root_1, stream_expr.nextTree());
+
+                        adaptor.addChild(root_1, 
+                        stream_COMA.nextNode()
+                        );
+
+                        adaptor.addChild(root_1, stream_expr.nextTree());
+
+                        adaptor.addChild(root_1, stream_block.nextTree());
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
 
                     }
                     break;
                 case 5 :
                     // compiler/ast/GramaticaAst.g:75:7: RETURN ( expr )? SEMICO
                     {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    RETURN70=(Token)match(input,RETURN,FOLLOW_RETURN_in_statement494); 
-                    RETURN70_tree = 
-                    (Object)adaptor.create(RETURN70)
-                    ;
-                    adaptor.addChild(root_0, RETURN70_tree);
+                    RETURN70=(Token)match(input,RETURN,FOLLOW_RETURN_in_statement535);  
+                    stream_RETURN.add(RETURN70);
 
 
                     // compiler/ast/GramaticaAst.g:75:14: ( expr )?
@@ -1859,12 +1953,12 @@ public TreeAdaptor getTreeAdaptor() {
                         case 1 :
                             // compiler/ast/GramaticaAst.g:75:15: expr
                             {
-                            pushFollow(FOLLOW_expr_in_statement497);
+                            pushFollow(FOLLOW_expr_in_statement538);
                             expr71=expr();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, expr71.getTree());
+                            stream_expr.add(expr71.getTree());
 
                             }
                             break;
@@ -1872,56 +1966,138 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    SEMICO72=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement501); 
-                    SEMICO72_tree = 
-                    (Object)adaptor.create(SEMICO72)
-                    ;
-                    adaptor.addChild(root_0, SEMICO72_tree);
+                    SEMICO72=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement542);  
+                    stream_SEMICO.add(SEMICO72);
 
+
+                    // AST REWRITE
+                    // elements: expr, RETURN
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 75:34: -> ^( STATEMENT RETURN ( expr )? )
+                    {
+                        // compiler/ast/GramaticaAst.g:75:37: ^( STATEMENT RETURN ( expr )? )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(STATEMENT, "STATEMENT")
+                        , root_1);
+
+                        adaptor.addChild(root_1, 
+                        stream_RETURN.nextNode()
+                        );
+
+                        // compiler/ast/GramaticaAst.g:75:56: ( expr )?
+                        if ( stream_expr.hasNext() ) {
+                            adaptor.addChild(root_1, stream_expr.nextTree());
+
+                        }
+                        stream_expr.reset();
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
 
                     }
                     break;
                 case 6 :
                     // compiler/ast/GramaticaAst.g:76:7: BREAK SEMICO
                     {
+                    BREAK73=(Token)match(input,BREAK,FOLLOW_BREAK_in_statement569);  
+                    stream_BREAK.add(BREAK73);
+
+
+                    SEMICO74=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement571);  
+                    stream_SEMICO.add(SEMICO74);
+
+
+                    // AST REWRITE
+                    // elements: BREAK
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
                     root_0 = (Object)adaptor.nil();
+                    // 76:27: -> ^( STATEMENT BREAK )
+                    {
+                        // compiler/ast/GramaticaAst.g:76:30: ^( STATEMENT BREAK )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(STATEMENT, "STATEMENT")
+                        , root_1);
+
+                        adaptor.addChild(root_1, 
+                        stream_BREAK.nextNode()
+                        );
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
 
 
-                    BREAK73=(Token)match(input,BREAK,FOLLOW_BREAK_in_statement509); 
-                    BREAK73_tree = 
-                    (Object)adaptor.create(BREAK73)
-                    ;
-                    adaptor.addChild(root_0, BREAK73_tree);
-
-
-                    SEMICO74=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement511); 
-                    SEMICO74_tree = 
-                    (Object)adaptor.create(SEMICO74)
-                    ;
-                    adaptor.addChild(root_0, SEMICO74_tree);
-
+                    retval.tree = root_0;
 
                     }
                     break;
                 case 7 :
                     // compiler/ast/GramaticaAst.g:77:7: CONTINUE SEMICO
                     {
+                    CONTINUE75=(Token)match(input,CONTINUE,FOLLOW_CONTINUE_in_statement595);  
+                    stream_CONTINUE.add(CONTINUE75);
+
+
+                    SEMICO76=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement597);  
+                    stream_SEMICO.add(SEMICO76);
+
+
+                    // AST REWRITE
+                    // elements: CONTINUE
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
                     root_0 = (Object)adaptor.nil();
+                    // 77:29: -> ^( STATEMENT CONTINUE )
+                    {
+                        // compiler/ast/GramaticaAst.g:77:32: ^( STATEMENT CONTINUE )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(STATEMENT, "STATEMENT")
+                        , root_1);
+
+                        adaptor.addChild(root_1, 
+                        stream_CONTINUE.nextNode()
+                        );
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
 
 
-                    CONTINUE75=(Token)match(input,CONTINUE,FOLLOW_CONTINUE_in_statement519); 
-                    CONTINUE75_tree = 
-                    (Object)adaptor.create(CONTINUE75)
-                    ;
-                    adaptor.addChild(root_0, CONTINUE75_tree);
-
-
-                    SEMICO76=(Token)match(input,SEMICO,FOLLOW_SEMICO_in_statement521); 
-                    SEMICO76_tree = 
-                    (Object)adaptor.create(SEMICO76)
-                    ;
-                    adaptor.addChild(root_0, SEMICO76_tree);
-
+                    retval.tree = root_0;
 
                     }
                     break;
@@ -1931,7 +2107,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_block_in_statement529);
+                    pushFollow(FOLLOW_block_in_statement620);
                     block77=block();
 
                     state._fsp--;
@@ -2095,14 +2271,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_method_name_in_method_call566);
+                    pushFollow(FOLLOW_method_name_in_method_call657);
                     method_name79=method_name();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, method_name79.getTree());
 
-                    LPAREN80=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_method_call568); 
+                    LPAREN80=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_method_call659); 
                     LPAREN80_tree = 
                     (Object)adaptor.create(LPAREN80)
                     ;
@@ -2120,7 +2296,7 @@ public TreeAdaptor getTreeAdaptor() {
                         case 1 :
                             // compiler/ast/GramaticaAst.g:84:36: expr ( COMA expr )*
                             {
-                            pushFollow(FOLLOW_expr_in_method_call571);
+                            pushFollow(FOLLOW_expr_in_method_call662);
                             expr81=expr();
 
                             state._fsp--;
@@ -2142,14 +2318,14 @@ public TreeAdaptor getTreeAdaptor() {
                             	case 1 :
                             	    // compiler/ast/GramaticaAst.g:84:41: COMA expr
                             	    {
-                            	    COMA82=(Token)match(input,COMA,FOLLOW_COMA_in_method_call573); 
+                            	    COMA82=(Token)match(input,COMA,FOLLOW_COMA_in_method_call664); 
                             	    COMA82_tree = 
                             	    (Object)adaptor.create(COMA82)
                             	    ;
                             	    adaptor.addChild(root_0, COMA82_tree);
 
 
-                            	    pushFollow(FOLLOW_expr_in_method_call575);
+                            	    pushFollow(FOLLOW_expr_in_method_call666);
                             	    expr83=expr();
 
                             	    state._fsp--;
@@ -2171,7 +2347,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    RPAREN84=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_method_call581); 
+                    RPAREN84=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_method_call672); 
                     RPAREN84_tree = 
                     (Object)adaptor.create(RPAREN84)
                     ;
@@ -2186,21 +2362,21 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    CALLOUT85=(Token)match(input,CALLOUT,FOLLOW_CALLOUT_in_method_call589); 
+                    CALLOUT85=(Token)match(input,CALLOUT,FOLLOW_CALLOUT_in_method_call680); 
                     CALLOUT85_tree = 
                     (Object)adaptor.create(CALLOUT85)
                     ;
                     adaptor.addChild(root_0, CALLOUT85_tree);
 
 
-                    LPAREN86=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_method_call591); 
+                    LPAREN86=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_method_call682); 
                     LPAREN86_tree = 
                     (Object)adaptor.create(LPAREN86)
                     ;
                     adaptor.addChild(root_0, LPAREN86_tree);
 
 
-                    pushFollow(FOLLOW_string_literal_in_method_call593);
+                    pushFollow(FOLLOW_string_literal_in_method_call684);
                     string_literal87=string_literal();
 
                     state._fsp--;
@@ -2234,14 +2410,14 @@ public TreeAdaptor getTreeAdaptor() {
                             	case 1 :
                             	    // compiler/ast/GramaticaAst.g:85:39: COMA callout_arg
                             	    {
-                            	    COMA88=(Token)match(input,COMA,FOLLOW_COMA_in_method_call597); 
+                            	    COMA88=(Token)match(input,COMA,FOLLOW_COMA_in_method_call688); 
                             	    COMA88_tree = 
                             	    (Object)adaptor.create(COMA88)
                             	    ;
                             	    adaptor.addChild(root_0, COMA88_tree);
 
 
-                            	    pushFollow(FOLLOW_callout_arg_in_method_call599);
+                            	    pushFollow(FOLLOW_callout_arg_in_method_call690);
                             	    callout_arg89=callout_arg();
 
                             	    state._fsp--;
@@ -2267,7 +2443,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    RPAREN90=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_method_call605); 
+                    RPAREN90=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_method_call696); 
                     RPAREN90_tree = 
                     (Object)adaptor.create(RPAREN90)
                     ;
@@ -2326,7 +2502,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_id_in_method_name615);
+            pushFollow(FOLLOW_id_in_method_name706);
             id91=id();
 
             state._fsp--;
@@ -2420,7 +2596,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_id_in_location625);
+                    pushFollow(FOLLOW_id_in_location716);
                     id92=id();
 
                     state._fsp--;
@@ -2435,28 +2611,28 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_id_in_location633);
+                    pushFollow(FOLLOW_id_in_location724);
                     id93=id();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, id93.getTree());
 
-                    LBRAKET94=(Token)match(input,LBRAKET,FOLLOW_LBRAKET_in_location635); 
+                    LBRAKET94=(Token)match(input,LBRAKET,FOLLOW_LBRAKET_in_location726); 
                     LBRAKET94_tree = 
                     (Object)adaptor.create(LBRAKET94)
                     ;
                     adaptor.addChild(root_0, LBRAKET94_tree);
 
 
-                    pushFollow(FOLLOW_expr_in_location637);
+                    pushFollow(FOLLOW_expr_in_location728);
                     expr95=expr();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, expr95.getTree());
 
-                    RBRAKET96=(Token)match(input,RBRAKET,FOLLOW_RBRAKET_in_location639); 
+                    RBRAKET96=(Token)match(input,RBRAKET,FOLLOW_RBRAKET_in_location730); 
                     RBRAKET96_tree = 
                     (Object)adaptor.create(RBRAKET96)
                     ;
@@ -2496,7 +2672,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr"
-    // compiler/ast/GramaticaAst.g:92:1: expr : l= expr_and ( OR r= expr_and )* ;
+    // compiler/ast/GramaticaAst.g:92:1: expr : l= expr_and ( OR ^r= expr_and )* ;
     public final GramaticaAst.expr_return expr() throws RecognitionException {
         GramaticaAst.expr_return retval = new GramaticaAst.expr_return();
         retval.start = input.LT(1);
@@ -2513,20 +2689,20 @@ public TreeAdaptor getTreeAdaptor() {
         Object OR97_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:92:9: (l= expr_and ( OR r= expr_and )* )
-            // compiler/ast/GramaticaAst.g:92:11: l= expr_and ( OR r= expr_and )*
+            // compiler/ast/GramaticaAst.g:92:10: (l= expr_and ( OR ^r= expr_and )* )
+            // compiler/ast/GramaticaAst.g:92:12: l= expr_and ( OR ^r= expr_and )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expr_and_in_expr655);
+            pushFollow(FOLLOW_expr_and_in_expr747);
             l=expr_and();
 
             state._fsp--;
 
             adaptor.addChild(root_0, l.getTree());
 
-            // compiler/ast/GramaticaAst.g:92:24: ( OR r= expr_and )*
+            // compiler/ast/GramaticaAst.g:92:25: ( OR ^r= expr_and )*
             loop23:
             do {
                 int alt23=2;
@@ -2539,16 +2715,16 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt23) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:92:25: OR r= expr_and
+            	    // compiler/ast/GramaticaAst.g:92:26: OR ^r= expr_and
             	    {
-            	    OR97=(Token)match(input,OR,FOLLOW_OR_in_expr658); 
+            	    OR97=(Token)match(input,OR,FOLLOW_OR_in_expr750); 
             	    OR97_tree = 
             	    (Object)adaptor.create(OR97)
             	    ;
-            	    adaptor.addChild(root_0, OR97_tree);
+            	    root_0 = (Object)adaptor.becomeRoot(OR97_tree, root_0);
 
 
-            	    pushFollow(FOLLOW_expr_and_in_expr664);
+            	    pushFollow(FOLLOW_expr_and_in_expr757);
             	    r=expr_and();
 
             	    state._fsp--;
@@ -2595,7 +2771,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr_and"
-    // compiler/ast/GramaticaAst.g:93:1: expr_and : l= expr_eq ( AND r= expr_eq )* ;
+    // compiler/ast/GramaticaAst.g:93:1: expr_and : l= expr_eq ( AND ^r= expr_eq )* ;
     public final GramaticaAst.expr_and_return expr_and() throws RecognitionException {
         GramaticaAst.expr_and_return retval = new GramaticaAst.expr_and_return();
         retval.start = input.LT(1);
@@ -2612,20 +2788,20 @@ public TreeAdaptor getTreeAdaptor() {
         Object AND98_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:93:11: (l= expr_eq ( AND r= expr_eq )* )
-            // compiler/ast/GramaticaAst.g:93:13: l= expr_eq ( AND r= expr_eq )*
+            // compiler/ast/GramaticaAst.g:93:11: (l= expr_eq ( AND ^r= expr_eq )* )
+            // compiler/ast/GramaticaAst.g:93:13: l= expr_eq ( AND ^r= expr_eq )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expr_eq_in_expr_and678);
+            pushFollow(FOLLOW_expr_eq_in_expr_and771);
             l=expr_eq();
 
             state._fsp--;
 
             adaptor.addChild(root_0, l.getTree());
 
-            // compiler/ast/GramaticaAst.g:93:26: ( AND r= expr_eq )*
+            // compiler/ast/GramaticaAst.g:93:26: ( AND ^r= expr_eq )*
             loop24:
             do {
                 int alt24=2;
@@ -2638,16 +2814,16 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt24) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:93:27: AND r= expr_eq
+            	    // compiler/ast/GramaticaAst.g:93:27: AND ^r= expr_eq
             	    {
-            	    AND98=(Token)match(input,AND,FOLLOW_AND_in_expr_and682); 
+            	    AND98=(Token)match(input,AND,FOLLOW_AND_in_expr_and775); 
             	    AND98_tree = 
             	    (Object)adaptor.create(AND98)
             	    ;
-            	    adaptor.addChild(root_0, AND98_tree);
+            	    root_0 = (Object)adaptor.becomeRoot(AND98_tree, root_0);
 
 
-            	    pushFollow(FOLLOW_expr_eq_in_expr_and688);
+            	    pushFollow(FOLLOW_expr_eq_in_expr_and782);
             	    r=expr_eq();
 
             	    state._fsp--;
@@ -2694,7 +2870,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr_eq"
-    // compiler/ast/GramaticaAst.g:94:1: expr_eq : l= expr_rel ( eq_op r= expr_rel )* ;
+    // compiler/ast/GramaticaAst.g:95:1: expr_eq : l= expr_rel ( EQUAL ^r= expr_rel | NEQUAL ^r= expr_rel )* ;
     public final GramaticaAst.expr_eq_return expr_eq() throws RecognitionException {
         GramaticaAst.expr_eq_return retval = new GramaticaAst.expr_eq_return();
         retval.start = input.LT(1);
@@ -2702,51 +2878,75 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
+        Token EQUAL99=null;
+        Token NEQUAL100=null;
         GramaticaAst.expr_rel_return l =null;
 
         GramaticaAst.expr_rel_return r =null;
 
-        GramaticaAst.eq_op_return eq_op99 =null;
 
-
+        Object EQUAL99_tree=null;
+        Object NEQUAL100_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:94:11: (l= expr_rel ( eq_op r= expr_rel )* )
-            // compiler/ast/GramaticaAst.g:94:13: l= expr_rel ( eq_op r= expr_rel )*
+            // compiler/ast/GramaticaAst.g:95:11: (l= expr_rel ( EQUAL ^r= expr_rel | NEQUAL ^r= expr_rel )* )
+            // compiler/ast/GramaticaAst.g:95:13: l= expr_rel ( EQUAL ^r= expr_rel | NEQUAL ^r= expr_rel )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expr_rel_in_expr_eq703);
+            pushFollow(FOLLOW_expr_rel_in_expr_eq798);
             l=expr_rel();
 
             state._fsp--;
 
             adaptor.addChild(root_0, l.getTree());
 
-            // compiler/ast/GramaticaAst.g:94:27: ( eq_op r= expr_rel )*
+            // compiler/ast/GramaticaAst.g:95:27: ( EQUAL ^r= expr_rel | NEQUAL ^r= expr_rel )*
             loop25:
             do {
-                int alt25=2;
+                int alt25=3;
                 int LA25_0 = input.LA(1);
 
-                if ( (LA25_0==EQUAL||LA25_0==NEQUAL) ) {
+                if ( (LA25_0==EQUAL) ) {
                     alt25=1;
+                }
+                else if ( (LA25_0==NEQUAL) ) {
+                    alt25=2;
                 }
 
 
                 switch (alt25) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:94:28: eq_op r= expr_rel
+            	    // compiler/ast/GramaticaAst.g:95:28: EQUAL ^r= expr_rel
             	    {
-            	    pushFollow(FOLLOW_eq_op_in_expr_eq707);
-            	    eq_op99=eq_op();
+            	    EQUAL99=(Token)match(input,EQUAL,FOLLOW_EQUAL_in_expr_eq802); 
+            	    EQUAL99_tree = 
+            	    (Object)adaptor.create(EQUAL99)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(EQUAL99_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_rel_in_expr_eq809);
+            	    r=expr_rel();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, eq_op99.getTree());
+            	    adaptor.addChild(root_0, r.getTree());
 
-            	    pushFollow(FOLLOW_expr_rel_in_expr_eq713);
+            	    }
+            	    break;
+            	case 2 :
+            	    // compiler/ast/GramaticaAst.g:96:11: NEQUAL ^r= expr_rel
+            	    {
+            	    NEQUAL100=(Token)match(input,NEQUAL,FOLLOW_NEQUAL_in_expr_eq822); 
+            	    NEQUAL100_tree = 
+            	    (Object)adaptor.create(NEQUAL100)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(NEQUAL100_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_rel_in_expr_eq829);
             	    r=expr_rel();
 
             	    state._fsp--;
@@ -2793,7 +2993,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr_rel"
-    // compiler/ast/GramaticaAst.g:95:1: expr_rel : l= expr_add ( rel_op r= expr_add )* ;
+    // compiler/ast/GramaticaAst.g:98:1: expr_rel : l= expr_add ( LESSTHAN ^r= expr_add | GREATHAN ^r= expr_add | LTOEQ ^r= expr_add | GTOEQ ^r= expr_add )* ;
     public final GramaticaAst.expr_rel_return expr_rel() throws RecognitionException {
         GramaticaAst.expr_rel_return retval = new GramaticaAst.expr_rel_return();
         retval.start = input.LT(1);
@@ -2801,51 +3001,131 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
+        Token LESSTHAN101=null;
+        Token GREATHAN102=null;
+        Token LTOEQ103=null;
+        Token GTOEQ104=null;
         GramaticaAst.expr_add_return l =null;
 
         GramaticaAst.expr_add_return r =null;
 
-        GramaticaAst.rel_op_return rel_op100 =null;
 
-
+        Object LESSTHAN101_tree=null;
+        Object GREATHAN102_tree=null;
+        Object LTOEQ103_tree=null;
+        Object GTOEQ104_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:95:11: (l= expr_add ( rel_op r= expr_add )* )
-            // compiler/ast/GramaticaAst.g:95:13: l= expr_add ( rel_op r= expr_add )*
+            // compiler/ast/GramaticaAst.g:98:11: (l= expr_add ( LESSTHAN ^r= expr_add | GREATHAN ^r= expr_add | LTOEQ ^r= expr_add | GTOEQ ^r= expr_add )* )
+            // compiler/ast/GramaticaAst.g:98:13: l= expr_add ( LESSTHAN ^r= expr_add | GREATHAN ^r= expr_add | LTOEQ ^r= expr_add | GTOEQ ^r= expr_add )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expr_add_in_expr_rel727);
+            pushFollow(FOLLOW_expr_add_in_expr_rel844);
             l=expr_add();
 
             state._fsp--;
 
             adaptor.addChild(root_0, l.getTree());
 
-            // compiler/ast/GramaticaAst.g:95:27: ( rel_op r= expr_add )*
+            // compiler/ast/GramaticaAst.g:98:27: ( LESSTHAN ^r= expr_add | GREATHAN ^r= expr_add | LTOEQ ^r= expr_add | GTOEQ ^r= expr_add )*
             loop26:
             do {
-                int alt26=2;
-                int LA26_0 = input.LA(1);
-
-                if ( ((LA26_0 >= GREATHAN && LA26_0 <= GTOEQ)||LA26_0==LESSTHAN||LA26_0==LTOEQ) ) {
+                int alt26=5;
+                switch ( input.LA(1) ) {
+                case LESSTHAN:
+                    {
                     alt26=1;
-                }
+                    }
+                    break;
+                case GREATHAN:
+                    {
+                    alt26=2;
+                    }
+                    break;
+                case LTOEQ:
+                    {
+                    alt26=3;
+                    }
+                    break;
+                case GTOEQ:
+                    {
+                    alt26=4;
+                    }
+                    break;
 
+                }
 
                 switch (alt26) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:95:28: rel_op r= expr_add
+            	    // compiler/ast/GramaticaAst.g:98:28: LESSTHAN ^r= expr_add
             	    {
-            	    pushFollow(FOLLOW_rel_op_in_expr_rel731);
-            	    rel_op100=rel_op();
+            	    LESSTHAN101=(Token)match(input,LESSTHAN,FOLLOW_LESSTHAN_in_expr_rel848); 
+            	    LESSTHAN101_tree = 
+            	    (Object)adaptor.create(LESSTHAN101)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(LESSTHAN101_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_add_in_expr_rel855);
+            	    r=expr_add();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, rel_op100.getTree());
+            	    adaptor.addChild(root_0, r.getTree());
 
-            	    pushFollow(FOLLOW_expr_add_in_expr_rel737);
+            	    }
+            	    break;
+            	case 2 :
+            	    // compiler/ast/GramaticaAst.g:99:11: GREATHAN ^r= expr_add
+            	    {
+            	    GREATHAN102=(Token)match(input,GREATHAN,FOLLOW_GREATHAN_in_expr_rel868); 
+            	    GREATHAN102_tree = 
+            	    (Object)adaptor.create(GREATHAN102)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(GREATHAN102_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_add_in_expr_rel875);
+            	    r=expr_add();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, r.getTree());
+
+            	    }
+            	    break;
+            	case 3 :
+            	    // compiler/ast/GramaticaAst.g:100:11: LTOEQ ^r= expr_add
+            	    {
+            	    LTOEQ103=(Token)match(input,LTOEQ,FOLLOW_LTOEQ_in_expr_rel888); 
+            	    LTOEQ103_tree = 
+            	    (Object)adaptor.create(LTOEQ103)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(LTOEQ103_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_add_in_expr_rel895);
+            	    r=expr_add();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, r.getTree());
+
+            	    }
+            	    break;
+            	case 4 :
+            	    // compiler/ast/GramaticaAst.g:101:11: GTOEQ ^r= expr_add
+            	    {
+            	    GTOEQ104=(Token)match(input,GTOEQ,FOLLOW_GTOEQ_in_expr_rel908); 
+            	    GTOEQ104_tree = 
+            	    (Object)adaptor.create(GTOEQ104)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(GTOEQ104_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_add_in_expr_rel915);
             	    r=expr_add();
 
             	    state._fsp--;
@@ -2892,7 +3172,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr_add"
-    // compiler/ast/GramaticaAst.g:96:1: expr_add : l= expr_arith ( sumsub_op r= expr_arith )* ;
+    // compiler/ast/GramaticaAst.g:103:1: expr_add : l= expr_arith ( ADD ^r= expr_arith | MINUS ^r= expr_arith )* ;
     public final GramaticaAst.expr_add_return expr_add() throws RecognitionException {
         GramaticaAst.expr_add_return retval = new GramaticaAst.expr_add_return();
         retval.start = input.LT(1);
@@ -2900,51 +3180,75 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
+        Token ADD105=null;
+        Token MINUS106=null;
         GramaticaAst.expr_arith_return l =null;
 
         GramaticaAst.expr_arith_return r =null;
 
-        GramaticaAst.sumsub_op_return sumsub_op101 =null;
 
-
+        Object ADD105_tree=null;
+        Object MINUS106_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:96:11: (l= expr_arith ( sumsub_op r= expr_arith )* )
-            // compiler/ast/GramaticaAst.g:96:13: l= expr_arith ( sumsub_op r= expr_arith )*
+            // compiler/ast/GramaticaAst.g:103:11: (l= expr_arith ( ADD ^r= expr_arith | MINUS ^r= expr_arith )* )
+            // compiler/ast/GramaticaAst.g:103:13: l= expr_arith ( ADD ^r= expr_arith | MINUS ^r= expr_arith )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expr_arith_in_expr_add751);
+            pushFollow(FOLLOW_expr_arith_in_expr_add930);
             l=expr_arith();
 
             state._fsp--;
 
             adaptor.addChild(root_0, l.getTree());
 
-            // compiler/ast/GramaticaAst.g:96:29: ( sumsub_op r= expr_arith )*
+            // compiler/ast/GramaticaAst.g:103:29: ( ADD ^r= expr_arith | MINUS ^r= expr_arith )*
             loop27:
             do {
-                int alt27=2;
+                int alt27=3;
                 int LA27_0 = input.LA(1);
 
-                if ( (LA27_0==ADD||LA27_0==MINUS) ) {
+                if ( (LA27_0==ADD) ) {
                     alt27=1;
+                }
+                else if ( (LA27_0==MINUS) ) {
+                    alt27=2;
                 }
 
 
                 switch (alt27) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:96:30: sumsub_op r= expr_arith
+            	    // compiler/ast/GramaticaAst.g:103:30: ADD ^r= expr_arith
             	    {
-            	    pushFollow(FOLLOW_sumsub_op_in_expr_add755);
-            	    sumsub_op101=sumsub_op();
+            	    ADD105=(Token)match(input,ADD,FOLLOW_ADD_in_expr_add934); 
+            	    ADD105_tree = 
+            	    (Object)adaptor.create(ADD105)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(ADD105_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_arith_in_expr_add941);
+            	    r=expr_arith();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, sumsub_op101.getTree());
+            	    adaptor.addChild(root_0, r.getTree());
 
-            	    pushFollow(FOLLOW_expr_arith_in_expr_add761);
+            	    }
+            	    break;
+            	case 2 :
+            	    // compiler/ast/GramaticaAst.g:104:11: MINUS ^r= expr_arith
+            	    {
+            	    MINUS106=(Token)match(input,MINUS,FOLLOW_MINUS_in_expr_add954); 
+            	    MINUS106_tree = 
+            	    (Object)adaptor.create(MINUS106)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(MINUS106_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_arith_in_expr_add961);
             	    r=expr_arith();
 
             	    state._fsp--;
@@ -2991,7 +3295,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr_arith"
-    // compiler/ast/GramaticaAst.g:97:1: expr_arith : l= expr_factor ( arith_op r= expr_factor )* ;
+    // compiler/ast/GramaticaAst.g:106:1: expr_arith : l= expr_minus ( MULT ^r= expr_minus | DIV ^r= expr_minus | MOD ^r= expr_minus )* ;
     public final GramaticaAst.expr_arith_return expr_arith() throws RecognitionException {
         GramaticaAst.expr_arith_return retval = new GramaticaAst.expr_arith_return();
         retval.start = input.LT(1);
@@ -2999,52 +3303,106 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        GramaticaAst.expr_factor_return l =null;
+        Token MULT107=null;
+        Token DIV108=null;
+        Token MOD109=null;
+        GramaticaAst.expr_minus_return l =null;
 
-        GramaticaAst.expr_factor_return r =null;
-
-        GramaticaAst.arith_op_return arith_op102 =null;
+        GramaticaAst.expr_minus_return r =null;
 
 
+        Object MULT107_tree=null;
+        Object DIV108_tree=null;
+        Object MOD109_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:97:13: (l= expr_factor ( arith_op r= expr_factor )* )
-            // compiler/ast/GramaticaAst.g:97:15: l= expr_factor ( arith_op r= expr_factor )*
+            // compiler/ast/GramaticaAst.g:106:13: (l= expr_minus ( MULT ^r= expr_minus | DIV ^r= expr_minus | MOD ^r= expr_minus )* )
+            // compiler/ast/GramaticaAst.g:106:15: l= expr_minus ( MULT ^r= expr_minus | DIV ^r= expr_minus | MOD ^r= expr_minus )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expr_factor_in_expr_arith775);
-            l=expr_factor();
+            pushFollow(FOLLOW_expr_minus_in_expr_arith976);
+            l=expr_minus();
 
             state._fsp--;
 
             adaptor.addChild(root_0, l.getTree());
 
-            // compiler/ast/GramaticaAst.g:97:32: ( arith_op r= expr_factor )*
+            // compiler/ast/GramaticaAst.g:106:31: ( MULT ^r= expr_minus | DIV ^r= expr_minus | MOD ^r= expr_minus )*
             loop28:
             do {
-                int alt28=2;
-                int LA28_0 = input.LA(1);
-
-                if ( (LA28_0==DIV||(LA28_0 >= MOD && LA28_0 <= MULT)) ) {
+                int alt28=4;
+                switch ( input.LA(1) ) {
+                case MULT:
+                    {
                     alt28=1;
-                }
+                    }
+                    break;
+                case DIV:
+                    {
+                    alt28=2;
+                    }
+                    break;
+                case MOD:
+                    {
+                    alt28=3;
+                    }
+                    break;
 
+                }
 
                 switch (alt28) {
             	case 1 :
-            	    // compiler/ast/GramaticaAst.g:97:33: arith_op r= expr_factor
+            	    // compiler/ast/GramaticaAst.g:106:32: MULT ^r= expr_minus
             	    {
-            	    pushFollow(FOLLOW_arith_op_in_expr_arith779);
-            	    arith_op102=arith_op();
+            	    MULT107=(Token)match(input,MULT,FOLLOW_MULT_in_expr_arith980); 
+            	    MULT107_tree = 
+            	    (Object)adaptor.create(MULT107)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(MULT107_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_minus_in_expr_arith987);
+            	    r=expr_minus();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, arith_op102.getTree());
+            	    adaptor.addChild(root_0, r.getTree());
 
-            	    pushFollow(FOLLOW_expr_factor_in_expr_arith785);
-            	    r=expr_factor();
+            	    }
+            	    break;
+            	case 2 :
+            	    // compiler/ast/GramaticaAst.g:107:11: DIV ^r= expr_minus
+            	    {
+            	    DIV108=(Token)match(input,DIV,FOLLOW_DIV_in_expr_arith1000); 
+            	    DIV108_tree = 
+            	    (Object)adaptor.create(DIV108)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(DIV108_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_minus_in_expr_arith1007);
+            	    r=expr_minus();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, r.getTree());
+
+            	    }
+            	    break;
+            	case 3 :
+            	    // compiler/ast/GramaticaAst.g:108:11: MOD ^r= expr_minus
+            	    {
+            	    MOD109=(Token)match(input,MOD,FOLLOW_MOD_in_expr_arith1019); 
+            	    MOD109_tree = 
+            	    (Object)adaptor.create(MOD109)
+            	    ;
+            	    root_0 = (Object)adaptor.becomeRoot(MOD109_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_expr_minus_in_expr_arith1026);
+            	    r=expr_minus();
 
             	    state._fsp--;
 
@@ -3083,260 +3441,87 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "expr_arith"
 
 
-    public static class expr_factor_return extends ParserRuleReturnScope {
+    public static class expr_minus_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
     };
 
 
-    // $ANTLR start "expr_factor"
-    // compiler/ast/GramaticaAst.g:99:1: expr_factor : ( location | method_call | int_literal | char_literal | bool_literal | MINUS expr | NOT expr | LPAREN expr RPAREN );
-    public final GramaticaAst.expr_factor_return expr_factor() throws RecognitionException {
-        GramaticaAst.expr_factor_return retval = new GramaticaAst.expr_factor_return();
+    // $ANTLR start "expr_minus"
+    // compiler/ast/GramaticaAst.g:109:1: expr_minus : (l= expr_not | ( MINUS ^r= expr_not ) );
+    public final GramaticaAst.expr_minus_return expr_minus() throws RecognitionException {
+        GramaticaAst.expr_minus_return retval = new GramaticaAst.expr_minus_return();
         retval.start = input.LT(1);
 
 
         Object root_0 = null;
 
-        Token MINUS108=null;
-        Token NOT110=null;
-        Token LPAREN112=null;
-        Token RPAREN114=null;
-        GramaticaAst.location_return location103 =null;
+        Token MINUS110=null;
+        GramaticaAst.expr_not_return l =null;
 
-        GramaticaAst.method_call_return method_call104 =null;
-
-        GramaticaAst.int_literal_return int_literal105 =null;
-
-        GramaticaAst.char_literal_return char_literal106 =null;
-
-        GramaticaAst.bool_literal_return bool_literal107 =null;
-
-        GramaticaAst.expr_return expr109 =null;
-
-        GramaticaAst.expr_return expr111 =null;
-
-        GramaticaAst.expr_return expr113 =null;
+        GramaticaAst.expr_not_return r =null;
 
 
-        Object MINUS108_tree=null;
-        Object NOT110_tree=null;
-        Object LPAREN112_tree=null;
-        Object RPAREN114_tree=null;
+        Object MINUS110_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:99:14: ( location | method_call | int_literal | char_literal | bool_literal | MINUS expr | NOT expr | LPAREN expr RPAREN )
-            int alt29=8;
-            switch ( input.LA(1) ) {
-            case INDENTIFIER:
-                {
-                int LA29_1 = input.LA(2);
+            // compiler/ast/GramaticaAst.g:109:13: (l= expr_not | ( MINUS ^r= expr_not ) )
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-                if ( (LA29_1==ADD||LA29_1==AND||LA29_1==COMA||LA29_1==DIV||LA29_1==EQUAL||(LA29_1 >= GREATHAN && LA29_1 <= GTOEQ)||(LA29_1 >= LBRACE && LA29_1 <= LESSTHAN)||(LA29_1 >= LTOEQ && LA29_1 <= MINUS)||(LA29_1 >= MOD && LA29_1 <= NEQUAL)||LA29_1==OR||LA29_1==RBRAKET||(LA29_1 >= RPAREN && LA29_1 <= SEMICO)) ) {
-                    alt29=1;
-                }
-                else if ( (LA29_1==LPAREN) ) {
-                    alt29=2;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 29, 1, input);
-
-                    throw nvae;
-
-                }
-                }
-                break;
-            case CALLOUT:
-                {
+            if ( (LA29_0==CALLOUT||LA29_0==CHR||LA29_0==DIGIT||LA29_0==FALSE||LA29_0==HEX||LA29_0==INDENTIFIER||LA29_0==LPAREN||LA29_0==NOT||LA29_0==TRUE) ) {
+                alt29=1;
+            }
+            else if ( (LA29_0==MINUS) ) {
                 alt29=2;
-                }
-                break;
-            case DIGIT:
-            case HEX:
-                {
-                alt29=3;
-                }
-                break;
-            case CHR:
-                {
-                alt29=4;
-                }
-                break;
-            case FALSE:
-            case TRUE:
-                {
-                alt29=5;
-                }
-                break;
-            case MINUS:
-                {
-                alt29=6;
-                }
-                break;
-            case NOT:
-                {
-                alt29=7;
-                }
-                break;
-            case LPAREN:
-                {
-                alt29=8;
-                }
-                break;
-            default:
+            }
+            else {
                 NoViableAltException nvae =
                     new NoViableAltException("", 29, 0, input);
 
                 throw nvae;
 
             }
-
             switch (alt29) {
                 case 1 :
-                    // compiler/ast/GramaticaAst.g:99:16: location
+                    // compiler/ast/GramaticaAst.g:109:15: l= expr_not
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_location_in_expr_factor796);
-                    location103=location();
+                    pushFollow(FOLLOW_expr_not_in_expr_minus1038);
+                    l=expr_not();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, location103.getTree());
+                    adaptor.addChild(root_0, l.getTree());
 
                     }
                     break;
                 case 2 :
-                    // compiler/ast/GramaticaAst.g:100:7: method_call
+                    // compiler/ast/GramaticaAst.g:110:7: ( MINUS ^r= expr_not )
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_method_call_in_expr_factor808);
-                    method_call104=method_call();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, method_call104.getTree());
-
-                    }
-                    break;
-                case 3 :
-                    // compiler/ast/GramaticaAst.g:101:7: int_literal
+                    // compiler/ast/GramaticaAst.g:110:7: ( MINUS ^r= expr_not )
+                    // compiler/ast/GramaticaAst.g:110:8: MINUS ^r= expr_not
                     {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    pushFollow(FOLLOW_int_literal_in_expr_factor819);
-                    int_literal105=int_literal();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, int_literal105.getTree());
-
-                    }
-                    break;
-                case 4 :
-                    // compiler/ast/GramaticaAst.g:102:7: char_literal
-                    {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    pushFollow(FOLLOW_char_literal_in_expr_factor829);
-                    char_literal106=char_literal();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, char_literal106.getTree());
-
-                    }
-                    break;
-                case 5 :
-                    // compiler/ast/GramaticaAst.g:103:7: bool_literal
-                    {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    pushFollow(FOLLOW_bool_literal_in_expr_factor840);
-                    bool_literal107=bool_literal();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, bool_literal107.getTree());
-
-                    }
-                    break;
-                case 6 :
-                    // compiler/ast/GramaticaAst.g:104:7: MINUS expr
-                    {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    MINUS108=(Token)match(input,MINUS,FOLLOW_MINUS_in_expr_factor851); 
-                    MINUS108_tree = 
-                    (Object)adaptor.create(MINUS108)
+                    MINUS110=(Token)match(input,MINUS,FOLLOW_MINUS_in_expr_minus1048); 
+                    MINUS110_tree = 
+                    (Object)adaptor.create(MINUS110)
                     ;
-                    adaptor.addChild(root_0, MINUS108_tree);
+                    root_0 = (Object)adaptor.becomeRoot(MINUS110_tree, root_0);
 
 
-                    pushFollow(FOLLOW_expr_in_expr_factor853);
-                    expr109=expr();
+                    pushFollow(FOLLOW_expr_not_in_expr_minus1053);
+                    r=expr_not();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr109.getTree());
+                    adaptor.addChild(root_0, r.getTree());
 
                     }
-                    break;
-                case 7 :
-                    // compiler/ast/GramaticaAst.g:105:7: NOT expr
-                    {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    NOT110=(Token)match(input,NOT,FOLLOW_NOT_in_expr_factor864); 
-                    NOT110_tree = 
-                    (Object)adaptor.create(NOT110)
-                    ;
-                    adaptor.addChild(root_0, NOT110_tree);
-
-
-                    pushFollow(FOLLOW_expr_in_expr_factor866);
-                    expr111=expr();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, expr111.getTree());
-
-                    }
-                    break;
-                case 8 :
-                    // compiler/ast/GramaticaAst.g:106:7: LPAREN expr RPAREN
-                    {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    LPAREN112=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_expr_factor878); 
-                    LPAREN112_tree = 
-                    (Object)adaptor.create(LPAREN112)
-                    ;
-                    adaptor.addChild(root_0, LPAREN112_tree);
-
-
-                    pushFollow(FOLLOW_expr_in_expr_factor880);
-                    expr113=expr();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, expr113.getTree());
-
-                    RPAREN114=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_expr_factor882); 
-                    RPAREN114_tree = 
-                    (Object)adaptor.create(RPAREN114)
-                    ;
-                    adaptor.addChild(root_0, RPAREN114_tree);
 
 
                     }
@@ -3362,39 +3547,41 @@ public TreeAdaptor getTreeAdaptor() {
         }
         return retval;
     }
-    // $ANTLR end "expr_factor"
+    // $ANTLR end "expr_minus"
 
 
-    public static class callout_arg_return extends ParserRuleReturnScope {
+    public static class expr_not_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
     };
 
 
-    // $ANTLR start "callout_arg"
-    // compiler/ast/GramaticaAst.g:108:1: callout_arg : ( expr | string_literal );
-    public final GramaticaAst.callout_arg_return callout_arg() throws RecognitionException {
-        GramaticaAst.callout_arg_return retval = new GramaticaAst.callout_arg_return();
+    // $ANTLR start "expr_not"
+    // compiler/ast/GramaticaAst.g:111:1: expr_not : (l= factorExpr | ( NOT ^r= factorExpr ) );
+    public final GramaticaAst.expr_not_return expr_not() throws RecognitionException {
+        GramaticaAst.expr_not_return retval = new GramaticaAst.expr_not_return();
         retval.start = input.LT(1);
 
 
         Object root_0 = null;
 
-        GramaticaAst.expr_return expr115 =null;
+        Token NOT111=null;
+        GramaticaAst.factorExpr_return l =null;
 
-        GramaticaAst.string_literal_return string_literal116 =null;
+        GramaticaAst.factorExpr_return r =null;
 
 
+        Object NOT111_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:108:14: ( expr | string_literal )
+            // compiler/ast/GramaticaAst.g:111:11: (l= factorExpr | ( NOT ^r= factorExpr ) )
             int alt30=2;
             int LA30_0 = input.LA(1);
 
-            if ( (LA30_0==CALLOUT||LA30_0==CHR||LA30_0==DIGIT||LA30_0==FALSE||LA30_0==HEX||LA30_0==INDENTIFIER||LA30_0==LPAREN||LA30_0==MINUS||LA30_0==NOT||LA30_0==TRUE) ) {
+            if ( (LA30_0==CALLOUT||LA30_0==CHR||LA30_0==DIGIT||LA30_0==FALSE||LA30_0==HEX||LA30_0==INDENTIFIER||LA30_0==LPAREN||LA30_0==TRUE) ) {
                 alt30=1;
             }
-            else if ( (LA30_0==STR) ) {
+            else if ( (LA30_0==NOT) ) {
                 alt30=2;
             }
             else {
@@ -3406,32 +3593,470 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt30) {
                 case 1 :
-                    // compiler/ast/GramaticaAst.g:108:16: expr
+                    // compiler/ast/GramaticaAst.g:111:13: l= factorExpr
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_expr_in_callout_arg892);
-                    expr115=expr();
+                    pushFollow(FOLLOW_factorExpr_in_expr_not1064);
+                    l=factorExpr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expr115.getTree());
+                    adaptor.addChild(root_0, l.getTree());
 
                     }
                     break;
                 case 2 :
-                    // compiler/ast/GramaticaAst.g:108:23: string_literal
+                    // compiler/ast/GramaticaAst.g:112:7: ( NOT ^r= factorExpr )
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_string_literal_in_callout_arg896);
-                    string_literal116=string_literal();
+                    // compiler/ast/GramaticaAst.g:112:7: ( NOT ^r= factorExpr )
+                    // compiler/ast/GramaticaAst.g:112:8: NOT ^r= factorExpr
+                    {
+                    NOT111=(Token)match(input,NOT,FOLLOW_NOT_in_expr_not1073); 
+                    NOT111_tree = 
+                    (Object)adaptor.create(NOT111)
+                    ;
+                    root_0 = (Object)adaptor.becomeRoot(NOT111_tree, root_0);
+
+
+                    pushFollow(FOLLOW_factorExpr_in_expr_not1078);
+                    r=factorExpr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, string_literal116.getTree());
+                    adaptor.addChild(root_0, r.getTree());
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "expr_not"
+
+
+    public static class factorExpr_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "factorExpr"
+    // compiler/ast/GramaticaAst.g:114:1: factorExpr : ( location -> ^( EX location ) | method_call -> ^( EX method_call ) | DIGIT | HEX | CHR | TRUE | FALSE | LPAREN expr RPAREN -> expr );
+    public final GramaticaAst.factorExpr_return factorExpr() throws RecognitionException {
+        GramaticaAst.factorExpr_return retval = new GramaticaAst.factorExpr_return();
+        retval.start = input.LT(1);
+
+
+        Object root_0 = null;
+
+        Token DIGIT114=null;
+        Token HEX115=null;
+        Token CHR116=null;
+        Token TRUE117=null;
+        Token FALSE118=null;
+        Token LPAREN119=null;
+        Token RPAREN121=null;
+        GramaticaAst.location_return location112 =null;
+
+        GramaticaAst.method_call_return method_call113 =null;
+
+        GramaticaAst.expr_return expr120 =null;
+
+
+        Object DIGIT114_tree=null;
+        Object HEX115_tree=null;
+        Object CHR116_tree=null;
+        Object TRUE117_tree=null;
+        Object FALSE118_tree=null;
+        Object LPAREN119_tree=null;
+        Object RPAREN121_tree=null;
+        RewriteRuleTokenStream stream_RPAREN=new RewriteRuleTokenStream(adaptor,"token RPAREN");
+        RewriteRuleTokenStream stream_LPAREN=new RewriteRuleTokenStream(adaptor,"token LPAREN");
+        RewriteRuleSubtreeStream stream_location=new RewriteRuleSubtreeStream(adaptor,"rule location");
+        RewriteRuleSubtreeStream stream_method_call=new RewriteRuleSubtreeStream(adaptor,"rule method_call");
+        RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
+        try {
+            // compiler/ast/GramaticaAst.g:114:13: ( location -> ^( EX location ) | method_call -> ^( EX method_call ) | DIGIT | HEX | CHR | TRUE | FALSE | LPAREN expr RPAREN -> expr )
+            int alt31=8;
+            switch ( input.LA(1) ) {
+            case INDENTIFIER:
+                {
+                int LA31_1 = input.LA(2);
+
+                if ( (LA31_1==ADD||LA31_1==AND||LA31_1==COMA||LA31_1==DIV||LA31_1==EQUAL||(LA31_1 >= GREATHAN && LA31_1 <= GTOEQ)||(LA31_1 >= LBRACE && LA31_1 <= LESSTHAN)||(LA31_1 >= LTOEQ && LA31_1 <= MINUS)||(LA31_1 >= MOD && LA31_1 <= NEQUAL)||LA31_1==OR||LA31_1==RBRAKET||(LA31_1 >= RPAREN && LA31_1 <= SEMICO)) ) {
+                    alt31=1;
+                }
+                else if ( (LA31_1==LPAREN) ) {
+                    alt31=2;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 31, 1, input);
+
+                    throw nvae;
+
+                }
+                }
+                break;
+            case CALLOUT:
+                {
+                alt31=2;
+                }
+                break;
+            case DIGIT:
+                {
+                alt31=3;
+                }
+                break;
+            case HEX:
+                {
+                alt31=4;
+                }
+                break;
+            case CHR:
+                {
+                alt31=5;
+                }
+                break;
+            case TRUE:
+                {
+                alt31=6;
+                }
+                break;
+            case FALSE:
+                {
+                alt31=7;
+                }
+                break;
+            case LPAREN:
+                {
+                alt31=8;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 31, 0, input);
+
+                throw nvae;
+
+            }
+
+            switch (alt31) {
+                case 1 :
+                    // compiler/ast/GramaticaAst.g:114:15: location
+                    {
+                    pushFollow(FOLLOW_location_in_factorExpr1088);
+                    location112=location();
+
+                    state._fsp--;
+
+                    stream_location.add(location112.getTree());
+
+                    // AST REWRITE
+                    // elements: location
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 114:28: -> ^( EX location )
+                    {
+                        // compiler/ast/GramaticaAst.g:114:31: ^( EX location )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(EX, "EX")
+                        , root_1);
+
+                        adaptor.addChild(root_1, stream_location.nextTree());
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
+
+                    }
+                    break;
+                case 2 :
+                    // compiler/ast/GramaticaAst.g:115:7: method_call
+                    {
+                    pushFollow(FOLLOW_method_call_in_factorExpr1108);
+                    method_call113=method_call();
+
+                    state._fsp--;
+
+                    stream_method_call.add(method_call113.getTree());
+
+                    // AST REWRITE
+                    // elements: method_call
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 115:22: -> ^( EX method_call )
+                    {
+                        // compiler/ast/GramaticaAst.g:115:25: ^( EX method_call )
+                        {
+                        Object root_1 = (Object)adaptor.nil();
+                        root_1 = (Object)adaptor.becomeRoot(
+                        (Object)adaptor.create(EX, "EX")
+                        , root_1);
+
+                        adaptor.addChild(root_1, stream_method_call.nextTree());
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
+
+                    }
+                    break;
+                case 3 :
+                    // compiler/ast/GramaticaAst.g:116:7: DIGIT
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    DIGIT114=(Token)match(input,DIGIT,FOLLOW_DIGIT_in_factorExpr1127); 
+                    DIGIT114_tree = 
+                    (Object)adaptor.create(DIGIT114)
+                    ;
+                    adaptor.addChild(root_0, DIGIT114_tree);
+
+
+                    }
+                    break;
+                case 4 :
+                    // compiler/ast/GramaticaAst.g:117:7: HEX
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    HEX115=(Token)match(input,HEX,FOLLOW_HEX_in_factorExpr1135); 
+                    HEX115_tree = 
+                    (Object)adaptor.create(HEX115)
+                    ;
+                    adaptor.addChild(root_0, HEX115_tree);
+
+
+                    }
+                    break;
+                case 5 :
+                    // compiler/ast/GramaticaAst.g:118:7: CHR
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    CHR116=(Token)match(input,CHR,FOLLOW_CHR_in_factorExpr1149); 
+                    CHR116_tree = 
+                    (Object)adaptor.create(CHR116)
+                    ;
+                    adaptor.addChild(root_0, CHR116_tree);
+
+
+                    }
+                    break;
+                case 6 :
+                    // compiler/ast/GramaticaAst.g:119:7: TRUE
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    TRUE117=(Token)match(input,TRUE,FOLLOW_TRUE_in_factorExpr1163); 
+                    TRUE117_tree = 
+                    (Object)adaptor.create(TRUE117)
+                    ;
+                    adaptor.addChild(root_0, TRUE117_tree);
+
+
+                    }
+                    break;
+                case 7 :
+                    // compiler/ast/GramaticaAst.g:120:7: FALSE
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    FALSE118=(Token)match(input,FALSE,FOLLOW_FALSE_in_factorExpr1178); 
+                    FALSE118_tree = 
+                    (Object)adaptor.create(FALSE118)
+                    ;
+                    adaptor.addChild(root_0, FALSE118_tree);
+
+
+                    }
+                    break;
+                case 8 :
+                    // compiler/ast/GramaticaAst.g:121:7: LPAREN expr RPAREN
+                    {
+                    LPAREN119=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_factorExpr1192);  
+                    stream_LPAREN.add(LPAREN119);
+
+
+                    pushFollow(FOLLOW_expr_in_factorExpr1194);
+                    expr120=expr();
+
+                    state._fsp--;
+
+                    stream_expr.add(expr120.getTree());
+
+                    RPAREN121=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_factorExpr1196);  
+                    stream_RPAREN.add(RPAREN121);
+
+
+                    // AST REWRITE
+                    // elements: expr
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (Object)adaptor.nil();
+                    // 121:26: -> expr
+                    {
+                        adaptor.addChild(root_0, stream_expr.nextTree());
+
+                    }
+
+
+                    retval.tree = root_0;
+
+                    }
+                    break;
+
+            }
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "factorExpr"
+
+
+    public static class callout_arg_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "callout_arg"
+    // compiler/ast/GramaticaAst.g:123:1: callout_arg : ( expr | string_literal );
+    public final GramaticaAst.callout_arg_return callout_arg() throws RecognitionException {
+        GramaticaAst.callout_arg_return retval = new GramaticaAst.callout_arg_return();
+        retval.start = input.LT(1);
+
+
+        Object root_0 = null;
+
+        GramaticaAst.expr_return expr122 =null;
+
+        GramaticaAst.string_literal_return string_literal123 =null;
+
+
+
+        try {
+            // compiler/ast/GramaticaAst.g:123:14: ( expr | string_literal )
+            int alt32=2;
+            int LA32_0 = input.LA(1);
+
+            if ( (LA32_0==CALLOUT||LA32_0==CHR||LA32_0==DIGIT||LA32_0==FALSE||LA32_0==HEX||LA32_0==INDENTIFIER||LA32_0==LPAREN||LA32_0==MINUS||LA32_0==NOT||LA32_0==TRUE) ) {
+                alt32=1;
+            }
+            else if ( (LA32_0==STR) ) {
+                alt32=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 32, 0, input);
+
+                throw nvae;
+
+            }
+            switch (alt32) {
+                case 1 :
+                    // compiler/ast/GramaticaAst.g:123:16: expr
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_expr_in_callout_arg1209);
+                    expr122=expr();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, expr122.getTree());
+
+                    }
+                    break;
+                case 2 :
+                    // compiler/ast/GramaticaAst.g:123:23: string_literal
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_string_literal_in_callout_arg1213);
+                    string_literal123=string_literal();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, string_literal123.getTree());
 
                     }
                     break;
@@ -3459,331 +4084,6 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "callout_arg"
 
 
-    public static class arith_op_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "arith_op"
-    // compiler/ast/GramaticaAst.g:110:1: arith_op : ( MULT | DIV | MOD );
-    public final GramaticaAst.arith_op_return arith_op() throws RecognitionException {
-        GramaticaAst.arith_op_return retval = new GramaticaAst.arith_op_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token set117=null;
-
-        Object set117_tree=null;
-
-        try {
-            // compiler/ast/GramaticaAst.g:110:12: ( MULT | DIV | MOD )
-            // compiler/ast/GramaticaAst.g:
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            set117=(Token)input.LT(1);
-
-            if ( input.LA(1)==DIV||(input.LA(1) >= MOD && input.LA(1) <= MULT) ) {
-                input.consume();
-                adaptor.addChild(root_0, 
-                (Object)adaptor.create(set117)
-                );
-                state.errorRecovery=false;
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                throw mse;
-            }
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "arith_op"
-
-
-    public static class sumsub_op_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "sumsub_op"
-    // compiler/ast/GramaticaAst.g:111:1: sumsub_op : ( ADD | MINUS );
-    public final GramaticaAst.sumsub_op_return sumsub_op() throws RecognitionException {
-        GramaticaAst.sumsub_op_return retval = new GramaticaAst.sumsub_op_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token set118=null;
-
-        Object set118_tree=null;
-
-        try {
-            // compiler/ast/GramaticaAst.g:111:12: ( ADD | MINUS )
-            // compiler/ast/GramaticaAst.g:
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            set118=(Token)input.LT(1);
-
-            if ( input.LA(1)==ADD||input.LA(1)==MINUS ) {
-                input.consume();
-                adaptor.addChild(root_0, 
-                (Object)adaptor.create(set118)
-                );
-                state.errorRecovery=false;
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                throw mse;
-            }
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "sumsub_op"
-
-
-    public static class rel_op_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "rel_op"
-    // compiler/ast/GramaticaAst.g:112:1: rel_op : ( LESSTHAN | GREATHAN | LTOEQ | GTOEQ );
-    public final GramaticaAst.rel_op_return rel_op() throws RecognitionException {
-        GramaticaAst.rel_op_return retval = new GramaticaAst.rel_op_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token set119=null;
-
-        Object set119_tree=null;
-
-        try {
-            // compiler/ast/GramaticaAst.g:112:10: ( LESSTHAN | GREATHAN | LTOEQ | GTOEQ )
-            // compiler/ast/GramaticaAst.g:
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            set119=(Token)input.LT(1);
-
-            if ( (input.LA(1) >= GREATHAN && input.LA(1) <= GTOEQ)||input.LA(1)==LESSTHAN||input.LA(1)==LTOEQ ) {
-                input.consume();
-                adaptor.addChild(root_0, 
-                (Object)adaptor.create(set119)
-                );
-                state.errorRecovery=false;
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                throw mse;
-            }
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "rel_op"
-
-
-    public static class eq_op_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "eq_op"
-    // compiler/ast/GramaticaAst.g:113:1: eq_op : ( EQUAL | NEQUAL );
-    public final GramaticaAst.eq_op_return eq_op() throws RecognitionException {
-        GramaticaAst.eq_op_return retval = new GramaticaAst.eq_op_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token set120=null;
-
-        Object set120_tree=null;
-
-        try {
-            // compiler/ast/GramaticaAst.g:113:9: ( EQUAL | NEQUAL )
-            // compiler/ast/GramaticaAst.g:
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            set120=(Token)input.LT(1);
-
-            if ( input.LA(1)==EQUAL||input.LA(1)==NEQUAL ) {
-                input.consume();
-                adaptor.addChild(root_0, 
-                (Object)adaptor.create(set120)
-                );
-                state.errorRecovery=false;
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                throw mse;
-            }
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "eq_op"
-
-
-    public static class cond_op_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "cond_op"
-    // compiler/ast/GramaticaAst.g:114:1: cond_op : ( AND | OR );
-    public final GramaticaAst.cond_op_return cond_op() throws RecognitionException {
-        GramaticaAst.cond_op_return retval = new GramaticaAst.cond_op_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token set121=null;
-
-        Object set121_tree=null;
-
-        try {
-            // compiler/ast/GramaticaAst.g:114:11: ( AND | OR )
-            // compiler/ast/GramaticaAst.g:
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            set121=(Token)input.LT(1);
-
-            if ( input.LA(1)==AND||input.LA(1)==OR ) {
-                input.consume();
-                adaptor.addChild(root_0, 
-                (Object)adaptor.create(set121)
-                );
-                state.errorRecovery=false;
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                throw mse;
-            }
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "cond_op"
-
-
     public static class literal_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
@@ -3791,7 +4091,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "literal"
-    // compiler/ast/GramaticaAst.g:116:1: literal : ( int_literal | char_literal | bool_literal );
+    // compiler/ast/GramaticaAst.g:126:1: literal : ( int_literal | char_literal | bool_literal );
     public final GramaticaAst.literal_return literal() throws RecognitionException {
         GramaticaAst.literal_return retval = new GramaticaAst.literal_return();
         retval.start = input.LT(1);
@@ -3799,86 +4099,86 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        GramaticaAst.int_literal_return int_literal122 =null;
+        GramaticaAst.int_literal_return int_literal124 =null;
 
-        GramaticaAst.char_literal_return char_literal123 =null;
+        GramaticaAst.char_literal_return char_literal125 =null;
 
-        GramaticaAst.bool_literal_return bool_literal124 =null;
+        GramaticaAst.bool_literal_return bool_literal126 =null;
 
 
 
         try {
-            // compiler/ast/GramaticaAst.g:116:11: ( int_literal | char_literal | bool_literal )
-            int alt31=3;
+            // compiler/ast/GramaticaAst.g:126:11: ( int_literal | char_literal | bool_literal )
+            int alt33=3;
             switch ( input.LA(1) ) {
             case DIGIT:
             case HEX:
                 {
-                alt31=1;
+                alt33=1;
                 }
                 break;
             case CHR:
                 {
-                alt31=2;
+                alt33=2;
                 }
                 break;
             case FALSE:
             case TRUE:
                 {
-                alt31=3;
+                alt33=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 31, 0, input);
+                    new NoViableAltException("", 33, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt31) {
+            switch (alt33) {
                 case 1 :
-                    // compiler/ast/GramaticaAst.g:116:13: int_literal
+                    // compiler/ast/GramaticaAst.g:126:13: int_literal
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_int_literal_in_literal983);
-                    int_literal122=int_literal();
+                    pushFollow(FOLLOW_int_literal_in_literal1224);
+                    int_literal124=int_literal();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, int_literal122.getTree());
+                    adaptor.addChild(root_0, int_literal124.getTree());
 
                     }
                     break;
                 case 2 :
-                    // compiler/ast/GramaticaAst.g:116:27: char_literal
+                    // compiler/ast/GramaticaAst.g:126:27: char_literal
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_char_literal_in_literal987);
-                    char_literal123=char_literal();
+                    pushFollow(FOLLOW_char_literal_in_literal1228);
+                    char_literal125=char_literal();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, char_literal123.getTree());
+                    adaptor.addChild(root_0, char_literal125.getTree());
 
                     }
                     break;
                 case 3 :
-                    // compiler/ast/GramaticaAst.g:116:42: bool_literal
+                    // compiler/ast/GramaticaAst.g:126:42: bool_literal
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_bool_literal_in_literal991);
-                    bool_literal124=bool_literal();
+                    pushFollow(FOLLOW_bool_literal_in_literal1232);
+                    bool_literal126=bool_literal();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, bool_literal124.getTree());
+                    adaptor.addChild(root_0, bool_literal126.getTree());
 
                     }
                     break;
@@ -3913,7 +4213,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "id"
-    // compiler/ast/GramaticaAst.g:118:1: id : INDENTIFIER ;
+    // compiler/ast/GramaticaAst.g:128:1: id : INDENTIFIER ;
     public final GramaticaAst.id_return id() throws RecognitionException {
         GramaticaAst.id_return retval = new GramaticaAst.id_return();
         retval.start = input.LT(1);
@@ -3921,22 +4221,22 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token INDENTIFIER125=null;
+        Token INDENTIFIER127=null;
 
-        Object INDENTIFIER125_tree=null;
+        Object INDENTIFIER127_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:118:8: ( INDENTIFIER )
-            // compiler/ast/GramaticaAst.g:118:10: INDENTIFIER
+            // compiler/ast/GramaticaAst.g:128:8: ( INDENTIFIER )
+            // compiler/ast/GramaticaAst.g:128:10: INDENTIFIER
             {
             root_0 = (Object)adaptor.nil();
 
 
-            INDENTIFIER125=(Token)match(input,INDENTIFIER,FOLLOW_INDENTIFIER_in_id1003); 
-            INDENTIFIER125_tree = 
-            (Object)adaptor.create(INDENTIFIER125)
+            INDENTIFIER127=(Token)match(input,INDENTIFIER,FOLLOW_INDENTIFIER_in_id1244); 
+            INDENTIFIER127_tree = 
+            (Object)adaptor.create(INDENTIFIER127)
             ;
-            adaptor.addChild(root_0, INDENTIFIER125_tree);
+            adaptor.addChild(root_0, INDENTIFIER127_tree);
 
 
             }
@@ -3970,7 +4270,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "alpha_num"
-    // compiler/ast/GramaticaAst.g:120:1: alpha_num : ( CHAR | UNDERSCORE | NUM );
+    // compiler/ast/GramaticaAst.g:130:1: alpha_num : ( CHAR | UNDERSCORE | NUM );
     public final GramaticaAst.alpha_num_return alpha_num() throws RecognitionException {
         GramaticaAst.alpha_num_return retval = new GramaticaAst.alpha_num_return();
         retval.start = input.LT(1);
@@ -3978,23 +4278,23 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set126=null;
+        Token set128=null;
 
-        Object set126_tree=null;
+        Object set128_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:120:12: ( CHAR | UNDERSCORE | NUM )
+            // compiler/ast/GramaticaAst.g:130:12: ( CHAR | UNDERSCORE | NUM )
             // compiler/ast/GramaticaAst.g:
             {
             root_0 = (Object)adaptor.nil();
 
 
-            set126=(Token)input.LT(1);
+            set128=(Token)input.LT(1);
 
             if ( input.LA(1)==CHAR||input.LA(1)==NUM||input.LA(1)==UNDERSCORE ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set126)
+                (Object)adaptor.create(set128)
                 );
                 state.errorRecovery=false;
             }
@@ -4035,7 +4335,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "hex_digit"
-    // compiler/ast/GramaticaAst.g:122:1: hex_digit : ( NUM | HEXCHAR );
+    // compiler/ast/GramaticaAst.g:132:1: hex_digit : ( NUM | HEXCHAR );
     public final GramaticaAst.hex_digit_return hex_digit() throws RecognitionException {
         GramaticaAst.hex_digit_return retval = new GramaticaAst.hex_digit_return();
         retval.start = input.LT(1);
@@ -4043,23 +4343,23 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set127=null;
+        Token set129=null;
 
-        Object set127_tree=null;
+        Object set129_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:122:13: ( NUM | HEXCHAR )
+            // compiler/ast/GramaticaAst.g:132:13: ( NUM | HEXCHAR )
             // compiler/ast/GramaticaAst.g:
             {
             root_0 = (Object)adaptor.nil();
 
 
-            set127=(Token)input.LT(1);
+            set129=(Token)input.LT(1);
 
             if ( input.LA(1)==HEXCHAR||input.LA(1)==NUM ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set127)
+                (Object)adaptor.create(set129)
                 );
                 state.errorRecovery=false;
             }
@@ -4100,7 +4400,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "int_literal"
-    // compiler/ast/GramaticaAst.g:124:1: int_literal : ( DIGIT | HEX );
+    // compiler/ast/GramaticaAst.g:134:1: int_literal : ( DIGIT | HEX );
     public final GramaticaAst.int_literal_return int_literal() throws RecognitionException {
         GramaticaAst.int_literal_return retval = new GramaticaAst.int_literal_return();
         retval.start = input.LT(1);
@@ -4108,23 +4408,23 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set128=null;
+        Token set130=null;
 
-        Object set128_tree=null;
+        Object set130_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:124:14: ( DIGIT | HEX )
+            // compiler/ast/GramaticaAst.g:134:14: ( DIGIT | HEX )
             // compiler/ast/GramaticaAst.g:
             {
             root_0 = (Object)adaptor.nil();
 
 
-            set128=(Token)input.LT(1);
+            set130=(Token)input.LT(1);
 
             if ( input.LA(1)==DIGIT||input.LA(1)==HEX ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set128)
+                (Object)adaptor.create(set130)
                 );
                 state.errorRecovery=false;
             }
@@ -4165,7 +4465,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "bool_literal"
-    // compiler/ast/GramaticaAst.g:126:1: bool_literal : ( TRUE | FALSE );
+    // compiler/ast/GramaticaAst.g:136:1: bool_literal : ( TRUE | FALSE );
     public final GramaticaAst.bool_literal_return bool_literal() throws RecognitionException {
         GramaticaAst.bool_literal_return retval = new GramaticaAst.bool_literal_return();
         retval.start = input.LT(1);
@@ -4173,23 +4473,23 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set129=null;
+        Token set131=null;
 
-        Object set129_tree=null;
+        Object set131_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:126:17: ( TRUE | FALSE )
+            // compiler/ast/GramaticaAst.g:136:17: ( TRUE | FALSE )
             // compiler/ast/GramaticaAst.g:
             {
             root_0 = (Object)adaptor.nil();
 
 
-            set129=(Token)input.LT(1);
+            set131=(Token)input.LT(1);
 
             if ( input.LA(1)==FALSE||input.LA(1)==TRUE ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set129)
+                (Object)adaptor.create(set131)
                 );
                 state.errorRecovery=false;
             }
@@ -4230,7 +4530,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "char_literal"
-    // compiler/ast/GramaticaAst.g:128:1: char_literal : CHR ;
+    // compiler/ast/GramaticaAst.g:138:1: char_literal : CHR ;
     public final GramaticaAst.char_literal_return char_literal() throws RecognitionException {
         GramaticaAst.char_literal_return retval = new GramaticaAst.char_literal_return();
         retval.start = input.LT(1);
@@ -4238,22 +4538,22 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token CHR130=null;
+        Token CHR132=null;
 
-        Object CHR130_tree=null;
+        Object CHR132_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:128:14: ( CHR )
-            // compiler/ast/GramaticaAst.g:128:16: CHR
+            // compiler/ast/GramaticaAst.g:138:14: ( CHR )
+            // compiler/ast/GramaticaAst.g:138:16: CHR
             {
             root_0 = (Object)adaptor.nil();
 
 
-            CHR130=(Token)match(input,CHR,FOLLOW_CHR_in_char_literal1071); 
-            CHR130_tree = 
-            (Object)adaptor.create(CHR130)
+            CHR132=(Token)match(input,CHR,FOLLOW_CHR_in_char_literal1312); 
+            CHR132_tree = 
+            (Object)adaptor.create(CHR132)
             ;
-            adaptor.addChild(root_0, CHR130_tree);
+            adaptor.addChild(root_0, CHR132_tree);
 
 
             }
@@ -4287,7 +4587,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "string_literal"
-    // compiler/ast/GramaticaAst.g:130:1: string_literal : STR ;
+    // compiler/ast/GramaticaAst.g:140:1: string_literal : STR ;
     public final GramaticaAst.string_literal_return string_literal() throws RecognitionException {
         GramaticaAst.string_literal_return retval = new GramaticaAst.string_literal_return();
         retval.start = input.LT(1);
@@ -4295,22 +4595,22 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token STR131=null;
+        Token STR133=null;
 
-        Object STR131_tree=null;
+        Object STR133_tree=null;
 
         try {
-            // compiler/ast/GramaticaAst.g:130:17: ( STR )
-            // compiler/ast/GramaticaAst.g:130:19: STR
+            // compiler/ast/GramaticaAst.g:140:17: ( STR )
+            // compiler/ast/GramaticaAst.g:140:19: STR
             {
             root_0 = (Object)adaptor.nil();
 
 
-            STR131=(Token)match(input,STR,FOLLOW_STR_in_string_literal1080); 
-            STR131_tree = 
-            (Object)adaptor.create(STR131)
+            STR133=(Token)match(input,STR,FOLLOW_STR_in_string_literal1321); 
+            STR133_tree = 
+            (Object)adaptor.create(STR133)
             ;
-            adaptor.addChild(root_0, STR131_tree);
+            adaptor.addChild(root_0, STR133_tree);
 
 
             }
@@ -4341,60 +4641,60 @@ public TreeAdaptor getTreeAdaptor() {
 
  
 
-    public static final BitSet FOLLOW_CLASS_in_start80 = new BitSet(new long[]{0x8000000000000000L});
-    public static final BitSet FOLLOW_PROGRAM_in_start82 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_LBRACE_in_start84 = new BitSet(new long[]{0x0000001000002000L,0x0000000000004004L});
-    public static final BitSet FOLLOW_field_decl_in_start86 = new BitSet(new long[]{0x0000001000002000L,0x0000000000004004L});
-    public static final BitSet FOLLOW_method_decl_in_start89 = new BitSet(new long[]{0x0000001000002000L,0x0000000000004004L});
-    public static final BitSet FOLLOW_RBRACE_in_start92 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_field_decl120 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_field_decl123 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_id_in_field_decl127 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_LBRAKET_in_field_decl129 = new BitSet(new long[]{0x0000000100400000L});
-    public static final BitSet FOLLOW_int_literal_in_field_decl131 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_RBRAKET_in_field_decl133 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_COMA_in_field_decl137 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_field_decl140 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_id_in_field_decl144 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_LBRAKET_in_field_decl146 = new BitSet(new long[]{0x0000000100400000L});
-    public static final BitSet FOLLOW_int_literal_in_field_decl148 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_RBRAKET_in_field_decl150 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_SEMICO_in_field_decl155 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VOID_in_method_decl195 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_method_decl198 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_LPAREN_in_method_decl200 = new BitSet(new long[]{0x0000001000002000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_type_in_method_decl204 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_method_decl206 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_COMA_in_method_decl210 = new BitSet(new long[]{0x0000001000002000L});
-    public static final BitSet FOLLOW_type_in_method_decl212 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_method_decl214 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RPAREN_in_method_decl221 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_block_in_method_decl223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_method_decl259 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_method_decl262 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_LPAREN_in_method_decl264 = new BitSet(new long[]{0x0000001000002000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_type_in_method_decl268 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_method_decl270 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_COMA_in_method_decl274 = new BitSet(new long[]{0x0000001000002000L});
-    public static final BitSet FOLLOW_type_in_method_decl276 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_method_decl278 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RPAREN_in_method_decl285 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_block_in_method_decl287 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LBRACE_in_block323 = new BitSet(new long[]{0x0000003C2020E000L,0x0000000000000014L});
-    public static final BitSet FOLLOW_var_decl_in_block325 = new BitSet(new long[]{0x0000003C2020E000L,0x0000000000000014L});
-    public static final BitSet FOLLOW_statement_in_block328 = new BitSet(new long[]{0x0000002C2020C000L,0x0000000000000014L});
-    public static final BitSet FOLLOW_RBRACE_in_block331 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_var_decl359 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_var_decl361 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_COMA_in_var_decl364 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_var_decl366 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_SEMICO_in_var_decl370 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_location_in_statement419 = new BitSet(new long[]{0x0000000000001C00L});
-    public static final BitSet FOLLOW_assign_op_in_statement421 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_statement423 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_SEMICO_in_statement425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_method_call_in_statement433 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_SEMICO_in_statement435 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CLASS_in_start84 = new BitSet(new long[]{0x8000000000000000L});
+    public static final BitSet FOLLOW_PROGRAM_in_start86 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_LBRACE_in_start88 = new BitSet(new long[]{0x0000001000002000L,0x0000000000004004L});
+    public static final BitSet FOLLOW_field_decl_in_start90 = new BitSet(new long[]{0x0000001000002000L,0x0000000000004004L});
+    public static final BitSet FOLLOW_method_decl_in_start93 = new BitSet(new long[]{0x0000001000002000L,0x0000000000004004L});
+    public static final BitSet FOLLOW_RBRACE_in_start96 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_field_decl124 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_field_decl127 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_id_in_field_decl131 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_LBRAKET_in_field_decl133 = new BitSet(new long[]{0x0000000100400000L});
+    public static final BitSet FOLLOW_int_literal_in_field_decl135 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_RBRAKET_in_field_decl137 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_COMA_in_field_decl141 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_field_decl144 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_id_in_field_decl148 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_LBRAKET_in_field_decl150 = new BitSet(new long[]{0x0000000100400000L});
+    public static final BitSet FOLLOW_int_literal_in_field_decl152 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_RBRAKET_in_field_decl154 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_SEMICO_in_field_decl159 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VOID_in_method_decl199 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_method_decl202 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_LPAREN_in_method_decl204 = new BitSet(new long[]{0x0000001000002000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_type_in_method_decl208 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_method_decl210 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_COMA_in_method_decl214 = new BitSet(new long[]{0x0000001000002000L});
+    public static final BitSet FOLLOW_type_in_method_decl216 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_method_decl218 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RPAREN_in_method_decl225 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_block_in_method_decl227 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_method_decl263 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_method_decl266 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_LPAREN_in_method_decl268 = new BitSet(new long[]{0x0000001000002000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_type_in_method_decl272 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_method_decl274 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_COMA_in_method_decl278 = new BitSet(new long[]{0x0000001000002000L});
+    public static final BitSet FOLLOW_type_in_method_decl280 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_method_decl282 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RPAREN_in_method_decl289 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_block_in_method_decl291 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LBRACE_in_block327 = new BitSet(new long[]{0x0000003C2020E000L,0x0000000000000014L});
+    public static final BitSet FOLLOW_var_decl_in_block329 = new BitSet(new long[]{0x0000003C2020E000L,0x0000000000000014L});
+    public static final BitSet FOLLOW_statement_in_block332 = new BitSet(new long[]{0x0000002C2020C000L,0x0000000000000014L});
+    public static final BitSet FOLLOW_RBRACE_in_block335 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_in_var_decl362 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_var_decl364 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_COMA_in_var_decl367 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_var_decl369 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_SEMICO_in_var_decl373 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_location_in_statement398 = new BitSet(new long[]{0x0000000000001C00L});
+    public static final BitSet FOLLOW_assign_op_in_statement400 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_in_statement402 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_SEMICO_in_statement404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_method_call_in_statement426 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_SEMICO_in_statement428 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IF_in_statement450 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_LPAREN_in_statement452 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
     public static final BitSet FOLLOW_expr_in_statement454 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
@@ -4402,76 +4702,94 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_block_in_statement458 = new BitSet(new long[]{0x0000000002000002L});
     public static final BitSet FOLLOW_ELSE_in_statement461 = new BitSet(new long[]{0x0000002000000000L});
     public static final BitSet FOLLOW_block_in_statement463 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FOR_in_statement474 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_id_in_statement476 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_ASSIGN_in_statement478 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_statement480 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_COMA_in_statement482 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_statement484 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_block_in_statement486 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RETURN_in_statement494 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000140L});
-    public static final BitSet FOLLOW_expr_in_statement497 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_SEMICO_in_statement501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BREAK_in_statement509 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_SEMICO_in_statement511 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONTINUE_in_statement519 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_SEMICO_in_statement521 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_block_in_statement529 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_method_name_in_method_call566 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_LPAREN_in_method_call568 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000120L});
-    public static final BitSet FOLLOW_expr_in_method_call571 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_COMA_in_method_call573 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_method_call575 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RPAREN_in_method_call581 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CALLOUT_in_method_call589 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_LPAREN_in_method_call591 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_string_literal_in_method_call593 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_COMA_in_method_call597 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000180L});
-    public static final BitSet FOLLOW_callout_arg_in_method_call599 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RPAREN_in_method_call605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_in_method_name615 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_in_location625 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_id_in_location633 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_LBRAKET_in_location635 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_location637 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_RBRAKET_in_location639 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_and_in_expr655 = new BitSet(new long[]{0x1000000000000002L});
-    public static final BitSet FOLLOW_OR_in_expr658 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_and_in_expr664 = new BitSet(new long[]{0x1000000000000002L});
-    public static final BitSet FOLLOW_expr_eq_in_expr_and678 = new BitSet(new long[]{0x0000000000000082L});
-    public static final BitSet FOLLOW_AND_in_expr_and682 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_eq_in_expr_and688 = new BitSet(new long[]{0x0000000000000082L});
-    public static final BitSet FOLLOW_expr_rel_in_expr_eq703 = new BitSet(new long[]{0x0000400004000002L});
-    public static final BitSet FOLLOW_eq_op_in_expr_eq707 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_rel_in_expr_eq713 = new BitSet(new long[]{0x0000400004000002L});
-    public static final BitSet FOLLOW_expr_add_in_expr_rel727 = new BitSet(new long[]{0x00000280C0000002L});
-    public static final BitSet FOLLOW_rel_op_in_expr_rel731 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_add_in_expr_rel737 = new BitSet(new long[]{0x00000280C0000002L});
-    public static final BitSet FOLLOW_expr_arith_in_expr_add751 = new BitSet(new long[]{0x0000040000000012L});
-    public static final BitSet FOLLOW_sumsub_op_in_expr_add755 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_arith_in_expr_add761 = new BitSet(new long[]{0x0000040000000012L});
-    public static final BitSet FOLLOW_expr_factor_in_expr_arith775 = new BitSet(new long[]{0x0000300000800002L});
-    public static final BitSet FOLLOW_arith_op_in_expr_arith779 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_factor_in_expr_arith785 = new BitSet(new long[]{0x0000300000800002L});
-    public static final BitSet FOLLOW_location_in_expr_factor796 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_method_call_in_expr_factor808 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_int_literal_in_expr_factor819 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_char_literal_in_expr_factor829 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bool_literal_in_expr_factor840 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MINUS_in_expr_factor851 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_expr_factor853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NOT_in_expr_factor864 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_expr_factor866 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LPAREN_in_expr_factor878 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_expr_in_expr_factor880 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_RPAREN_in_expr_factor882 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_callout_arg892 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_string_literal_in_callout_arg896 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_int_literal_in_literal983 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_char_literal_in_literal987 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_bool_literal_in_literal991 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INDENTIFIER_in_id1003 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CHR_in_char_literal1071 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STR_in_string_literal1080 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FOR_in_statement493 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_id_in_statement495 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_ASSIGN_in_statement497 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_in_statement499 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_COMA_in_statement501 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_in_statement503 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_block_in_statement505 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RETURN_in_statement535 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000140L});
+    public static final BitSet FOLLOW_expr_in_statement538 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_SEMICO_in_statement542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BREAK_in_statement569 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_SEMICO_in_statement571 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONTINUE_in_statement595 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_SEMICO_in_statement597 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_block_in_statement620 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_method_name_in_method_call657 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_LPAREN_in_method_call659 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000120L});
+    public static final BitSet FOLLOW_expr_in_method_call662 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_COMA_in_method_call664 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_in_method_call666 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RPAREN_in_method_call672 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CALLOUT_in_method_call680 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_LPAREN_in_method_call682 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_string_literal_in_method_call684 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_COMA_in_method_call688 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000180L});
+    public static final BitSet FOLLOW_callout_arg_in_method_call690 = new BitSet(new long[]{0x0000000000080000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RPAREN_in_method_call696 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_in_method_name706 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_in_location716 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_id_in_location724 = new BitSet(new long[]{0x0000004000000000L});
+    public static final BitSet FOLLOW_LBRAKET_in_location726 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_in_location728 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_RBRAKET_in_location730 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_and_in_expr747 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_OR_in_expr750 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_and_in_expr757 = new BitSet(new long[]{0x1000000000000002L});
+    public static final BitSet FOLLOW_expr_eq_in_expr_and771 = new BitSet(new long[]{0x0000000000000082L});
+    public static final BitSet FOLLOW_AND_in_expr_and775 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_eq_in_expr_and782 = new BitSet(new long[]{0x0000000000000082L});
+    public static final BitSet FOLLOW_expr_rel_in_expr_eq798 = new BitSet(new long[]{0x0000400004000002L});
+    public static final BitSet FOLLOW_EQUAL_in_expr_eq802 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_rel_in_expr_eq809 = new BitSet(new long[]{0x0000400004000002L});
+    public static final BitSet FOLLOW_NEQUAL_in_expr_eq822 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_rel_in_expr_eq829 = new BitSet(new long[]{0x0000400004000002L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel844 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_LESSTHAN_in_expr_rel848 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel855 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_GREATHAN_in_expr_rel868 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel875 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_LTOEQ_in_expr_rel888 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel895 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_GTOEQ_in_expr_rel908 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_add_in_expr_rel915 = new BitSet(new long[]{0x00000280C0000002L});
+    public static final BitSet FOLLOW_expr_arith_in_expr_add930 = new BitSet(new long[]{0x0000040000000012L});
+    public static final BitSet FOLLOW_ADD_in_expr_add934 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_arith_in_expr_add941 = new BitSet(new long[]{0x0000040000000012L});
+    public static final BitSet FOLLOW_MINUS_in_expr_add954 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_arith_in_expr_add961 = new BitSet(new long[]{0x0000040000000012L});
+    public static final BitSet FOLLOW_expr_minus_in_expr_arith976 = new BitSet(new long[]{0x0000300000800002L});
+    public static final BitSet FOLLOW_MULT_in_expr_arith980 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_minus_in_expr_arith987 = new BitSet(new long[]{0x0000300000800002L});
+    public static final BitSet FOLLOW_DIV_in_expr_arith1000 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_minus_in_expr_arith1007 = new BitSet(new long[]{0x0000300000800002L});
+    public static final BitSet FOLLOW_MOD_in_expr_arith1019 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_minus_in_expr_arith1026 = new BitSet(new long[]{0x0000300000800002L});
+    public static final BitSet FOLLOW_expr_not_in_expr_minus1038 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_MINUS_in_expr_minus1048 = new BitSet(new long[]{0x0000810910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_not_in_expr_minus1053 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_factorExpr_in_expr_not1064 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NOT_in_expr_not1073 = new BitSet(new long[]{0x0000010910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_factorExpr_in_expr_not1078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_location_in_factorExpr1088 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_method_call_in_factorExpr1108 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DIGIT_in_factorExpr1127 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_HEX_in_factorExpr1135 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHR_in_factorExpr1149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRUE_in_factorExpr1163 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FALSE_in_factorExpr1178 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LPAREN_in_factorExpr1192 = new BitSet(new long[]{0x0000850910428000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_expr_in_factorExpr1194 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_RPAREN_in_factorExpr1196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_callout_arg1209 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_string_literal_in_callout_arg1213 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_int_literal_in_literal1224 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_char_literal_in_literal1228 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bool_literal_in_literal1232 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INDENTIFIER_in_id1244 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHR_in_char_literal1312 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STR_in_string_literal1321 = new BitSet(new long[]{0x0000000000000002L});
 
 }

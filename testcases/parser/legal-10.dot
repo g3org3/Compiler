@@ -10,11 +10,17 @@ digraph {
   n1 [label="METHOD"];
   n1 [label="METHOD"];
   n2 [label="void"];
-  n3 [label="main"];
+  n3 [label="bar"];
+  n4 [label="int"];
+  n5 [label="a"];
+  n6 [label="{fori=0,...r(10);}}"];
 
   n0 -> n1 // "ROOT" -> "METHOD"
   n1 -> n2 // "METHOD" -> "void"
-  n1 -> n3 // "METHOD" -> "main"
+  n1 -> n3 // "METHOD" -> "bar"
+  n1 -> n4 // "METHOD" -> "int"
+  n1 -> n5 // "METHOD" -> "a"
+  n1 -> n6 // "METHOD" -> "{fori=0,...r(10);}}"
 
 }
 

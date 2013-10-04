@@ -44,6 +44,8 @@ clean:
 	rm compiler/ast/*.class
 	rm compiler/ast/*.tokens
 	rm compiler/ast/GramaticaAst.java
+	rm testcases/parser/*.dot
+	rm testcases/parser/*.s
 #	rm compiler/semantic/*.class
 #	rm compiler/irt/*.class
 #	rm compiler/codegen/*.class

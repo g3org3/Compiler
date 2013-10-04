@@ -77,7 +77,7 @@ POINT			: '.'			{debug("unexpected char", getLine(), getCharPositionInLine(), ge
 DPOINTS			: ':'			{debug("DPOINTS", getLine(), getText()); };
 
 // NUMBERS
-DIGIT			: '-'? NUM+			{debug("INT", getLine(), getText()); };
+DIGIT			: NUM+			{debug("INT", getLine(), getText()); };
 //NEGNUM			: '-'NUM+		{debug("INT", getLine(), getText()); };
 
 // OPERATORS

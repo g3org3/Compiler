@@ -1,9 +1,13 @@
 // commnet
 
 class Program {
+int x;
   void main() {
-    //a = -3 * 4 / 6 + (F[b+2] - foo());
-    a = -3 * 4 / 6 + 2;
+    a = -3 + 4 / 6 - 4 + (F[b+2] - foo(2, 4));
+    x = 32;
+    if(!(1<5)){
+    	return 1;
+    }
   }
 }
 

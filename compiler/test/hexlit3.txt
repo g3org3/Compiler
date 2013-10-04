@@ -1,3 +1,0 @@
-// This isn't a hex literal, since there are no digits.
-0x
-0xzcafd
