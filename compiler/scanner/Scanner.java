@@ -42,7 +42,9 @@ public class Scanner {
 	public String getFilepath(){
 		return file;
 	}
-
+	public ArrayList<String> getErrores(){
+		return lexer.getErrores();
+	}
 	public ArrayList<String> getList(){
 		return this.targetList;
 	}

@@ -8,7 +8,7 @@ import compiler.scanner.*;
 public class CC4Parser {
 	
 	public Scanner scan;
-	public ArrayList<String> parserList;
+	public ArrayList<String> parserList, erroresScan;
 	public GramaticaParser gparser;
 
 	// contructor
@@ -16,6 +16,7 @@ public class CC4Parser {
 		this.scan = sc;
 		this.parserList = new ArrayList<String>(1);
 		this.gparser = new GramaticaParser(new CommonTokenStream(sc.getLexer()));
+		this.erroresScan = sc.getErrores();
 	}
 
 	public void parserIt() throws Exception{
@@ -29,6 +30,9 @@ public class CC4Parser {
 	}
 	public ArrayList<String> getErrors(){
 		return gparser.getErrors();
+	}
+	public ArrayList<String> getScanErrors(){
+		return erroresScan;
 	}
 	
 	public String toString(){

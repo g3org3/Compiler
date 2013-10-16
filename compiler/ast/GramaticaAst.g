@@ -13,7 +13,9 @@ tokens {
 	BLOCK;
 	EX;
 	STATEMENT;
-	ARGS;
+	CALL;
+	ARRAY;
+	PRINTF;
 }
 
 @parser::header{
@@ -54,24 +56,23 @@ start 			: CLASS PROGRAM LBRACE field_decl* method_decl* RBRACE
 					-> ^(ROOT field_decl* method_decl* );
 
 field_decl		: type (id | id LBRAKET int_literal RBRAKET) (COMA (id | id LBRAKET int_literal RBRAKET))* SEMICO 
-					-> ^(FIELD type (id LBRAKET? int_literal? RBRAKET?)+ );
+					-> ^(FIELD type (id int_literal? )+ );
 
 method_decl 	: ((VOID) id LPAREN ((type id) (COMA type id)* )? RPAREN block
-					-> ^(METHOD VOID id  (args)* block))
+					-> ^(METHOD VOID id  (type id)* block))
 				| ((type) id LPAREN ((type id) (COMA type id)* )? RPAREN block
-					-> ^(METHOD type id  (args)* block));
-args 			: type id;
+					-> ^(METHOD type id  (type id)* block));
 block			: LBRACE var_decl* statement* RBRACE 
 					-> ^(BLOCK var_decl* statement*);
 
-var_decl		: type id (COMA id)* SEMICO;
+var_decl		: type id (COMA id)* SEMICO ->^(VARS type id id*);
 
 type 			: INT | BOOLEAN ;
 
 statement		: location assign_op expr SEMICO			-> ^(STATEMENT location assign_op expr)
 				| method_call SEMICO 						-> ^(STATEMENT method_call)
 				| IF LPAREN expr RPAREN block (ELSE block)? -> ^(STATEMENT  IF expr block (ELSE block)?)
-				| FOR id ASSIGN expr COMA expr block 		-> ^(STATEMENT FOR id ASSIGN expr COMA expr block)
+				| FOR id ASSIGN expr COMA expr block 		-> ^(STATEMENT FOR id ASSIGN expr expr block)
 				| RETURN (expr)? SEMICO 					-> ^(STATEMENT RETURN (expr)? )
 				| BREAK SEMICO								-> ^(STATEMENT BREAK )
 				| CONTINUE SEMICO							-> ^(STATEMENT CONTINUE )
@@ -81,13 +82,13 @@ assign_op		: ASSIGN
 				| ASSIGNADD
 				| ASSIGNSUB ;
 
-method_call 	: method_name LPAREN (expr(COMA expr)*)? RPAREN
-				| CALLOUT LPAREN string_literal ((COMA callout_arg)+)? RPAREN ;
+method_call 	: method_name LPAREN (expr(COMA expr)*)? RPAREN ->^(CALL method_name (expr (expr)*)? )
+				| CALLOUT LPAREN string_literal ((COMA callout_arg)+)? RPAREN ->^(PRINTF CALLOUT string_literal callout_arg*);
 
 method_name 	: id ;
 
 location		: id
-				| id LBRAKET expr RBRAKET ;
+				| id LBRAKET expr RBRAKET ->^(ARRAY id expr);
 
 expr 	 		: l = expr_and (OR^ r = expr_and)*;
 expr_and		: l = expr_eq  (AND^ r = expr_eq)*;

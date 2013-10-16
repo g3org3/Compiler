@@ -1,0 +1,56 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="FIELD"];
+  n1 [label="FIELD"];
+  n2 [label="int"];
+  n3 [label="a"];
+  n4 [label="10"];
+  n5 [label="FIELD"];
+  n5 [label="FIELD"];
+  n6 [label="boolean"];
+  n7 [label="b"];
+  n8 [label="METHOD"];
+  n8 [label="METHOD"];
+  n9 [label="void"];
+  n10 [label="main"];
+  n11 [label="BLOCK"];
+  n11 [label="BLOCK"];
+  n12 [label="STATEMENT"];
+  n12 [label="STATEMENT"];
+  n13 [label="ARRAY"];
+  n13 [label="ARRAY"];
+  n14 [label="a"];
+  n15 [label="EX"];
+  n15 [label="EX"];
+  n16 [label="b"];
+  n17 [label="="];
+  n18 [label="25"];
+
+  n0 -> n1 // "ROOT" -> "FIELD"
+  n1 -> n2 // "FIELD" -> "int"
+  n1 -> n3 // "FIELD" -> "a"
+  n1 -> n4 // "FIELD" -> "10"
+  n0 -> n5 // "ROOT" -> "FIELD"
+  n5 -> n6 // "FIELD" -> "boolean"
+  n5 -> n7 // "FIELD" -> "b"
+  n0 -> n8 // "ROOT" -> "METHOD"
+  n8 -> n9 // "METHOD" -> "void"
+  n8 -> n10 // "METHOD" -> "main"
+  n8 -> n11 // "METHOD" -> "BLOCK"
+  n11 -> n12 // "BLOCK" -> "STATEMENT"
+  n12 -> n13 // "STATEMENT" -> "ARRAY"
+  n13 -> n14 // "ARRAY" -> "a"
+  n13 -> n15 // "ARRAY" -> "EX"
+  n15 -> n16 // "EX" -> "b"
+  n12 -> n17 // "STATEMENT" -> "="
+  n12 -> n18 // "STATEMENT" -> "25"
+
+}
+

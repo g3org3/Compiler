@@ -10,6 +10,7 @@ lexer grammar Decaf;
 	private boolean activate = false;
 	private ArrayList<String> strList = new ArrayList<String>();
 	private ArrayList<String> debugList = new ArrayList<String>();
+	private ArrayList<String> errores = new ArrayList<String>();
 
     public void debug(String str, int line, String text){
     	this.debug(str, line, 0, text, 0);
@@ -20,6 +21,8 @@ lexer grammar Decaf;
 			debugList.add("    "+line+":"+ er + str+": "+text);
 		else 
 			strList.add("  "+line+":"+ er + str + ": " + text);
+		if(e==1)
+			errores.add("    "+line+":"+ er + str+": "+text);
 	}
 	public void set(boolean bool){
 		this.activate = bool;
@@ -29,6 +32,9 @@ lexer grammar Decaf;
 	}
 	public ArrayList<String> getDebug(){
 		return this.debugList;
+	}
+	public ArrayList<String> getErrores(){
+		return this.errores;
 	}
 
 }
@@ -49,7 +55,7 @@ COMMENTS 		: (('//') ~('\n'|'\r')* '\r'? '\n') {skip();};
 // KEYWORDS
 BOOLEAN			: 'boolean'		{debug("KW BOOLEAN", getLine(), getText()); };
 BREAK			: 'break'		{debug("KW BREAK", getLine(), getText()); };
-CALLOUT			: 'callout'		{debug("KW CALLOUT", getLine(), getText()); };
+CALLOUT			: 'printf'		{debug("KW CALLOUT", getLine(), getText()); };
 CLASS			: 'class'		{debug("KW CLASS", getLine(), getText()); };
 CONTINUE		: 'continue'	{debug("KW CONTINUE", getLine(), getText()); };
 ELSE 			: 'else'		{debug("KW ELSE", getLine(), getText()); };

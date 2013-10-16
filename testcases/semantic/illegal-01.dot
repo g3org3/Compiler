@@ -1,0 +1,37 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="METHOD"];
+  n1 [label="METHOD"];
+  n2 [label="void"];
+  n3 [label="main"];
+  n4 [label="BLOCK"];
+  n4 [label="BLOCK"];
+  n5 [label="VARS"];
+  n5 [label="VARS"];
+  n6 [label="int"];
+  n7 [label="x"];
+  n8 [label="VARS"];
+  n8 [label="VARS"];
+  n9 [label="boolean"];
+  n10 [label="x"];
+
+  n0 -> n1 // "ROOT" -> "METHOD"
+  n1 -> n2 // "METHOD" -> "void"
+  n1 -> n3 // "METHOD" -> "main"
+  n1 -> n4 // "METHOD" -> "BLOCK"
+  n4 -> n5 // "BLOCK" -> "VARS"
+  n5 -> n6 // "VARS" -> "int"
+  n5 -> n7 // "VARS" -> "x"
+  n4 -> n8 // "BLOCK" -> "VARS"
+  n8 -> n9 // "VARS" -> "boolean"
+  n8 -> n10 // "VARS" -> "x"
+
+}
+

@@ -11,832 +11,767 @@ digraph {
   n1 [label="FIELD"];
   n2 [label="int"];
   n3 [label="A"];
-  n4 [label="["];
-  n5 [label="100"];
-  n6 [label="]"];
-  n7 [label="FIELD"];
-  n7 [label="FIELD"];
-  n8 [label="int"];
-  n9 [label="length"];
-  n10 [label="METHOD"];
-  n10 [label="METHOD"];
+  n4 [label="100"];
+  n5 [label="FIELD"];
+  n5 [label="FIELD"];
+  n6 [label="int"];
+  n7 [label="length"];
+  n8 [label="METHOD"];
+  n8 [label="METHOD"];
+  n9 [label="int"];
+  n10 [label="partition"];
   n11 [label="int"];
-  n12 [label="partition"];
+  n12 [label="p"];
   n13 [label="int"];
-  n14 [label="p"];
-  n15 [label="int"];
-  n16 [label="r"];
-  n17 [label="BLOCK"];
-  n17 [label="BLOCK"];
-  n18 [label="int"];
-  n19 [label="x"];
-  n20 [label=","];
-  n21 [label="i"];
-  n22 [label=","];
-  n23 [label="j"];
-  n24 [label=","];
-  n25 [label="t"];
-  n26 [label=";"];
-  n27 [label="int"];
-  n28 [label="z"];
-  n29 [label=";"];
-  n30 [label="STATEMENT"];
-  n30 [label="STATEMENT"];
-  n31 [label="x"];
-  n32 [label="="];
-  n33 [label="EX"];
-  n33 [label="EX"];
-  n34 [label="A"];
-  n35 [label="["];
-  n36 [label="EX"];
-  n36 [label="EX"];
-  n37 [label="p"];
-  n38 [label="]"];
-  n39 [label="STATEMENT"];
-  n39 [label="STATEMENT"];
-  n40 [label="i"];
-  n41 [label="="];
-  n42 [label="-"];
-  n42 [label="-"];
-  n43 [label="EX"];
-  n43 [label="EX"];
-  n44 [label="p"];
-  n45 [label="1"];
-  n46 [label="STATEMENT"];
-  n46 [label="STATEMENT"];
-  n47 [label="j"];
-  n48 [label="="];
-  n49 [label="+"];
-  n49 [label="+"];
-  n50 [label="EX"];
-  n50 [label="EX"];
-  n51 [label="r"];
-  n52 [label="1"];
-  n53 [label="STATEMENT"];
-  n53 [label="STATEMENT"];
-  n54 [label="for"];
-  n55 [label="z"];
-  n56 [label="="];
-  n57 [label="0"];
-  n58 [label=","];
-  n59 [label="*"];
-  n59 [label="*"];
-  n60 [label="EX"];
-  n60 [label="EX"];
-  n61 [label="length"];
+  n14 [label="r"];
+  n15 [label="BLOCK"];
+  n15 [label="BLOCK"];
+  n16 [label="VARS"];
+  n16 [label="VARS"];
+  n17 [label="int"];
+  n18 [label="x"];
+  n19 [label="i"];
+  n20 [label="j"];
+  n21 [label="t"];
+  n22 [label="VARS"];
+  n22 [label="VARS"];
+  n23 [label="int"];
+  n24 [label="z"];
+  n25 [label="STATEMENT"];
+  n25 [label="STATEMENT"];
+  n26 [label="x"];
+  n27 [label="="];
+  n28 [label="EX"];
+  n28 [label="EX"];
+  n29 [label="ARRAY"];
+  n29 [label="ARRAY"];
+  n30 [label="A"];
+  n31 [label="EX"];
+  n31 [label="EX"];
+  n32 [label="p"];
+  n33 [label="STATEMENT"];
+  n33 [label="STATEMENT"];
+  n34 [label="i"];
+  n35 [label="="];
+  n36 [label="-"];
+  n36 [label="-"];
+  n37 [label="EX"];
+  n37 [label="EX"];
+  n38 [label="p"];
+  n39 [label="1"];
+  n40 [label="STATEMENT"];
+  n40 [label="STATEMENT"];
+  n41 [label="j"];
+  n42 [label="="];
+  n43 [label="+"];
+  n43 [label="+"];
+  n44 [label="EX"];
+  n44 [label="EX"];
+  n45 [label="r"];
+  n46 [label="1"];
+  n47 [label="STATEMENT"];
+  n47 [label="STATEMENT"];
+  n48 [label="for"];
+  n49 [label="z"];
+  n50 [label="="];
+  n51 [label="0"];
+  n52 [label="*"];
+  n52 [label="*"];
+  n53 [label="EX"];
+  n53 [label="EX"];
+  n54 [label="length"];
+  n55 [label="EX"];
+  n55 [label="EX"];
+  n56 [label="length"];
+  n57 [label="BLOCK"];
+  n57 [label="BLOCK"];
+  n58 [label="STATEMENT"];
+  n58 [label="STATEMENT"];
+  n59 [label="j"];
+  n60 [label="="];
+  n61 [label="-"];
+  n61 [label="-"];
   n62 [label="EX"];
   n62 [label="EX"];
-  n63 [label="length"];
-  n64 [label="BLOCK"];
-  n64 [label="BLOCK"];
+  n63 [label="j"];
+  n64 [label="1"];
   n65 [label="STATEMENT"];
   n65 [label="STATEMENT"];
-  n66 [label="j"];
-  n67 [label="="];
-  n68 [label="-"];
-  n68 [label="-"];
-  n69 [label="EX"];
-  n69 [label="EX"];
-  n70 [label="j"];
-  n71 [label="1"];
-  n72 [label="STATEMENT"];
-  n72 [label="STATEMENT"];
-  n73 [label="for"];
-  n74 [label="a"];
-  n75 [label="="];
-  n76 [label="0"];
-  n77 [label=","];
-  n78 [label="EX"];
-  n78 [label="EX"];
-  n79 [label="length"];
-  n80 [label="BLOCK"];
-  n80 [label="BLOCK"];
-  n81 [label="STATEMENT"];
-  n81 [label="STATEMENT"];
-  n82 [label="if"];
-  n83 [label="<="];
-  n83 [label="<="];
-  n84 [label="EX"];
-  n84 [label="EX"];
-  n85 [label="A"];
-  n86 [label="["];
-  n87 [label="EX"];
-  n87 [label="EX"];
-  n88 [label="j"];
-  n89 [label="]"];
+  n66 [label="for"];
+  n67 [label="a"];
+  n68 [label="="];
+  n69 [label="0"];
+  n70 [label="EX"];
+  n70 [label="EX"];
+  n71 [label="length"];
+  n72 [label="BLOCK"];
+  n72 [label="BLOCK"];
+  n73 [label="STATEMENT"];
+  n73 [label="STATEMENT"];
+  n74 [label="if"];
+  n75 [label="<="];
+  n75 [label="<="];
+  n76 [label="EX"];
+  n76 [label="EX"];
+  n77 [label="ARRAY"];
+  n77 [label="ARRAY"];
+  n78 [label="A"];
+  n79 [label="EX"];
+  n79 [label="EX"];
+  n80 [label="j"];
+  n81 [label="EX"];
+  n81 [label="EX"];
+  n82 [label="x"];
+  n83 [label="BLOCK"];
+  n83 [label="BLOCK"];
+  n84 [label="STATEMENT"];
+  n84 [label="STATEMENT"];
+  n85 [label="break"];
+  n86 [label="STATEMENT"];
+  n86 [label="STATEMENT"];
+  n87 [label="j"];
+  n88 [label="="];
+  n89 [label="-"];
+  n89 [label="-"];
   n90 [label="EX"];
   n90 [label="EX"];
-  n91 [label="x"];
-  n92 [label="BLOCK"];
-  n92 [label="BLOCK"];
+  n91 [label="j"];
+  n92 [label="1"];
   n93 [label="STATEMENT"];
   n93 [label="STATEMENT"];
-  n94 [label="break"];
-  n95 [label="STATEMENT"];
-  n95 [label="STATEMENT"];
-  n96 [label="j"];
-  n97 [label="="];
-  n98 [label="-"];
-  n98 [label="-"];
-  n99 [label="EX"];
-  n99 [label="EX"];
-  n100 [label="j"];
-  n101 [label="1"];
-  n102 [label="STATEMENT"];
-  n102 [label="STATEMENT"];
-  n103 [label="for"];
-  n104 [label="a"];
-  n105 [label="="];
-  n106 [label="+"];
-  n106 [label="+"];
+  n94 [label="for"];
+  n95 [label="a"];
+  n96 [label="="];
+  n97 [label="+"];
+  n97 [label="+"];
+  n98 [label="EX"];
+  n98 [label="EX"];
+  n99 [label="i"];
+  n100 [label="1"];
+  n101 [label="EX"];
+  n101 [label="EX"];
+  n102 [label="length"];
+  n103 [label="BLOCK"];
+  n103 [label="BLOCK"];
+  n104 [label="STATEMENT"];
+  n104 [label="STATEMENT"];
+  n105 [label="if"];
+  n106 [label=">="];
+  n106 [label=">="];
   n107 [label="EX"];
   n107 [label="EX"];
-  n108 [label="i"];
-  n109 [label="1"];
-  n110 [label=","];
-  n111 [label="EX"];
-  n111 [label="EX"];
-  n112 [label="length"];
-  n113 [label="BLOCK"];
-  n113 [label="BLOCK"];
-  n114 [label="STATEMENT"];
-  n114 [label="STATEMENT"];
-  n115 [label="if"];
-  n116 [label=">="];
-  n116 [label=">="];
-  n117 [label="EX"];
-  n117 [label="EX"];
-  n118 [label="A"];
-  n119 [label="["];
-  n120 [label="EX"];
-  n120 [label="EX"];
-  n121 [label="a"];
-  n122 [label="]"];
-  n123 [label="EX"];
-  n123 [label="EX"];
-  n124 [label="x"];
-  n125 [label="BLOCK"];
-  n125 [label="BLOCK"];
-  n126 [label="STATEMENT"];
-  n126 [label="STATEMENT"];
-  n127 [label="i"];
-  n128 [label="="];
-  n129 [label="EX"];
-  n129 [label="EX"];
-  n130 [label="a"];
-  n131 [label="STATEMENT"];
-  n131 [label="STATEMENT"];
-  n132 [label="break"];
-  n133 [label="STATEMENT"];
-  n133 [label="STATEMENT"];
-  n134 [label="if"];
-  n135 [label="<"];
-  n135 [label="<"];
+  n108 [label="ARRAY"];
+  n108 [label="ARRAY"];
+  n109 [label="A"];
+  n110 [label="EX"];
+  n110 [label="EX"];
+  n111 [label="a"];
+  n112 [label="EX"];
+  n112 [label="EX"];
+  n113 [label="x"];
+  n114 [label="BLOCK"];
+  n114 [label="BLOCK"];
+  n115 [label="STATEMENT"];
+  n115 [label="STATEMENT"];
+  n116 [label="i"];
+  n117 [label="="];
+  n118 [label="EX"];
+  n118 [label="EX"];
+  n119 [label="a"];
+  n120 [label="STATEMENT"];
+  n120 [label="STATEMENT"];
+  n121 [label="break"];
+  n122 [label="STATEMENT"];
+  n122 [label="STATEMENT"];
+  n123 [label="if"];
+  n124 [label="<"];
+  n124 [label="<"];
+  n125 [label="EX"];
+  n125 [label="EX"];
+  n126 [label="i"];
+  n127 [label="EX"];
+  n127 [label="EX"];
+  n128 [label="j"];
+  n129 [label="BLOCK"];
+  n129 [label="BLOCK"];
+  n130 [label="STATEMENT"];
+  n130 [label="STATEMENT"];
+  n131 [label="t"];
+  n132 [label="="];
+  n133 [label="EX"];
+  n133 [label="EX"];
+  n134 [label="ARRAY"];
+  n134 [label="ARRAY"];
+  n135 [label="A"];
   n136 [label="EX"];
   n136 [label="EX"];
   n137 [label="i"];
-  n138 [label="EX"];
-  n138 [label="EX"];
-  n139 [label="j"];
-  n140 [label="BLOCK"];
-  n140 [label="BLOCK"];
-  n141 [label="STATEMENT"];
-  n141 [label="STATEMENT"];
-  n142 [label="t"];
+  n138 [label="STATEMENT"];
+  n138 [label="STATEMENT"];
+  n139 [label="ARRAY"];
+  n139 [label="ARRAY"];
+  n140 [label="A"];
+  n141 [label="EX"];
+  n141 [label="EX"];
+  n142 [label="i"];
   n143 [label="="];
   n144 [label="EX"];
   n144 [label="EX"];
-  n145 [label="A"];
-  n146 [label="["];
+  n145 [label="ARRAY"];
+  n145 [label="ARRAY"];
+  n146 [label="A"];
   n147 [label="EX"];
   n147 [label="EX"];
-  n148 [label="i"];
-  n149 [label="]"];
-  n150 [label="STATEMENT"];
-  n150 [label="STATEMENT"];
+  n148 [label="j"];
+  n149 [label="STATEMENT"];
+  n149 [label="STATEMENT"];
+  n150 [label="ARRAY"];
+  n150 [label="ARRAY"];
   n151 [label="A"];
-  n152 [label="["];
-  n153 [label="EX"];
-  n153 [label="EX"];
-  n154 [label="i"];
-  n155 [label="]"];
-  n156 [label="="];
-  n157 [label="EX"];
-  n157 [label="EX"];
-  n158 [label="A"];
-  n159 [label="["];
-  n160 [label="EX"];
-  n160 [label="EX"];
-  n161 [label="j"];
-  n162 [label="]"];
+  n152 [label="EX"];
+  n152 [label="EX"];
+  n153 [label="j"];
+  n154 [label="="];
+  n155 [label="EX"];
+  n155 [label="EX"];
+  n156 [label="t"];
+  n157 [label="else"];
+  n158 [label="BLOCK"];
+  n158 [label="BLOCK"];
+  n159 [label="STATEMENT"];
+  n159 [label="STATEMENT"];
+  n160 [label="return"];
+  n161 [label="EX"];
+  n161 [label="EX"];
+  n162 [label="j"];
   n163 [label="STATEMENT"];
   n163 [label="STATEMENT"];
-  n164 [label="A"];
-  n165 [label="["];
-  n166 [label="EX"];
-  n166 [label="EX"];
-  n167 [label="j"];
-  n168 [label="]"];
-  n169 [label="="];
-  n170 [label="EX"];
-  n170 [label="EX"];
-  n171 [label="t"];
-  n172 [label="else"];
-  n173 [label="BLOCK"];
-  n173 [label="BLOCK"];
-  n174 [label="STATEMENT"];
-  n174 [label="STATEMENT"];
-  n175 [label="return"];
-  n176 [label="EX"];
-  n176 [label="EX"];
-  n177 [label="j"];
+  n164 [label="return"];
+  n165 [label="-"];
+  n165 [label="-"];
+  n166 [label="1"];
+  n167 [label="METHOD"];
+  n167 [label="METHOD"];
+  n168 [label="void"];
+  n169 [label="quicksort"];
+  n170 [label="int"];
+  n171 [label="p"];
+  n172 [label="int"];
+  n173 [label="r"];
+  n174 [label="BLOCK"];
+  n174 [label="BLOCK"];
+  n175 [label="VARS"];
+  n175 [label="VARS"];
+  n176 [label="int"];
+  n177 [label="q"];
   n178 [label="STATEMENT"];
   n178 [label="STATEMENT"];
-  n179 [label="return"];
-  n180 [label="-"];
-  n180 [label="-"];
-  n181 [label="1"];
-  n182 [label="METHOD"];
-  n182 [label="METHOD"];
-  n183 [label="void"];
-  n184 [label="quicksort"];
-  n185 [label="int"];
-  n186 [label="p"];
-  n187 [label="int"];
-  n188 [label="r"];
-  n189 [label="BLOCK"];
-  n189 [label="BLOCK"];
-  n190 [label="int"];
-  n191 [label="q"];
-  n192 [label=";"];
-  n193 [label="STATEMENT"];
-  n193 [label="STATEMENT"];
-  n194 [label="if"];
-  n195 [label="<"];
-  n195 [label="<"];
-  n196 [label="EX"];
-  n196 [label="EX"];
-  n197 [label="p"];
-  n198 [label="EX"];
-  n198 [label="EX"];
-  n199 [label="r"];
-  n200 [label="BLOCK"];
-  n200 [label="BLOCK"];
-  n201 [label="STATEMENT"];
-  n201 [label="STATEMENT"];
+  n179 [label="if"];
+  n180 [label="<"];
+  n180 [label="<"];
+  n181 [label="EX"];
+  n181 [label="EX"];
+  n182 [label="p"];
+  n183 [label="EX"];
+  n183 [label="EX"];
+  n184 [label="r"];
+  n185 [label="BLOCK"];
+  n185 [label="BLOCK"];
+  n186 [label="STATEMENT"];
+  n186 [label="STATEMENT"];
+  n187 [label="q"];
+  n188 [label="="];
+  n189 [label="EX"];
+  n189 [label="EX"];
+  n190 [label="CALL"];
+  n190 [label="CALL"];
+  n191 [label="partition"];
+  n192 [label="EX"];
+  n192 [label="EX"];
+  n193 [label="p"];
+  n194 [label="EX"];
+  n194 [label="EX"];
+  n195 [label="r"];
+  n196 [label="STATEMENT"];
+  n196 [label="STATEMENT"];
+  n197 [label="CALL"];
+  n197 [label="CALL"];
+  n198 [label="quicksort"];
+  n199 [label="EX"];
+  n199 [label="EX"];
+  n200 [label="p"];
+  n201 [label="EX"];
+  n201 [label="EX"];
   n202 [label="q"];
-  n203 [label="="];
-  n204 [label="EX"];
-  n204 [label="EX"];
-  n205 [label="partition"];
-  n206 [label="("];
+  n203 [label="STATEMENT"];
+  n203 [label="STATEMENT"];
+  n204 [label="CALL"];
+  n204 [label="CALL"];
+  n205 [label="quicksort"];
+  n206 [label="+"];
+  n206 [label="+"];
   n207 [label="EX"];
   n207 [label="EX"];
-  n208 [label="p"];
-  n209 [label=","];
+  n208 [label="q"];
+  n209 [label="1"];
   n210 [label="EX"];
   n210 [label="EX"];
   n211 [label="r"];
-  n212 [label=")"];
-  n213 [label="STATEMENT"];
-  n213 [label="STATEMENT"];
-  n214 [label="quicksort"];
-  n215 [label="("];
-  n216 [label="EX"];
-  n216 [label="EX"];
-  n217 [label="p"];
-  n218 [label=","];
-  n219 [label="EX"];
-  n219 [label="EX"];
-  n220 [label="q"];
-  n221 [label=")"];
-  n222 [label="STATEMENT"];
-  n222 [label="STATEMENT"];
-  n223 [label="quicksort"];
-  n224 [label="("];
-  n225 [label="+"];
-  n225 [label="+"];
-  n226 [label="EX"];
-  n226 [label="EX"];
-  n227 [label="q"];
-  n228 [label="1"];
-  n229 [label=","];
-  n230 [label="EX"];
-  n230 [label="EX"];
-  n231 [label="r"];
-  n232 [label=")"];
-  n233 [label="METHOD"];
-  n233 [label="METHOD"];
-  n234 [label="void"];
-  n235 [label="main"];
-  n236 [label="BLOCK"];
-  n236 [label="BLOCK"];
-  n237 [label="int"];
-  n238 [label="temp"];
-  n239 [label=";"];
-  n240 [label="STATEMENT"];
-  n240 [label="STATEMENT"];
+  n212 [label="METHOD"];
+  n212 [label="METHOD"];
+  n213 [label="void"];
+  n214 [label="main"];
+  n215 [label="BLOCK"];
+  n215 [label="BLOCK"];
+  n216 [label="VARS"];
+  n216 [label="VARS"];
+  n217 [label="int"];
+  n218 [label="temp"];
+  n219 [label="STATEMENT"];
+  n219 [label="STATEMENT"];
+  n220 [label="length"];
+  n221 [label="="];
+  n222 [label="10"];
+  n223 [label="STATEMENT"];
+  n223 [label="STATEMENT"];
+  n224 [label="PRINTF"];
+  n224 [label="PRINTF"];
+  n225 [label="printf"];
+  n226 [label="\"printf\""];
+  n227 [label="\"creati...ents\n\""];
+  n228 [label="EX"];
+  n228 [label="EX"];
+  n229 [label="length"];
+  n230 [label="STATEMENT"];
+  n230 [label="STATEMENT"];
+  n231 [label="PRINTF"];
+  n231 [label="PRINTF"];
+  n232 [label="printf"];
+  n233 [label="\"srandom\""];
+  n234 [label="17"];
+  n235 [label="STATEMENT"];
+  n235 [label="STATEMENT"];
+  n236 [label="for"];
+  n237 [label="i"];
+  n238 [label="="];
+  n239 [label="0"];
+  n240 [label="EX"];
+  n240 [label="EX"];
   n241 [label="length"];
-  n242 [label="="];
-  n243 [label="10"];
-  n244 [label="STATEMENT"];
-  n244 [label="STATEMENT"];
-  n245 [label="callout"];
-  n246 [label="("];
-  n247 [label="\"printf\""];
-  n248 [label=","];
-  n249 [label="\"creati...ents\n\""];
-  n250 [label=","];
-  n251 [label="EX"];
-  n251 [label="EX"];
-  n252 [label="length"];
-  n253 [label=")"];
-  n254 [label="STATEMENT"];
-  n254 [label="STATEMENT"];
-  n255 [label="callout"];
-  n256 [label="("];
-  n257 [label="\"srandom\""];
-  n258 [label=","];
-  n259 [label="17"];
-  n260 [label=")"];
-  n261 [label="STATEMENT"];
-  n261 [label="STATEMENT"];
-  n262 [label="for"];
-  n263 [label="i"];
-  n264 [label="="];
-  n265 [label="0"];
-  n266 [label=","];
-  n267 [label="EX"];
-  n267 [label="EX"];
-  n268 [label="length"];
-  n269 [label="BLOCK"];
-  n269 [label="BLOCK"];
-  n270 [label="STATEMENT"];
-  n270 [label="STATEMENT"];
-  n271 [label="temp"];
-  n272 [label="="];
-  n273 [label="EX"];
-  n273 [label="EX"];
-  n274 [label="callout"];
-  n275 [label="("];
-  n276 [label="\"random\""];
-  n277 [label=")"];
-  n278 [label="STATEMENT"];
-  n278 [label="STATEMENT"];
-  n279 [label="A"];
-  n280 [label="["];
-  n281 [label="EX"];
-  n281 [label="EX"];
-  n282 [label="i"];
-  n283 [label="]"];
-  n284 [label="="];
-  n285 [label="EX"];
-  n285 [label="EX"];
-  n286 [label="temp"];
-  n287 [label="STATEMENT"];
-  n287 [label="STATEMENT"];
-  n288 [label="callout"];
-  n289 [label="("];
-  n290 [label="\"printf\""];
-  n291 [label=","];
-  n292 [label="\"\nbefore sort:\n\""];
-  n293 [label=")"];
+  n242 [label="BLOCK"];
+  n242 [label="BLOCK"];
+  n243 [label="STATEMENT"];
+  n243 [label="STATEMENT"];
+  n244 [label="temp"];
+  n245 [label="="];
+  n246 [label="EX"];
+  n246 [label="EX"];
+  n247 [label="PRINTF"];
+  n247 [label="PRINTF"];
+  n248 [label="printf"];
+  n249 [label="\"random\""];
+  n250 [label="STATEMENT"];
+  n250 [label="STATEMENT"];
+  n251 [label="ARRAY"];
+  n251 [label="ARRAY"];
+  n252 [label="A"];
+  n253 [label="EX"];
+  n253 [label="EX"];
+  n254 [label="i"];
+  n255 [label="="];
+  n256 [label="EX"];
+  n256 [label="EX"];
+  n257 [label="temp"];
+  n258 [label="STATEMENT"];
+  n258 [label="STATEMENT"];
+  n259 [label="PRINTF"];
+  n259 [label="PRINTF"];
+  n260 [label="printf"];
+  n261 [label="\"printf\""];
+  n262 [label="\"\nbefore sort:\n\""];
+  n263 [label="STATEMENT"];
+  n263 [label="STATEMENT"];
+  n264 [label="for"];
+  n265 [label="i"];
+  n266 [label="="];
+  n267 [label="0"];
+  n268 [label="EX"];
+  n268 [label="EX"];
+  n269 [label="length"];
+  n270 [label="BLOCK"];
+  n270 [label="BLOCK"];
+  n271 [label="STATEMENT"];
+  n271 [label="STATEMENT"];
+  n272 [label="PRINTF"];
+  n272 [label="PRINTF"];
+  n273 [label="printf"];
+  n274 [label="\"printf\""];
+  n275 [label="\"%d\n\""];
+  n276 [label="EX"];
+  n276 [label="EX"];
+  n277 [label="ARRAY"];
+  n277 [label="ARRAY"];
+  n278 [label="A"];
+  n279 [label="EX"];
+  n279 [label="EX"];
+  n280 [label="i"];
+  n281 [label="STATEMENT"];
+  n281 [label="STATEMENT"];
+  n282 [label="CALL"];
+  n282 [label="CALL"];
+  n283 [label="quicksort"];
+  n284 [label="0"];
+  n285 [label="-"];
+  n285 [label="-"];
+  n286 [label="EX"];
+  n286 [label="EX"];
+  n287 [label="length"];
+  n288 [label="1"];
+  n289 [label="STATEMENT"];
+  n289 [label="STATEMENT"];
+  n290 [label="PRINTF"];
+  n290 [label="PRINTF"];
+  n291 [label="printf"];
+  n292 [label="\"printf\""];
+  n293 [label="\"\nafter sort\n\""];
   n294 [label="STATEMENT"];
   n294 [label="STATEMENT"];
   n295 [label="for"];
   n296 [label="i"];
   n297 [label="="];
   n298 [label="0"];
-  n299 [label=","];
-  n300 [label="EX"];
-  n300 [label="EX"];
-  n301 [label="length"];
-  n302 [label="BLOCK"];
-  n302 [label="BLOCK"];
-  n303 [label="STATEMENT"];
-  n303 [label="STATEMENT"];
-  n304 [label="callout"];
-  n305 [label="("];
-  n306 [label="\"printf\""];
-  n307 [label=","];
-  n308 [label="\"%d\n\""];
-  n309 [label=","];
+  n299 [label="EX"];
+  n299 [label="EX"];
+  n300 [label="length"];
+  n301 [label="BLOCK"];
+  n301 [label="BLOCK"];
+  n302 [label="STATEMENT"];
+  n302 [label="STATEMENT"];
+  n303 [label="PRINTF"];
+  n303 [label="PRINTF"];
+  n304 [label="printf"];
+  n305 [label="\"printf\""];
+  n306 [label="\"%d\n\""];
+  n307 [label="EX"];
+  n307 [label="EX"];
+  n308 [label="ARRAY"];
+  n308 [label="ARRAY"];
+  n309 [label="A"];
   n310 [label="EX"];
   n310 [label="EX"];
-  n311 [label="A"];
-  n312 [label="["];
-  n313 [label="EX"];
-  n313 [label="EX"];
-  n314 [label="i"];
-  n315 [label="]"];
-  n316 [label=")"];
-  n317 [label="STATEMENT"];
-  n317 [label="STATEMENT"];
-  n318 [label="quicksort"];
-  n319 [label="("];
-  n320 [label="0"];
-  n321 [label=","];
-  n322 [label="-"];
-  n322 [label="-"];
-  n323 [label="EX"];
-  n323 [label="EX"];
-  n324 [label="length"];
-  n325 [label="1"];
-  n326 [label=")"];
-  n327 [label="STATEMENT"];
-  n327 [label="STATEMENT"];
-  n328 [label="callout"];
-  n329 [label="("];
-  n330 [label="\"printf\""];
-  n331 [label=","];
-  n332 [label="\"\nafter sort\n\""];
-  n333 [label=")"];
-  n334 [label="STATEMENT"];
-  n334 [label="STATEMENT"];
-  n335 [label="for"];
-  n336 [label="i"];
-  n337 [label="="];
-  n338 [label="0"];
-  n339 [label=","];
-  n340 [label="EX"];
-  n340 [label="EX"];
-  n341 [label="length"];
-  n342 [label="BLOCK"];
-  n342 [label="BLOCK"];
-  n343 [label="STATEMENT"];
-  n343 [label="STATEMENT"];
-  n344 [label="callout"];
-  n345 [label="("];
-  n346 [label="\"printf\""];
-  n347 [label=","];
-  n348 [label="\"%d\n\""];
-  n349 [label=","];
-  n350 [label="EX"];
-  n350 [label="EX"];
-  n351 [label="A"];
-  n352 [label="["];
-  n353 [label="EX"];
-  n353 [label="EX"];
-  n354 [label="i"];
-  n355 [label="]"];
-  n356 [label=")"];
+  n311 [label="i"];
 
   n0 -> n1 // "ROOT" -> "FIELD"
   n1 -> n2 // "FIELD" -> "int"
   n1 -> n3 // "FIELD" -> "A"
-  n1 -> n4 // "FIELD" -> "["
-  n1 -> n5 // "FIELD" -> "100"
-  n1 -> n6 // "FIELD" -> "]"
-  n0 -> n7 // "ROOT" -> "FIELD"
-  n7 -> n8 // "FIELD" -> "int"
-  n7 -> n9 // "FIELD" -> "length"
-  n0 -> n10 // "ROOT" -> "METHOD"
-  n10 -> n11 // "METHOD" -> "int"
-  n10 -> n12 // "METHOD" -> "partition"
-  n10 -> n13 // "METHOD" -> "int"
-  n10 -> n14 // "METHOD" -> "p"
-  n10 -> n15 // "METHOD" -> "int"
-  n10 -> n16 // "METHOD" -> "r"
-  n10 -> n17 // "METHOD" -> "BLOCK"
-  n17 -> n18 // "BLOCK" -> "int"
-  n17 -> n19 // "BLOCK" -> "x"
-  n17 -> n20 // "BLOCK" -> ","
-  n17 -> n21 // "BLOCK" -> "i"
-  n17 -> n22 // "BLOCK" -> ","
-  n17 -> n23 // "BLOCK" -> "j"
-  n17 -> n24 // "BLOCK" -> ","
-  n17 -> n25 // "BLOCK" -> "t"
-  n17 -> n26 // "BLOCK" -> ";"
-  n17 -> n27 // "BLOCK" -> "int"
-  n17 -> n28 // "BLOCK" -> "z"
-  n17 -> n29 // "BLOCK" -> ";"
-  n17 -> n30 // "BLOCK" -> "STATEMENT"
-  n30 -> n31 // "STATEMENT" -> "x"
-  n30 -> n32 // "STATEMENT" -> "="
-  n30 -> n33 // "STATEMENT" -> "EX"
-  n33 -> n34 // "EX" -> "A"
-  n33 -> n35 // "EX" -> "["
-  n33 -> n36 // "EX" -> "EX"
-  n36 -> n37 // "EX" -> "p"
-  n33 -> n38 // "EX" -> "]"
-  n17 -> n39 // "BLOCK" -> "STATEMENT"
-  n39 -> n40 // "STATEMENT" -> "i"
-  n39 -> n41 // "STATEMENT" -> "="
-  n39 -> n42 // "STATEMENT" -> "-"
-  n42 -> n43 // "-" -> "EX"
-  n43 -> n44 // "EX" -> "p"
-  n42 -> n45 // "-" -> "1"
-  n17 -> n46 // "BLOCK" -> "STATEMENT"
-  n46 -> n47 // "STATEMENT" -> "j"
-  n46 -> n48 // "STATEMENT" -> "="
-  n46 -> n49 // "STATEMENT" -> "+"
-  n49 -> n50 // "+" -> "EX"
-  n50 -> n51 // "EX" -> "r"
-  n49 -> n52 // "+" -> "1"
-  n17 -> n53 // "BLOCK" -> "STATEMENT"
-  n53 -> n54 // "STATEMENT" -> "for"
-  n53 -> n55 // "STATEMENT" -> "z"
-  n53 -> n56 // "STATEMENT" -> "="
-  n53 -> n57 // "STATEMENT" -> "0"
-  n53 -> n58 // "STATEMENT" -> ","
-  n53 -> n59 // "STATEMENT" -> "*"
-  n59 -> n60 // "*" -> "EX"
-  n60 -> n61 // "EX" -> "length"
-  n59 -> n62 // "*" -> "EX"
-  n62 -> n63 // "EX" -> "length"
-  n53 -> n64 // "STATEMENT" -> "BLOCK"
-  n64 -> n65 // "BLOCK" -> "STATEMENT"
-  n65 -> n66 // "STATEMENT" -> "j"
-  n65 -> n67 // "STATEMENT" -> "="
-  n65 -> n68 // "STATEMENT" -> "-"
-  n68 -> n69 // "-" -> "EX"
-  n69 -> n70 // "EX" -> "j"
-  n68 -> n71 // "-" -> "1"
-  n64 -> n72 // "BLOCK" -> "STATEMENT"
-  n72 -> n73 // "STATEMENT" -> "for"
-  n72 -> n74 // "STATEMENT" -> "a"
-  n72 -> n75 // "STATEMENT" -> "="
-  n72 -> n76 // "STATEMENT" -> "0"
-  n72 -> n77 // "STATEMENT" -> ","
-  n72 -> n78 // "STATEMENT" -> "EX"
-  n78 -> n79 // "EX" -> "length"
-  n72 -> n80 // "STATEMENT" -> "BLOCK"
-  n80 -> n81 // "BLOCK" -> "STATEMENT"
-  n81 -> n82 // "STATEMENT" -> "if"
-  n81 -> n83 // "STATEMENT" -> "<="
-  n83 -> n84 // "<=" -> "EX"
-  n84 -> n85 // "EX" -> "A"
-  n84 -> n86 // "EX" -> "["
-  n84 -> n87 // "EX" -> "EX"
-  n87 -> n88 // "EX" -> "j"
-  n84 -> n89 // "EX" -> "]"
-  n83 -> n90 // "<=" -> "EX"
-  n90 -> n91 // "EX" -> "x"
-  n81 -> n92 // "STATEMENT" -> "BLOCK"
-  n92 -> n93 // "BLOCK" -> "STATEMENT"
-  n93 -> n94 // "STATEMENT" -> "break"
-  n80 -> n95 // "BLOCK" -> "STATEMENT"
-  n95 -> n96 // "STATEMENT" -> "j"
-  n95 -> n97 // "STATEMENT" -> "="
-  n95 -> n98 // "STATEMENT" -> "-"
-  n98 -> n99 // "-" -> "EX"
-  n99 -> n100 // "EX" -> "j"
-  n98 -> n101 // "-" -> "1"
-  n64 -> n102 // "BLOCK" -> "STATEMENT"
-  n102 -> n103 // "STATEMENT" -> "for"
-  n102 -> n104 // "STATEMENT" -> "a"
-  n102 -> n105 // "STATEMENT" -> "="
-  n102 -> n106 // "STATEMENT" -> "+"
-  n106 -> n107 // "+" -> "EX"
-  n107 -> n108 // "EX" -> "i"
-  n106 -> n109 // "+" -> "1"
-  n102 -> n110 // "STATEMENT" -> ","
-  n102 -> n111 // "STATEMENT" -> "EX"
-  n111 -> n112 // "EX" -> "length"
-  n102 -> n113 // "STATEMENT" -> "BLOCK"
-  n113 -> n114 // "BLOCK" -> "STATEMENT"
-  n114 -> n115 // "STATEMENT" -> "if"
-  n114 -> n116 // "STATEMENT" -> ">="
-  n116 -> n117 // ">=" -> "EX"
-  n117 -> n118 // "EX" -> "A"
-  n117 -> n119 // "EX" -> "["
-  n117 -> n120 // "EX" -> "EX"
-  n120 -> n121 // "EX" -> "a"
-  n117 -> n122 // "EX" -> "]"
-  n116 -> n123 // ">=" -> "EX"
-  n123 -> n124 // "EX" -> "x"
-  n114 -> n125 // "STATEMENT" -> "BLOCK"
-  n125 -> n126 // "BLOCK" -> "STATEMENT"
-  n126 -> n127 // "STATEMENT" -> "i"
-  n126 -> n128 // "STATEMENT" -> "="
-  n126 -> n129 // "STATEMENT" -> "EX"
-  n129 -> n130 // "EX" -> "a"
-  n125 -> n131 // "BLOCK" -> "STATEMENT"
-  n131 -> n132 // "STATEMENT" -> "break"
-  n64 -> n133 // "BLOCK" -> "STATEMENT"
-  n133 -> n134 // "STATEMENT" -> "if"
-  n133 -> n135 // "STATEMENT" -> "<"
-  n135 -> n136 // "<" -> "EX"
+  n1 -> n4 // "FIELD" -> "100"
+  n0 -> n5 // "ROOT" -> "FIELD"
+  n5 -> n6 // "FIELD" -> "int"
+  n5 -> n7 // "FIELD" -> "length"
+  n0 -> n8 // "ROOT" -> "METHOD"
+  n8 -> n9 // "METHOD" -> "int"
+  n8 -> n10 // "METHOD" -> "partition"
+  n8 -> n11 // "METHOD" -> "int"
+  n8 -> n12 // "METHOD" -> "p"
+  n8 -> n13 // "METHOD" -> "int"
+  n8 -> n14 // "METHOD" -> "r"
+  n8 -> n15 // "METHOD" -> "BLOCK"
+  n15 -> n16 // "BLOCK" -> "VARS"
+  n16 -> n17 // "VARS" -> "int"
+  n16 -> n18 // "VARS" -> "x"
+  n16 -> n19 // "VARS" -> "i"
+  n16 -> n20 // "VARS" -> "j"
+  n16 -> n21 // "VARS" -> "t"
+  n15 -> n22 // "BLOCK" -> "VARS"
+  n22 -> n23 // "VARS" -> "int"
+  n22 -> n24 // "VARS" -> "z"
+  n15 -> n25 // "BLOCK" -> "STATEMENT"
+  n25 -> n26 // "STATEMENT" -> "x"
+  n25 -> n27 // "STATEMENT" -> "="
+  n25 -> n28 // "STATEMENT" -> "EX"
+  n28 -> n29 // "EX" -> "ARRAY"
+  n29 -> n30 // "ARRAY" -> "A"
+  n29 -> n31 // "ARRAY" -> "EX"
+  n31 -> n32 // "EX" -> "p"
+  n15 -> n33 // "BLOCK" -> "STATEMENT"
+  n33 -> n34 // "STATEMENT" -> "i"
+  n33 -> n35 // "STATEMENT" -> "="
+  n33 -> n36 // "STATEMENT" -> "-"
+  n36 -> n37 // "-" -> "EX"
+  n37 -> n38 // "EX" -> "p"
+  n36 -> n39 // "-" -> "1"
+  n15 -> n40 // "BLOCK" -> "STATEMENT"
+  n40 -> n41 // "STATEMENT" -> "j"
+  n40 -> n42 // "STATEMENT" -> "="
+  n40 -> n43 // "STATEMENT" -> "+"
+  n43 -> n44 // "+" -> "EX"
+  n44 -> n45 // "EX" -> "r"
+  n43 -> n46 // "+" -> "1"
+  n15 -> n47 // "BLOCK" -> "STATEMENT"
+  n47 -> n48 // "STATEMENT" -> "for"
+  n47 -> n49 // "STATEMENT" -> "z"
+  n47 -> n50 // "STATEMENT" -> "="
+  n47 -> n51 // "STATEMENT" -> "0"
+  n47 -> n52 // "STATEMENT" -> "*"
+  n52 -> n53 // "*" -> "EX"
+  n53 -> n54 // "EX" -> "length"
+  n52 -> n55 // "*" -> "EX"
+  n55 -> n56 // "EX" -> "length"
+  n47 -> n57 // "STATEMENT" -> "BLOCK"
+  n57 -> n58 // "BLOCK" -> "STATEMENT"
+  n58 -> n59 // "STATEMENT" -> "j"
+  n58 -> n60 // "STATEMENT" -> "="
+  n58 -> n61 // "STATEMENT" -> "-"
+  n61 -> n62 // "-" -> "EX"
+  n62 -> n63 // "EX" -> "j"
+  n61 -> n64 // "-" -> "1"
+  n57 -> n65 // "BLOCK" -> "STATEMENT"
+  n65 -> n66 // "STATEMENT" -> "for"
+  n65 -> n67 // "STATEMENT" -> "a"
+  n65 -> n68 // "STATEMENT" -> "="
+  n65 -> n69 // "STATEMENT" -> "0"
+  n65 -> n70 // "STATEMENT" -> "EX"
+  n70 -> n71 // "EX" -> "length"
+  n65 -> n72 // "STATEMENT" -> "BLOCK"
+  n72 -> n73 // "BLOCK" -> "STATEMENT"
+  n73 -> n74 // "STATEMENT" -> "if"
+  n73 -> n75 // "STATEMENT" -> "<="
+  n75 -> n76 // "<=" -> "EX"
+  n76 -> n77 // "EX" -> "ARRAY"
+  n77 -> n78 // "ARRAY" -> "A"
+  n77 -> n79 // "ARRAY" -> "EX"
+  n79 -> n80 // "EX" -> "j"
+  n75 -> n81 // "<=" -> "EX"
+  n81 -> n82 // "EX" -> "x"
+  n73 -> n83 // "STATEMENT" -> "BLOCK"
+  n83 -> n84 // "BLOCK" -> "STATEMENT"
+  n84 -> n85 // "STATEMENT" -> "break"
+  n72 -> n86 // "BLOCK" -> "STATEMENT"
+  n86 -> n87 // "STATEMENT" -> "j"
+  n86 -> n88 // "STATEMENT" -> "="
+  n86 -> n89 // "STATEMENT" -> "-"
+  n89 -> n90 // "-" -> "EX"
+  n90 -> n91 // "EX" -> "j"
+  n89 -> n92 // "-" -> "1"
+  n57 -> n93 // "BLOCK" -> "STATEMENT"
+  n93 -> n94 // "STATEMENT" -> "for"
+  n93 -> n95 // "STATEMENT" -> "a"
+  n93 -> n96 // "STATEMENT" -> "="
+  n93 -> n97 // "STATEMENT" -> "+"
+  n97 -> n98 // "+" -> "EX"
+  n98 -> n99 // "EX" -> "i"
+  n97 -> n100 // "+" -> "1"
+  n93 -> n101 // "STATEMENT" -> "EX"
+  n101 -> n102 // "EX" -> "length"
+  n93 -> n103 // "STATEMENT" -> "BLOCK"
+  n103 -> n104 // "BLOCK" -> "STATEMENT"
+  n104 -> n105 // "STATEMENT" -> "if"
+  n104 -> n106 // "STATEMENT" -> ">="
+  n106 -> n107 // ">=" -> "EX"
+  n107 -> n108 // "EX" -> "ARRAY"
+  n108 -> n109 // "ARRAY" -> "A"
+  n108 -> n110 // "ARRAY" -> "EX"
+  n110 -> n111 // "EX" -> "a"
+  n106 -> n112 // ">=" -> "EX"
+  n112 -> n113 // "EX" -> "x"
+  n104 -> n114 // "STATEMENT" -> "BLOCK"
+  n114 -> n115 // "BLOCK" -> "STATEMENT"
+  n115 -> n116 // "STATEMENT" -> "i"
+  n115 -> n117 // "STATEMENT" -> "="
+  n115 -> n118 // "STATEMENT" -> "EX"
+  n118 -> n119 // "EX" -> "a"
+  n114 -> n120 // "BLOCK" -> "STATEMENT"
+  n120 -> n121 // "STATEMENT" -> "break"
+  n57 -> n122 // "BLOCK" -> "STATEMENT"
+  n122 -> n123 // "STATEMENT" -> "if"
+  n122 -> n124 // "STATEMENT" -> "<"
+  n124 -> n125 // "<" -> "EX"
+  n125 -> n126 // "EX" -> "i"
+  n124 -> n127 // "<" -> "EX"
+  n127 -> n128 // "EX" -> "j"
+  n122 -> n129 // "STATEMENT" -> "BLOCK"
+  n129 -> n130 // "BLOCK" -> "STATEMENT"
+  n130 -> n131 // "STATEMENT" -> "t"
+  n130 -> n132 // "STATEMENT" -> "="
+  n130 -> n133 // "STATEMENT" -> "EX"
+  n133 -> n134 // "EX" -> "ARRAY"
+  n134 -> n135 // "ARRAY" -> "A"
+  n134 -> n136 // "ARRAY" -> "EX"
   n136 -> n137 // "EX" -> "i"
-  n135 -> n138 // "<" -> "EX"
-  n138 -> n139 // "EX" -> "j"
-  n133 -> n140 // "STATEMENT" -> "BLOCK"
-  n140 -> n141 // "BLOCK" -> "STATEMENT"
-  n141 -> n142 // "STATEMENT" -> "t"
-  n141 -> n143 // "STATEMENT" -> "="
-  n141 -> n144 // "STATEMENT" -> "EX"
-  n144 -> n145 // "EX" -> "A"
-  n144 -> n146 // "EX" -> "["
-  n144 -> n147 // "EX" -> "EX"
-  n147 -> n148 // "EX" -> "i"
-  n144 -> n149 // "EX" -> "]"
-  n140 -> n150 // "BLOCK" -> "STATEMENT"
-  n150 -> n151 // "STATEMENT" -> "A"
-  n150 -> n152 // "STATEMENT" -> "["
-  n150 -> n153 // "STATEMENT" -> "EX"
-  n153 -> n154 // "EX" -> "i"
-  n150 -> n155 // "STATEMENT" -> "]"
-  n150 -> n156 // "STATEMENT" -> "="
-  n150 -> n157 // "STATEMENT" -> "EX"
-  n157 -> n158 // "EX" -> "A"
-  n157 -> n159 // "EX" -> "["
-  n157 -> n160 // "EX" -> "EX"
-  n160 -> n161 // "EX" -> "j"
-  n157 -> n162 // "EX" -> "]"
-  n140 -> n163 // "BLOCK" -> "STATEMENT"
-  n163 -> n164 // "STATEMENT" -> "A"
-  n163 -> n165 // "STATEMENT" -> "["
-  n163 -> n166 // "STATEMENT" -> "EX"
-  n166 -> n167 // "EX" -> "j"
-  n163 -> n168 // "STATEMENT" -> "]"
-  n163 -> n169 // "STATEMENT" -> "="
-  n163 -> n170 // "STATEMENT" -> "EX"
-  n170 -> n171 // "EX" -> "t"
-  n133 -> n172 // "STATEMENT" -> "else"
-  n133 -> n173 // "STATEMENT" -> "BLOCK"
-  n173 -> n174 // "BLOCK" -> "STATEMENT"
-  n174 -> n175 // "STATEMENT" -> "return"
-  n174 -> n176 // "STATEMENT" -> "EX"
-  n176 -> n177 // "EX" -> "j"
-  n17 -> n178 // "BLOCK" -> "STATEMENT"
-  n178 -> n179 // "STATEMENT" -> "return"
-  n178 -> n180 // "STATEMENT" -> "-"
-  n180 -> n181 // "-" -> "1"
-  n0 -> n182 // "ROOT" -> "METHOD"
-  n182 -> n183 // "METHOD" -> "void"
-  n182 -> n184 // "METHOD" -> "quicksort"
-  n182 -> n185 // "METHOD" -> "int"
-  n182 -> n186 // "METHOD" -> "p"
-  n182 -> n187 // "METHOD" -> "int"
-  n182 -> n188 // "METHOD" -> "r"
-  n182 -> n189 // "METHOD" -> "BLOCK"
-  n189 -> n190 // "BLOCK" -> "int"
-  n189 -> n191 // "BLOCK" -> "q"
-  n189 -> n192 // "BLOCK" -> ";"
-  n189 -> n193 // "BLOCK" -> "STATEMENT"
-  n193 -> n194 // "STATEMENT" -> "if"
-  n193 -> n195 // "STATEMENT" -> "<"
-  n195 -> n196 // "<" -> "EX"
-  n196 -> n197 // "EX" -> "p"
-  n195 -> n198 // "<" -> "EX"
-  n198 -> n199 // "EX" -> "r"
-  n193 -> n200 // "STATEMENT" -> "BLOCK"
-  n200 -> n201 // "BLOCK" -> "STATEMENT"
-  n201 -> n202 // "STATEMENT" -> "q"
-  n201 -> n203 // "STATEMENT" -> "="
-  n201 -> n204 // "STATEMENT" -> "EX"
-  n204 -> n205 // "EX" -> "partition"
-  n204 -> n206 // "EX" -> "("
-  n204 -> n207 // "EX" -> "EX"
-  n207 -> n208 // "EX" -> "p"
-  n204 -> n209 // "EX" -> ","
-  n204 -> n210 // "EX" -> "EX"
+  n129 -> n138 // "BLOCK" -> "STATEMENT"
+  n138 -> n139 // "STATEMENT" -> "ARRAY"
+  n139 -> n140 // "ARRAY" -> "A"
+  n139 -> n141 // "ARRAY" -> "EX"
+  n141 -> n142 // "EX" -> "i"
+  n138 -> n143 // "STATEMENT" -> "="
+  n138 -> n144 // "STATEMENT" -> "EX"
+  n144 -> n145 // "EX" -> "ARRAY"
+  n145 -> n146 // "ARRAY" -> "A"
+  n145 -> n147 // "ARRAY" -> "EX"
+  n147 -> n148 // "EX" -> "j"
+  n129 -> n149 // "BLOCK" -> "STATEMENT"
+  n149 -> n150 // "STATEMENT" -> "ARRAY"
+  n150 -> n151 // "ARRAY" -> "A"
+  n150 -> n152 // "ARRAY" -> "EX"
+  n152 -> n153 // "EX" -> "j"
+  n149 -> n154 // "STATEMENT" -> "="
+  n149 -> n155 // "STATEMENT" -> "EX"
+  n155 -> n156 // "EX" -> "t"
+  n122 -> n157 // "STATEMENT" -> "else"
+  n122 -> n158 // "STATEMENT" -> "BLOCK"
+  n158 -> n159 // "BLOCK" -> "STATEMENT"
+  n159 -> n160 // "STATEMENT" -> "return"
+  n159 -> n161 // "STATEMENT" -> "EX"
+  n161 -> n162 // "EX" -> "j"
+  n15 -> n163 // "BLOCK" -> "STATEMENT"
+  n163 -> n164 // "STATEMENT" -> "return"
+  n163 -> n165 // "STATEMENT" -> "-"
+  n165 -> n166 // "-" -> "1"
+  n0 -> n167 // "ROOT" -> "METHOD"
+  n167 -> n168 // "METHOD" -> "void"
+  n167 -> n169 // "METHOD" -> "quicksort"
+  n167 -> n170 // "METHOD" -> "int"
+  n167 -> n171 // "METHOD" -> "p"
+  n167 -> n172 // "METHOD" -> "int"
+  n167 -> n173 // "METHOD" -> "r"
+  n167 -> n174 // "METHOD" -> "BLOCK"
+  n174 -> n175 // "BLOCK" -> "VARS"
+  n175 -> n176 // "VARS" -> "int"
+  n175 -> n177 // "VARS" -> "q"
+  n174 -> n178 // "BLOCK" -> "STATEMENT"
+  n178 -> n179 // "STATEMENT" -> "if"
+  n178 -> n180 // "STATEMENT" -> "<"
+  n180 -> n181 // "<" -> "EX"
+  n181 -> n182 // "EX" -> "p"
+  n180 -> n183 // "<" -> "EX"
+  n183 -> n184 // "EX" -> "r"
+  n178 -> n185 // "STATEMENT" -> "BLOCK"
+  n185 -> n186 // "BLOCK" -> "STATEMENT"
+  n186 -> n187 // "STATEMENT" -> "q"
+  n186 -> n188 // "STATEMENT" -> "="
+  n186 -> n189 // "STATEMENT" -> "EX"
+  n189 -> n190 // "EX" -> "CALL"
+  n190 -> n191 // "CALL" -> "partition"
+  n190 -> n192 // "CALL" -> "EX"
+  n192 -> n193 // "EX" -> "p"
+  n190 -> n194 // "CALL" -> "EX"
+  n194 -> n195 // "EX" -> "r"
+  n185 -> n196 // "BLOCK" -> "STATEMENT"
+  n196 -> n197 // "STATEMENT" -> "CALL"
+  n197 -> n198 // "CALL" -> "quicksort"
+  n197 -> n199 // "CALL" -> "EX"
+  n199 -> n200 // "EX" -> "p"
+  n197 -> n201 // "CALL" -> "EX"
+  n201 -> n202 // "EX" -> "q"
+  n185 -> n203 // "BLOCK" -> "STATEMENT"
+  n203 -> n204 // "STATEMENT" -> "CALL"
+  n204 -> n205 // "CALL" -> "quicksort"
+  n204 -> n206 // "CALL" -> "+"
+  n206 -> n207 // "+" -> "EX"
+  n207 -> n208 // "EX" -> "q"
+  n206 -> n209 // "+" -> "1"
+  n204 -> n210 // "CALL" -> "EX"
   n210 -> n211 // "EX" -> "r"
-  n204 -> n212 // "EX" -> ")"
-  n200 -> n213 // "BLOCK" -> "STATEMENT"
-  n213 -> n214 // "STATEMENT" -> "quicksort"
-  n213 -> n215 // "STATEMENT" -> "("
-  n213 -> n216 // "STATEMENT" -> "EX"
-  n216 -> n217 // "EX" -> "p"
-  n213 -> n218 // "STATEMENT" -> ","
-  n213 -> n219 // "STATEMENT" -> "EX"
-  n219 -> n220 // "EX" -> "q"
-  n213 -> n221 // "STATEMENT" -> ")"
-  n200 -> n222 // "BLOCK" -> "STATEMENT"
-  n222 -> n223 // "STATEMENT" -> "quicksort"
-  n222 -> n224 // "STATEMENT" -> "("
-  n222 -> n225 // "STATEMENT" -> "+"
-  n225 -> n226 // "+" -> "EX"
-  n226 -> n227 // "EX" -> "q"
-  n225 -> n228 // "+" -> "1"
-  n222 -> n229 // "STATEMENT" -> ","
-  n222 -> n230 // "STATEMENT" -> "EX"
-  n230 -> n231 // "EX" -> "r"
-  n222 -> n232 // "STATEMENT" -> ")"
-  n0 -> n233 // "ROOT" -> "METHOD"
-  n233 -> n234 // "METHOD" -> "void"
-  n233 -> n235 // "METHOD" -> "main"
-  n233 -> n236 // "METHOD" -> "BLOCK"
-  n236 -> n237 // "BLOCK" -> "int"
-  n236 -> n238 // "BLOCK" -> "temp"
-  n236 -> n239 // "BLOCK" -> ";"
-  n236 -> n240 // "BLOCK" -> "STATEMENT"
-  n240 -> n241 // "STATEMENT" -> "length"
-  n240 -> n242 // "STATEMENT" -> "="
-  n240 -> n243 // "STATEMENT" -> "10"
-  n236 -> n244 // "BLOCK" -> "STATEMENT"
-  n244 -> n245 // "STATEMENT" -> "callout"
-  n244 -> n246 // "STATEMENT" -> "("
-  n244 -> n247 // "STATEMENT" -> "\"printf\""
-  n244 -> n248 // "STATEMENT" -> ","
-  n244 -> n249 // "STATEMENT" -> "\"creati...ents\n\""
-  n244 -> n250 // "STATEMENT" -> ","
-  n244 -> n251 // "STATEMENT" -> "EX"
-  n251 -> n252 // "EX" -> "length"
-  n244 -> n253 // "STATEMENT" -> ")"
-  n236 -> n254 // "BLOCK" -> "STATEMENT"
-  n254 -> n255 // "STATEMENT" -> "callout"
-  n254 -> n256 // "STATEMENT" -> "("
-  n254 -> n257 // "STATEMENT" -> "\"srandom\""
-  n254 -> n258 // "STATEMENT" -> ","
-  n254 -> n259 // "STATEMENT" -> "17"
-  n254 -> n260 // "STATEMENT" -> ")"
-  n236 -> n261 // "BLOCK" -> "STATEMENT"
-  n261 -> n262 // "STATEMENT" -> "for"
-  n261 -> n263 // "STATEMENT" -> "i"
-  n261 -> n264 // "STATEMENT" -> "="
-  n261 -> n265 // "STATEMENT" -> "0"
-  n261 -> n266 // "STATEMENT" -> ","
-  n261 -> n267 // "STATEMENT" -> "EX"
-  n267 -> n268 // "EX" -> "length"
-  n261 -> n269 // "STATEMENT" -> "BLOCK"
-  n269 -> n270 // "BLOCK" -> "STATEMENT"
-  n270 -> n271 // "STATEMENT" -> "temp"
-  n270 -> n272 // "STATEMENT" -> "="
-  n270 -> n273 // "STATEMENT" -> "EX"
-  n273 -> n274 // "EX" -> "callout"
-  n273 -> n275 // "EX" -> "("
-  n273 -> n276 // "EX" -> "\"random\""
-  n273 -> n277 // "EX" -> ")"
-  n269 -> n278 // "BLOCK" -> "STATEMENT"
-  n278 -> n279 // "STATEMENT" -> "A"
-  n278 -> n280 // "STATEMENT" -> "["
-  n278 -> n281 // "STATEMENT" -> "EX"
-  n281 -> n282 // "EX" -> "i"
-  n278 -> n283 // "STATEMENT" -> "]"
-  n278 -> n284 // "STATEMENT" -> "="
-  n278 -> n285 // "STATEMENT" -> "EX"
-  n285 -> n286 // "EX" -> "temp"
-  n236 -> n287 // "BLOCK" -> "STATEMENT"
-  n287 -> n288 // "STATEMENT" -> "callout"
-  n287 -> n289 // "STATEMENT" -> "("
-  n287 -> n290 // "STATEMENT" -> "\"printf\""
-  n287 -> n291 // "STATEMENT" -> ","
-  n287 -> n292 // "STATEMENT" -> "\"\nbefore sort:\n\""
-  n287 -> n293 // "STATEMENT" -> ")"
-  n236 -> n294 // "BLOCK" -> "STATEMENT"
+  n0 -> n212 // "ROOT" -> "METHOD"
+  n212 -> n213 // "METHOD" -> "void"
+  n212 -> n214 // "METHOD" -> "main"
+  n212 -> n215 // "METHOD" -> "BLOCK"
+  n215 -> n216 // "BLOCK" -> "VARS"
+  n216 -> n217 // "VARS" -> "int"
+  n216 -> n218 // "VARS" -> "temp"
+  n215 -> n219 // "BLOCK" -> "STATEMENT"
+  n219 -> n220 // "STATEMENT" -> "length"
+  n219 -> n221 // "STATEMENT" -> "="
+  n219 -> n222 // "STATEMENT" -> "10"
+  n215 -> n223 // "BLOCK" -> "STATEMENT"
+  n223 -> n224 // "STATEMENT" -> "PRINTF"
+  n224 -> n225 // "PRINTF" -> "printf"
+  n224 -> n226 // "PRINTF" -> "\"printf\""
+  n224 -> n227 // "PRINTF" -> "\"creati...ents\n\""
+  n224 -> n228 // "PRINTF" -> "EX"
+  n228 -> n229 // "EX" -> "length"
+  n215 -> n230 // "BLOCK" -> "STATEMENT"
+  n230 -> n231 // "STATEMENT" -> "PRINTF"
+  n231 -> n232 // "PRINTF" -> "printf"
+  n231 -> n233 // "PRINTF" -> "\"srandom\""
+  n231 -> n234 // "PRINTF" -> "17"
+  n215 -> n235 // "BLOCK" -> "STATEMENT"
+  n235 -> n236 // "STATEMENT" -> "for"
+  n235 -> n237 // "STATEMENT" -> "i"
+  n235 -> n238 // "STATEMENT" -> "="
+  n235 -> n239 // "STATEMENT" -> "0"
+  n235 -> n240 // "STATEMENT" -> "EX"
+  n240 -> n241 // "EX" -> "length"
+  n235 -> n242 // "STATEMENT" -> "BLOCK"
+  n242 -> n243 // "BLOCK" -> "STATEMENT"
+  n243 -> n244 // "STATEMENT" -> "temp"
+  n243 -> n245 // "STATEMENT" -> "="
+  n243 -> n246 // "STATEMENT" -> "EX"
+  n246 -> n247 // "EX" -> "PRINTF"
+  n247 -> n248 // "PRINTF" -> "printf"
+  n247 -> n249 // "PRINTF" -> "\"random\""
+  n242 -> n250 // "BLOCK" -> "STATEMENT"
+  n250 -> n251 // "STATEMENT" -> "ARRAY"
+  n251 -> n252 // "ARRAY" -> "A"
+  n251 -> n253 // "ARRAY" -> "EX"
+  n253 -> n254 // "EX" -> "i"
+  n250 -> n255 // "STATEMENT" -> "="
+  n250 -> n256 // "STATEMENT" -> "EX"
+  n256 -> n257 // "EX" -> "temp"
+  n215 -> n258 // "BLOCK" -> "STATEMENT"
+  n258 -> n259 // "STATEMENT" -> "PRINTF"
+  n259 -> n260 // "PRINTF" -> "printf"
+  n259 -> n261 // "PRINTF" -> "\"printf\""
+  n259 -> n262 // "PRINTF" -> "\"\nbefore sort:\n\""
+  n215 -> n263 // "BLOCK" -> "STATEMENT"
+  n263 -> n264 // "STATEMENT" -> "for"
+  n263 -> n265 // "STATEMENT" -> "i"
+  n263 -> n266 // "STATEMENT" -> "="
+  n263 -> n267 // "STATEMENT" -> "0"
+  n263 -> n268 // "STATEMENT" -> "EX"
+  n268 -> n269 // "EX" -> "length"
+  n263 -> n270 // "STATEMENT" -> "BLOCK"
+  n270 -> n271 // "BLOCK" -> "STATEMENT"
+  n271 -> n272 // "STATEMENT" -> "PRINTF"
+  n272 -> n273 // "PRINTF" -> "printf"
+  n272 -> n274 // "PRINTF" -> "\"printf\""
+  n272 -> n275 // "PRINTF" -> "\"%d\n\""
+  n272 -> n276 // "PRINTF" -> "EX"
+  n276 -> n277 // "EX" -> "ARRAY"
+  n277 -> n278 // "ARRAY" -> "A"
+  n277 -> n279 // "ARRAY" -> "EX"
+  n279 -> n280 // "EX" -> "i"
+  n215 -> n281 // "BLOCK" -> "STATEMENT"
+  n281 -> n282 // "STATEMENT" -> "CALL"
+  n282 -> n283 // "CALL" -> "quicksort"
+  n282 -> n284 // "CALL" -> "0"
+  n282 -> n285 // "CALL" -> "-"
+  n285 -> n286 // "-" -> "EX"
+  n286 -> n287 // "EX" -> "length"
+  n285 -> n288 // "-" -> "1"
+  n215 -> n289 // "BLOCK" -> "STATEMENT"
+  n289 -> n290 // "STATEMENT" -> "PRINTF"
+  n290 -> n291 // "PRINTF" -> "printf"
+  n290 -> n292 // "PRINTF" -> "\"printf\""
+  n290 -> n293 // "PRINTF" -> "\"\nafter sort\n\""
+  n215 -> n294 // "BLOCK" -> "STATEMENT"
   n294 -> n295 // "STATEMENT" -> "for"
   n294 -> n296 // "STATEMENT" -> "i"
   n294 -> n297 // "STATEMENT" -> "="
   n294 -> n298 // "STATEMENT" -> "0"
-  n294 -> n299 // "STATEMENT" -> ","
-  n294 -> n300 // "STATEMENT" -> "EX"
-  n300 -> n301 // "EX" -> "length"
-  n294 -> n302 // "STATEMENT" -> "BLOCK"
-  n302 -> n303 // "BLOCK" -> "STATEMENT"
-  n303 -> n304 // "STATEMENT" -> "callout"
-  n303 -> n305 // "STATEMENT" -> "("
-  n303 -> n306 // "STATEMENT" -> "\"printf\""
-  n303 -> n307 // "STATEMENT" -> ","
-  n303 -> n308 // "STATEMENT" -> "\"%d\n\""
-  n303 -> n309 // "STATEMENT" -> ","
-  n303 -> n310 // "STATEMENT" -> "EX"
-  n310 -> n311 // "EX" -> "A"
-  n310 -> n312 // "EX" -> "["
-  n310 -> n313 // "EX" -> "EX"
-  n313 -> n314 // "EX" -> "i"
-  n310 -> n315 // "EX" -> "]"
-  n303 -> n316 // "STATEMENT" -> ")"
-  n236 -> n317 // "BLOCK" -> "STATEMENT"
-  n317 -> n318 // "STATEMENT" -> "quicksort"
-  n317 -> n319 // "STATEMENT" -> "("
-  n317 -> n320 // "STATEMENT" -> "0"
-  n317 -> n321 // "STATEMENT" -> ","
-  n317 -> n322 // "STATEMENT" -> "-"
-  n322 -> n323 // "-" -> "EX"
-  n323 -> n324 // "EX" -> "length"
-  n322 -> n325 // "-" -> "1"
-  n317 -> n326 // "STATEMENT" -> ")"
-  n236 -> n327 // "BLOCK" -> "STATEMENT"
-  n327 -> n328 // "STATEMENT" -> "callout"
-  n327 -> n329 // "STATEMENT" -> "("
-  n327 -> n330 // "STATEMENT" -> "\"printf\""
-  n327 -> n331 // "STATEMENT" -> ","
-  n327 -> n332 // "STATEMENT" -> "\"\nafter sort\n\""
-  n327 -> n333 // "STATEMENT" -> ")"
-  n236 -> n334 // "BLOCK" -> "STATEMENT"
-  n334 -> n335 // "STATEMENT" -> "for"
-  n334 -> n336 // "STATEMENT" -> "i"
-  n334 -> n337 // "STATEMENT" -> "="
-  n334 -> n338 // "STATEMENT" -> "0"
-  n334 -> n339 // "STATEMENT" -> ","
-  n334 -> n340 // "STATEMENT" -> "EX"
-  n340 -> n341 // "EX" -> "length"
-  n334 -> n342 // "STATEMENT" -> "BLOCK"
-  n342 -> n343 // "BLOCK" -> "STATEMENT"
-  n343 -> n344 // "STATEMENT" -> "callout"
-  n343 -> n345 // "STATEMENT" -> "("
-  n343 -> n346 // "STATEMENT" -> "\"printf\""
-  n343 -> n347 // "STATEMENT" -> ","
-  n343 -> n348 // "STATEMENT" -> "\"%d\n\""
-  n343 -> n349 // "STATEMENT" -> ","
-  n343 -> n350 // "STATEMENT" -> "EX"
-  n350 -> n351 // "EX" -> "A"
-  n350 -> n352 // "EX" -> "["
-  n350 -> n353 // "EX" -> "EX"
-  n353 -> n354 // "EX" -> "i"
-  n350 -> n355 // "EX" -> "]"
-  n343 -> n356 // "STATEMENT" -> ")"
+  n294 -> n299 // "STATEMENT" -> "EX"
+  n299 -> n300 // "EX" -> "length"
+  n294 -> n301 // "STATEMENT" -> "BLOCK"
+  n301 -> n302 // "BLOCK" -> "STATEMENT"
+  n302 -> n303 // "STATEMENT" -> "PRINTF"
+  n303 -> n304 // "PRINTF" -> "printf"
+  n303 -> n305 // "PRINTF" -> "\"printf\""
+  n303 -> n306 // "PRINTF" -> "\"%d\n\""
+  n303 -> n307 // "PRINTF" -> "EX"
+  n307 -> n308 // "EX" -> "ARRAY"
+  n308 -> n309 // "ARRAY" -> "A"
+  n308 -> n310 // "ARRAY" -> "EX"
+  n310 -> n311 // "EX" -> "i"
 
 }
 

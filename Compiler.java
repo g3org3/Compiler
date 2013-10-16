@@ -26,15 +26,15 @@ public class Compiler {
 		error(o, d);
 	}
 	public void error(int o, int d){
-		//System.out.println("-------------------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------------");
 		//	DEBUG
-		//System.out.println("*Error on line "+d+".");
+		System.out.println("*Error on line "+d+".");
 		System.out.println("\n\t\t\t\t::Ayuda::");
 		System.out.println("Para poder ejecuar el compilador correctamente necesita ingresar en la linea de");
 		System.out.println("comandos 'java Compiler <opcion> <filename>' donde <opcion> puede ser una lista");
 		System.out.println("de opciones que se le otorga a usted el usuario para el compilador, las opciones");
 		System.out.println("se le especifican con detalle adelante. Y <filename> sera el archivo el cual");
-		System.out.println("sera compilado y tiene que ser ingresado correctamente como '(filename).txt'.");
+		System.out.println("sera compilado y tiene que ser ingresado correctamente como '(filename).dcf'.");
 		System.out.println(" ");
 		System.out.println("-------------------------------------------------------------------------------------");
 		System.out.println("\t\t\t\t::Opciones::");
@@ -198,7 +198,7 @@ public class Compiler {
 			compilador.error(1, 149);
 
 		// checks for filename
-		if(args.length<3) compilador.error(1, 152);
+		if(args.length<3) compilador.error(1, 201);
 		else if(args[args.length-3].substring(0,1).equals("-"))
 			if(args[args.length-2].substring(0,1).equals("-"))
 				compilador.error(1, 155);
@@ -273,10 +273,12 @@ public class Compiler {
 
 
 		// Creating objects
-		Scanner myScanner = new Scanner(filename);
-		CC4Parser myParser = new CC4Parser(myScanner);
-		Ast myAst = new Ast(myParser);
+		Scanner 	myScanner 		= new Scanner(filename);
+		CC4Parser 	myParser 		= new CC4Parser(myScanner);
+		Ast 		myAst 			= new Ast(myParser);
+		Semantic 	mySemantic 		= new Semantic(myAst);
 		ArrayList<String> targetout = new ArrayList<String>();
+		ArrayList<String> myScannerErrors = new ArrayList<String>();
 
 		// target
 		if(target>0){
@@ -299,6 +301,8 @@ public class Compiler {
 					outputFile.println(targetout.get(i));
 				}
 				outputFile.println("\n");
+
+				myScannerErrors = myScanner.getErrores();
 			}
 			if(x>0){
 				//PARSER
@@ -331,10 +335,18 @@ public class Compiler {
 				myAst.makeTree();
 				outputFile.println(myAst);
 				outputFile.println("\n");
+				myAst.setScanErrors(myScannerErrors);
 			}
 			if(x>2){
 				//SEMANTIC
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Semantic");
+				outputFile.println("------------------------------");
+				mySemantic = new Semantic(myAst);
+				mySemantic.fillTables();
+
+				outputFile.println(mySemantic);
+				outputFile.println("\n");
 			}
 			if(x>3){
 				//IRT
@@ -356,7 +368,7 @@ public class Compiler {
 					outputFile.println(targetout.get(i));
 				}
 				outputFile.println("\n");
-				
+				myScannerErrors = myScanner.getErrores();
 
 				//PARSER
 				outputFile.println("------------------------------");
@@ -388,13 +400,26 @@ public class Compiler {
 				outputFile.println(myAst);
 				outputFile.println("\n");
 
-
+				myAst.setScanErrors(myScannerErrors);
+				//SEMANTIC
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Semantic");
+				outputFile.println("------------------------------");
+				mySemantic = new Semantic(myAst);
+				mySemantic.fillTables();
+
+				outputFile.println(mySemantic);
+				outputFile.println("\n");
+
+
 				outputFile.println("stage: Irt");
 				outputFile.println("stage: Codegen");
 				for (int i=0; i<targets.length; i++)
 					myOptions.add(targets[i]);
-			} catch (Exception e) {compilador.error(1, 245);}
+			} catch (Exception e) {
+				System.out.println(e);
+				compilador.error(1, 414);
+			}
 		}
 
 		// opt
@@ -458,7 +483,9 @@ public class Compiler {
 					}
 					else if(debugin[i].equals("semantic")){
 						//SEMANTIC
-						System.out.println("Debug: Semantic");
+						System.out.println("  Debug: Semantic");
+						System.out.println("  ----------------------------");
+						System.out.println(mySemantic);
 					}
 					else if(debugin[i].equals("irt")){
 						//IRT

@@ -1,13 +1,21 @@
 // commnet
 
-class Program {
-int x;
-  void main() {
-    a = -3 + 4 / 6 - 4 + (F[b+2] - foo(2, 4));
-    x = 32;
-    if(!(1<5)){
-    	return 1;
-    }
-  }
-}
+// a quicksort program.  set the "length" parameter in main() to the
+// desired size of the sorted array.  if you want to sort an array
+// bigger than 100 elements, you'll also need to adjust the declaration
+// of the global array A.
 
+class Program {
+    int x;
+    void main(){
+    	boolean b, a;
+    	if(1<(23-1)){
+    		x = 1;
+    	} else {
+    		int x;
+    		//return true;
+    	}
+    	//printf("hola mundo", "minombre");
+    	//x = printf("hellow");
+    }
+}

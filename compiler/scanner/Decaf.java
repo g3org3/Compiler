@@ -1,4 +1,4 @@
-// $ANTLR 3.4 compiler/scanner/Decaf.g 2013-10-04 08:06:57
+// $ANTLR 3.4 compiler/scanner/Decaf.g 2013-10-13 19:37:51
 
 	package compiler.scanner;
 	import java.util.ArrayList;
@@ -92,6 +92,7 @@ public class Decaf extends Lexer {
     	private boolean activate = false;
     	private ArrayList<String> strList = new ArrayList<String>();
     	private ArrayList<String> debugList = new ArrayList<String>();
+    	private ArrayList<String> errores = new ArrayList<String>();
 
         public void debug(String str, int line, String text){
         	this.debug(str, line, 0, text, 0);
@@ -102,6 +103,8 @@ public class Decaf extends Lexer {
     			debugList.add("    "+line+":"+ er + str+": "+text);
     		else 
     			strList.add("  "+line+":"+ er + str + ": " + text);
+    		if(e==1)
+    			errores.add("    "+line+":"+ er + str+": "+text);
     	}
     	public void set(boolean bool){
     		this.activate = bool;
@@ -111,6 +114,9 @@ public class Decaf extends Lexer {
     	}
     	public ArrayList<String> getDebug(){
     		return this.debugList;
+    	}
+    	public ArrayList<String> getErrores(){
+    		return this.errores;
     	}
 
 
@@ -133,7 +139,7 @@ public class Decaf extends Lexer {
     // $ANTLR start "CHAR"
     public final void mCHAR() throws RecognitionException {
         try {
-            // compiler/scanner/Decaf.g:37:18: ( ( 'A' .. 'Z' | 'a' .. 'z' ) )
+            // compiler/scanner/Decaf.g:43:18: ( ( 'A' .. 'Z' | 'a' .. 'z' ) )
             // compiler/scanner/Decaf.g:
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
@@ -159,7 +165,7 @@ public class Decaf extends Lexer {
     // $ANTLR start "ASCII"
     public final void mASCII() throws RecognitionException {
         try {
-            // compiler/scanner/Decaf.g:38:17: ( ( ( ' ' .. '!' ) | ( '#' .. '&' ) | ( '(' .. '[' ) | ( ']' .. '~' ) ) )
+            // compiler/scanner/Decaf.g:44:17: ( ( ( ' ' .. '!' ) | ( '#' .. '&' ) | ( '(' .. '[' ) | ( ']' .. '~' ) ) )
             // compiler/scanner/Decaf.g:
             {
             if ( (input.LA(1) >= ' ' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '~') ) {
@@ -185,7 +191,7 @@ public class Decaf extends Lexer {
     // $ANTLR start "UCASE"
     public final void mUCASE() throws RecognitionException {
         try {
-            // compiler/scanner/Decaf.g:39:19: ( ( 'A' .. 'Z' ) )
+            // compiler/scanner/Decaf.g:45:19: ( ( 'A' .. 'Z' ) )
             // compiler/scanner/Decaf.g:
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z') ) {
@@ -211,7 +217,7 @@ public class Decaf extends Lexer {
     // $ANTLR start "NUM"
     public final void mNUM() throws RecognitionException {
         try {
-            // compiler/scanner/Decaf.g:40:16: ( ( '0' .. '9' ) )
+            // compiler/scanner/Decaf.g:46:16: ( ( '0' .. '9' ) )
             // compiler/scanner/Decaf.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -237,7 +243,7 @@ public class Decaf extends Lexer {
     // $ANTLR start "HEXCHAR"
     public final void mHEXCHAR() throws RecognitionException {
         try {
-            // compiler/scanner/Decaf.g:41:19: ( ( 'A' .. 'F' ) | ( 'a' .. 'f' ) )
+            // compiler/scanner/Decaf.g:47:19: ( ( 'A' .. 'F' ) | ( 'a' .. 'f' ) )
             // compiler/scanner/Decaf.g:
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
@@ -263,10 +269,10 @@ public class Decaf extends Lexer {
     // $ANTLR start "ESC"
     public final void mESC() throws RecognitionException {
         try {
-            // compiler/scanner/Decaf.g:42:15: ( ( '\\\\b' | '\\\\t' | '\\\\n' | '\\\\r' | '\\\\\\\"' | '\\\\\\'' | '\\\\\\\\' ) )
-            // compiler/scanner/Decaf.g:42:17: ( '\\\\b' | '\\\\t' | '\\\\n' | '\\\\r' | '\\\\\\\"' | '\\\\\\'' | '\\\\\\\\' )
+            // compiler/scanner/Decaf.g:48:15: ( ( '\\\\b' | '\\\\t' | '\\\\n' | '\\\\r' | '\\\\\\\"' | '\\\\\\'' | '\\\\\\\\' ) )
+            // compiler/scanner/Decaf.g:48:17: ( '\\\\b' | '\\\\t' | '\\\\n' | '\\\\r' | '\\\\\\\"' | '\\\\\\'' | '\\\\\\\\' )
             {
-            // compiler/scanner/Decaf.g:42:17: ( '\\\\b' | '\\\\t' | '\\\\n' | '\\\\r' | '\\\\\\\"' | '\\\\\\'' | '\\\\\\\\' )
+            // compiler/scanner/Decaf.g:48:17: ( '\\\\b' | '\\\\t' | '\\\\n' | '\\\\r' | '\\\\\\\"' | '\\\\\\'' | '\\\\\\\\' )
             int alt1=7;
             int LA1_0 = input.LA(1);
 
@@ -325,7 +331,7 @@ public class Decaf extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // compiler/scanner/Decaf.g:42:18: '\\\\b'
+                    // compiler/scanner/Decaf.g:48:18: '\\\\b'
                     {
                     match("\\b"); 
 
@@ -334,7 +340,7 @@ public class Decaf extends Lexer {
                     }
                     break;
                 case 2 :
-                    // compiler/scanner/Decaf.g:42:24: '\\\\t'
+                    // compiler/scanner/Decaf.g:48:24: '\\\\t'
                     {
                     match("\\t"); 
 
@@ -343,7 +349,7 @@ public class Decaf extends Lexer {
                     }
                     break;
                 case 3 :
-                    // compiler/scanner/Decaf.g:42:30: '\\\\n'
+                    // compiler/scanner/Decaf.g:48:30: '\\\\n'
                     {
                     match("\\n"); 
 
@@ -352,7 +358,7 @@ public class Decaf extends Lexer {
                     }
                     break;
                 case 4 :
-                    // compiler/scanner/Decaf.g:42:36: '\\\\r'
+                    // compiler/scanner/Decaf.g:48:36: '\\\\r'
                     {
                     match("\\r"); 
 
@@ -361,7 +367,7 @@ public class Decaf extends Lexer {
                     }
                     break;
                 case 5 :
-                    // compiler/scanner/Decaf.g:42:42: '\\\\\\\"'
+                    // compiler/scanner/Decaf.g:48:42: '\\\\\\\"'
                     {
                     match("\\\""); 
 
@@ -370,7 +376,7 @@ public class Decaf extends Lexer {
                     }
                     break;
                 case 6 :
-                    // compiler/scanner/Decaf.g:42:49: '\\\\\\''
+                    // compiler/scanner/Decaf.g:48:49: '\\\\\\''
                     {
                     match("\\'"); 
 
@@ -379,7 +385,7 @@ public class Decaf extends Lexer {
                     }
                     break;
                 case 7 :
-                    // compiler/scanner/Decaf.g:42:56: '\\\\\\\\'
+                    // compiler/scanner/Decaf.g:48:56: '\\\\\\\\'
                     {
                     match("\\\\"); 
 
@@ -404,8 +410,8 @@ public class Decaf extends Lexer {
     // $ANTLR start "UNDERSCORE"
     public final void mUNDERSCORE() throws RecognitionException {
         try {
-            // compiler/scanner/Decaf.g:43:21: ( '_' )
-            // compiler/scanner/Decaf.g:43:23: '_'
+            // compiler/scanner/Decaf.g:49:21: ( '_' )
+            // compiler/scanner/Decaf.g:49:23: '_'
             {
             match('_'); 
 
@@ -422,7 +428,7 @@ public class Decaf extends Lexer {
     // $ANTLR start "ALPHA"
     public final void mALPHA() throws RecognitionException {
         try {
-            // compiler/scanner/Decaf.g:44:17: ( ( CHAR | UNDERSCORE ) )
+            // compiler/scanner/Decaf.g:50:17: ( ( CHAR | UNDERSCORE ) )
             // compiler/scanner/Decaf.g:
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
@@ -450,14 +456,14 @@ public class Decaf extends Lexer {
         try {
             int _type = COMMENTS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:47:12: ( ( ( '//' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' ) )
-            // compiler/scanner/Decaf.g:47:14: ( ( '//' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
+            // compiler/scanner/Decaf.g:53:12: ( ( ( '//' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' ) )
+            // compiler/scanner/Decaf.g:53:14: ( ( '//' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
             {
-            // compiler/scanner/Decaf.g:47:14: ( ( '//' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
-            // compiler/scanner/Decaf.g:47:15: ( '//' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+            // compiler/scanner/Decaf.g:53:14: ( ( '//' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' )
+            // compiler/scanner/Decaf.g:53:15: ( '//' ) (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
             {
-            // compiler/scanner/Decaf.g:47:15: ( '//' )
-            // compiler/scanner/Decaf.g:47:16: '//'
+            // compiler/scanner/Decaf.g:53:15: ( '//' )
+            // compiler/scanner/Decaf.g:53:16: '//'
             {
             match("//"); 
 
@@ -466,7 +472,7 @@ public class Decaf extends Lexer {
             }
 
 
-            // compiler/scanner/Decaf.g:47:22: (~ ( '\\n' | '\\r' ) )*
+            // compiler/scanner/Decaf.g:53:22: (~ ( '\\n' | '\\r' ) )*
             loop2:
             do {
                 int alt2=2;
@@ -500,7 +506,7 @@ public class Decaf extends Lexer {
             } while (true);
 
 
-            // compiler/scanner/Decaf.g:47:36: ( '\\r' )?
+            // compiler/scanner/Decaf.g:53:36: ( '\\r' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -509,7 +515,7 @@ public class Decaf extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // compiler/scanner/Decaf.g:47:36: '\\r'
+                    // compiler/scanner/Decaf.g:53:36: '\\r'
                     {
                     match('\r'); 
 
@@ -542,8 +548,8 @@ public class Decaf extends Lexer {
         try {
             int _type = BOOLEAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:50:11: ( 'boolean' )
-            // compiler/scanner/Decaf.g:50:13: 'boolean'
+            // compiler/scanner/Decaf.g:56:11: ( 'boolean' )
+            // compiler/scanner/Decaf.g:56:13: 'boolean'
             {
             match("boolean"); 
 
@@ -567,8 +573,8 @@ public class Decaf extends Lexer {
         try {
             int _type = BREAK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:51:9: ( 'break' )
-            // compiler/scanner/Decaf.g:51:11: 'break'
+            // compiler/scanner/Decaf.g:57:9: ( 'break' )
+            // compiler/scanner/Decaf.g:57:11: 'break'
             {
             match("break"); 
 
@@ -592,10 +598,10 @@ public class Decaf extends Lexer {
         try {
             int _type = CALLOUT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:52:11: ( 'callout' )
-            // compiler/scanner/Decaf.g:52:13: 'callout'
+            // compiler/scanner/Decaf.g:58:11: ( 'printf' )
+            // compiler/scanner/Decaf.g:58:13: 'printf'
             {
-            match("callout"); 
+            match("printf"); 
 
 
 
@@ -617,8 +623,8 @@ public class Decaf extends Lexer {
         try {
             int _type = CLASS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:53:9: ( 'class' )
-            // compiler/scanner/Decaf.g:53:11: 'class'
+            // compiler/scanner/Decaf.g:59:9: ( 'class' )
+            // compiler/scanner/Decaf.g:59:11: 'class'
             {
             match("class"); 
 
@@ -642,8 +648,8 @@ public class Decaf extends Lexer {
         try {
             int _type = CONTINUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:54:11: ( 'continue' )
-            // compiler/scanner/Decaf.g:54:13: 'continue'
+            // compiler/scanner/Decaf.g:60:11: ( 'continue' )
+            // compiler/scanner/Decaf.g:60:13: 'continue'
             {
             match("continue"); 
 
@@ -667,8 +673,8 @@ public class Decaf extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:55:9: ( 'else' )
-            // compiler/scanner/Decaf.g:55:11: 'else'
+            // compiler/scanner/Decaf.g:61:9: ( 'else' )
+            // compiler/scanner/Decaf.g:61:11: 'else'
             {
             match("else"); 
 
@@ -692,8 +698,8 @@ public class Decaf extends Lexer {
         try {
             int _type = FOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:56:8: ( 'for' )
-            // compiler/scanner/Decaf.g:56:10: 'for'
+            // compiler/scanner/Decaf.g:62:8: ( 'for' )
+            // compiler/scanner/Decaf.g:62:10: 'for'
             {
             match("for"); 
 
@@ -717,8 +723,8 @@ public class Decaf extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:57:8: ( 'if' )
-            // compiler/scanner/Decaf.g:57:10: 'if'
+            // compiler/scanner/Decaf.g:63:8: ( 'if' )
+            // compiler/scanner/Decaf.g:63:10: 'if'
             {
             match("if"); 
 
@@ -742,8 +748,8 @@ public class Decaf extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:58:8: ( 'int' )
-            // compiler/scanner/Decaf.g:58:10: 'int'
+            // compiler/scanner/Decaf.g:64:8: ( 'int' )
+            // compiler/scanner/Decaf.g:64:10: 'int'
             {
             match("int"); 
 
@@ -767,8 +773,8 @@ public class Decaf extends Lexer {
         try {
             int _type = RETURN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:59:11: ( 'return' )
-            // compiler/scanner/Decaf.g:59:13: 'return'
+            // compiler/scanner/Decaf.g:65:11: ( 'return' )
+            // compiler/scanner/Decaf.g:65:13: 'return'
             {
             match("return"); 
 
@@ -792,8 +798,8 @@ public class Decaf extends Lexer {
         try {
             int _type = VOID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:60:9: ( 'void' )
-            // compiler/scanner/Decaf.g:60:11: 'void'
+            // compiler/scanner/Decaf.g:66:9: ( 'void' )
+            // compiler/scanner/Decaf.g:66:11: 'void'
             {
             match("void"); 
 
@@ -817,8 +823,8 @@ public class Decaf extends Lexer {
         try {
             int _type = PROGRAM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:61:11: ( 'Program' )
-            // compiler/scanner/Decaf.g:61:13: 'Program'
+            // compiler/scanner/Decaf.g:67:11: ( 'Program' )
+            // compiler/scanner/Decaf.g:67:13: 'Program'
             {
             match("Program"); 
 
@@ -842,8 +848,8 @@ public class Decaf extends Lexer {
         try {
             int _type = TRUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:64:9: ( 'true' )
-            // compiler/scanner/Decaf.g:64:11: 'true'
+            // compiler/scanner/Decaf.g:70:9: ( 'true' )
+            // compiler/scanner/Decaf.g:70:11: 'true'
             {
             match("true"); 
 
@@ -867,8 +873,8 @@ public class Decaf extends Lexer {
         try {
             int _type = FALSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:65:9: ( 'false' )
-            // compiler/scanner/Decaf.g:65:11: 'false'
+            // compiler/scanner/Decaf.g:71:9: ( 'false' )
+            // compiler/scanner/Decaf.g:71:11: 'false'
             {
             match("false"); 
 
@@ -892,8 +898,8 @@ public class Decaf extends Lexer {
         try {
             int _type = LPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:68:10: ( '(' )
-            // compiler/scanner/Decaf.g:68:12: '('
+            // compiler/scanner/Decaf.g:74:10: ( '(' )
+            // compiler/scanner/Decaf.g:74:12: '('
             {
             match('('); 
 
@@ -915,8 +921,8 @@ public class Decaf extends Lexer {
         try {
             int _type = RPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:69:10: ( ')' )
-            // compiler/scanner/Decaf.g:69:12: ')'
+            // compiler/scanner/Decaf.g:75:10: ( ')' )
+            // compiler/scanner/Decaf.g:75:12: ')'
             {
             match(')'); 
 
@@ -938,8 +944,8 @@ public class Decaf extends Lexer {
         try {
             int _type = LBRACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:70:10: ( '{' )
-            // compiler/scanner/Decaf.g:70:12: '{'
+            // compiler/scanner/Decaf.g:76:10: ( '{' )
+            // compiler/scanner/Decaf.g:76:12: '{'
             {
             match('{'); 
 
@@ -961,8 +967,8 @@ public class Decaf extends Lexer {
         try {
             int _type = RBRACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:71:10: ( '}' )
-            // compiler/scanner/Decaf.g:71:12: '}'
+            // compiler/scanner/Decaf.g:77:10: ( '}' )
+            // compiler/scanner/Decaf.g:77:12: '}'
             {
             match('}'); 
 
@@ -984,8 +990,8 @@ public class Decaf extends Lexer {
         try {
             int _type = LBRAKET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:72:11: ( '[' )
-            // compiler/scanner/Decaf.g:72:13: '['
+            // compiler/scanner/Decaf.g:78:11: ( '[' )
+            // compiler/scanner/Decaf.g:78:13: '['
             {
             match('['); 
 
@@ -1007,8 +1013,8 @@ public class Decaf extends Lexer {
         try {
             int _type = RBRAKET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:73:11: ( ']' )
-            // compiler/scanner/Decaf.g:73:13: ']'
+            // compiler/scanner/Decaf.g:79:11: ( ']' )
+            // compiler/scanner/Decaf.g:79:13: ']'
             {
             match(']'); 
 
@@ -1030,8 +1036,8 @@ public class Decaf extends Lexer {
         try {
             int _type = SEMICO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:74:10: ( ';' )
-            // compiler/scanner/Decaf.g:74:12: ';'
+            // compiler/scanner/Decaf.g:80:10: ( ';' )
+            // compiler/scanner/Decaf.g:80:12: ';'
             {
             match(';'); 
 
@@ -1053,8 +1059,8 @@ public class Decaf extends Lexer {
         try {
             int _type = COMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:75:8: ( ',' )
-            // compiler/scanner/Decaf.g:75:10: ','
+            // compiler/scanner/Decaf.g:81:8: ( ',' )
+            // compiler/scanner/Decaf.g:81:10: ','
             {
             match(','); 
 
@@ -1076,8 +1082,8 @@ public class Decaf extends Lexer {
         try {
             int _type = POINT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:76:9: ( '.' )
-            // compiler/scanner/Decaf.g:76:11: '.'
+            // compiler/scanner/Decaf.g:82:9: ( '.' )
+            // compiler/scanner/Decaf.g:82:11: '.'
             {
             match('.'); 
 
@@ -1099,8 +1105,8 @@ public class Decaf extends Lexer {
         try {
             int _type = DPOINTS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:77:11: ( ':' )
-            // compiler/scanner/Decaf.g:77:13: ':'
+            // compiler/scanner/Decaf.g:83:11: ( ':' )
+            // compiler/scanner/Decaf.g:83:13: ':'
             {
             match(':'); 
 
@@ -1122,10 +1128,10 @@ public class Decaf extends Lexer {
         try {
             int _type = DIGIT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:80:9: ( ( NUM )+ )
-            // compiler/scanner/Decaf.g:80:11: ( NUM )+
+            // compiler/scanner/Decaf.g:86:9: ( ( NUM )+ )
+            // compiler/scanner/Decaf.g:86:11: ( NUM )+
             {
-            // compiler/scanner/Decaf.g:80:11: ( NUM )+
+            // compiler/scanner/Decaf.g:86:11: ( NUM )+
             int cnt4=0;
             loop4:
             do {
@@ -1182,8 +1188,8 @@ public class Decaf extends Lexer {
         try {
             int _type = ADD1;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:84:9: ( '++' )
-            // compiler/scanner/Decaf.g:84:11: '++'
+            // compiler/scanner/Decaf.g:90:9: ( '++' )
+            // compiler/scanner/Decaf.g:90:11: '++'
             {
             match("++"); 
 
@@ -1207,8 +1213,8 @@ public class Decaf extends Lexer {
         try {
             int _type = ASSIGNADD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:85:13: ( '+=' )
-            // compiler/scanner/Decaf.g:85:15: '+='
+            // compiler/scanner/Decaf.g:91:13: ( '+=' )
+            // compiler/scanner/Decaf.g:91:15: '+='
             {
             match("+="); 
 
@@ -1232,8 +1238,8 @@ public class Decaf extends Lexer {
         try {
             int _type = ASSIGNSUB;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:86:13: ( '-=' )
-            // compiler/scanner/Decaf.g:86:15: '-='
+            // compiler/scanner/Decaf.g:92:13: ( '-=' )
+            // compiler/scanner/Decaf.g:92:15: '-='
             {
             match("-="); 
 
@@ -1257,8 +1263,8 @@ public class Decaf extends Lexer {
         try {
             int _type = MINUS1;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:87:11: ( '--' )
-            // compiler/scanner/Decaf.g:87:13: '--'
+            // compiler/scanner/Decaf.g:93:11: ( '--' )
+            // compiler/scanner/Decaf.g:93:13: '--'
             {
             match("--"); 
 
@@ -1282,8 +1288,8 @@ public class Decaf extends Lexer {
         try {
             int _type = LTOEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:88:9: ( '<=' )
-            // compiler/scanner/Decaf.g:88:11: '<='
+            // compiler/scanner/Decaf.g:94:9: ( '<=' )
+            // compiler/scanner/Decaf.g:94:11: '<='
             {
             match("<="); 
 
@@ -1307,8 +1313,8 @@ public class Decaf extends Lexer {
         try {
             int _type = GTOEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:89:9: ( '>=' )
-            // compiler/scanner/Decaf.g:89:11: '>='
+            // compiler/scanner/Decaf.g:95:9: ( '>=' )
+            // compiler/scanner/Decaf.g:95:11: '>='
             {
             match(">="); 
 
@@ -1332,8 +1338,8 @@ public class Decaf extends Lexer {
         try {
             int _type = EQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:90:9: ( '==' )
-            // compiler/scanner/Decaf.g:90:11: '=='
+            // compiler/scanner/Decaf.g:96:9: ( '==' )
+            // compiler/scanner/Decaf.g:96:11: '=='
             {
             match("=="); 
 
@@ -1357,8 +1363,8 @@ public class Decaf extends Lexer {
         try {
             int _type = NEQUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:91:10: ( '!=' )
-            // compiler/scanner/Decaf.g:91:12: '!='
+            // compiler/scanner/Decaf.g:97:10: ( '!=' )
+            // compiler/scanner/Decaf.g:97:12: '!='
             {
             match("!="); 
 
@@ -1382,8 +1388,8 @@ public class Decaf extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:92:8: ( '&&' )
-            // compiler/scanner/Decaf.g:92:10: '&&'
+            // compiler/scanner/Decaf.g:98:8: ( '&&' )
+            // compiler/scanner/Decaf.g:98:10: '&&'
             {
             match("&&"); 
 
@@ -1407,8 +1413,8 @@ public class Decaf extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:93:8: ( '||' )
-            // compiler/scanner/Decaf.g:93:10: '||'
+            // compiler/scanner/Decaf.g:99:8: ( '||' )
+            // compiler/scanner/Decaf.g:99:10: '||'
             {
             match("||"); 
 
@@ -1432,8 +1438,8 @@ public class Decaf extends Lexer {
         try {
             int _type = LESSTHAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:95:11: ( '<' )
-            // compiler/scanner/Decaf.g:95:13: '<'
+            // compiler/scanner/Decaf.g:101:11: ( '<' )
+            // compiler/scanner/Decaf.g:101:13: '<'
             {
             match('<'); 
 
@@ -1455,8 +1461,8 @@ public class Decaf extends Lexer {
         try {
             int _type = GREATHAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:96:11: ( '>' )
-            // compiler/scanner/Decaf.g:96:13: '>'
+            // compiler/scanner/Decaf.g:102:11: ( '>' )
+            // compiler/scanner/Decaf.g:102:13: '>'
             {
             match('>'); 
 
@@ -1478,8 +1484,8 @@ public class Decaf extends Lexer {
         try {
             int _type = ASSIGN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:97:10: ( '=' )
-            // compiler/scanner/Decaf.g:97:12: '='
+            // compiler/scanner/Decaf.g:103:10: ( '=' )
+            // compiler/scanner/Decaf.g:103:12: '='
             {
             match('='); 
 
@@ -1501,8 +1507,8 @@ public class Decaf extends Lexer {
         try {
             int _type = ADD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:98:8: ( '+' )
-            // compiler/scanner/Decaf.g:98:10: '+'
+            // compiler/scanner/Decaf.g:104:8: ( '+' )
+            // compiler/scanner/Decaf.g:104:10: '+'
             {
             match('+'); 
 
@@ -1524,8 +1530,8 @@ public class Decaf extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:99:10: ( '-' )
-            // compiler/scanner/Decaf.g:99:12: '-'
+            // compiler/scanner/Decaf.g:105:10: ( '-' )
+            // compiler/scanner/Decaf.g:105:12: '-'
             {
             match('-'); 
 
@@ -1547,8 +1553,8 @@ public class Decaf extends Lexer {
         try {
             int _type = MULT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:100:9: ( '*' )
-            // compiler/scanner/Decaf.g:100:11: '*'
+            // compiler/scanner/Decaf.g:106:9: ( '*' )
+            // compiler/scanner/Decaf.g:106:11: '*'
             {
             match('*'); 
 
@@ -1570,8 +1576,8 @@ public class Decaf extends Lexer {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:101:8: ( '/' )
-            // compiler/scanner/Decaf.g:101:10: '/'
+            // compiler/scanner/Decaf.g:107:8: ( '/' )
+            // compiler/scanner/Decaf.g:107:10: '/'
             {
             match('/'); 
 
@@ -1593,8 +1599,8 @@ public class Decaf extends Lexer {
         try {
             int _type = MOD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:102:8: ( '%' )
-            // compiler/scanner/Decaf.g:102:10: '%'
+            // compiler/scanner/Decaf.g:108:8: ( '%' )
+            // compiler/scanner/Decaf.g:108:10: '%'
             {
             match('%'); 
 
@@ -1616,8 +1622,8 @@ public class Decaf extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:103:8: ( '!' )
-            // compiler/scanner/Decaf.g:103:10: '!'
+            // compiler/scanner/Decaf.g:109:8: ( '!' )
+            // compiler/scanner/Decaf.g:109:10: '!'
             {
             match('!'); 
 
@@ -1639,8 +1645,8 @@ public class Decaf extends Lexer {
         try {
             int _type = RAISE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:104:9: ( '^' )
-            // compiler/scanner/Decaf.g:104:11: '^'
+            // compiler/scanner/Decaf.g:110:9: ( '^' )
+            // compiler/scanner/Decaf.g:110:11: '^'
             {
             match('^'); 
 
@@ -1662,8 +1668,8 @@ public class Decaf extends Lexer {
         try {
             int _type = ORBITWISE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:105:12: ( '|' )
-            // compiler/scanner/Decaf.g:105:14: '|'
+            // compiler/scanner/Decaf.g:111:12: ( '|' )
+            // compiler/scanner/Decaf.g:111:14: '|'
             {
             match('|'); 
 
@@ -1685,8 +1691,8 @@ public class Decaf extends Lexer {
         try {
             int _type = ANDBITWISE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:106:13: ( '&' )
-            // compiler/scanner/Decaf.g:106:15: '&'
+            // compiler/scanner/Decaf.g:112:13: ( '&' )
+            // compiler/scanner/Decaf.g:112:15: '&'
             {
             match('&'); 
 
@@ -1708,11 +1714,11 @@ public class Decaf extends Lexer {
         try {
             int _type = HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:109:8: ( ( '0' ( 'x' | 'X' ) ( HEXCHAR | NUM )+ ) )
-            // compiler/scanner/Decaf.g:109:10: ( '0' ( 'x' | 'X' ) ( HEXCHAR | NUM )+ )
+            // compiler/scanner/Decaf.g:115:8: ( ( '0' ( 'x' | 'X' ) ( HEXCHAR | NUM )+ ) )
+            // compiler/scanner/Decaf.g:115:10: ( '0' ( 'x' | 'X' ) ( HEXCHAR | NUM )+ )
             {
-            // compiler/scanner/Decaf.g:109:10: ( '0' ( 'x' | 'X' ) ( HEXCHAR | NUM )+ )
-            // compiler/scanner/Decaf.g:109:11: '0' ( 'x' | 'X' ) ( HEXCHAR | NUM )+
+            // compiler/scanner/Decaf.g:115:10: ( '0' ( 'x' | 'X' ) ( HEXCHAR | NUM )+ )
+            // compiler/scanner/Decaf.g:115:11: '0' ( 'x' | 'X' ) ( HEXCHAR | NUM )+
             {
             match('0'); 
 
@@ -1726,7 +1732,7 @@ public class Decaf extends Lexer {
             }
 
 
-            // compiler/scanner/Decaf.g:109:24: ( HEXCHAR | NUM )+
+            // compiler/scanner/Decaf.g:115:24: ( HEXCHAR | NUM )+
             int cnt5=0;
             loop5:
             do {
@@ -1786,8 +1792,8 @@ public class Decaf extends Lexer {
         try {
             int _type = INDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:112:14: ( ( CHAR | UNDERSCORE ) ( CHAR | UNDERSCORE | NUM )* )
-            // compiler/scanner/Decaf.g:112:16: ( CHAR | UNDERSCORE ) ( CHAR | UNDERSCORE | NUM )*
+            // compiler/scanner/Decaf.g:118:14: ( ( CHAR | UNDERSCORE ) ( CHAR | UNDERSCORE | NUM )* )
+            // compiler/scanner/Decaf.g:118:16: ( CHAR | UNDERSCORE ) ( CHAR | UNDERSCORE | NUM )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -1799,7 +1805,7 @@ public class Decaf extends Lexer {
             }
 
 
-            // compiler/scanner/Decaf.g:112:33: ( CHAR | UNDERSCORE | NUM )*
+            // compiler/scanner/Decaf.g:118:33: ( CHAR | UNDERSCORE | NUM )*
             loop6:
             do {
                 int alt6=2;
@@ -1851,10 +1857,10 @@ public class Decaf extends Lexer {
         try {
             int _type = STR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:115:8: ( ( '\\\"' '\\\"' | ( '\\\"' ( ASCII | ESC )+ '\\\"' ) ) )
-            // compiler/scanner/Decaf.g:115:10: ( '\\\"' '\\\"' | ( '\\\"' ( ASCII | ESC )+ '\\\"' ) )
+            // compiler/scanner/Decaf.g:121:8: ( ( '\\\"' '\\\"' | ( '\\\"' ( ASCII | ESC )+ '\\\"' ) ) )
+            // compiler/scanner/Decaf.g:121:10: ( '\\\"' '\\\"' | ( '\\\"' ( ASCII | ESC )+ '\\\"' ) )
             {
-            // compiler/scanner/Decaf.g:115:10: ( '\\\"' '\\\"' | ( '\\\"' ( ASCII | ESC )+ '\\\"' ) )
+            // compiler/scanner/Decaf.g:121:10: ( '\\\"' '\\\"' | ( '\\\"' ( ASCII | ESC )+ '\\\"' ) )
             int alt8=2;
             int LA8_0 = input.LA(1);
 
@@ -1884,7 +1890,7 @@ public class Decaf extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // compiler/scanner/Decaf.g:115:11: '\\\"' '\\\"'
+                    // compiler/scanner/Decaf.g:121:11: '\\\"' '\\\"'
                     {
                     match('\"'); 
 
@@ -1893,14 +1899,14 @@ public class Decaf extends Lexer {
                     }
                     break;
                 case 2 :
-                    // compiler/scanner/Decaf.g:115:20: ( '\\\"' ( ASCII | ESC )+ '\\\"' )
+                    // compiler/scanner/Decaf.g:121:20: ( '\\\"' ( ASCII | ESC )+ '\\\"' )
                     {
-                    // compiler/scanner/Decaf.g:115:20: ( '\\\"' ( ASCII | ESC )+ '\\\"' )
-                    // compiler/scanner/Decaf.g:115:21: '\\\"' ( ASCII | ESC )+ '\\\"'
+                    // compiler/scanner/Decaf.g:121:20: ( '\\\"' ( ASCII | ESC )+ '\\\"' )
+                    // compiler/scanner/Decaf.g:121:21: '\\\"' ( ASCII | ESC )+ '\\\"'
                     {
                     match('\"'); 
 
-                    // compiler/scanner/Decaf.g:115:26: ( ASCII | ESC )+
+                    // compiler/scanner/Decaf.g:121:26: ( ASCII | ESC )+
                     int cnt7=0;
                     loop7:
                     do {
@@ -1917,7 +1923,7 @@ public class Decaf extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // compiler/scanner/Decaf.g:115:27: ASCII
+                    	    // compiler/scanner/Decaf.g:121:27: ASCII
                     	    {
                     	    mASCII(); 
 
@@ -1925,7 +1931,7 @@ public class Decaf extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // compiler/scanner/Decaf.g:115:33: ESC
+                    	    // compiler/scanner/Decaf.g:121:33: ESC
                     	    {
                     	    mESC(); 
 
@@ -1972,10 +1978,10 @@ public class Decaf extends Lexer {
         try {
             int _type = CHR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:116:8: ( ( '\\'' '\\'' | ( '\\'' ( ASCII | ESC ) '\\'' ) ) )
-            // compiler/scanner/Decaf.g:116:10: ( '\\'' '\\'' | ( '\\'' ( ASCII | ESC ) '\\'' ) )
+            // compiler/scanner/Decaf.g:122:8: ( ( '\\'' '\\'' | ( '\\'' ( ASCII | ESC ) '\\'' ) ) )
+            // compiler/scanner/Decaf.g:122:10: ( '\\'' '\\'' | ( '\\'' ( ASCII | ESC ) '\\'' ) )
             {
-            // compiler/scanner/Decaf.g:116:10: ( '\\'' '\\'' | ( '\\'' ( ASCII | ESC ) '\\'' ) )
+            // compiler/scanner/Decaf.g:122:10: ( '\\'' '\\'' | ( '\\'' ( ASCII | ESC ) '\\'' ) )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -2005,7 +2011,7 @@ public class Decaf extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // compiler/scanner/Decaf.g:116:11: '\\'' '\\''
+                    // compiler/scanner/Decaf.g:122:11: '\\'' '\\''
                     {
                     match('\''); 
 
@@ -2014,14 +2020,14 @@ public class Decaf extends Lexer {
                     }
                     break;
                 case 2 :
-                    // compiler/scanner/Decaf.g:116:20: ( '\\'' ( ASCII | ESC ) '\\'' )
+                    // compiler/scanner/Decaf.g:122:20: ( '\\'' ( ASCII | ESC ) '\\'' )
                     {
-                    // compiler/scanner/Decaf.g:116:20: ( '\\'' ( ASCII | ESC ) '\\'' )
-                    // compiler/scanner/Decaf.g:116:21: '\\'' ( ASCII | ESC ) '\\''
+                    // compiler/scanner/Decaf.g:122:20: ( '\\'' ( ASCII | ESC ) '\\'' )
+                    // compiler/scanner/Decaf.g:122:21: '\\'' ( ASCII | ESC ) '\\''
                     {
                     match('\''); 
 
-                    // compiler/scanner/Decaf.g:116:26: ( ASCII | ESC )
+                    // compiler/scanner/Decaf.g:122:26: ( ASCII | ESC )
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -2040,7 +2046,7 @@ public class Decaf extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // compiler/scanner/Decaf.g:116:27: ASCII
+                            // compiler/scanner/Decaf.g:122:27: ASCII
                             {
                             mASCII(); 
 
@@ -2048,7 +2054,7 @@ public class Decaf extends Lexer {
                             }
                             break;
                         case 2 :
-                            // compiler/scanner/Decaf.g:116:33: ESC
+                            // compiler/scanner/Decaf.g:122:33: ESC
                             {
                             mESC(); 
 
@@ -2088,10 +2094,10 @@ public class Decaf extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:119:13: ( ( ' ' | '\\b' | '\\t' | '\\n' | '\\r' )+ )
-            // compiler/scanner/Decaf.g:119:15: ( ' ' | '\\b' | '\\t' | '\\n' | '\\r' )+
+            // compiler/scanner/Decaf.g:125:13: ( ( ' ' | '\\b' | '\\t' | '\\n' | '\\r' )+ )
+            // compiler/scanner/Decaf.g:125:15: ( ' ' | '\\b' | '\\t' | '\\n' | '\\r' )+
             {
-            // compiler/scanner/Decaf.g:119:15: ( ' ' | '\\b' | '\\t' | '\\n' | '\\r' )+
+            // compiler/scanner/Decaf.g:125:15: ( ' ' | '\\b' | '\\t' | '\\n' | '\\r' )+
             int cnt11=0;
             loop11:
             do {
@@ -2148,11 +2154,11 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTCHAR1;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:123:11: ( ( '\\'' ( '\\b' | '\\t' | '\\n' | '\\r' ) '\\'' ) )
-            // compiler/scanner/Decaf.g:123:13: ( '\\'' ( '\\b' | '\\t' | '\\n' | '\\r' ) '\\'' )
+            // compiler/scanner/Decaf.g:129:11: ( ( '\\'' ( '\\b' | '\\t' | '\\n' | '\\r' ) '\\'' ) )
+            // compiler/scanner/Decaf.g:129:13: ( '\\'' ( '\\b' | '\\t' | '\\n' | '\\r' ) '\\'' )
             {
-            // compiler/scanner/Decaf.g:123:13: ( '\\'' ( '\\b' | '\\t' | '\\n' | '\\r' ) '\\'' )
-            // compiler/scanner/Decaf.g:123:14: '\\'' ( '\\b' | '\\t' | '\\n' | '\\r' ) '\\''
+            // compiler/scanner/Decaf.g:129:13: ( '\\'' ( '\\b' | '\\t' | '\\n' | '\\r' ) '\\'' )
+            // compiler/scanner/Decaf.g:129:14: '\\'' ( '\\b' | '\\t' | '\\n' | '\\r' ) '\\''
             {
             match('\''); 
 
@@ -2189,11 +2195,11 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTCHAR2;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:124:11: ( ( '\\'' ( '\\'' | '\\\"' ) '\\'' ) )
-            // compiler/scanner/Decaf.g:124:13: ( '\\'' ( '\\'' | '\\\"' ) '\\'' )
+            // compiler/scanner/Decaf.g:130:11: ( ( '\\'' ( '\\'' | '\\\"' ) '\\'' ) )
+            // compiler/scanner/Decaf.g:130:13: ( '\\'' ( '\\'' | '\\\"' ) '\\'' )
             {
-            // compiler/scanner/Decaf.g:124:13: ( '\\'' ( '\\'' | '\\\"' ) '\\'' )
-            // compiler/scanner/Decaf.g:124:14: '\\'' ( '\\'' | '\\\"' ) '\\''
+            // compiler/scanner/Decaf.g:130:13: ( '\\'' ( '\\'' | '\\\"' ) '\\'' )
+            // compiler/scanner/Decaf.g:130:14: '\\'' ( '\\'' | '\\\"' ) '\\''
             {
             match('\''); 
 
@@ -2230,11 +2236,11 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTCHAR3;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:125:11: ( ( '\\'' '0' ( 'X' | 'x' ) ( HEXCHAR | DIGIT )+ '\\'' ) )
-            // compiler/scanner/Decaf.g:125:13: ( '\\'' '0' ( 'X' | 'x' ) ( HEXCHAR | DIGIT )+ '\\'' )
+            // compiler/scanner/Decaf.g:131:11: ( ( '\\'' '0' ( 'X' | 'x' ) ( HEXCHAR | DIGIT )+ '\\'' ) )
+            // compiler/scanner/Decaf.g:131:13: ( '\\'' '0' ( 'X' | 'x' ) ( HEXCHAR | DIGIT )+ '\\'' )
             {
-            // compiler/scanner/Decaf.g:125:13: ( '\\'' '0' ( 'X' | 'x' ) ( HEXCHAR | DIGIT )+ '\\'' )
-            // compiler/scanner/Decaf.g:125:14: '\\'' '0' ( 'X' | 'x' ) ( HEXCHAR | DIGIT )+ '\\''
+            // compiler/scanner/Decaf.g:131:13: ( '\\'' '0' ( 'X' | 'x' ) ( HEXCHAR | DIGIT )+ '\\'' )
+            // compiler/scanner/Decaf.g:131:14: '\\'' '0' ( 'X' | 'x' ) ( HEXCHAR | DIGIT )+ '\\''
             {
             match('\''); 
 
@@ -2250,7 +2256,7 @@ public class Decaf extends Lexer {
             }
 
 
-            // compiler/scanner/Decaf.g:125:31: ( HEXCHAR | DIGIT )+
+            // compiler/scanner/Decaf.g:131:31: ( HEXCHAR | DIGIT )+
             int cnt12=0;
             loop12:
             do {
@@ -2267,7 +2273,7 @@ public class Decaf extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // compiler/scanner/Decaf.g:125:32: HEXCHAR
+            	    // compiler/scanner/Decaf.g:131:32: HEXCHAR
             	    {
             	    mHEXCHAR(); 
 
@@ -2275,7 +2281,7 @@ public class Decaf extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // compiler/scanner/Decaf.g:125:40: DIGIT
+            	    // compiler/scanner/Decaf.g:131:40: DIGIT
             	    {
             	    mDIGIT(); 
 
@@ -2316,11 +2322,11 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTCHAR4;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:126:11: ( ( '\\'' '\\\\' ( ASCII ) '\\'' ) )
-            // compiler/scanner/Decaf.g:126:13: ( '\\'' '\\\\' ( ASCII ) '\\'' )
+            // compiler/scanner/Decaf.g:132:11: ( ( '\\'' '\\\\' ( ASCII ) '\\'' ) )
+            // compiler/scanner/Decaf.g:132:13: ( '\\'' '\\\\' ( ASCII ) '\\'' )
             {
-            // compiler/scanner/Decaf.g:126:13: ( '\\'' '\\\\' ( ASCII ) '\\'' )
-            // compiler/scanner/Decaf.g:126:14: '\\'' '\\\\' ( ASCII ) '\\''
+            // compiler/scanner/Decaf.g:132:13: ( '\\'' '\\\\' ( ASCII ) '\\'' )
+            // compiler/scanner/Decaf.g:132:14: '\\'' '\\\\' ( ASCII ) '\\''
             {
             match('\''); 
 
@@ -2359,11 +2365,11 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTCHAR5;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:127:11: ( ( '\\'' '\\\\' '\\'' ) )
-            // compiler/scanner/Decaf.g:127:13: ( '\\'' '\\\\' '\\'' )
+            // compiler/scanner/Decaf.g:133:11: ( ( '\\'' '\\\\' '\\'' ) )
+            // compiler/scanner/Decaf.g:133:13: ( '\\'' '\\\\' '\\'' )
             {
-            // compiler/scanner/Decaf.g:127:13: ( '\\'' '\\\\' '\\'' )
-            // compiler/scanner/Decaf.g:127:14: '\\'' '\\\\' '\\''
+            // compiler/scanner/Decaf.g:133:13: ( '\\'' '\\\\' '\\'' )
+            // compiler/scanner/Decaf.g:133:14: '\\'' '\\\\' '\\''
             {
             match('\''); 
 
@@ -2392,11 +2398,11 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTCHAR6;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:128:11: ( ( '\\'' ( ASCII ) ( ASCII )+ '\\'' ) )
-            // compiler/scanner/Decaf.g:128:13: ( '\\'' ( ASCII ) ( ASCII )+ '\\'' )
+            // compiler/scanner/Decaf.g:134:11: ( ( '\\'' ( ASCII ) ( ASCII )+ '\\'' ) )
+            // compiler/scanner/Decaf.g:134:13: ( '\\'' ( ASCII ) ( ASCII )+ '\\'' )
             {
-            // compiler/scanner/Decaf.g:128:13: ( '\\'' ( ASCII ) ( ASCII )+ '\\'' )
-            // compiler/scanner/Decaf.g:128:14: '\\'' ( ASCII ) ( ASCII )+ '\\''
+            // compiler/scanner/Decaf.g:134:13: ( '\\'' ( ASCII ) ( ASCII )+ '\\'' )
+            // compiler/scanner/Decaf.g:134:14: '\\'' ( ASCII ) ( ASCII )+ '\\''
             {
             match('\''); 
 
@@ -2410,7 +2416,7 @@ public class Decaf extends Lexer {
             }
 
 
-            // compiler/scanner/Decaf.g:128:26: ( ASCII )+
+            // compiler/scanner/Decaf.g:134:26: ( ASCII )+
             int cnt13=0;
             loop13:
             do {
@@ -2472,11 +2478,11 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTHEX1;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:129:11: ( ( '0' ( 'x' | 'X' ) ) )
-            // compiler/scanner/Decaf.g:129:13: ( '0' ( 'x' | 'X' ) )
+            // compiler/scanner/Decaf.g:135:11: ( ( '0' ( 'x' | 'X' ) ) )
+            // compiler/scanner/Decaf.g:135:13: ( '0' ( 'x' | 'X' ) )
             {
-            // compiler/scanner/Decaf.g:129:13: ( '0' ( 'x' | 'X' ) )
-            // compiler/scanner/Decaf.g:129:14: '0' ( 'x' | 'X' )
+            // compiler/scanner/Decaf.g:135:13: ( '0' ( 'x' | 'X' ) )
+            // compiler/scanner/Decaf.g:135:14: '0' ( 'x' | 'X' )
             {
             match('0'); 
 
@@ -2511,11 +2517,11 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTHEX2;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:130:11: ( ( '0' ( 'x' | 'X' ) ( CHAR | NUM )+ ) )
-            // compiler/scanner/Decaf.g:130:13: ( '0' ( 'x' | 'X' ) ( CHAR | NUM )+ )
+            // compiler/scanner/Decaf.g:136:11: ( ( '0' ( 'x' | 'X' ) ( CHAR | NUM )+ ) )
+            // compiler/scanner/Decaf.g:136:13: ( '0' ( 'x' | 'X' ) ( CHAR | NUM )+ )
             {
-            // compiler/scanner/Decaf.g:130:13: ( '0' ( 'x' | 'X' ) ( CHAR | NUM )+ )
-            // compiler/scanner/Decaf.g:130:14: '0' ( 'x' | 'X' ) ( CHAR | NUM )+
+            // compiler/scanner/Decaf.g:136:13: ( '0' ( 'x' | 'X' ) ( CHAR | NUM )+ )
+            // compiler/scanner/Decaf.g:136:14: '0' ( 'x' | 'X' ) ( CHAR | NUM )+
             {
             match('0'); 
 
@@ -2529,7 +2535,7 @@ public class Decaf extends Lexer {
             }
 
 
-            // compiler/scanner/Decaf.g:130:27: ( CHAR | NUM )+
+            // compiler/scanner/Decaf.g:136:27: ( CHAR | NUM )+
             int cnt14=0;
             loop14:
             do {
@@ -2589,8 +2595,8 @@ public class Decaf extends Lexer {
         try {
             int _type = QMARK;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:131:9: ( '?' )
-            // compiler/scanner/Decaf.g:131:11: '?'
+            // compiler/scanner/Decaf.g:137:9: ( '?' )
+            // compiler/scanner/Decaf.g:137:11: '?'
             {
             match('?'); 
 
@@ -2612,15 +2618,15 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTSTR1;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:132:11: ( ( '\\\"' ( ASCII | ESC )+ '\\'' ) )
-            // compiler/scanner/Decaf.g:132:13: ( '\\\"' ( ASCII | ESC )+ '\\'' )
+            // compiler/scanner/Decaf.g:138:11: ( ( '\\\"' ( ASCII | ESC )+ '\\'' ) )
+            // compiler/scanner/Decaf.g:138:13: ( '\\\"' ( ASCII | ESC )+ '\\'' )
             {
-            // compiler/scanner/Decaf.g:132:13: ( '\\\"' ( ASCII | ESC )+ '\\'' )
-            // compiler/scanner/Decaf.g:132:14: '\\\"' ( ASCII | ESC )+ '\\''
+            // compiler/scanner/Decaf.g:138:13: ( '\\\"' ( ASCII | ESC )+ '\\'' )
+            // compiler/scanner/Decaf.g:138:14: '\\\"' ( ASCII | ESC )+ '\\''
             {
             match('\"'); 
 
-            // compiler/scanner/Decaf.g:132:19: ( ASCII | ESC )+
+            // compiler/scanner/Decaf.g:138:19: ( ASCII | ESC )+
             int cnt15=0;
             loop15:
             do {
@@ -2637,7 +2643,7 @@ public class Decaf extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // compiler/scanner/Decaf.g:132:20: ASCII
+            	    // compiler/scanner/Decaf.g:138:20: ASCII
             	    {
             	    mASCII(); 
 
@@ -2645,7 +2651,7 @@ public class Decaf extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // compiler/scanner/Decaf.g:132:26: ESC
+            	    // compiler/scanner/Decaf.g:138:26: ESC
             	    {
             	    mESC(); 
 
@@ -2686,15 +2692,15 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTSTR2;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:133:11: ( ( '\\'' ( ASCII | ESC )+ '\\\"' ) )
-            // compiler/scanner/Decaf.g:133:13: ( '\\'' ( ASCII | ESC )+ '\\\"' )
+            // compiler/scanner/Decaf.g:139:11: ( ( '\\'' ( ASCII | ESC )+ '\\\"' ) )
+            // compiler/scanner/Decaf.g:139:13: ( '\\'' ( ASCII | ESC )+ '\\\"' )
             {
-            // compiler/scanner/Decaf.g:133:13: ( '\\'' ( ASCII | ESC )+ '\\\"' )
-            // compiler/scanner/Decaf.g:133:14: '\\'' ( ASCII | ESC )+ '\\\"'
+            // compiler/scanner/Decaf.g:139:13: ( '\\'' ( ASCII | ESC )+ '\\\"' )
+            // compiler/scanner/Decaf.g:139:14: '\\'' ( ASCII | ESC )+ '\\\"'
             {
             match('\''); 
 
-            // compiler/scanner/Decaf.g:133:19: ( ASCII | ESC )+
+            // compiler/scanner/Decaf.g:139:19: ( ASCII | ESC )+
             int cnt16=0;
             loop16:
             do {
@@ -2711,7 +2717,7 @@ public class Decaf extends Lexer {
 
                 switch (alt16) {
             	case 1 :
-            	    // compiler/scanner/Decaf.g:133:20: ASCII
+            	    // compiler/scanner/Decaf.g:139:20: ASCII
             	    {
             	    mASCII(); 
 
@@ -2719,7 +2725,7 @@ public class Decaf extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // compiler/scanner/Decaf.g:133:26: ESC
+            	    // compiler/scanner/Decaf.g:139:26: ESC
             	    {
             	    mESC(); 
 
@@ -2760,8 +2766,8 @@ public class Decaf extends Lexer {
         try {
             int _type = NOTSTR3;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:134:11: ( ( '\\'' | '\\\"' ) )
-            // compiler/scanner/Decaf.g:134:13: ( '\\'' | '\\\"' )
+            // compiler/scanner/Decaf.g:140:11: ( ( '\\'' | '\\\"' ) )
+            // compiler/scanner/Decaf.g:140:13: ( '\\'' | '\\\"' )
             {
             if ( input.LA(1)=='\"'||input.LA(1)=='\'' ) {
                 input.consume();
@@ -2791,11 +2797,11 @@ public class Decaf extends Lexer {
         try {
             int _type = UNICODE1;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:135:11: ( ( '\\u000C' ) )
-            // compiler/scanner/Decaf.g:135:13: ( '\\u000C' )
+            // compiler/scanner/Decaf.g:141:11: ( ( '\\u000C' ) )
+            // compiler/scanner/Decaf.g:141:13: ( '\\u000C' )
             {
-            // compiler/scanner/Decaf.g:135:13: ( '\\u000C' )
-            // compiler/scanner/Decaf.g:135:14: '\\u000C'
+            // compiler/scanner/Decaf.g:141:13: ( '\\u000C' )
+            // compiler/scanner/Decaf.g:141:14: '\\u000C'
             {
             match('\f'); 
 
@@ -2820,8 +2826,8 @@ public class Decaf extends Lexer {
         try {
             int _type = UNICODE2;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:136:11: ( ( ( '\\u0000' .. '\\u001F' ) | '\\u007F' ) )
-            // compiler/scanner/Decaf.g:136:13: ( ( '\\u0000' .. '\\u001F' ) | '\\u007F' )
+            // compiler/scanner/Decaf.g:142:11: ( ( ( '\\u0000' .. '\\u001F' ) | '\\u007F' ) )
+            // compiler/scanner/Decaf.g:142:13: ( ( '\\u0000' .. '\\u001F' ) | '\\u007F' )
             {
             if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\u001F')||input.LA(1)=='\u007F' ) {
                 input.consume();
@@ -2851,8 +2857,8 @@ public class Decaf extends Lexer {
         try {
             int _type = UNICODE3;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:137:11: ( ( '\\u0020' .. '\\u007E' ) )
-            // compiler/scanner/Decaf.g:137:13: ( '\\u0020' .. '\\u007E' )
+            // compiler/scanner/Decaf.g:143:11: ( ( '\\u0020' .. '\\u007E' ) )
+            // compiler/scanner/Decaf.g:143:13: ( '\\u0020' .. '\\u007E' )
             {
             if ( (input.LA(1) >= ' ' && input.LA(1) <= '~') ) {
                 input.consume();
@@ -3434,42 +3440,42 @@ public class Decaf extends Lexer {
 
     protected DFA17 dfa17 = new DFA17(this);
     static final String DFA17_eotS =
-        "\1\uffff\1\54\11\57\12\uffff\1\107\1\112\1\115\1\117\1\121\1\123"+
-        "\1\125\1\127\1\131\5\uffff\2\140\10\uffff\2\57\1\uffff\6\57\1\162"+
-        "\5\57\12\uffff\1\171\32\uffff\1\u0083\10\uffff\6\57\1\u0095\1\57"+
-        "\1\uffff\1\u0097\4\57\1\u009c\17\uffff\1\u00a1\6\uffff\5\57\1\u00a7"+
-        "\1\uffff\1\57\1\uffff\1\57\1\u00aa\1\57\1\u00ac\6\uffff\1\57\1\u00af"+
-        "\1\57\1\u00b1\1\57\1\uffff\1\u00b3\1\57\1\uffff\1\57\2\uffff\1\57"+
-        "\1\uffff\1\57\1\uffff\1\57\1\uffff\1\u00ba\1\57\1\uffff\1\u00bc"+
-        "\1\u00bd\1\57\1\uffff\1\u00bf\2\uffff\1\u00c0\2\uffff";
+        "\1\uffff\1\55\12\60\12\uffff\1\110\1\113\1\116\1\120\1\122\1\124"+
+        "\1\126\1\130\1\132\5\uffff\2\141\10\uffff\2\60\1\uffff\6\60\1\163"+
+        "\5\60\12\uffff\1\172\32\uffff\1\u0084\10\uffff\6\60\1\u0096\1\60"+
+        "\1\uffff\1\u0098\4\60\1\u009d\17\uffff\1\u00a2\6\uffff\5\60\1\u00a8"+
+        "\1\uffff\1\60\1\uffff\1\60\1\u00ab\1\60\1\u00ad\6\uffff\1\60\1\u00b0"+
+        "\1\60\1\u00b2\1\60\1\uffff\1\u00b4\1\60\1\uffff\1\60\2\uffff\1\60"+
+        "\1\uffff\1\u00b9\1\uffff\1\60\1\uffff\1\u00bb\1\60\1\uffff\1\u00bd"+
+        "\1\uffff\1\60\1\uffff\1\u00bf\1\uffff\1\u00c0\2\uffff";
     static final String DFA17_eofS =
         "\u00c1\uffff";
     static final String DFA17_minS =
-        "\1\0\1\57\1\157\1\141\1\154\1\141\1\146\1\145\1\157\2\162\12\uffff"+
+        "\1\0\1\57\1\157\1\162\2\154\1\141\1\146\1\145\1\157\2\162\12\uffff"+
         "\1\130\1\53\1\55\4\75\1\46\1\174\5\uffff\1\40\1\10\10\uffff\1\157"+
-        "\1\145\1\uffff\1\154\1\141\1\156\1\163\1\162\1\154\1\60\2\164\1"+
+        "\1\145\1\uffff\1\151\1\141\1\156\1\163\1\162\1\154\1\60\2\164\1"+
         "\151\1\157\1\165\12\uffff\1\60\27\uffff\1\40\1\42\1\uffff\1\47\2"+
-        "\uffff\3\40\3\uffff\1\154\1\141\1\154\1\163\1\164\1\145\1\60\1\163"+
+        "\uffff\3\40\3\uffff\1\154\1\141\1\156\1\163\1\164\1\145\1\60\1\163"+
         "\1\uffff\1\60\1\165\1\144\1\147\1\145\1\60\3\uffff\7\40\1\uffff"+
-        "\2\40\1\uffff\5\40\1\uffff\2\40\1\145\1\153\1\157\1\163\1\151\1"+
+        "\2\40\1\uffff\5\40\1\uffff\2\40\1\145\1\153\1\164\1\163\1\151\1"+
         "\60\1\uffff\1\145\1\uffff\1\162\1\60\1\162\1\60\1\uffff\2\40\3\uffff"+
-        "\1\141\1\60\1\165\1\60\1\156\1\uffff\1\60\1\156\1\uffff\1\141\2"+
-        "\uffff\1\156\1\uffff\1\164\1\uffff\1\165\1\uffff\1\60\1\155\1\uffff"+
-        "\2\60\1\145\1\uffff\1\60\2\uffff\1\60\2\uffff";
+        "\1\141\1\60\1\146\1\60\1\156\1\uffff\1\60\1\156\1\uffff\1\141\2"+
+        "\uffff\1\156\1\uffff\1\60\1\uffff\1\165\1\uffff\1\60\1\155\1\uffff"+
+        "\1\60\1\uffff\1\145\1\uffff\1\60\1\uffff\1\60\2\uffff";
     static final String DFA17_maxS =
-        "\1\177\1\57\1\162\1\157\1\154\1\157\1\156\1\145\1\157\2\162\12\uffff"+
+        "\1\177\1\57\2\162\1\157\1\154\1\157\1\156\1\145\1\157\2\162\12\uffff"+
         "\1\170\6\75\1\46\1\174\5\uffff\2\176\10\uffff\1\157\1\145\1\uffff"+
-        "\1\154\1\141\1\156\1\163\1\162\1\154\1\172\2\164\1\151\1\157\1\165"+
+        "\1\151\1\141\1\156\1\163\1\162\1\154\1\172\2\164\1\151\1\157\1\165"+
         "\12\uffff\1\172\27\uffff\1\176\1\164\1\uffff\1\47\2\uffff\3\176"+
-        "\3\uffff\1\154\1\141\1\154\1\163\1\164\1\145\1\172\1\163\1\uffff"+
+        "\3\uffff\1\154\1\141\1\156\1\163\1\164\1\145\1\172\1\163\1\uffff"+
         "\1\172\1\165\1\144\1\147\1\145\1\172\3\uffff\7\176\1\uffff\2\176"+
-        "\1\uffff\5\176\1\uffff\2\176\1\145\1\153\1\157\1\163\1\151\1\172"+
+        "\1\uffff\5\176\1\uffff\2\176\1\145\1\153\1\164\1\163\1\151\1\172"+
         "\1\uffff\1\145\1\uffff\1\162\1\172\1\162\1\172\1\uffff\2\176\3\uffff"+
-        "\1\141\1\172\1\165\1\172\1\156\1\uffff\1\172\1\156\1\uffff\1\141"+
-        "\2\uffff\1\156\1\uffff\1\164\1\uffff\1\165\1\uffff\1\172\1\155\1"+
-        "\uffff\2\172\1\145\1\uffff\1\172\2\uffff\1\172\2\uffff";
+        "\1\141\1\172\1\146\1\172\1\156\1\uffff\1\172\1\156\1\uffff\1\141"+
+        "\2\uffff\1\156\1\uffff\1\172\1\uffff\1\165\1\uffff\1\172\1\155\1"+
+        "\uffff\1\172\1\uffff\1\145\1\uffff\1\172\1\uffff\1\172\2\uffff";
     static final String DFA17_acceptS =
-        "\13\uffff\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\11\uffff"+
+        "\14\uffff\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\11\uffff"+
         "\1\52\1\54\1\56\1\32\1\62\2\uffff\1\65\1\76\1\102\1\65\1\103\1\104"+
         "\1\1\1\53\2\uffff\1\62\14\uffff\1\20\1\21\1\22\1\23\1\24\1\25\1"+
         "\26\1\27\1\30\1\31\1\uffff\1\32\1\33\1\34\1\50\1\35\1\36\1\51\1"+
@@ -3478,26 +3484,28 @@ public class Decaf extends Lexer {
         "\1\102\10\uffff\1\11\6\uffff\1\74\1\75\1\77\7\uffff\1\64\2\uffff"+
         "\1\100\5\uffff\1\71\10\uffff\1\10\1\uffff\1\12\4\uffff\1\61\2\uffff"+
         "\1\73\1\64\1\72\5\uffff\1\7\2\uffff\1\14\1\uffff\1\16\1\70\1\uffff"+
-        "\1\3\1\uffff\1\5\1\uffff\1\17\2\uffff\1\70\3\uffff\1\13\1\uffff"+
-        "\1\2\1\4\1\uffff\1\15\1\6";
+        "\1\3\1\uffff\1\5\1\uffff\1\17\2\uffff\1\70\1\uffff\1\4\1\uffff\1"+
+        "\13\1\uffff\1\2\1\uffff\1\15\1\6";
     static final String DFA17_specialS =
         "\u00c1\uffff}>";
     static final String[] DFA17_transitionS = {
-            "\10\51\3\45\1\51\1\47\1\45\22\51\1\50\1\33\1\43\2\52\1\37\1"+
-            "\34\1\44\1\13\1\14\1\36\1\26\1\22\1\27\1\23\1\1\1\25\11\41\1"+
-            "\24\1\21\1\30\1\32\1\31\1\46\1\52\17\42\1\11\12\42\1\17\1\52"+
-            "\1\20\1\40\1\42\1\52\1\42\1\2\1\3\1\42\1\4\1\5\2\42\1\6\10\42"+
-            "\1\7\1\42\1\12\1\42\1\10\4\42\1\15\1\35\1\16\1\52\1\51",
-            "\1\53",
-            "\1\55\2\uffff\1\56",
-            "\1\60\12\uffff\1\61\2\uffff\1\62",
-            "\1\63",
-            "\1\65\15\uffff\1\64",
-            "\1\66\7\uffff\1\67",
-            "\1\70",
+            "\10\52\3\46\1\52\1\50\1\46\22\52\1\51\1\34\1\44\2\53\1\40\1"+
+            "\35\1\45\1\14\1\15\1\37\1\27\1\23\1\30\1\24\1\1\1\26\11\42\1"+
+            "\25\1\22\1\31\1\33\1\32\1\47\1\53\17\43\1\12\12\43\1\20\1\53"+
+            "\1\21\1\41\1\43\1\53\1\43\1\2\1\4\1\43\1\5\1\6\2\43\1\7\6\43"+
+            "\1\3\1\43\1\10\1\43\1\13\1\43\1\11\4\43\1\16\1\36\1\17\1\53"+
+            "\1\52",
+            "\1\54",
+            "\1\56\2\uffff\1\57",
+            "\1\61",
+            "\1\62\2\uffff\1\63",
+            "\1\64",
+            "\1\66\15\uffff\1\65",
+            "\1\67\7\uffff\1\70",
             "\1\71",
             "\1\72",
             "\1\73",
+            "\1\74",
             "",
             "",
             "",
@@ -3508,23 +3516,23 @@ public class Decaf extends Lexer {
             "",
             "",
             "",
-            "\1\106\37\uffff\1\106",
-            "\1\110\21\uffff\1\111",
-            "\1\114\17\uffff\1\113",
-            "\1\116",
-            "\1\120",
-            "\1\122",
-            "\1\124",
-            "\1\126",
-            "\1\130",
+            "\1\107\37\uffff\1\107",
+            "\1\111\21\uffff\1\112",
+            "\1\115\17\uffff\1\114",
+            "\1\117",
+            "\1\121",
+            "\1\123",
+            "\1\125",
+            "\1\127",
+            "\1\131",
             "",
             "",
             "",
             "",
             "",
-            "\2\136\1\135\4\136\1\uffff\64\136\1\137\42\136",
-            "\3\142\2\uffff\1\142\22\uffff\2\146\1\143\4\146\1\141\10\146"+
-            "\1\144\53\146\1\145\42\146",
+            "\2\137\1\136\4\137\1\uffff\64\137\1\140\42\137",
+            "\3\143\2\uffff\1\143\22\uffff\2\147\1\144\4\147\1\142\10\147"+
+            "\1\145\53\147\1\146\42\147",
             "",
             "",
             "",
@@ -3533,21 +3541,21 @@ public class Decaf extends Lexer {
             "",
             "",
             "",
-            "\1\152",
             "\1\153",
-            "",
             "\1\154",
+            "",
             "\1\155",
             "\1\156",
             "\1\157",
             "\1\160",
             "\1\161",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\163",
+            "\1\162",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
             "\1\164",
             "\1\165",
             "\1\166",
             "\1\167",
+            "\1\170",
             "",
             "",
             "",
@@ -3558,19 +3566,7 @@ public class Decaf extends Lexer {
             "",
             "",
             "",
-            "\12\170\7\uffff\6\170\24\172\6\uffff\6\170\24\172",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
+            "\12\171\7\uffff\6\171\24\173\6\uffff\6\171\24\173",
             "",
             "",
             "",
@@ -3582,109 +3578,120 @@ public class Decaf extends Lexer {
             "",
             "",
             "",
-            "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
-            "\1\u0080\4\uffff\1\u0081\64\uffff\1\u0082\5\uffff\1\174\13"+
-            "\uffff\1\176\3\uffff\1\177\1\uffff\1\175",
-            "",
-            "\1\143",
-            "",
-            "",
-            "\2\u0085\1\u0086\4\u0085\1\u0083\60\u0085\1\u0084\3\u0085\1"+
-            "\u0086\33\u0085\1\u0084\6\u0085",
-            "\2\u008c\1\u008d\4\u008c\1\u0088\64\u008c\1\u008e\5\u008c\1"+
-            "\u0087\13\u008c\1\u008a\3\u008c\1\u008b\1\u008c\1\u0089\12\u008c",
-            "\2\u0085\1\u0086\4\u0085\1\u0083\64\u0085\1\u0086\42\u0085",
             "",
             "",
             "",
-            "\1\u008f",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\2\137\1\136\4\137\1\174\64\137\1\140\42\137",
+            "\1\u0081\4\uffff\1\u0082\64\uffff\1\u0083\5\uffff\1\175\13"+
+            "\uffff\1\177\3\uffff\1\u0080\1\uffff\1\176",
+            "",
+            "\1\144",
+            "",
+            "",
+            "\2\u0086\1\u0087\4\u0086\1\u0084\60\u0086\1\u0085\3\u0086\1"+
+            "\u0087\33\u0086\1\u0085\6\u0086",
+            "\2\u008d\1\u008e\4\u008d\1\u0089\64\u008d\1\u008f\5\u008d\1"+
+            "\u0088\13\u008d\1\u008b\3\u008d\1\u008c\1\u008d\1\u008a\12\u008d",
+            "\2\u0086\1\u0087\4\u0086\1\u0084\64\u0086\1\u0087\42\u0086",
+            "",
+            "",
+            "",
             "\1\u0090",
             "\1\u0091",
             "\1\u0092",
             "\1\u0093",
             "\1\u0094",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u0096",
+            "\1\u0095",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "\1\u0097",
             "",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u0098",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
             "\1\u0099",
             "\1\u009a",
             "\1\u009b",
-            "\12\170\7\uffff\6\170\24\172\6\uffff\6\170\24\172",
+            "\1\u009c",
+            "\12\171\7\uffff\6\171\24\173\6\uffff\6\171\24\173",
             "",
             "",
             "",
-            "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
-            "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
-            "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
-            "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
-            "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
-            "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
-            "\2\136\1\135\4\136\1\173\64\136\1\137\42\136",
+            "\2\137\1\136\4\137\1\174\64\137\1\140\42\137",
+            "\2\137\1\136\4\137\1\174\64\137\1\140\42\137",
+            "\2\137\1\136\4\137\1\174\64\137\1\140\42\137",
+            "\2\137\1\136\4\137\1\174\64\137\1\140\42\137",
+            "\2\137\1\136\4\137\1\174\64\137\1\140\42\137",
+            "\2\137\1\136\4\137\1\174\64\137\1\140\42\137",
+            "\2\137\1\136\4\137\1\174\64\137\1\140\42\137",
             "",
-            "\2\u0085\1\u0086\4\u0085\1\u009f\10\u0085\12\u009e\7\u0085"+
-            "\6\u009d\25\u0085\1\u0086\4\u0085\6\u009d\30\u0085",
-            "\2\u0085\1\u0086\4\u0085\1\u009f\64\u0085\1\u0086\42\u0085",
+            "\2\u0086\1\u0087\4\u0086\1\u00a0\10\u0086\12\u009f\7\u0086"+
+            "\6\u009e\25\u0086\1\u0087\4\u0086\6\u009e\30\u0086",
+            "\2\u0086\1\u0087\4\u0086\1\u00a0\64\u0086\1\u0087\42\u0086",
             "",
-            "\7\u0086\1\u00a0\127\u0086",
-            "\7\u0086\1\u0083\127\u0086",
-            "\7\u0086\1\u00a0\127\u0086",
-            "\7\u0086\1\u00a0\127\u0086",
-            "\7\u0086\1\u00a0\127\u0086",
+            "\7\u0087\1\u00a1\127\u0087",
+            "\7\u0087\1\u0084\127\u0087",
+            "\7\u0087\1\u00a1\127\u0087",
+            "\7\u0087\1\u00a1\127\u0087",
+            "\7\u0087\1\u00a1\127\u0087",
             "",
-            "\7\u0086\1\u0083\127\u0086",
-            "\7\u0086\1\u0083\127\u0086",
-            "\1\u00a2",
+            "\7\u0087\1\u0084\127\u0087",
+            "\7\u0087\1\u0084\127\u0087",
             "\1\u00a3",
             "\1\u00a4",
             "\1\u00a5",
             "\1\u00a6",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "",
-            "\1\u00a8",
+            "\1\u00a7",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
             "",
             "\1\u00a9",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00ab",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
             "",
-            "\2\u0085\1\u0086\4\u0085\1\u00ad\10\u0085\12\u009e\7\u0085"+
-            "\6\u009d\25\u0085\1\u0086\4\u0085\6\u009d\30\u0085",
-            "\2\u0085\1\u0086\4\u0085\1\u00ad\10\u0085\12\u009e\7\u0085"+
-            "\6\u009d\25\u0085\1\u0086\4\u0085\6\u009d\30\u0085",
+            "\1\u00aa",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "\1\u00ac",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "",
+            "\2\u0086\1\u0087\4\u0086\1\u00ae\10\u0086\12\u009f\7\u0086"+
+            "\6\u009e\25\u0086\1\u0087\4\u0086\6\u009e\30\u0086",
+            "\2\u0086\1\u0087\4\u0086\1\u00ae\10\u0086\12\u009f\7\u0086"+
+            "\6\u009e\25\u0086\1\u0087\4\u0086\6\u009e\30\u0086",
             "",
             "",
             "",
-            "\1\u00ae",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00b0",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00b2",
+            "\1\u00af",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "\1\u00b1",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "\1\u00b3",
             "",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00b4",
-            "",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
             "\1\u00b5",
             "",
+            "\1\u00b6",
             "",
-            "\1\u00b7",
             "",
             "\1\u00b8",
             "",
-            "\1\u00b9",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
             "",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\1\u00bb",
+            "\1\u00ba",
             "",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "\1\u00bc",
+            "",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "",
             "\1\u00be",
             "",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
             "",
-            "",
-            "\12\57\7\uffff\32\57\4\uffff\1\57\1\uffff\32\57",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
             "",
             ""
     };

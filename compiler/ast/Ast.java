@@ -17,6 +17,8 @@ public class Ast {
 	public GramaticaAst gast;
 	public String filename;
 	public String parsertree = "";
+	public Tree arbol;
+	public ArrayList<String> erroresScan, erroresParser;
 
 	// contructor
 	public Ast(CC4Parser ps){
@@ -26,6 +28,8 @@ public class Ast {
 		int x = this.filename.indexOf(".");
 		if (x>=0)
 			this.filename = this.filename.substring(0, x);
+		erroresScan = ps.getScanErrors();
+		erroresParser = ps.getErrors();
 	}
 
 	public String toString(){
@@ -44,17 +48,29 @@ public class Ast {
 		}
 		return str;
 	}
+	public ArrayList<String> getAstErrors(){
+		return gast.getErrors();
+	}
+	public ArrayList<String> getScanErrors(){
+		return erroresScan;
+	}
+	public void setScanErrors(ArrayList<String> scError){
+		erroresScan = scError;
+	}
+	public Tree getTree(){
+		return arbol;
+	}
 	public void makeTree(){
 		try {	    
 		GramaticaAst.start_return r = gast.start();
 
-		Tree t = (Tree)r.getTree();
+		arbol = (Tree)r.getTree();
 		
 		// debug
-		this.parsertree = "  "+t.toStringTree();
+		this.parsertree = "  "+arbol.toStringTree();
 		
 		DOTTreeGenerator gen = new DOTTreeGenerator();
-		StringTemplate st = gen.toDOT(t);
+		StringTemplate st = gen.toDOT(arbol);
 		PrintStream ps = new PrintStream(filename+".dot");
 		
 		ps.println(st);

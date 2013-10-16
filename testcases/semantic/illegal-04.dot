@@ -1,0 +1,31 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="FIELD"];
+  n1 [label="FIELD"];
+  n2 [label="int"];
+  n3 [label="a"];
+  n4 [label="0"];
+  n5 [label="METHOD"];
+  n5 [label="METHOD"];
+  n6 [label="void"];
+  n7 [label="main"];
+  n8 [label="BLOCK"];
+
+  n0 -> n1 // "ROOT" -> "FIELD"
+  n1 -> n2 // "FIELD" -> "int"
+  n1 -> n3 // "FIELD" -> "a"
+  n1 -> n4 // "FIELD" -> "0"
+  n0 -> n5 // "ROOT" -> "METHOD"
+  n5 -> n6 // "METHOD" -> "void"
+  n5 -> n7 // "METHOD" -> "main"
+  n5 -> n8 // "METHOD" -> "BLOCK"
+
+}
+

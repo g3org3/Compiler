@@ -1,0 +1,49 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="FIELD"];
+  n1 [label="FIELD"];
+  n2 [label="int"];
+  n3 [label="a"];
+  n4 [label="10"];
+  n5 [label="METHOD"];
+  n5 [label="METHOD"];
+  n6 [label="void"];
+  n7 [label="main"];
+  n8 [label="BLOCK"];
+  n8 [label="BLOCK"];
+  n9 [label="STATEMENT"];
+  n9 [label="STATEMENT"];
+  n10 [label="if"];
+  n11 [label="EX"];
+  n11 [label="EX"];
+  n12 [label="ARRAY"];
+  n12 [label="ARRAY"];
+  n13 [label="a"];
+  n14 [label="3"];
+  n15 [label="BLOCK"];
+
+  n0 -> n1 // "ROOT" -> "FIELD"
+  n1 -> n2 // "FIELD" -> "int"
+  n1 -> n3 // "FIELD" -> "a"
+  n1 -> n4 // "FIELD" -> "10"
+  n0 -> n5 // "ROOT" -> "METHOD"
+  n5 -> n6 // "METHOD" -> "void"
+  n5 -> n7 // "METHOD" -> "main"
+  n5 -> n8 // "METHOD" -> "BLOCK"
+  n8 -> n9 // "BLOCK" -> "STATEMENT"
+  n9 -> n10 // "STATEMENT" -> "if"
+  n9 -> n11 // "STATEMENT" -> "EX"
+  n11 -> n12 // "EX" -> "ARRAY"
+  n12 -> n13 // "ARRAY" -> "a"
+  n12 -> n14 // "ARRAY" -> "3"
+  n9 -> n15 // "STATEMENT" -> "BLOCK"
+
+}
+
