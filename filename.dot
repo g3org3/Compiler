@@ -13,119 +13,93 @@ digraph {
   n3 [label="x"];
   n4 [label="METHOD"];
   n4 [label="METHOD"];
-  n5 [label="void"];
-  n6 [label="main"];
-  n7 [label="BLOCK"];
-  n7 [label="BLOCK"];
-  n8 [label="STATEMENT"];
-  n8 [label="STATEMENT"];
-  n9 [label="a"];
-  n10 [label="="];
-  n11 [label="+"];
-  n11 [label="+"];
-  n12 [label="-"];
-  n12 [label="-"];
-  n13 [label="+"];
-  n13 [label="+"];
-  n14 [label="-"];
-  n14 [label="-"];
-  n15 [label="3"];
-  n16 [label="/"];
-  n16 [label="/"];
-  n17 [label="4"];
-  n18 [label="6"];
-  n19 [label="4"];
-  n20 [label="-"];
-  n20 [label="-"];
-  n21 [label="EX"];
-  n21 [label="EX"];
-  n22 [label="F"];
-  n23 [label="["];
-  n24 [label="+"];
-  n24 [label="+"];
-  n25 [label="EX"];
-  n25 [label="EX"];
-  n26 [label="b"];
-  n27 [label="2"];
-  n28 [label="]"];
-  n29 [label="EX"];
-  n29 [label="EX"];
-  n30 [label="foo"];
-  n31 [label="("];
-  n32 [label="2"];
-  n33 [label=","];
-  n34 [label="4"];
-  n35 [label=")"];
-  n36 [label="STATEMENT"];
-  n36 [label="STATEMENT"];
-  n37 [label="x"];
-  n38 [label="="];
-  n39 [label="32"];
-  n40 [label="STATEMENT"];
-  n40 [label="STATEMENT"];
-  n41 [label="if"];
-  n42 [label="!"];
-  n42 [label="!"];
-  n43 [label="<"];
-  n43 [label="<"];
-  n44 [label="1"];
-  n45 [label="5"];
-  n46 [label="BLOCK"];
-  n46 [label="BLOCK"];
-  n47 [label="STATEMENT"];
-  n47 [label="STATEMENT"];
-  n48 [label="return"];
-  n49 [label="1"];
+  n5 [label="int"];
+  n6 [label="suma"];
+  n7 [label="int"];
+  n8 [label="a"];
+  n9 [label="int"];
+  n10 [label="b"];
+  n11 [label="BLOCK"];
+  n11 [label="BLOCK"];
+  n12 [label="STATEMENT"];
+  n12 [label="STATEMENT"];
+  n13 [label="x"];
+  n14 [label="="];
+  n15 [label="+"];
+  n15 [label="+"];
+  n16 [label="EX"];
+  n16 [label="EX"];
+  n17 [label="a"];
+  n18 [label="EX"];
+  n18 [label="EX"];
+  n19 [label="b"];
+  n20 [label="STATEMENT"];
+  n20 [label="STATEMENT"];
+  n21 [label="if"];
+  n22 [label="true"];
+  n23 [label="BLOCK"];
+  n24 [label="else"];
+  n25 [label="BLOCK"];
+  n25 [label="BLOCK"];
+  n26 [label="VARS"];
+  n26 [label="VARS"];
+  n27 [label="int"];
+  n28 [label="x"];
+  n29 [label="STATEMENT"];
+  n29 [label="STATEMENT"];
+  n30 [label="return"];
+  n31 [label="1"];
+  n32 [label="STATEMENT"];
+  n32 [label="STATEMENT"];
+  n33 [label="return"];
+  n34 [label="EX"];
+  n34 [label="EX"];
+  n35 [label="x"];
+  n36 [label="METHOD"];
+  n36 [label="METHOD"];
+  n37 [label="void"];
+  n38 [label="main"];
+  n39 [label="BLOCK"];
 
   n0 -> n1 // "ROOT" -> "FIELD"
   n1 -> n2 // "FIELD" -> "int"
   n1 -> n3 // "FIELD" -> "x"
   n0 -> n4 // "ROOT" -> "METHOD"
-  n4 -> n5 // "METHOD" -> "void"
-  n4 -> n6 // "METHOD" -> "main"
-  n4 -> n7 // "METHOD" -> "BLOCK"
-  n7 -> n8 // "BLOCK" -> "STATEMENT"
-  n8 -> n9 // "STATEMENT" -> "a"
-  n8 -> n10 // "STATEMENT" -> "="
-  n8 -> n11 // "STATEMENT" -> "+"
-  n11 -> n12 // "+" -> "-"
-  n12 -> n13 // "-" -> "+"
-  n13 -> n14 // "+" -> "-"
-  n14 -> n15 // "-" -> "3"
-  n13 -> n16 // "+" -> "/"
-  n16 -> n17 // "/" -> "4"
-  n16 -> n18 // "/" -> "6"
-  n12 -> n19 // "-" -> "4"
-  n11 -> n20 // "+" -> "-"
-  n20 -> n21 // "-" -> "EX"
-  n21 -> n22 // "EX" -> "F"
-  n21 -> n23 // "EX" -> "["
-  n21 -> n24 // "EX" -> "+"
-  n24 -> n25 // "+" -> "EX"
-  n25 -> n26 // "EX" -> "b"
-  n24 -> n27 // "+" -> "2"
-  n21 -> n28 // "EX" -> "]"
-  n20 -> n29 // "-" -> "EX"
-  n29 -> n30 // "EX" -> "foo"
-  n29 -> n31 // "EX" -> "("
-  n29 -> n32 // "EX" -> "2"
-  n29 -> n33 // "EX" -> ","
-  n29 -> n34 // "EX" -> "4"
-  n29 -> n35 // "EX" -> ")"
-  n7 -> n36 // "BLOCK" -> "STATEMENT"
-  n36 -> n37 // "STATEMENT" -> "x"
-  n36 -> n38 // "STATEMENT" -> "="
-  n36 -> n39 // "STATEMENT" -> "32"
-  n7 -> n40 // "BLOCK" -> "STATEMENT"
-  n40 -> n41 // "STATEMENT" -> "if"
-  n40 -> n42 // "STATEMENT" -> "!"
-  n42 -> n43 // "!" -> "<"
-  n43 -> n44 // "<" -> "1"
-  n43 -> n45 // "<" -> "5"
-  n40 -> n46 // "STATEMENT" -> "BLOCK"
-  n46 -> n47 // "BLOCK" -> "STATEMENT"
-  n47 -> n48 // "STATEMENT" -> "return"
-  n47 -> n49 // "STATEMENT" -> "1"
+  n4 -> n5 // "METHOD" -> "int"
+  n4 -> n6 // "METHOD" -> "suma"
+  n4 -> n7 // "METHOD" -> "int"
+  n4 -> n8 // "METHOD" -> "a"
+  n4 -> n9 // "METHOD" -> "int"
+  n4 -> n10 // "METHOD" -> "b"
+  n4 -> n11 // "METHOD" -> "BLOCK"
+  n11 -> n12 // "BLOCK" -> "STATEMENT"
+  n12 -> n13 // "STATEMENT" -> "x"
+  n12 -> n14 // "STATEMENT" -> "="
+  n12 -> n15 // "STATEMENT" -> "+"
+  n15 -> n16 // "+" -> "EX"
+  n16 -> n17 // "EX" -> "a"
+  n15 -> n18 // "+" -> "EX"
+  n18 -> n19 // "EX" -> "b"
+  n11 -> n20 // "BLOCK" -> "STATEMENT"
+  n20 -> n21 // "STATEMENT" -> "if"
+  n20 -> n22 // "STATEMENT" -> "true"
+  n20 -> n23 // "STATEMENT" -> "BLOCK"
+  n20 -> n24 // "STATEMENT" -> "else"
+  n20 -> n25 // "STATEMENT" -> "BLOCK"
+  n25 -> n26 // "BLOCK" -> "VARS"
+  n26 -> n27 // "VARS" -> "int"
+  n26 -> n28 // "VARS" -> "x"
+  n25 -> n29 // "BLOCK" -> "STATEMENT"
+  n29 -> n30 // "STATEMENT" -> "return"
+  n29 -> n31 // "STATEMENT" -> "1"
+  n11 -> n32 // "BLOCK" -> "STATEMENT"
+  n32 -> n33 // "STATEMENT" -> "return"
+  n32 -> n34 // "STATEMENT" -> "EX"
+  n34 -> n35 // "EX" -> "x"
+  n0 -> n36 // "ROOT" -> "METHOD"
+  n36 -> n37 // "METHOD" -> "void"
+  n36 -> n38 // "METHOD" -> "main"
+  n36 -> n39 // "METHOD" -> "BLOCK"
 
 }
 

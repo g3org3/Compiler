@@ -1,4 +1,4 @@
-// $ANTLR 3.4 compiler/ast/GramaticaAst.g 2013-10-14 00:17:59
+// $ANTLR 3.4 compiler/ast/GramaticaAst.g 2013-10-17 08:03:55
 
 	package compiler.ast;
 	import compiler.scanner.*;
@@ -591,7 +591,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: id, type, int_literal
+            // elements: type, int_literal, id
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -860,7 +860,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_block.add(block29.getTree());
 
                     // AST REWRITE
-                    // elements: id, block, id, VOID, type
+                    // elements: id, VOID, id, type, block
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1031,7 +1031,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_block.add(block39.getTree());
 
                     // AST REWRITE
-                    // elements: block, id, type, id, type
+                    // elements: type, block, id, id, type
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1810,7 +1810,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: ELSE, block, IF, block, expr
+                    // elements: ELSE, block, expr, block, IF
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1903,7 +1903,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_block.add(block69.getTree());
 
                     // AST REWRITE
-                    // elements: ASSIGN, expr, FOR, id, expr, block
+                    // elements: block, id, FOR, ASSIGN, expr, expr
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1984,7 +1984,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: RETURN, expr
+                    // elements: expr, RETURN
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2489,7 +2489,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: CALLOUT, callout_arg, string_literal
+                    // elements: callout_arg, string_literal, CALLOUT
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2713,7 +2713,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: id, expr
+                    // elements: expr, id
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 

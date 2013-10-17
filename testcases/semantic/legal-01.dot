@@ -336,7 +336,7 @@ digraph {
   n223 [label="STATEMENT"];
   n224 [label="PRINTF"];
   n224 [label="PRINTF"];
-  n225 [label="printf"];
+  n225 [label="printStr"];
   n226 [label="\"printf\""];
   n227 [label="\"creati...ents\n\""];
   n228 [label="EX"];
@@ -346,7 +346,7 @@ digraph {
   n230 [label="STATEMENT"];
   n231 [label="PRINTF"];
   n231 [label="PRINTF"];
-  n232 [label="printf"];
+  n232 [label="printStr"];
   n233 [label="\"srandom\""];
   n234 [label="17"];
   n235 [label="STATEMENT"];
@@ -368,7 +368,7 @@ digraph {
   n246 [label="EX"];
   n247 [label="PRINTF"];
   n247 [label="PRINTF"];
-  n248 [label="printf"];
+  n248 [label="printStr"];
   n249 [label="\"random\""];
   n250 [label="STATEMENT"];
   n250 [label="STATEMENT"];
@@ -386,7 +386,7 @@ digraph {
   n258 [label="STATEMENT"];
   n259 [label="PRINTF"];
   n259 [label="PRINTF"];
-  n260 [label="printf"];
+  n260 [label="printStr"];
   n261 [label="\"printf\""];
   n262 [label="\"\nbefore sort:\n\""];
   n263 [label="STATEMENT"];
@@ -404,7 +404,7 @@ digraph {
   n271 [label="STATEMENT"];
   n272 [label="PRINTF"];
   n272 [label="PRINTF"];
-  n273 [label="printf"];
+  n273 [label="printStr"];
   n274 [label="\"printf\""];
   n275 [label="\"%d\n\""];
   n276 [label="EX"];
@@ -431,7 +431,7 @@ digraph {
   n289 [label="STATEMENT"];
   n290 [label="PRINTF"];
   n290 [label="PRINTF"];
-  n291 [label="printf"];
+  n291 [label="printStr"];
   n292 [label="\"printf\""];
   n293 [label="\"\nafter sort\n\""];
   n294 [label="STATEMENT"];
@@ -449,7 +449,7 @@ digraph {
   n302 [label="STATEMENT"];
   n303 [label="PRINTF"];
   n303 [label="PRINTF"];
-  n304 [label="printf"];
+  n304 [label="printStr"];
   n305 [label="\"printf\""];
   n306 [label="\"%d\n\""];
   n307 [label="EX"];
@@ -685,14 +685,14 @@ digraph {
   n219 -> n222 // "STATEMENT" -> "10"
   n215 -> n223 // "BLOCK" -> "STATEMENT"
   n223 -> n224 // "STATEMENT" -> "PRINTF"
-  n224 -> n225 // "PRINTF" -> "printf"
+  n224 -> n225 // "PRINTF" -> "printStr"
   n224 -> n226 // "PRINTF" -> "\"printf\""
   n224 -> n227 // "PRINTF" -> "\"creati...ents\n\""
   n224 -> n228 // "PRINTF" -> "EX"
   n228 -> n229 // "EX" -> "length"
   n215 -> n230 // "BLOCK" -> "STATEMENT"
   n230 -> n231 // "STATEMENT" -> "PRINTF"
-  n231 -> n232 // "PRINTF" -> "printf"
+  n231 -> n232 // "PRINTF" -> "printStr"
   n231 -> n233 // "PRINTF" -> "\"srandom\""
   n231 -> n234 // "PRINTF" -> "17"
   n215 -> n235 // "BLOCK" -> "STATEMENT"
@@ -708,7 +708,7 @@ digraph {
   n243 -> n245 // "STATEMENT" -> "="
   n243 -> n246 // "STATEMENT" -> "EX"
   n246 -> n247 // "EX" -> "PRINTF"
-  n247 -> n248 // "PRINTF" -> "printf"
+  n247 -> n248 // "PRINTF" -> "printStr"
   n247 -> n249 // "PRINTF" -> "\"random\""
   n242 -> n250 // "BLOCK" -> "STATEMENT"
   n250 -> n251 // "STATEMENT" -> "ARRAY"
@@ -720,7 +720,7 @@ digraph {
   n256 -> n257 // "EX" -> "temp"
   n215 -> n258 // "BLOCK" -> "STATEMENT"
   n258 -> n259 // "STATEMENT" -> "PRINTF"
-  n259 -> n260 // "PRINTF" -> "printf"
+  n259 -> n260 // "PRINTF" -> "printStr"
   n259 -> n261 // "PRINTF" -> "\"printf\""
   n259 -> n262 // "PRINTF" -> "\"\nbefore sort:\n\""
   n215 -> n263 // "BLOCK" -> "STATEMENT"
@@ -733,7 +733,7 @@ digraph {
   n263 -> n270 // "STATEMENT" -> "BLOCK"
   n270 -> n271 // "BLOCK" -> "STATEMENT"
   n271 -> n272 // "STATEMENT" -> "PRINTF"
-  n272 -> n273 // "PRINTF" -> "printf"
+  n272 -> n273 // "PRINTF" -> "printStr"
   n272 -> n274 // "PRINTF" -> "\"printf\""
   n272 -> n275 // "PRINTF" -> "\"%d\n\""
   n272 -> n276 // "PRINTF" -> "EX"
@@ -751,7 +751,7 @@ digraph {
   n285 -> n288 // "-" -> "1"
   n215 -> n289 // "BLOCK" -> "STATEMENT"
   n289 -> n290 // "STATEMENT" -> "PRINTF"
-  n290 -> n291 // "PRINTF" -> "printf"
+  n290 -> n291 // "PRINTF" -> "printStr"
   n290 -> n292 // "PRINTF" -> "\"printf\""
   n290 -> n293 // "PRINTF" -> "\"\nafter sort\n\""
   n215 -> n294 // "BLOCK" -> "STATEMENT"
@@ -764,7 +764,7 @@ digraph {
   n294 -> n301 // "STATEMENT" -> "BLOCK"
   n301 -> n302 // "BLOCK" -> "STATEMENT"
   n302 -> n303 // "STATEMENT" -> "PRINTF"
-  n303 -> n304 // "PRINTF" -> "printf"
+  n303 -> n304 // "PRINTF" -> "printStr"
   n303 -> n305 // "PRINTF" -> "\"printf\""
   n303 -> n306 // "PRINTF" -> "\"%d\n\""
   n303 -> n307 // "PRINTF" -> "EX"

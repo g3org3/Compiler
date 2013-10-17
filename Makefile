@@ -1,4 +1,7 @@
-make: GRAMATICA DECAF SCANNER GRAPARSER PARSER CC4PARSER GRAAST ASTJAVA AST programa
+make: GRAMATICA DECAF SCANNER GRAPARSER PARSER CC4PARSER GRAAST ASTJAVA AST TABLESS SEMANTIC.CLASS IRT.CLASS programa
+
+INSTALL: ../../../Developer/lib/antlr-3.4-complete.jar
+	export CLASSPATH=".:/Developer/lib/antlr-3.4-complete.jar:$CLASSPATH"
 
 GRAMATICA: compiler/scanner/Decaf.g
 	java org.antlr.Tool compiler/scanner/Decaf.g
@@ -30,6 +33,15 @@ ASTJAVA: compiler/ast/GramaticaAst.java
 AST: compiler/ast/Ast.java
 	javac compiler/ast/Ast.java
 
+TABLESS: compiler/semantic/Tables.java
+	javac compiler/semantic/Tables.java
+
+SEMANTIC.CLASS: compiler/semantic/Semantic.java
+	javac compiler/semantic/Semantic.java
+
+IRT.CLASS: compiler/irt/Irt.java
+	javac compiler/irt/Irt.java
+
 programa:
 	javac Compiler.java
 
@@ -46,8 +58,8 @@ clean:
 	rm compiler/ast/GramaticaAst.java
 	rm testcases/parser/*.dot
 	rm testcases/parser/*.s
-#	rm compiler/semantic/*.class
-#	rm compiler/irt/*.class
+	rm compiler/semantic/*.class
+	rm compiler/irt/*.class
 #	rm compiler/codegen/*.class
 #	rm compiler/opt/*.class
 #	rm compiler/lib/*.class

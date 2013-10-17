@@ -28,6 +28,19 @@ public class Semantic {
 		fix=0;
 	}
 
+	public boolean validProgram(){
+		int w = erroresSemantic.size();
+		int total = unicidad + tipos + existencia + w - fix;
+		valid = (total==0)&&valid;
+		return valid;
+	}
+	public Tree getArbol(){
+		return arbol;
+	}
+	public Tables getSemanticTable(){
+		return tables;
+	}
+
 	public void fillTables(){
 		this.fillTables(arbol, "-");
 		this.checkMain();
@@ -38,7 +51,7 @@ public class Semantic {
 			x = tables.getTotalParam(x);
 			if(x>0){
 				valid = false;
-				erroresSemantic.add("El metodo main no tiene que tener parametros.");
+				erroresSemantic.add("El metodo main no debe de tener parametros!!");
 			}
 		} else {
 			valid = false;
@@ -51,9 +64,15 @@ public class Semantic {
 
 		if(t.getText().equals("ROOT")) {
 			tables.addTable("-", "ROOT");
-			tables.addVars("int", "printf", 0);
-			tables.addTable("ROOT", "printf");
-			tables.addVars("String", "str", 1);
+			tables.addVars("int", "printStr", 0);
+			tables.addVars("int", "printInt", 0);
+			tables.addVars("int", "readInt", 0);
+			tables.addTable("ROOT", "printStr");
+			tables.addTable("ROOT", "printInt");
+			tables.addTable("ROOT", "readInt");
+			tables.addVars("String", "str", 1, 1);
+			tables.addVars("int", "n", 2, 1);
+			tables.removeFromVariables();
 			for (int i=0; i<childs; i++) {
 				this.fillTables(t.getChild(i), "ROOT");
 			}
@@ -89,13 +108,13 @@ public class Semantic {
 					}
 				}
 			}
-		} else if(t.getText().equals("METHOD")){
+		} else if(t.getText().equals("METHOD")){ 
 			type = t.getChild(0).getText();
 			if(tables.containsCurrentScope(t.getChild(1).getText(), 0)){
 					unicidad++; valid = false; fix++;
 					erroresSemantic.add("Ya existe la variable: "+t.getChild(1).getText());
 			} else {
-				tables.addVars(type, t.getChild(1).getText(), 0);
+				tables.addVars(type, t.getChild(1).getText(), 0, 101);
 				//valid = true;
 			}
 			tables.addTable("ROOT", t.getChild(1).getText());
@@ -140,7 +159,8 @@ public class Semantic {
 					break;
 				} else {
 					tables.addVars(type, t.getChild(i).getText(), scope);
-					valid = true;
+					//System.out.println("holi");
+					//valid = true;
 				}
 			}
 		} else if(t.getText().equals("STATEMENT")) {
@@ -161,16 +181,19 @@ public class Semantic {
 					tipos++; fix++;
 					erroresSemantic.add("IF Expecting: boolean, Found: "+tipo+", Scope: "+tablename);
 				}
-				for (int i=0; i<childs; i++)
-					this.fillTables(t.getChild(i), nombrefix);
-			} else if(nombre.equals("else")){
-				while(tables.containsTable(nombrefix)!=-1){
-					nombrefix = nombre + x;
-					x++;
+				if(childs<4)
+					for (int i=0; i<childs; i++)
+						this.fillTables(t.getChild(i), nombrefix);
+				else {
+					this.fillTables(t.getChild(2), nombrefix);
+					nombrefix = "else"; nombre = "else"; x=2;
+					while(tables.containsTable(nombrefix)!=-1){
+						nombrefix = nombre + x;
+						x++;
+					}
+					tables.addTable(tablename, nombrefix);
+					this.fillTables(t.getChild(4), nombrefix);
 				}
-				tables.addTable(tablename, nombrefix);
-				for (int i=0; i<childs; i++)
-					this.fillTables(t.getChild(i), nombrefix);
 			} else if(nombre.equals("for")){
 				while(tables.containsTable(nombrefix)!=-1){
 					nombrefix = nombre + x;
@@ -259,6 +282,7 @@ public class Semantic {
 					int y = tables.containsTable(tablename);
 					String tipo = tables.getMethodType(tablename);
 					String p = this.checkEx(t.getChild(1), tipo, tablename, 1);
+					//System.out.println(p+ " "+tipo);
 					if(!tipo.equals(p)){
 						valid=false;
 						tipos++;
@@ -270,6 +294,7 @@ public class Semantic {
 					} else {
 						tables.addVars(y, "true");
 					}
+					//System.out.println(tablename);
 
 				}
 			} else {
@@ -284,9 +309,10 @@ public class Semantic {
 				if(n==(childs-1)){
 					ArrayList<String> params = tables.tableParameters(y);
 					String tipo = "";
-					for (int i=1; i<n; i++) {
-						p = tables.getVarType(i-1, y);
-						tipo = checkEx(t.getChild(i), p, t.getChild(0).getText(), 1);
+					for (int i=0; i<n; i++) {
+						p = tables.getVarType(i, y);
+						tipo = checkEx(t.getChild(i+1), p, tablename, 1);
+						//System.out.println(tipo);
 						if(!tipo.equals(p)) {
 							valid = false;
 							tipos++;
@@ -318,23 +344,24 @@ public class Semantic {
 		// if no childs
 		if(childs==0){
 			var = t.getText();
-			try{
-					number = Integer.parseInt(var);
-					tipo = "int";
-			} catch (Exception e) {
-				int x = tables.containsTable(tablename);
-				x = tables.containsRecur(var, x);
-				if(x!=-1) {// lo encontro en la tabla
-					tipo = tables.getVarType(var, x); //chequeo de tipos
-					if(getType!=1)
-						return tipo;
-				} else {
-					if(var.equals("true")||var.equals("false"))
-						tipo = "boolean";
-					else {
-						valid = false;
-						existencia++;
-						fix++;
+
+			if(var.equals("true")||var.equals("false")){
+				tipo = "boolean";
+			} else {
+
+				try{
+						number = Integer.parseInt(var);
+						tipo = "int";
+				} catch (Exception e) {
+					int x = tables.containsTable(tablename);
+					x = tables.containsRecur(var, x);
+
+					if(x!=-1) {// lo encontro en la tabla
+						tipo = tables.getVarType(var, x); //chequeo de tipos
+						//System.out.println(tipo);
+						
+					} else {
+						valid = false; existencia++; fix++;
 						erroresSemantic.add("No existe la variable: "+var);
 					}
 				}
@@ -353,11 +380,19 @@ public class Semantic {
 			var = t.getChild(i).getText();
 			
 			if(root.equals("+")){
-				tipo = checkEx(t.getChild(i), "int", tablename, getType);
+				tipo = checkEx(t.getChild(0), "int", tablename, getType);
+				tipo2 = checkEx(t.getChild(1), "int", tablename, getType);
 				if(getType!=1 && !tipo.equals(type)){
 					valid = false; tipos++; fix++;
 					erroresSemantic.add("Expecting: "+type+" , Found: int, Scope: "+tablename);
+				} else if(!tipo2.equals(type)){
+					if(getType!=1){
+						valid = false; tipos++; fix++;
+						erroresSemantic.add("Expecting: "+type+" , Found: int, Scope: "+tablename);
+					}
+					tipo = tipo2;
 				}
+				//System.out.println(tipo + tipo2);
 				i = childs;
 			} else if(root.equals("/")){
 				tipo = checkEx(t.getChild(i), "int", tablename, getType);
@@ -623,9 +658,3 @@ public class Semantic {
 		return str;
 	}
 }
-
-
-
-
-
-

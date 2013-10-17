@@ -55,7 +55,7 @@ COMMENTS 		: (('//') ~('\n'|'\r')* '\r'? '\n') {skip();};
 // KEYWORDS
 BOOLEAN			: 'boolean'		{debug("KW BOOLEAN", getLine(), getText()); };
 BREAK			: 'break'		{debug("KW BREAK", getLine(), getText()); };
-CALLOUT			: 'printf'		{debug("KW CALLOUT", getLine(), getText()); };
+CALLOUT			: 'printStr'		{debug("KW CALLOUT", getLine(), getText()); };
 CLASS			: 'class'		{debug("KW CLASS", getLine(), getText()); };
 CONTINUE		: 'continue'	{debug("KW CONTINUE", getLine(), getText()); };
 ELSE 			: 'else'		{debug("KW ELSE", getLine(), getText()); };

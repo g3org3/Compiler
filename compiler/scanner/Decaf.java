@@ -1,4 +1,4 @@
-// $ANTLR 3.4 compiler/scanner/Decaf.g 2013-10-13 19:37:51
+// $ANTLR 3.4 compiler/scanner/Decaf.g 2013-10-17 08:03:46
 
 	package compiler.scanner;
 	import java.util.ArrayList;
@@ -598,10 +598,10 @@ public class Decaf extends Lexer {
         try {
             int _type = CALLOUT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // compiler/scanner/Decaf.g:58:11: ( 'printf' )
-            // compiler/scanner/Decaf.g:58:13: 'printf'
+            // compiler/scanner/Decaf.g:58:11: ( 'printStr' )
+            // compiler/scanner/Decaf.g:58:13: 'printStr'
             {
-            match("printf"); 
+            match("printStr"); 
 
 
 
@@ -3446,10 +3446,10 @@ public class Decaf extends Lexer {
         "\1\uffff\1\u0098\4\60\1\u009d\17\uffff\1\u00a2\6\uffff\5\60\1\u00a8"+
         "\1\uffff\1\60\1\uffff\1\60\1\u00ab\1\60\1\u00ad\6\uffff\1\60\1\u00b0"+
         "\1\60\1\u00b2\1\60\1\uffff\1\u00b4\1\60\1\uffff\1\60\2\uffff\1\60"+
-        "\1\uffff\1\u00b9\1\uffff\1\60\1\uffff\1\u00bb\1\60\1\uffff\1\u00bd"+
-        "\1\uffff\1\60\1\uffff\1\u00bf\1\uffff\1\u00c0\2\uffff";
+        "\1\uffff\1\60\1\uffff\1\60\1\uffff\1\u00bb\1\60\1\uffff\1\u00bd"+
+        "\2\60\1\uffff\1\u00c0\1\uffff\1\u00c1\1\u00c2\3\uffff";
     static final String DFA17_eofS =
-        "\u00c1\uffff";
+        "\u00c3\uffff";
     static final String DFA17_minS =
         "\1\0\1\57\1\157\1\162\2\154\1\141\1\146\1\145\1\157\2\162\12\uffff"+
         "\1\130\1\53\1\55\4\75\1\46\1\174\5\uffff\1\40\1\10\10\uffff\1\157"+
@@ -3459,9 +3459,9 @@ public class Decaf extends Lexer {
         "\1\uffff\1\60\1\165\1\144\1\147\1\145\1\60\3\uffff\7\40\1\uffff"+
         "\2\40\1\uffff\5\40\1\uffff\2\40\1\145\1\153\1\164\1\163\1\151\1"+
         "\60\1\uffff\1\145\1\uffff\1\162\1\60\1\162\1\60\1\uffff\2\40\3\uffff"+
-        "\1\141\1\60\1\146\1\60\1\156\1\uffff\1\60\1\156\1\uffff\1\141\2"+
-        "\uffff\1\156\1\uffff\1\60\1\uffff\1\165\1\uffff\1\60\1\155\1\uffff"+
-        "\1\60\1\uffff\1\145\1\uffff\1\60\1\uffff\1\60\2\uffff";
+        "\1\141\1\60\1\123\1\60\1\156\1\uffff\1\60\1\156\1\uffff\1\141\2"+
+        "\uffff\1\156\1\uffff\1\164\1\uffff\1\165\1\uffff\1\60\1\155\1\uffff"+
+        "\1\60\1\162\1\145\1\uffff\1\60\1\uffff\2\60\3\uffff";
     static final String DFA17_maxS =
         "\1\177\1\57\2\162\1\157\1\154\1\157\1\156\1\145\1\157\2\162\12\uffff"+
         "\1\170\6\75\1\46\1\174\5\uffff\2\176\10\uffff\1\157\1\145\1\uffff"+
@@ -3471,9 +3471,9 @@ public class Decaf extends Lexer {
         "\1\172\1\165\1\144\1\147\1\145\1\172\3\uffff\7\176\1\uffff\2\176"+
         "\1\uffff\5\176\1\uffff\2\176\1\145\1\153\1\164\1\163\1\151\1\172"+
         "\1\uffff\1\145\1\uffff\1\162\1\172\1\162\1\172\1\uffff\2\176\3\uffff"+
-        "\1\141\1\172\1\146\1\172\1\156\1\uffff\1\172\1\156\1\uffff\1\141"+
-        "\2\uffff\1\156\1\uffff\1\172\1\uffff\1\165\1\uffff\1\172\1\155\1"+
-        "\uffff\1\172\1\uffff\1\145\1\uffff\1\172\1\uffff\1\172\2\uffff";
+        "\1\141\1\172\1\123\1\172\1\156\1\uffff\1\172\1\156\1\uffff\1\141"+
+        "\2\uffff\1\156\1\uffff\1\164\1\uffff\1\165\1\uffff\1\172\1\155\1"+
+        "\uffff\1\172\1\162\1\145\1\uffff\1\172\1\uffff\2\172\3\uffff";
     static final String DFA17_acceptS =
         "\14\uffff\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\11\uffff"+
         "\1\52\1\54\1\56\1\32\1\62\2\uffff\1\65\1\76\1\102\1\65\1\103\1\104"+
@@ -3484,10 +3484,10 @@ public class Decaf extends Lexer {
         "\1\102\10\uffff\1\11\6\uffff\1\74\1\75\1\77\7\uffff\1\64\2\uffff"+
         "\1\100\5\uffff\1\71\10\uffff\1\10\1\uffff\1\12\4\uffff\1\61\2\uffff"+
         "\1\73\1\64\1\72\5\uffff\1\7\2\uffff\1\14\1\uffff\1\16\1\70\1\uffff"+
-        "\1\3\1\uffff\1\5\1\uffff\1\17\2\uffff\1\70\1\uffff\1\4\1\uffff\1"+
-        "\13\1\uffff\1\2\1\uffff\1\15\1\6";
+        "\1\3\1\uffff\1\5\1\uffff\1\17\2\uffff\1\70\3\uffff\1\13\1\uffff"+
+        "\1\2\2\uffff\1\15\1\4\1\6";
     static final String DFA17_specialS =
-        "\u00c1\uffff}>";
+        "\u00c3\uffff}>";
     static final String[] DFA17_transitionS = {
             "\10\52\3\46\1\52\1\50\1\46\22\52\1\51\1\34\1\44\2\53\1\40\1"+
             "\35\1\45\1\14\1\15\1\37\1\27\1\23\1\30\1\24\1\1\1\26\11\42\1"+
@@ -3678,7 +3678,7 @@ public class Decaf extends Lexer {
             "",
             "\1\u00b8",
             "",
-            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "\1\u00b9",
             "",
             "\1\u00ba",
             "",
@@ -3686,12 +3686,14 @@ public class Decaf extends Lexer {
             "\1\u00bc",
             "",
             "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
-            "",
             "\1\u00be",
+            "\1\u00bf",
             "",
             "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
             "",
             "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "\12\60\7\uffff\32\60\4\uffff\1\60\1\uffff\32\60",
+            "",
             "",
             ""
     };

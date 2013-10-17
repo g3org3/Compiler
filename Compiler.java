@@ -276,7 +276,9 @@ public class Compiler {
 		Scanner 	myScanner 		= new Scanner(filename);
 		CC4Parser 	myParser 		= new CC4Parser(myScanner);
 		Ast 		myAst 			= new Ast(myParser);
+		Ast 		myAst2 			= new Ast(myParser);
 		Semantic 	mySemantic 		= new Semantic(myAst);
+		Irt 		myIrt 			= new Irt(mySemantic);
 		ArrayList<String> targetout = new ArrayList<String>();
 		ArrayList<String> myScannerErrors = new ArrayList<String>();
 
@@ -350,11 +352,26 @@ public class Compiler {
 			}
 			if(x>3){
 				//IRT
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Irt");
+				outputFile.println("------------------------------");
+
+				myScanner = new Scanner(filename);
+				myParser = new CC4Parser(myScanner);
+				myAst2 = new Ast(myParser);
+				myAst2.makeTree();
+
+				myIrt = new Irt(mySemantic);
+				myIrt.setTree(myAst2);
+
+				outputFile.println(mySemantic);
+				outputFile.println("\n");
 			}
 			if(x>4){
 				//CODEGEN
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Codegen");
+				outputFile.println("------------------------------");
 			}
 		} else{
 			try {
@@ -412,7 +429,21 @@ public class Compiler {
 				outputFile.println("\n");
 
 
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Irt");
+				outputFile.println("------------------------------");
+
+				myScanner = new Scanner(filename);
+				myParser = new CC4Parser(myScanner);
+				myAst2 = new Ast(myParser);
+				myAst2.makeTree();
+
+				myIrt = new Irt(mySemantic);
+				myIrt.setTree(myAst2);
+
+				outputFile.println(mySemantic);
+				outputFile.println("\n");
+
 				outputFile.println("stage: Codegen");
 				for (int i=0; i<targets.length; i++)
 					myOptions.add(targets[i]);
@@ -489,7 +520,9 @@ public class Compiler {
 					}
 					else if(debugin[i].equals("irt")){
 						//IRT
-						System.out.println("Debug: Irt");
+						System.out.println("  Debug: Irt");
+						System.out.println("  ----------------------------");
+						System.out.println(myIrt);
 					}
 					else if(debugin[i].equals("codegen")){
 						//CODEGEN

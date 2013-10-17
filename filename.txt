@@ -1,21 +1,17 @@
-// commnet
-
-// a quicksort program.  set the "length" parameter in main() to the
-// desired size of the sorted array.  if you want to sort an array
-// bigger than 100 elements, you'll also need to adjust the declaration
-// of the global array A.
 
 class Program {
     int x;
+    int suma(int a, int b){
+        x = a + b;
+        if(true){
+            //return true;
+        } else {
+            int x;
+            return 1;
+        }
+        return x;
+    }
     void main(){
-    	boolean b, a;
-    	if(1<(23-1)){
-    		x = 1;
-    	} else {
-    		int x;
-    		//return true;
-    	}
-    	//printf("hola mundo", "minombre");
-    	//x = printf("hellow");
+
     }
 }

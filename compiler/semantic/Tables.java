@@ -5,9 +5,17 @@ import java.util.ArrayList;
 public class Tables {
 
 	private ArrayList<ArrayList<ArrayList<String>>> tablas;
+	private ArrayList<ArrayList<String>> variables;
+	private int mips = 0;
 
 	public Tables() {
-		tablas = new ArrayList<ArrayList<ArrayList<String>>>();
+		tablas 		= new ArrayList<ArrayList<ArrayList<String>>>();
+		variables 	= new ArrayList<ArrayList<String>>();
+
+		variables.add(new ArrayList<String>()); // 0 scope
+		variables.add(new ArrayList<String>()); // 1 type
+		variables.add(new ArrayList<String>()); // 2 name
+		variables.add(new ArrayList<String>()); // 3 mips
 	}
 
 	public void addTable(String parent, String name){
@@ -18,18 +26,52 @@ public class Tables {
 		lista.add(parent);
 		lista2.add(name);
 
-		tabla.add(lista);						// PARENT
-		tabla.add(lista2);						// NAME
-		tabla.add(new ArrayList<String>());		// VAR TYPE
-		tabla.add(new ArrayList<String>());		// VAR NAME
-		tabla.add(new ArrayList<String>());		// PARAMETROS
-		tabla.add(new ArrayList<String>());		// NEED RETURN
+		tabla.add(lista);						// 0 PARENT 
+		tabla.add(lista2);						// 1 NAME
+		tabla.add(new ArrayList<String>());		// 2 VAR TYPE
+		tabla.add(new ArrayList<String>());		// 3 VAR NAME
+		tabla.add(new ArrayList<String>());		// 4 PARAMETROS
+		tabla.add(new ArrayList<String>());		// 5 NEED RETURN
 
 		tablas.add(tabla);
 	}
 
+	public void removeFromVariables(){
+		for (int i=1; i<6; i++) {
+			variables.get(0).remove(0);
+			variables.get(1).remove(0);
+			variables.get(2).remove(0);
+			variables.get(3).remove(0);
+		}
+	}
+
+	public int getVariablesSize(){
+		return variables.get(1).size();
+	}
 	public String getParent(int i){
 		return new String(tablas.get(i).get(0).get(0));
+	}
+	public String getMipsOf(String var, String scope){
+		int x = getPositionInTable(var, scope);
+		x = x * 4;
+		//System.out.println(x);
+		return x+"";
+	}
+	public String getMipsOf(String var, int sp){
+		String scope = getName(sp);
+		int x = getPositionInTable(var, scope);
+		return (x*4)+"";
+	}
+
+	public int getPositionInTable(String var, String scope){
+		int x = 0;
+		for (int i=0; i<variables.get(0).size(); i++) {
+			if(variables.get(0).get(i).equals(scope) && variables.get(2).get(i).equals(var))
+				x=i;
+			//System.out.print(variables.get(0).get(i)+ " ");
+			//System.out.println(variables.get(2).get(i));
+		}
+		return x;
 	}
 
 	public void addVars(int scope, String t){
@@ -57,6 +99,14 @@ public class Tables {
 		tablas.get(scope).get(2).add(type);
 		tablas.get(scope).get(3).add(name);
 		tablas.get(scope).get(4).add(i+"");
+
+		if(i!=101){
+			variables.get(0).add(getName(scope));
+			variables.get(1).add(type);
+			variables.get(2).add(name);
+			variables.get(3).add(mips+"");
+			mips+=4;
+		}
 	}
 
 	public ArrayList<String> tableParameters(int scope){
@@ -72,6 +122,29 @@ public class Tables {
 				x++;
 		}
 		return x;
+	}
+
+	public int getTotalParam(String scopeName){
+		int scope = containsTable(scopeName);
+		int x = 0;
+		ArrayList<ArrayList<String>> tabla = tablas.get(scope);
+		int size = tabla.get(4).size();
+		for (int i=0; i<size; i++) {
+			if(!tabla.get(4).get(i).equals("-1"))
+				x++;
+		}
+		return x;
+	}
+
+	public int getTotalVars(int scope){
+		int x = 0;
+		ArrayList<ArrayList<String>> tabla = tablas.get(scope);
+		int size = tabla.get(4).size();
+		for (int i=0; i<size; i++) {
+			if(!tabla.get(4).get(i).equals("-1"))
+				x++;
+		}
+		return (size - x);
 	}
 
 	public boolean containsCurrentScope(String key, int i){
@@ -93,17 +166,38 @@ public class Tables {
 		String tipo = tabla.get(2).get(position);
 		return tipo;
 	}
+	public String getVarName(int position, int scope){
+		ArrayList<ArrayList<String>> tabla = tablas.get(scope);
+		String tipo = tabla.get(3).get(position);
+		return tipo;
+	}
+
+	public String getVarType(int position, String scopeName){
+		int scope = containsTable(scopeName);
+		ArrayList<ArrayList<String>> tabla = tablas.get(scope);
+		String tipo = tabla.get(2).get(position);
+		return tipo;
+	}
+	public String getVarName(int position, String scopeName){
+		int scope = containsTable(scopeName);
+		ArrayList<ArrayList<String>> tabla = tablas.get(scope);
+		String tipo = tabla.get(3).get(position);
+		return tipo;
+	}
 
 	public String getParentIfFor(String statement){
 		String method = "no tiene";
 		int scope = containsTable(statement);
 		if(statement.indexOf("if")!=-1)
 			method = getParentIfFor(getParent(scope));
-		else if(statement.indexOf("if")!=-1)
+		else if(statement.indexOf("for")!=-1)
+			method = getParentIfFor(getParent(scope));
+		else if(statement.indexOf("else")!=-1)
 			method = getParentIfFor(getParent(scope));
 		else
 			method = statement;
 
+		//System.out.println(method);
 		return method;
 	}
 	public String getMethodType(String method){
@@ -111,6 +205,8 @@ public class Tables {
 		if(method.indexOf("if")!=-1)
 			method = getParentIfFor(method);
 		else if(method.indexOf("for")!=-1)
+			method = getParentIfFor(method);
+		else if(method.indexOf("else")!=-1)
 			method = getParentIfFor(method);
 		
 		int scope = containsTable(method);

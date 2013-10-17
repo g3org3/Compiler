@@ -58,26 +58,26 @@ class Program {
             
     	length = 10; // adjust for sort length
             
-            printf("printf", "creating random array of %d elements\n", length);
+            printStr("printf", "creating random array of %d elements\n", length);
 
-            printf("srandom", 17);
+            printStr("srandom", 17);
             
     	for i = 0, length {
-            temp = printf("random");
+            temp = printStr("random");
             A[i] = temp;
         }
             
-        printf("printf", "\nbefore sort:\n");
+        printStr("printf", "\nbefore sort:\n");
     	
         for i = 0, length {
-       	    printf ("printf", "%d\n", A[i]); 
+       	    printStr("printf", "%d\n", A[i]); 
         }
             
             quicksort (0, length - 1);
 
-            printf("printf", "\nafter sort\n");
+            printStr("printf", "\nafter sort\n");
     	for i = 0, length {
-    	  printf ("printf", "%d\n", A[i]); 
+    	  printStr("printf", "%d\n", A[i]); 
       	}
     }
 }
