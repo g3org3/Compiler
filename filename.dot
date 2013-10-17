@@ -10,96 +10,190 @@ digraph {
   n1 [label="FIELD"];
   n1 [label="FIELD"];
   n2 [label="int"];
-  n3 [label="x"];
+  n3 [label="resultado"];
   n4 [label="METHOD"];
   n4 [label="METHOD"];
   n5 [label="int"];
-  n6 [label="suma"];
+  n6 [label="promedio"];
   n7 [label="int"];
   n8 [label="a"];
   n9 [label="int"];
   n10 [label="b"];
   n11 [label="BLOCK"];
   n11 [label="BLOCK"];
-  n12 [label="STATEMENT"];
-  n12 [label="STATEMENT"];
-  n13 [label="x"];
-  n14 [label="="];
-  n15 [label="+"];
-  n15 [label="+"];
-  n16 [label="EX"];
-  n16 [label="EX"];
-  n17 [label="a"];
-  n18 [label="EX"];
-  n18 [label="EX"];
-  n19 [label="b"];
-  n20 [label="STATEMENT"];
-  n20 [label="STATEMENT"];
-  n21 [label="if"];
-  n22 [label="true"];
-  n23 [label="BLOCK"];
-  n24 [label="else"];
-  n25 [label="BLOCK"];
-  n25 [label="BLOCK"];
-  n26 [label="VARS"];
-  n26 [label="VARS"];
-  n27 [label="int"];
-  n28 [label="x"];
-  n29 [label="STATEMENT"];
-  n29 [label="STATEMENT"];
-  n30 [label="return"];
-  n31 [label="1"];
-  n32 [label="STATEMENT"];
-  n32 [label="STATEMENT"];
-  n33 [label="return"];
-  n34 [label="EX"];
-  n34 [label="EX"];
-  n35 [label="x"];
-  n36 [label="METHOD"];
-  n36 [label="METHOD"];
-  n37 [label="void"];
-  n38 [label="main"];
-  n39 [label="BLOCK"];
+  n12 [label="VARS"];
+  n12 [label="VARS"];
+  n13 [label="int"];
+  n14 [label="c"];
+  n15 [label="STATEMENT"];
+  n15 [label="STATEMENT"];
+  n16 [label="c"];
+  n17 [label="="];
+  n18 [label="+"];
+  n18 [label="+"];
+  n19 [label="EX"];
+  n19 [label="EX"];
+  n20 [label="a"];
+  n21 [label="EX"];
+  n21 [label="EX"];
+  n22 [label="b"];
+  n23 [label="STATEMENT"];
+  n23 [label="STATEMENT"];
+  n24 [label="c"];
+  n25 [label="="];
+  n26 [label="*"];
+  n26 [label="*"];
+  n27 [label="EX"];
+  n27 [label="EX"];
+  n28 [label="c"];
+  n29 [label="2"];
+  n30 [label="STATEMENT"];
+  n30 [label="STATEMENT"];
+  n31 [label="return"];
+  n32 [label="EX"];
+  n32 [label="EX"];
+  n33 [label="c"];
+  n34 [label="METHOD"];
+  n34 [label="METHOD"];
+  n35 [label="void"];
+  n36 [label="main"];
+  n37 [label="BLOCK"];
+  n37 [label="BLOCK"];
+  n38 [label="VARS"];
+  n38 [label="VARS"];
+  n39 [label="int"];
+  n40 [label="n1"];
+  n41 [label="n2"];
+  n42 [label="STATEMENT"];
+  n42 [label="STATEMENT"];
+  n43 [label="PRINTF"];
+  n43 [label="PRINTF"];
+  n44 [label="printStr"];
+  n45 [label="\"Num1: \""];
+  n46 [label="STATEMENT"];
+  n46 [label="STATEMENT"];
+  n47 [label="n1"];
+  n48 [label="="];
+  n49 [label="EX"];
+  n49 [label="EX"];
+  n50 [label="CALL"];
+  n50 [label="CALL"];
+  n51 [label="readInt"];
+  n52 [label="STATEMENT"];
+  n52 [label="STATEMENT"];
+  n53 [label="PRINTF"];
+  n53 [label="PRINTF"];
+  n54 [label="printStr"];
+  n55 [label="\"Num2: \""];
+  n56 [label="STATEMENT"];
+  n56 [label="STATEMENT"];
+  n57 [label="n2"];
+  n58 [label="="];
+  n59 [label="EX"];
+  n59 [label="EX"];
+  n60 [label="CALL"];
+  n60 [label="CALL"];
+  n61 [label="readInt"];
+  n62 [label="STATEMENT"];
+  n62 [label="STATEMENT"];
+  n63 [label="resultado"];
+  n64 [label="="];
+  n65 [label="EX"];
+  n65 [label="EX"];
+  n66 [label="CALL"];
+  n66 [label="CALL"];
+  n67 [label="promedio"];
+  n68 [label="EX"];
+  n68 [label="EX"];
+  n69 [label="n1"];
+  n70 [label="EX"];
+  n70 [label="EX"];
+  n71 [label="n2"];
+  n72 [label="STATEMENT"];
+  n72 [label="STATEMENT"];
+  n73 [label="CALL"];
+  n73 [label="CALL"];
+  n74 [label="printInt"];
+  n75 [label="EX"];
+  n75 [label="EX"];
+  n76 [label="resultado"];
 
   n0 -> n1 // "ROOT" -> "FIELD"
   n1 -> n2 // "FIELD" -> "int"
-  n1 -> n3 // "FIELD" -> "x"
+  n1 -> n3 // "FIELD" -> "resultado"
   n0 -> n4 // "ROOT" -> "METHOD"
   n4 -> n5 // "METHOD" -> "int"
-  n4 -> n6 // "METHOD" -> "suma"
+  n4 -> n6 // "METHOD" -> "promedio"
   n4 -> n7 // "METHOD" -> "int"
   n4 -> n8 // "METHOD" -> "a"
   n4 -> n9 // "METHOD" -> "int"
   n4 -> n10 // "METHOD" -> "b"
   n4 -> n11 // "METHOD" -> "BLOCK"
-  n11 -> n12 // "BLOCK" -> "STATEMENT"
-  n12 -> n13 // "STATEMENT" -> "x"
-  n12 -> n14 // "STATEMENT" -> "="
-  n12 -> n15 // "STATEMENT" -> "+"
-  n15 -> n16 // "+" -> "EX"
-  n16 -> n17 // "EX" -> "a"
-  n15 -> n18 // "+" -> "EX"
-  n18 -> n19 // "EX" -> "b"
-  n11 -> n20 // "BLOCK" -> "STATEMENT"
-  n20 -> n21 // "STATEMENT" -> "if"
-  n20 -> n22 // "STATEMENT" -> "true"
-  n20 -> n23 // "STATEMENT" -> "BLOCK"
-  n20 -> n24 // "STATEMENT" -> "else"
-  n20 -> n25 // "STATEMENT" -> "BLOCK"
-  n25 -> n26 // "BLOCK" -> "VARS"
-  n26 -> n27 // "VARS" -> "int"
-  n26 -> n28 // "VARS" -> "x"
-  n25 -> n29 // "BLOCK" -> "STATEMENT"
-  n29 -> n30 // "STATEMENT" -> "return"
-  n29 -> n31 // "STATEMENT" -> "1"
-  n11 -> n32 // "BLOCK" -> "STATEMENT"
-  n32 -> n33 // "STATEMENT" -> "return"
-  n32 -> n34 // "STATEMENT" -> "EX"
-  n34 -> n35 // "EX" -> "x"
-  n0 -> n36 // "ROOT" -> "METHOD"
-  n36 -> n37 // "METHOD" -> "void"
-  n36 -> n38 // "METHOD" -> "main"
-  n36 -> n39 // "METHOD" -> "BLOCK"
+  n11 -> n12 // "BLOCK" -> "VARS"
+  n12 -> n13 // "VARS" -> "int"
+  n12 -> n14 // "VARS" -> "c"
+  n11 -> n15 // "BLOCK" -> "STATEMENT"
+  n15 -> n16 // "STATEMENT" -> "c"
+  n15 -> n17 // "STATEMENT" -> "="
+  n15 -> n18 // "STATEMENT" -> "+"
+  n18 -> n19 // "+" -> "EX"
+  n19 -> n20 // "EX" -> "a"
+  n18 -> n21 // "+" -> "EX"
+  n21 -> n22 // "EX" -> "b"
+  n11 -> n23 // "BLOCK" -> "STATEMENT"
+  n23 -> n24 // "STATEMENT" -> "c"
+  n23 -> n25 // "STATEMENT" -> "="
+  n23 -> n26 // "STATEMENT" -> "*"
+  n26 -> n27 // "*" -> "EX"
+  n27 -> n28 // "EX" -> "c"
+  n26 -> n29 // "*" -> "2"
+  n11 -> n30 // "BLOCK" -> "STATEMENT"
+  n30 -> n31 // "STATEMENT" -> "return"
+  n30 -> n32 // "STATEMENT" -> "EX"
+  n32 -> n33 // "EX" -> "c"
+  n0 -> n34 // "ROOT" -> "METHOD"
+  n34 -> n35 // "METHOD" -> "void"
+  n34 -> n36 // "METHOD" -> "main"
+  n34 -> n37 // "METHOD" -> "BLOCK"
+  n37 -> n38 // "BLOCK" -> "VARS"
+  n38 -> n39 // "VARS" -> "int"
+  n38 -> n40 // "VARS" -> "n1"
+  n38 -> n41 // "VARS" -> "n2"
+  n37 -> n42 // "BLOCK" -> "STATEMENT"
+  n42 -> n43 // "STATEMENT" -> "PRINTF"
+  n43 -> n44 // "PRINTF" -> "printStr"
+  n43 -> n45 // "PRINTF" -> "\"Num1: \""
+  n37 -> n46 // "BLOCK" -> "STATEMENT"
+  n46 -> n47 // "STATEMENT" -> "n1"
+  n46 -> n48 // "STATEMENT" -> "="
+  n46 -> n49 // "STATEMENT" -> "EX"
+  n49 -> n50 // "EX" -> "CALL"
+  n50 -> n51 // "CALL" -> "readInt"
+  n37 -> n52 // "BLOCK" -> "STATEMENT"
+  n52 -> n53 // "STATEMENT" -> "PRINTF"
+  n53 -> n54 // "PRINTF" -> "printStr"
+  n53 -> n55 // "PRINTF" -> "\"Num2: \""
+  n37 -> n56 // "BLOCK" -> "STATEMENT"
+  n56 -> n57 // "STATEMENT" -> "n2"
+  n56 -> n58 // "STATEMENT" -> "="
+  n56 -> n59 // "STATEMENT" -> "EX"
+  n59 -> n60 // "EX" -> "CALL"
+  n60 -> n61 // "CALL" -> "readInt"
+  n37 -> n62 // "BLOCK" -> "STATEMENT"
+  n62 -> n63 // "STATEMENT" -> "resultado"
+  n62 -> n64 // "STATEMENT" -> "="
+  n62 -> n65 // "STATEMENT" -> "EX"
+  n65 -> n66 // "EX" -> "CALL"
+  n66 -> n67 // "CALL" -> "promedio"
+  n66 -> n68 // "CALL" -> "EX"
+  n68 -> n69 // "EX" -> "n1"
+  n66 -> n70 // "CALL" -> "EX"
+  n70 -> n71 // "EX" -> "n2"
+  n37 -> n72 // "BLOCK" -> "STATEMENT"
+  n72 -> n73 // "STATEMENT" -> "CALL"
+  n73 -> n74 // "CALL" -> "printInt"
+  n73 -> n75 // "CALL" -> "EX"
+  n75 -> n76 // "EX" -> "resultado"
 
 }
 

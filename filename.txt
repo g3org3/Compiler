@@ -1,17 +1,21 @@
 
 class Program {
-    int x;
-    int suma(int a, int b){
-        x = a + b;
-        if(true){
-            //return true;
-        } else {
-            int x;
-            return 1;
-        }
-        return x;
+    int resultado;
+    int promedio(int a, int b){
+        int c;
+        c = a+b;
+        c = c * 2;
+        return c;
     }
     void main(){
+        int n1, n2;
+        printStr("Num1: ");
+        n1 = readInt();
+        printStr("Num2: ");
+        n2 = readInt();
+        resultado = promedio(n1, n2);
+        //resultado = 10 / 2;
+        printInt(resultado);
 
     }
 }

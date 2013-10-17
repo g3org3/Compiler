@@ -159,7 +159,18 @@ public class Irt {
 					getExVal(t.getChild(1), scopeName, "$a1");
 					code.add("move $a1 $v0");
 					
-					code.add("add $v0 $a0 $a1");
+					code.add("mult $a0 $a1");
+					code.add("mflo $v0");
+					i=childs;
+				} else if(rootName.equals("/")){
+					getExVal(t.getChild(0), scopeName, "$a0");
+					code.add("move $a0 $v0");
+					
+					getExVal(t.getChild(1), scopeName, "$a1");
+					code.add("move $a1 $v0");
+					
+					code.add("div $a0 $a1");
+					code.add("mflo $v0");
 					i=childs;
 				} else if(rootName.equals("CALL")){
 					val = t.getChild(0).getText();

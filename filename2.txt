@@ -1,6 +1,9 @@
 // commnet
 
 class Program {
-	int x;
-
+	void main(){
+		if(true){
+			break;
+		}
+	}
 }
