@@ -127,6 +127,8 @@ public class Tables {
 	public int getTotalParam(String scopeName){
 		int scope = containsTable(scopeName);
 		int x = 0;
+		//System.out.println(scopeName);
+		//System.exit(1);
 		ArrayList<ArrayList<String>> tabla = tablas.get(scope);
 		int size = tabla.get(4).size();
 		for (int i=0; i<size; i++) {
@@ -160,7 +162,18 @@ public class Tables {
 
 		return found;
 	}
-
+	public boolean isParentFor(String scopeName){
+		int scope = containsTable(scopeName);
+		String parent = getParent(scope);
+		boolean entro = false;
+		while(!parent.equals("-")){
+			if(parent.indexOf("for")!=-1)
+				entro = true;
+			scope = containsTable(parent);
+			parent = getParent(scope);
+		}
+		return entro;
+	}
 	public String getVarType(int position, int scope){
 		ArrayList<ArrayList<String>> tabla = tablas.get(scope);
 		String tipo = tabla.get(2).get(position);

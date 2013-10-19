@@ -9,30 +9,22 @@ digraph {
   n0 [label="ROOT"];
   n1 [label="METHOD"];
   n1 [label="METHOD"];
-  n2 [label="void"];
+  n2 [label="int"];
   n3 [label="main"];
   n4 [label="BLOCK"];
   n4 [label="BLOCK"];
   n5 [label="STATEMENT"];
   n5 [label="STATEMENT"];
-  n6 [label="if"];
-  n7 [label="true"];
-  n8 [label="BLOCK"];
-  n8 [label="BLOCK"];
-  n9 [label="STATEMENT"];
-  n9 [label="STATEMENT"];
-  n10 [label="break"];
+  n6 [label="return"];
+  n7 [label="1"];
 
   n0 -> n1 // "ROOT" -> "METHOD"
-  n1 -> n2 // "METHOD" -> "void"
+  n1 -> n2 // "METHOD" -> "int"
   n1 -> n3 // "METHOD" -> "main"
   n1 -> n4 // "METHOD" -> "BLOCK"
   n4 -> n5 // "BLOCK" -> "STATEMENT"
-  n5 -> n6 // "STATEMENT" -> "if"
-  n5 -> n7 // "STATEMENT" -> "true"
-  n5 -> n8 // "STATEMENT" -> "BLOCK"
-  n8 -> n9 // "BLOCK" -> "STATEMENT"
-  n9 -> n10 // "STATEMENT" -> "break"
+  n5 -> n6 // "STATEMENT" -> "return"
+  n5 -> n7 // "STATEMENT" -> "1"
 
 }
 

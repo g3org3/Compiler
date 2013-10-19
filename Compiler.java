@@ -175,6 +175,7 @@ public class Compiler {
 		String output			= "";
 		File outFile 			= new File("");
 		PrintWriter outputFile	= new PrintWriter("compiler/test/readme.txt");
+		PrintWriter mips	= new PrintWriter(new File("mips.s"));
 		String[] options 		= {"-o", "-target", "-opt", "-debug", "-h"};
 		String[] targets 		= {"scan", "parser", "ast", "semantic", "irt", "codegen"};
 		String[] targetsP 		= {"Scanner", "Parser", "Ast", "Semantic", "Irt", "Codegen"};
@@ -364,7 +365,7 @@ public class Compiler {
 				myIrt = new Irt(mySemantic);
 				myIrt.setTree(myAst2);
 
-				outputFile.println(mySemantic);
+				outputFile.println(myIrt);
 				outputFile.println("\n");
 			}
 			if(x>4){
@@ -372,6 +373,7 @@ public class Compiler {
 				outputFile.println("------------------------------");
 				outputFile.println("stage: Codegen");
 				outputFile.println("------------------------------");
+				mips.println(myIrt);
 			}
 		} else{
 			try {
@@ -441,15 +443,20 @@ public class Compiler {
 				myIrt = new Irt(mySemantic);
 				myIrt.setTree(myAst2);
 
-				outputFile.println(mySemantic);
+				outputFile.println(myIrt);
 				outputFile.println("\n");
 
+				outputFile.println("------------------------------");
 				outputFile.println("stage: Codegen");
+				outputFile.println("------------------------------");
+
+				mips.println(myIrt);				
+
 				for (int i=0; i<targets.length; i++)
 					myOptions.add(targets[i]);
 			} catch (Exception e) {
 				System.out.println(e);
-				compilador.error(1, 414);
+				compilador.error(1, 459);
 			}
 		}
 
@@ -526,7 +533,9 @@ public class Compiler {
 					}
 					else if(debugin[i].equals("codegen")){
 						//CODEGEN
-						System.out.println("Debug: Codegen");
+						System.out.println("  Debug: Codegen");
+						System.out.println("  ----------------------------");
+						System.out.println(myIrt);
 					}
 
 				}
@@ -537,6 +546,7 @@ public class Compiler {
 
 
 		outputFile.close();
+		mips.close();
 		System.out.println("------------------------------");
 	}
 }

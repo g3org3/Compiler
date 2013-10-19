@@ -19,104 +19,126 @@ digraph {
   n8 [label="a"];
   n9 [label="int"];
   n10 [label="b"];
-  n11 [label="BLOCK"];
-  n11 [label="BLOCK"];
-  n12 [label="VARS"];
-  n12 [label="VARS"];
-  n13 [label="int"];
-  n14 [label="c"];
-  n15 [label="STATEMENT"];
-  n15 [label="STATEMENT"];
-  n16 [label="c"];
-  n17 [label="="];
-  n18 [label="+"];
-  n18 [label="+"];
-  n19 [label="EX"];
-  n19 [label="EX"];
-  n20 [label="a"];
-  n21 [label="EX"];
-  n21 [label="EX"];
-  n22 [label="b"];
-  n23 [label="STATEMENT"];
-  n23 [label="STATEMENT"];
-  n24 [label="c"];
-  n25 [label="="];
-  n26 [label="*"];
-  n26 [label="*"];
-  n27 [label="EX"];
-  n27 [label="EX"];
-  n28 [label="c"];
-  n29 [label="2"];
-  n30 [label="STATEMENT"];
-  n30 [label="STATEMENT"];
-  n31 [label="return"];
+  n11 [label="int"];
+  n12 [label="c"];
+  n13 [label="BLOCK"];
+  n13 [label="BLOCK"];
+  n14 [label="VARS"];
+  n14 [label="VARS"];
+  n15 [label="int"];
+  n16 [label="d"];
+  n17 [label="STATEMENT"];
+  n17 [label="STATEMENT"];
+  n18 [label="d"];
+  n19 [label="="];
+  n20 [label="+"];
+  n20 [label="+"];
+  n21 [label="+"];
+  n21 [label="+"];
+  n22 [label="EX"];
+  n22 [label="EX"];
+  n23 [label="a"];
+  n24 [label="EX"];
+  n24 [label="EX"];
+  n25 [label="b"];
+  n26 [label="EX"];
+  n26 [label="EX"];
+  n27 [label="c"];
+  n28 [label="STATEMENT"];
+  n28 [label="STATEMENT"];
+  n29 [label="d"];
+  n30 [label="="];
+  n31 [label="/"];
+  n31 [label="/"];
   n32 [label="EX"];
   n32 [label="EX"];
-  n33 [label="c"];
-  n34 [label="METHOD"];
-  n34 [label="METHOD"];
-  n35 [label="void"];
-  n36 [label="main"];
-  n37 [label="BLOCK"];
-  n37 [label="BLOCK"];
-  n38 [label="VARS"];
-  n38 [label="VARS"];
-  n39 [label="int"];
-  n40 [label="n1"];
-  n41 [label="n2"];
-  n42 [label="STATEMENT"];
-  n42 [label="STATEMENT"];
-  n43 [label="PRINTF"];
-  n43 [label="PRINTF"];
-  n44 [label="printStr"];
-  n45 [label="\"Num1: \""];
-  n46 [label="STATEMENT"];
-  n46 [label="STATEMENT"];
-  n47 [label="n1"];
-  n48 [label="="];
-  n49 [label="EX"];
-  n49 [label="EX"];
-  n50 [label="CALL"];
-  n50 [label="CALL"];
-  n51 [label="readInt"];
-  n52 [label="STATEMENT"];
-  n52 [label="STATEMENT"];
-  n53 [label="PRINTF"];
-  n53 [label="PRINTF"];
-  n54 [label="printStr"];
-  n55 [label="\"Num2: \""];
-  n56 [label="STATEMENT"];
-  n56 [label="STATEMENT"];
-  n57 [label="n2"];
-  n58 [label="="];
-  n59 [label="EX"];
-  n59 [label="EX"];
-  n60 [label="CALL"];
-  n60 [label="CALL"];
-  n61 [label="readInt"];
-  n62 [label="STATEMENT"];
-  n62 [label="STATEMENT"];
-  n63 [label="resultado"];
-  n64 [label="="];
-  n65 [label="EX"];
-  n65 [label="EX"];
-  n66 [label="CALL"];
-  n66 [label="CALL"];
-  n67 [label="promedio"];
-  n68 [label="EX"];
-  n68 [label="EX"];
-  n69 [label="n1"];
-  n70 [label="EX"];
-  n70 [label="EX"];
-  n71 [label="n2"];
-  n72 [label="STATEMENT"];
-  n72 [label="STATEMENT"];
-  n73 [label="CALL"];
-  n73 [label="CALL"];
-  n74 [label="printInt"];
-  n75 [label="EX"];
-  n75 [label="EX"];
-  n76 [label="resultado"];
+  n33 [label="d"];
+  n34 [label="3"];
+  n35 [label="STATEMENT"];
+  n35 [label="STATEMENT"];
+  n36 [label="return"];
+  n37 [label="EX"];
+  n37 [label="EX"];
+  n38 [label="c"];
+  n39 [label="METHOD"];
+  n39 [label="METHOD"];
+  n40 [label="void"];
+  n41 [label="main"];
+  n42 [label="BLOCK"];
+  n42 [label="BLOCK"];
+  n43 [label="VARS"];
+  n43 [label="VARS"];
+  n44 [label="int"];
+  n45 [label="n1"];
+  n46 [label="n2"];
+  n47 [label="STATEMENT"];
+  n47 [label="STATEMENT"];
+  n48 [label="PRINTF"];
+  n48 [label="PRINTF"];
+  n49 [label="printStr"];
+  n50 [label="\"Num1: \""];
+  n51 [label="STATEMENT"];
+  n51 [label="STATEMENT"];
+  n52 [label="n1"];
+  n53 [label="="];
+  n54 [label="EX"];
+  n54 [label="EX"];
+  n55 [label="CALL"];
+  n55 [label="CALL"];
+  n56 [label="readInt"];
+  n57 [label="STATEMENT"];
+  n57 [label="STATEMENT"];
+  n58 [label="PRINTF"];
+  n58 [label="PRINTF"];
+  n59 [label="printStr"];
+  n60 [label="\"Num2: \""];
+  n61 [label="STATEMENT"];
+  n61 [label="STATEMENT"];
+  n62 [label="n2"];
+  n63 [label="="];
+  n64 [label="EX"];
+  n64 [label="EX"];
+  n65 [label="CALL"];
+  n65 [label="CALL"];
+  n66 [label="readInt"];
+  n67 [label="STATEMENT"];
+  n67 [label="STATEMENT"];
+  n68 [label="PRINTF"];
+  n68 [label="PRINTF"];
+  n69 [label="printStr"];
+  n70 [label="\"Num3: \""];
+  n71 [label="STATEMENT"];
+  n71 [label="STATEMENT"];
+  n72 [label="n2"];
+  n73 [label="="];
+  n74 [label="EX"];
+  n74 [label="EX"];
+  n75 [label="CALL"];
+  n75 [label="CALL"];
+  n76 [label="readInt"];
+  n77 [label="STATEMENT"];
+  n77 [label="STATEMENT"];
+  n78 [label="resultado"];
+  n79 [label="="];
+  n80 [label="EX"];
+  n80 [label="EX"];
+  n81 [label="CALL"];
+  n81 [label="CALL"];
+  n82 [label="promedio"];
+  n83 [label="EX"];
+  n83 [label="EX"];
+  n84 [label="n1"];
+  n85 [label="EX"];
+  n85 [label="EX"];
+  n86 [label="n2"];
+  n87 [label="STATEMENT"];
+  n87 [label="STATEMENT"];
+  n88 [label="CALL"];
+  n88 [label="CALL"];
+  n89 [label="printInt"];
+  n90 [label="EX"];
+  n90 [label="EX"];
+  n91 [label="resultado"];
 
   n0 -> n1 // "ROOT" -> "FIELD"
   n1 -> n2 // "FIELD" -> "int"
@@ -128,72 +150,87 @@ digraph {
   n4 -> n8 // "METHOD" -> "a"
   n4 -> n9 // "METHOD" -> "int"
   n4 -> n10 // "METHOD" -> "b"
-  n4 -> n11 // "METHOD" -> "BLOCK"
-  n11 -> n12 // "BLOCK" -> "VARS"
-  n12 -> n13 // "VARS" -> "int"
-  n12 -> n14 // "VARS" -> "c"
-  n11 -> n15 // "BLOCK" -> "STATEMENT"
-  n15 -> n16 // "STATEMENT" -> "c"
-  n15 -> n17 // "STATEMENT" -> "="
-  n15 -> n18 // "STATEMENT" -> "+"
-  n18 -> n19 // "+" -> "EX"
-  n19 -> n20 // "EX" -> "a"
-  n18 -> n21 // "+" -> "EX"
-  n21 -> n22 // "EX" -> "b"
-  n11 -> n23 // "BLOCK" -> "STATEMENT"
-  n23 -> n24 // "STATEMENT" -> "c"
-  n23 -> n25 // "STATEMENT" -> "="
-  n23 -> n26 // "STATEMENT" -> "*"
-  n26 -> n27 // "*" -> "EX"
-  n27 -> n28 // "EX" -> "c"
-  n26 -> n29 // "*" -> "2"
-  n11 -> n30 // "BLOCK" -> "STATEMENT"
-  n30 -> n31 // "STATEMENT" -> "return"
-  n30 -> n32 // "STATEMENT" -> "EX"
-  n32 -> n33 // "EX" -> "c"
-  n0 -> n34 // "ROOT" -> "METHOD"
-  n34 -> n35 // "METHOD" -> "void"
-  n34 -> n36 // "METHOD" -> "main"
-  n34 -> n37 // "METHOD" -> "BLOCK"
-  n37 -> n38 // "BLOCK" -> "VARS"
-  n38 -> n39 // "VARS" -> "int"
-  n38 -> n40 // "VARS" -> "n1"
-  n38 -> n41 // "VARS" -> "n2"
-  n37 -> n42 // "BLOCK" -> "STATEMENT"
-  n42 -> n43 // "STATEMENT" -> "PRINTF"
-  n43 -> n44 // "PRINTF" -> "printStr"
-  n43 -> n45 // "PRINTF" -> "\"Num1: \""
-  n37 -> n46 // "BLOCK" -> "STATEMENT"
-  n46 -> n47 // "STATEMENT" -> "n1"
-  n46 -> n48 // "STATEMENT" -> "="
-  n46 -> n49 // "STATEMENT" -> "EX"
-  n49 -> n50 // "EX" -> "CALL"
-  n50 -> n51 // "CALL" -> "readInt"
-  n37 -> n52 // "BLOCK" -> "STATEMENT"
-  n52 -> n53 // "STATEMENT" -> "PRINTF"
-  n53 -> n54 // "PRINTF" -> "printStr"
-  n53 -> n55 // "PRINTF" -> "\"Num2: \""
-  n37 -> n56 // "BLOCK" -> "STATEMENT"
-  n56 -> n57 // "STATEMENT" -> "n2"
-  n56 -> n58 // "STATEMENT" -> "="
-  n56 -> n59 // "STATEMENT" -> "EX"
-  n59 -> n60 // "EX" -> "CALL"
-  n60 -> n61 // "CALL" -> "readInt"
-  n37 -> n62 // "BLOCK" -> "STATEMENT"
-  n62 -> n63 // "STATEMENT" -> "resultado"
-  n62 -> n64 // "STATEMENT" -> "="
-  n62 -> n65 // "STATEMENT" -> "EX"
-  n65 -> n66 // "EX" -> "CALL"
-  n66 -> n67 // "CALL" -> "promedio"
-  n66 -> n68 // "CALL" -> "EX"
-  n68 -> n69 // "EX" -> "n1"
-  n66 -> n70 // "CALL" -> "EX"
-  n70 -> n71 // "EX" -> "n2"
-  n37 -> n72 // "BLOCK" -> "STATEMENT"
-  n72 -> n73 // "STATEMENT" -> "CALL"
-  n73 -> n74 // "CALL" -> "printInt"
-  n73 -> n75 // "CALL" -> "EX"
-  n75 -> n76 // "EX" -> "resultado"
+  n4 -> n11 // "METHOD" -> "int"
+  n4 -> n12 // "METHOD" -> "c"
+  n4 -> n13 // "METHOD" -> "BLOCK"
+  n13 -> n14 // "BLOCK" -> "VARS"
+  n14 -> n15 // "VARS" -> "int"
+  n14 -> n16 // "VARS" -> "d"
+  n13 -> n17 // "BLOCK" -> "STATEMENT"
+  n17 -> n18 // "STATEMENT" -> "d"
+  n17 -> n19 // "STATEMENT" -> "="
+  n17 -> n20 // "STATEMENT" -> "+"
+  n20 -> n21 // "+" -> "+"
+  n21 -> n22 // "+" -> "EX"
+  n22 -> n23 // "EX" -> "a"
+  n21 -> n24 // "+" -> "EX"
+  n24 -> n25 // "EX" -> "b"
+  n20 -> n26 // "+" -> "EX"
+  n26 -> n27 // "EX" -> "c"
+  n13 -> n28 // "BLOCK" -> "STATEMENT"
+  n28 -> n29 // "STATEMENT" -> "d"
+  n28 -> n30 // "STATEMENT" -> "="
+  n28 -> n31 // "STATEMENT" -> "/"
+  n31 -> n32 // "/" -> "EX"
+  n32 -> n33 // "EX" -> "d"
+  n31 -> n34 // "/" -> "3"
+  n13 -> n35 // "BLOCK" -> "STATEMENT"
+  n35 -> n36 // "STATEMENT" -> "return"
+  n35 -> n37 // "STATEMENT" -> "EX"
+  n37 -> n38 // "EX" -> "c"
+  n0 -> n39 // "ROOT" -> "METHOD"
+  n39 -> n40 // "METHOD" -> "void"
+  n39 -> n41 // "METHOD" -> "main"
+  n39 -> n42 // "METHOD" -> "BLOCK"
+  n42 -> n43 // "BLOCK" -> "VARS"
+  n43 -> n44 // "VARS" -> "int"
+  n43 -> n45 // "VARS" -> "n1"
+  n43 -> n46 // "VARS" -> "n2"
+  n42 -> n47 // "BLOCK" -> "STATEMENT"
+  n47 -> n48 // "STATEMENT" -> "PRINTF"
+  n48 -> n49 // "PRINTF" -> "printStr"
+  n48 -> n50 // "PRINTF" -> "\"Num1: \""
+  n42 -> n51 // "BLOCK" -> "STATEMENT"
+  n51 -> n52 // "STATEMENT" -> "n1"
+  n51 -> n53 // "STATEMENT" -> "="
+  n51 -> n54 // "STATEMENT" -> "EX"
+  n54 -> n55 // "EX" -> "CALL"
+  n55 -> n56 // "CALL" -> "readInt"
+  n42 -> n57 // "BLOCK" -> "STATEMENT"
+  n57 -> n58 // "STATEMENT" -> "PRINTF"
+  n58 -> n59 // "PRINTF" -> "printStr"
+  n58 -> n60 // "PRINTF" -> "\"Num2: \""
+  n42 -> n61 // "BLOCK" -> "STATEMENT"
+  n61 -> n62 // "STATEMENT" -> "n2"
+  n61 -> n63 // "STATEMENT" -> "="
+  n61 -> n64 // "STATEMENT" -> "EX"
+  n64 -> n65 // "EX" -> "CALL"
+  n65 -> n66 // "CALL" -> "readInt"
+  n42 -> n67 // "BLOCK" -> "STATEMENT"
+  n67 -> n68 // "STATEMENT" -> "PRINTF"
+  n68 -> n69 // "PRINTF" -> "printStr"
+  n68 -> n70 // "PRINTF" -> "\"Num3: \""
+  n42 -> n71 // "BLOCK" -> "STATEMENT"
+  n71 -> n72 // "STATEMENT" -> "n2"
+  n71 -> n73 // "STATEMENT" -> "="
+  n71 -> n74 // "STATEMENT" -> "EX"
+  n74 -> n75 // "EX" -> "CALL"
+  n75 -> n76 // "CALL" -> "readInt"
+  n42 -> n77 // "BLOCK" -> "STATEMENT"
+  n77 -> n78 // "STATEMENT" -> "resultado"
+  n77 -> n79 // "STATEMENT" -> "="
+  n77 -> n80 // "STATEMENT" -> "EX"
+  n80 -> n81 // "EX" -> "CALL"
+  n81 -> n82 // "CALL" -> "promedio"
+  n81 -> n83 // "CALL" -> "EX"
+  n83 -> n84 // "EX" -> "n1"
+  n81 -> n85 // "CALL" -> "EX"
+  n85 -> n86 // "EX" -> "n2"
+  n42 -> n87 // "BLOCK" -> "STATEMENT"
+  n87 -> n88 // "STATEMENT" -> "CALL"
+  n88 -> n89 // "CALL" -> "printInt"
+  n88 -> n90 // "CALL" -> "EX"
+  n90 -> n91 // "EX" -> "resultado"
 
 }
 
