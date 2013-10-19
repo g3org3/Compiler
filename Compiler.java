@@ -175,7 +175,6 @@ public class Compiler {
 		String output			= "";
 		File outFile 			= new File("");
 		PrintWriter outputFile	= new PrintWriter("compiler/test/readme.txt");
-		PrintWriter mips	= new PrintWriter(new File("mips.s"));
 		String[] options 		= {"-o", "-target", "-opt", "-debug", "-h"};
 		String[] targets 		= {"scan", "parser", "ast", "semantic", "irt", "codegen"};
 		String[] targetsP 		= {"Scanner", "Parser", "Ast", "Semantic", "Irt", "Codegen"};
@@ -373,7 +372,13 @@ public class Compiler {
 				outputFile.println("------------------------------");
 				outputFile.println("stage: Codegen");
 				outputFile.println("------------------------------");
-				mips.println(myIrt);
+				if(myIrt.getValid()){
+					PrintWriter mips	= new PrintWriter(new File("mips.s"));
+					outputFile.println(myIrt);
+					mips.println(myIrt);
+					mips.close();
+				} else
+					System.out.println("  invalid.");
 			}
 		} else{
 			try {
@@ -450,7 +455,13 @@ public class Compiler {
 				outputFile.println("stage: Codegen");
 				outputFile.println("------------------------------");
 
-				mips.println(myIrt);				
+				if(myIrt.getValid()){
+					PrintWriter mips	= new PrintWriter(new File("mips.s"));
+					outputFile.println(myIrt);
+					mips.println(myIrt);
+					mips.close();
+				} else
+					System.out.println("  invalid.");				
 
 				for (int i=0; i<targets.length; i++)
 					myOptions.add(targets[i]);
@@ -535,7 +546,10 @@ public class Compiler {
 						//CODEGEN
 						System.out.println("  Debug: Codegen");
 						System.out.println("  ----------------------------");
-						System.out.println(myIrt);
+						if(myIrt.getValid())
+							System.out.println(myIrt);
+						else
+							System.out.println("  No se pudo hacer el codegen ya que el programa no es valido.");
 					}
 
 				}
@@ -546,7 +560,6 @@ public class Compiler {
 
 
 		outputFile.close();
-		mips.close();
 		System.out.println("------------------------------");
 	}
 }

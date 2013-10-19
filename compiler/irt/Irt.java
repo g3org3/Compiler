@@ -54,6 +54,10 @@ public class Irt {
 		code.add("syscall");
 	}
 
+	public boolean getValid(){
+		return valid;
+	}
+
 	public void readTree(Tree t, String scopeName){
 		int childs = t.getChildCount();
 		String rootName = t.getText();
@@ -331,8 +335,9 @@ public class Irt {
 	public String toString(){
 		String str = "";
 		String num = "";
-		if(!valid)
-			return "  No se pudo hacer el irt ya que el programa no es valido.\n  Para ver los errores prueba con:\n\n  java Compiler -debug -semantic tuprograma.dcf ";
+		if(!valid){
+			return "  No se pudo hacer el irt ya que el programa no es valido.";
+		}
 		for (int i=0; i<code.size(); i++) {
 			num = ((i+1)<10)? " "+(i+1): (i+1)+"";
 			//str = str+"   "+ num +". "+code.get(i)+"\n";

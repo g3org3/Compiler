@@ -31,7 +31,8 @@ public class Semantic {
 	public boolean validProgram(){
 		int w = erroresSemantic.size();
 		int total = unicidad + tipos + existencia + w - fix;
-		valid = (total==0)&&valid;
+		int z = erroresParser.size() + erroresScan.size();
+		valid = (total==0)&&valid&&(z==0);
 		return valid;
 	}
 	public Tree getArbol(){
