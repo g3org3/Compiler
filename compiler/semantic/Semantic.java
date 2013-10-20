@@ -243,6 +243,9 @@ public class Semantic {
 							valid = true;
 							String arrayTipo = tables.getVarType(nombre, y);
 							arrayTipo = arrayTipo.substring(0, arrayTipo.indexOf("["));
+/**
+
+**/
 							String tipo = checkEx(t.getChild(2), arrayTipo, tablename, 1);
 							if(!tipo.equals(arrayTipo)){
 								valid = false;
