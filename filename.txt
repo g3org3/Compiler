@@ -1,23 +1,6 @@
 
 class Program {
-    int resultado;
-    int promedio(int a, int b, int c){
-        int d;
-        d = a+b+c;
-        d = d / 3;
-        return c;
-    }
     void main(){
-        int n1, n2;
-        printStr("Num1: ");
-        n1 = readInt();
-        printStr("Num2: ");
-        n2 = readInt();
-        printStr("Num3: ");
-        n2 = readInt();
-        resultado = promedio(n1, n2);
-
-        printInt(resultado);
-
+        
     }
 }

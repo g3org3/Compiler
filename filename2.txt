@@ -1,7 +1,36 @@
 // commnet
 
 class Program {
+	int factorial(int n){
+		int total;
+		total = 1;
+		n += 1;
+		for i = 1, n {
+			total = total * i;
+		}
+
+		return total;
+	}
+	int factorial2(int n){
+		int a, b;
+		if (n==1){
+			return 1;
+		} else {
+			a = n-1;
+			b = factorial2(a);
+			return n * b;
+		}
+		return 0;
+	}
 	void main(){
-		int[] x;
+		int x, f;
+		printStr("factorial: ");
+		x = readInt();
+		f = factorial(x);
+		printInt(f);
+		f = factorial2(x);
+		printStr("\n");
+		printInt(f);
+		
 	}
 }

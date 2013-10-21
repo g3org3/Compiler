@@ -541,6 +541,16 @@ public class Compiler {
 						System.out.println("  Debug: Irt");
 						System.out.println("  ----------------------------");
 						System.out.println(myIrt);
+						if(!myIrt.getValid()){
+							System.out.print("\n  ver errores? (y/n): ");
+							Read sc = new Read();
+							String respuesta = sc.nextLine();
+							if(respuesta.equals("y")){
+								System.out.println(mySemantic.errors());
+							}
+
+
+						}
 					}
 					else if(debugin[i].equals("codegen")){
 						//CODEGEN

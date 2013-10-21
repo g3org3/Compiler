@@ -1,7 +1,7 @@
 make: GRAMATICA DECAF SCANNER GRAPARSER PARSER CC4PARSER GRAAST ASTJAVA AST TABLESS SEMANTIC.CLASS IRT.CLASS programa
 
 INSTALL: ../../../Developer/lib/antlr-3.4-complete.jar
-	export CLASSPATH=".:/Developer/lib/antlr-3.4-complete.jar:$CLASSPATH"
+	export CLASSPATH=".:/Developer/lib/antlr-3.4-complete.jar:$$CLASSPATH"
 
 GRAMATICA: compiler/scanner/Decaf.g
 	java org.antlr.Tool compiler/scanner/Decaf.g

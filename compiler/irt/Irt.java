@@ -16,9 +16,10 @@ public class Irt {
 	public Tables  	tables;
 	public boolean 	valid;
 	public ArrayList<String> code;
-	public int ifCount = 0;
-	public int elseCount = 0;
-	public int forCount = 0;
+	public int ifCount = 1;
+	public int elseCount = 1;
+	public int forCount = 1;
+	public int ifelfix = 1;
 
 	// contructor
 	public Irt(Semantic smt){
@@ -35,6 +36,7 @@ public class Irt {
 		arbol = ast.getTree();
 		if(valid){
 			setMips();
+			//tables.printVariables();
 			readTree(arbol, "-");
 			endMips();
 		}
@@ -90,7 +92,7 @@ public class Irt {
 			if(t.getChild(0).getText().equals("if")){
 				//System.out.println("ENTRO");
 				nombre = "if";
-				nombrefix = (ifCount==0)? nombre: nombre+ifCount;
+				nombrefix = (ifCount==1)? nombre: nombre+ifCount;
 				ifCount++;
 
 				code.add(nombrefix+":");
@@ -102,7 +104,7 @@ public class Irt {
 				}
 				else {
 					nombre = "else";
-					nombrefix2 = (elseCount==0)? nombre: nombre+elseCount;
+					nombrefix2 = (elseCount==1)? nombre: nombre+elseCount;
 					elseCount++;
 
 					getExVal(t.getChild(1), scopeName);
@@ -116,7 +118,7 @@ public class Irt {
 				code.add(nombrefix+"done:");
 			} else if(t.getChild(0).getText().equals("for")){
 				nombre = "for";
-				nombrefix = (forCount==0)? nombre: nombre+forCount;
+				nombrefix = (forCount==1)? nombre: nombre+forCount;
 				forCount++;
 				
 				String var = tables.getMipsOf(t.getChild(1).getText(), nombrefix);
@@ -136,9 +138,43 @@ public class Irt {
 
 			} else if(childs>2){
 				// ASIGN
-				String var = tables.getMipsOf(t.getChild(0).getText(), scopeName);
-				getExVal(t.getChild(2), scopeName);
-				code.add("sw $v0 "+var+"($sp)");
+				//String type = tables.getVarType(t.getChild(0).getText(), scopeName);
+				if(t.getChild(0).getText().equals("ARRAY")){
+					/*
+					String var = t.getChild(0).getChild(0).getText()+"["+t.getChild(0).getChild(1).getText()+"]";
+					var = tables.getMipsOf(var, scopeName);
+					getExVal(t.getChild(2), scopeName);
+					code.add("sw $v0 "+var+"($sp)");
+					**/
+					//*
+					getExVal(t.getChild(0).getChild(1), scopeName);
+					String var = t.getChild(0).getChild(0).getText()+"[0]";
+					var = tables.getMipsOf(var, scopeName);
+					code.add("mul $v0 $v0 4");
+					code.add("addi $s0 $v0 "+var);
+					getExVal(t.getChild(2), scopeName);
+					code.add("add $sp $sp $s0");
+					code.add("sw $v0 0($sp)");
+					code.add("sub $sp $sp $s0");
+					//*/
+				} else if(t.getChild(1).getText().equals("=")){
+					String var = tables.getMipsOf(t.getChild(0).getText(), scopeName);
+					getExVal(t.getChild(2), scopeName);
+					code.add("sw $v0 "+var+"($sp)");
+				} else if(t.getChild(1).getText().equals("+=")){
+					String var = tables.getMipsOf(t.getChild(0).getText(), scopeName);
+					getExVal(t.getChild(2), scopeName);
+					code.add("lw $a0 "+var+"($sp)");
+					code.add("add $v0 $a0 $v0");
+					code.add("sw $v0 "+var+"($sp)");
+				} else if(t.getChild(1).getText().equals("-=")){
+					String var = tables.getMipsOf(t.getChild(0).getText(), scopeName);
+					getExVal(t.getChild(2), scopeName);
+					code.add("lw $a0 "+var+"($sp)");
+					code.add("sub $v0 $a0 $v0");
+					code.add("sw $v0 "+var+"($sp)");
+				}
+
 			} else if(childs==2){
 				if(t.getChild(0).getText().equals("return")){
 					getExVal(t.getChild(1), scopeName);
@@ -222,7 +258,7 @@ public class Irt {
 			} else {
 				try {
 					Integer.parseInt(rootName);
-					code.add("addi $v0 $0 "+rootName);
+					code.add("li $v0 "+rootName);
 				} catch (Exception e) {
 					val = tables.getMipsOf(rootName, scopeName);
 					code.add("lw $v0 "+val+"($sp)");
@@ -288,12 +324,13 @@ public class Irt {
 					i=childs;
 				} else if(rootName.equals("!")){
 					getExVal(t.getChild(0), scopeName);
-					code.add("beqz $v0 else"+scopeName);
+					code.add("beqz $v0 else"+scopeName+ifelfix);
 					code.add("add $v0 $0 $0");
-					code.add("j done"+scopeName);
-					code.add("else"+scopeName+":");
+					code.add("j done"+scopeName+ifelfix);
+					code.add("else"+scopeName+ifelfix+":");
 					code.add("addi $v0 $0 1");
-					code.add("done"+scopeName+":");
+					code.add("done"+scopeName+ifelfix+":");
+					ifelfix++;
 					i = childs;
 
 				} else if(rootName.equals("==")) {
@@ -301,12 +338,106 @@ public class Irt {
 					code.add("move $a0 $v0");
 					getExVal(t.getChild(1), scopeName);
 					code.add("move $a1 $v0");
-					code.add("bne $a0 $a1 else"+scopeName);
+					code.add("bne $a0 $a1 else"+scopeName+ifelfix);
 					code.add("addi $v0 $0 1");
-					code.add("j done"+scopeName);
-					code.add("else"+scopeName+":");
+					code.add("j done"+scopeName+ifelfix);
+					code.add("else"+scopeName+ifelfix+":");
 					code.add("add $v0 $0 $0");
-					code.add("done"+scopeName+":");
+					code.add("done"+scopeName+ifelfix+":");
+					ifelfix++;
+					i = childs;
+				} else if(rootName.equals("!=")) {
+					getExVal(t.getChild(0), scopeName);
+					code.add("move $a0 $v0");
+					getExVal(t.getChild(1), scopeName);
+					code.add("move $a1 $v0");
+					code.add("beq $a0 $a1 else"+scopeName+ifelfix);
+					code.add("addi $v0 $0 1");
+					code.add("j done"+scopeName+ifelfix);
+					code.add("else"+scopeName+ifelfix+":");
+					code.add("add $v0 $0 $0");
+					code.add("done"+scopeName+ifelfix+":");
+					ifelfix++;
+					i = childs;
+				} else if(rootName.equals("<")) {
+					getExVal(t.getChild(0), scopeName);
+					code.add("move $a0 $v0");
+					getExVal(t.getChild(1), scopeName);
+					code.add("move $a1 $v0");
+					code.add("bge $a0 $a1 else"+scopeName+ifelfix);
+					code.add("addi $v0 $0 1");
+					code.add("j done"+scopeName+ifelfix);
+					code.add("else"+scopeName+ifelfix+":");
+					code.add("add $v0 $0 $0");
+					code.add("done"+scopeName+ifelfix+":");
+					ifelfix++;
+					i = childs;
+				}  else if(rootName.equals(">")) {
+					getExVal(t.getChild(0), scopeName);
+					code.add("move $a0 $v0");
+					getExVal(t.getChild(1), scopeName);
+					code.add("move $a1 $v0");
+					code.add("ble $a0 $a1 else"+scopeName+ifelfix);
+					code.add("addi $v0 $0 1");
+					code.add("j done"+scopeName+ifelfix);
+					code.add("else"+scopeName+ifelfix+":");
+					code.add("add $v0 $0 $0");
+					code.add("done"+scopeName+ifelfix+":");
+					ifelfix++;
+					i = childs;
+				}  else if(rootName.equals(">=")) {
+					getExVal(t.getChild(0), scopeName);
+					code.add("move $a0 $v0");
+					getExVal(t.getChild(1), scopeName);
+					code.add("move $a1 $v0");
+					code.add("blt $a0 $a1 else"+scopeName+ifelfix);
+					code.add("addi $v0 $0 1");
+					code.add("j done"+scopeName+ifelfix);
+					code.add("else"+scopeName+ifelfix+":");
+					code.add("add $v0 $0 $0");
+					code.add("done"+scopeName+ifelfix+":");
+					ifelfix++;
+					i = childs;
+				}  else if(rootName.equals("<=")) {
+					getExVal(t.getChild(0), scopeName);
+					code.add("move $a0 $v0");
+					getExVal(t.getChild(1), scopeName);
+					code.add("move $a1 $v0");
+					code.add("bgt $a0 $a1 else"+scopeName+ifelfix);
+					code.add("addi $v0 $0 1");
+					code.add("j done"+scopeName+ifelfix);
+					code.add("else"+scopeName+ifelfix+":");
+					code.add("add $v0 $0 $0");
+					code.add("done"+scopeName+ifelfix+":");
+					ifelfix++;
+					i = childs;
+				} else if(rootName.equals("&&")) {
+					getExVal(t.getChild(0), scopeName);
+					code.add("beqz $v0 else"+scopeName+ifelfix);
+					getExVal(t.getChild(1), scopeName);
+					code.add("beqz $v0 else"+scopeName+ifelfix);
+					code.add("addi $v0 $0 1");
+					code.add("j done"+scopeName+ifelfix);
+					code.add("else"+scopeName+ifelfix+":");
+					code.add("add $v0 $0 $0");
+					code.add("done"+scopeName+ifelfix+":");
+					ifelfix++;
+					i = childs;
+				} else if(rootName.equals("||")) {
+					getExVal(t.getChild(0), scopeName);
+					code.add("beqz $v0 els3"+scopeName+ifelfix);
+					code.add("addi $v0 $0 1");
+					code.add("j done"+scopeName+ifelfix);
+					
+					code.add("els3"+scopeName+ifelfix+":");
+					getExVal(t.getChild(1), scopeName);
+					code.add("beqz $v0 else"+scopeName+ifelfix);
+					code.add("addi $v0 $0 1");
+					code.add("j done"+scopeName+ifelfix);
+					code.add("else"+scopeName+ifelfix+":");
+					code.add("add $v0 $0 $0");
+					code.add("done"+scopeName+ifelfix+":");
+					ifelfix++;
 					i = childs;
 				} else if(rootName.equals("CALL")){
 					val = t.getChild(0).getText();
@@ -324,6 +455,15 @@ public class Irt {
 						code.add("jal "+val);
 						i = childs;
 					}
+				} else if(rootName.equals("ARRAY")){
+					getExVal(t.getChild(1), scopeName);
+					rootName = t.getChild(0).getText()+"[0]";
+					val = tables.getMipsOf(rootName, scopeName);
+					code.add("mul $v0 $v0 4");
+					code.add("addi $s0 $v0 "+val);
+					code.add("add $sp $sp $s0");
+					code.add("lw $v0 0($sp)");
+					code.add("sub $sp $sp $s0");
 				}
 			}
 		}

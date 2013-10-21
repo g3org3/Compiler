@@ -1,4 +1,4 @@
-// $ANTLR 3.4 compiler/ast/GramaticaAst.g 2013-10-19 15:32:34
+// $ANTLR 3.4 compiler/ast/GramaticaAst.g 2013-10-20 23:59:13
 
 	package compiler.ast;
 	import compiler.scanner.*;
@@ -591,7 +591,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: int_literal, id, type
+            // elements: type, int_literal, id
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -860,7 +860,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_block.add(block29.getTree());
 
                     // AST REWRITE
-                    // elements: type, block, VOID, id, id
+                    // elements: id, VOID, id, type, block
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -886,14 +886,14 @@ public TreeAdaptor getTreeAdaptor() {
                         adaptor.addChild(root_1, stream_id.nextTree());
 
                         // compiler/ast/GramaticaAst.g:62:27: ( type id )*
-                        while ( stream_type.hasNext()||stream_id.hasNext() ) {
+                        while ( stream_id.hasNext()||stream_type.hasNext() ) {
                             adaptor.addChild(root_1, stream_type.nextTree());
 
                             adaptor.addChild(root_1, stream_id.nextTree());
 
                         }
-                        stream_type.reset();
                         stream_id.reset();
+                        stream_type.reset();
 
                         adaptor.addChild(root_1, stream_block.nextTree());
 
@@ -1031,7 +1031,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_block.add(block39.getTree());
 
                     // AST REWRITE
-                    // elements: id, type, type, block, id
+                    // elements: type, block, id, id, type
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1206,7 +1206,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: var_decl, statement
+            // elements: statement, var_decl
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1359,7 +1359,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: id, id, type
+            // elements: type, id, id
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1671,7 +1671,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: assign_op, location, expr
+                    // elements: expr, location, assign_op
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1810,7 +1810,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: block, block, expr, IF, ELSE
+                    // elements: ELSE, block, expr, block, IF
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1838,7 +1838,7 @@ public TreeAdaptor getTreeAdaptor() {
                         adaptor.addChild(root_1, stream_block.nextTree());
 
                         // compiler/ast/GramaticaAst.g:74:79: ( ELSE block )?
-                        if ( stream_block.hasNext()||stream_ELSE.hasNext() ) {
+                        if ( stream_ELSE.hasNext()||stream_block.hasNext() ) {
                             adaptor.addChild(root_1, 
                             stream_ELSE.nextNode()
                             );
@@ -1846,8 +1846,8 @@ public TreeAdaptor getTreeAdaptor() {
                             adaptor.addChild(root_1, stream_block.nextTree());
 
                         }
-                        stream_block.reset();
                         stream_ELSE.reset();
+                        stream_block.reset();
 
                         adaptor.addChild(root_0, root_1);
                         }
@@ -1903,7 +1903,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_block.add(block69.getTree());
 
                     // AST REWRITE
-                    // elements: expr, FOR, id, ASSIGN, block, expr
+                    // elements: block, id, FOR, ASSIGN, expr, expr
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1984,7 +1984,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: RETURN, expr
+                    // elements: expr, RETURN
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2363,7 +2363,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: expr, expr, method_name
+                    // elements: expr, method_name, expr
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 

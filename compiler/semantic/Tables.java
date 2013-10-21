@@ -44,7 +44,17 @@ public class Tables {
 			variables.get(3).remove(0);
 		}
 	}
-
+	public void printVariables(){
+		System.out.println("scope | type | name | mips");
+		String scope, type, name, mips;
+		for (int i=0; i<variables.get(0).size(); i++) {
+			scope =variables.get(0).get(i);
+			type =variables.get(1).get(i);
+			name =variables.get(2).get(i);
+			mips =variables.get(3).get(i);
+			System.out.println(scope+" | "+type+" | "+name+" | "+mips);
+		}
+	}
 	public int getVariablesSize(){
 		return variables.get(1).size();
 	}
@@ -63,14 +73,30 @@ public class Tables {
 		return (x*4)+"";
 	}
 
-	public int getPositionInTable(String var, String scope){
+	public int getPositionInTable(String var, String scopeP){
+		String scope = "";
+		if(var.indexOf("[")!=-1){
+			String var2 = var;
+			var = var.substring(0, var.indexOf("["));
+			scope = getName(containsRecur(var, containsTable(scopeP)));
+			var = var2;
+		} else {
+			scope = getName(containsRecur(var, containsTable(scopeP)));
+		}
+
+		
+
 		int x = 0;
 		for (int i=0; i<variables.get(0).size(); i++) {
 			if(variables.get(0).get(i).equals(scope) && variables.get(2).get(i).equals(var))
 				x=i;
 			//System.out.print(variables.get(0).get(i)+ " ");
-			//System.out.println(variables.get(2).get(i));
+			//System.out.print(variables.get(2).get(i));
+			//System.out.print(" = ");
+			//System.out.print(scope);
+			//System.out.println(" "+var);
 		}
+		//System.out.println(var+" "+x);
 		return x;
 	}
 
@@ -104,6 +130,19 @@ public class Tables {
 			variables.get(0).add(getName(scope));
 			variables.get(1).add(type);
 			variables.get(2).add(name);
+			variables.get(3).add(mips+"");
+			mips+=4;
+		}
+	}
+	public void addVars(String type, String name, int scope, int i, int size){
+		tablas.get(scope).get(2).add(type);
+		tablas.get(scope).get(3).add(name);
+		tablas.get(scope).get(4).add(i+"");
+
+		for (int p=0; p<size; p++) {
+			variables.get(0).add(getName(scope));
+			variables.get(1).add(type);
+			variables.get(2).add(name+"["+p+"]");
 			variables.get(3).add(mips+"");
 			mips+=4;
 		}
@@ -244,6 +283,17 @@ public class Tables {
 
 		return tipo;
 	}
+	public String getVarType(String key, String scopeName){
+		int scope = containsTable(scopeName);
+		ArrayList<ArrayList<String>> tabla = tablas.get(scope);
+		String tipo = "";
+		for (int i=0; i<tabla.get(3).size(); i++) {
+			if(tabla.get(3).get(i).equals(key))
+				tipo = tabla.get(2).get(i);
+		}
+
+		return tipo;
+	}
 
 	public int containsTable(String key){
 		int x = -1;
@@ -259,6 +309,7 @@ public class Tables {
 		int x = -1;
 		String parent = "";
 
+
 		while(parent.equals("")){
 			if(this.containsCurrentScope(key, scope)){
 				parent = "fin";
@@ -270,6 +321,25 @@ public class Tables {
 					scope = this.containsTable(this.getParent(scope));
 			}
 		}
+		return x;
+	}
+	public int containsRecur(String key, int scope, int i){
+		int x = -1;
+		String parent = "";
+
+		while(parent.equals("")){
+			if(this.containsCurrentScope(key, scope)){
+				parent = "fin";
+				x = scope;
+			} else {
+				if(this.getParent(scope).equals("-"))
+					parent = "fin";
+				else
+					scope = this.containsTable(this.getParent(scope));
+			}
+		}
+		String tipo = getVarType(key, x);
+		x = (tipo.indexOf("[")!=-1)? x: -1;
 		return x;
 	}
 

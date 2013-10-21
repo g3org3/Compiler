@@ -92,7 +92,7 @@ public class Semantic {
 						break;
 					} else {
 						//if(!type.equals("void"))
-						tables.addVars((type+"[]"), t.getChild(i).getText(), 0, x);
+						tables.addVars((type+"[]"), t.getChild(i).getText(), 0, x, x);
 						//valid = true;
 					}
 					i++;
@@ -382,7 +382,11 @@ public class Semantic {
 					valid = valid;
 				} else {
 					valid = false;
-					tipos++;
+					tipos++; fix++;
+					/**
+
+					**/
+					erroresSemantic.add("Expecting: "+type+", Found: "+tipo+", Scope: "+tablename);
 				}
 			}
 		} else {
@@ -462,6 +466,25 @@ public class Semantic {
 					}
 					i = childs;
 				}
+			} else if(root.equals("!=")) {
+				if(type.equals("boolean")){
+					tipo = checkEx(t.getChild(0), type, tablename, 1);
+					tipo2 = checkEx(t.getChild(1), type, tablename, 1);
+					if(tipo.equals(tipo2)){
+						valid = valid;
+						tipo = "boolean";
+					} else {
+						valid = false;
+						tipos++; fix++;
+						erroresSemantic.add("Scope: "+tablename);
+					}
+				} else {
+					valid = false;
+					tipos++;
+					fix++;
+					erroresSemantic.add("Expecting: "+type+", Found: boolean");
+					i = childs;
+				}
 			} else if(root.equals("==")) {
 				if(type.equals("boolean")){
 					tipo = checkEx(t.getChild(0), type, tablename, 1);
@@ -486,13 +509,24 @@ public class Semantic {
 				//System.out.println("paso aqui");
 			} else if(root.equals("ARRAY")){
 				int y = tables.containsTable(tablename);
-				y = tables.containsRecur(t.getChild(0).getText(), y);
+				y = tables.containsRecur(t.getChild(0).getText(), y, 1);
 				if(y!=-1){
 					tipo = tables.getVarType(t.getChild(0).getText(), y);
 					tipo = tipo.substring(0, tipo.indexOf("["));
+
+					//y = tables.containsTable(tablename);
+					checkEx(t.getChild(1), "int", tablename, 0);
+					i = childs;
+					//y = tables.containsRecur(t.getChild(1).getText(), y, 1);
+					/*else if(y==-1){
+						valid=false; fix++; existencia++;
+						erroresSemantic.add("No existe la variable: "+t.getChild(0).getText());
+						i = childs;
+					}*/
 				} else {
 					valid=false; fix++; existencia++;
 					erroresSemantic.add("No existe la variable: "+t.getChild(0).getText()+"[]");
+					i = childs;
 				}
 
 			} else if(root.equals("PRINTF")) { 
@@ -580,7 +614,54 @@ public class Semantic {
 		return tipo;
 	}
 
+	public String errors(){
+		int x = erroresScan.size();
+		int y = erroresParser.size();
+		int w = erroresSemantic.size();
+		boolean atras = (x==0 && y==0 && w==0);
+		String es = (valid&&atras)? "  - Es": "  - No es";
+		
+		String str = "";
+		if(erroresScan.size()!=0){
+			str = str + "\n    Scanner: \t"+erroresScan.size();
+			str = (erroresScan.size()==1)? str+" error.": str+" errores.";
+		}
+		if(erroresParser.size()!=0){
+			str = str + "\n    Parser: \t"+erroresParser.size();
+			str = (erroresParser.size()==1)? str+" error.": str+" errores.";
+			for (int i=0; i<erroresParser.size(); i++) {
+				str = str +"\n      "+erroresParser.get(i);
+			}
+		}
+		int total = unicidad + tipos + existencia + w - fix;
+		if(!valid||(total>0)){
+			String typeOfEr = "";
+			String errores = (total==1)? " error.": " errores.";
 
+			str = str + "\n    Semantic: \t"+total+errores;
+			
+			if(unicidad>0){
+				errores  = (unicidad==1)? " error": " errores";
+				typeOfEr = "\n      "+unicidad+errores+" de Unicidad.";
+			}
+			if(existencia>0){
+				errores  = (existencia==1)? " error": " errores";
+				typeOfEr = typeOfEr+"\n      "+existencia+errores+" de Existencia.";
+			}
+			if(tipos>0){
+				errores  = (tipos==1)? " error": " errores";
+				typeOfEr = typeOfEr+"\n      "+tipos+errores+" de Tipos.";
+			}
+			if(w>0){
+				for (int i=0; i<w; i++) {
+					typeOfEr = typeOfEr+"\n      "+erroresSemantic.get(i);
+				}
+			}
+			
+			str = str + typeOfEr;
+		}
+		return str;
+	}
 	public String toString(){
 		int x = erroresScan.size();
 		int y = erroresParser.size();
