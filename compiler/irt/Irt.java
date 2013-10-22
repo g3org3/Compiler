@@ -217,8 +217,12 @@ public class Irt {
 			if(!code.get(0).equals(".data"))
 				code.add(0, ".data");
 			int x = 1;
+			int porcen = 0;
+			int pos = 0;
 			String str = "str";
 			String label = str+x;
+			String var ="";
+			String var2 = "";
 
 			for (int i=0; i<code.size(); i++) {
 				if(code.get(i).indexOf("str")!=-1)
@@ -228,11 +232,61 @@ public class Irt {
 					i = code.size();
 			}
 			label = str+x;
+			// tiene porcentaje
+			for (int i=0; i<childs; i++) {
+				if(t.getChild(i).getText().indexOf("%")!=-1)
+					porcen++;
+			}
+			if(porcen==0){
+				for (int i=1; i<childs; i++) {
+					code.add(x, label+": .asciiz "+t.getChild(i).getText());
+					code.add("la $a0 "+label);
+					code.add("li $v0 4");
+					code.add("syscall");
+					x++;
+					label = str+x;
+				}
+			} else {
+				for (int i=1; i<childs; i++) {
+					var = t.getChild(i).getText();
+					pos = var.indexOf("%");
+					if(pos!=-1){
+						var2 = var.substring(0, pos);
+						var = var.substring(pos+2, var.length());
 
-			code.add(x, label+": .asciiz "+t.getChild(1).getText());
-			code.add("la $a0 "+label);
-			code.add("li $v0 4");
-			code.add("syscall");
+						code.add(x, label+": .asciiz "+var2+"\"");
+						code.add("la $a0 "+label);
+						code.add("li $v0 4");
+						code.add("syscall");
+
+						getExVal(t.getChild(i+1), scopeName);
+						code.add("move $a0 $v0");
+						code.add("li $v0 1");
+						code.add("syscall");
+
+						x++; label = str+x;
+						code.add(x, label+": .asciiz "+var+"\"");
+						code.add("la $a0 "+label);
+						code.add("li $v0 4");
+						code.add("syscall");
+						x++; label = str+x;
+						i++;
+						while(pos!=-1){
+							
+						}
+					} else {
+						code.add(x, label+": .asciiz "+t.getChild(i).getText());
+						code.add("la $a0 "+label);
+						code.add("li $v0 4");
+						code.add("syscall");
+						x++;
+						label = str+x;
+
+					}
+					
+				}
+			}
+			
 			//System.out.println("lkasdjflkajsdkfdfjkl");
 		}
 
@@ -471,7 +525,16 @@ public class Irt {
 		//code.add("move $a1 $t9");
 		return val;
 	}
+	public int percenCount(String str){
+		int x = 0;
+		for (int i = 0; i<str.length(); i++) {
+			if(str.substring(i, i+1).equals("%"))
+				x++;
+		}
 
+
+		return x;
+	}
 	public String toString(){
 		String str = "";
 		String num = "";

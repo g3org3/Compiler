@@ -1,0 +1,145 @@
+digraph {
+
+	ordering=out;
+	ranksep=.4;
+	bgcolor="lightgrey"; node [shape=box, fixedsize=false, fontsize=12, fontname="Helvetica-bold", fontcolor="blue"
+		width=.25, height=.25, color="black", fillcolor="white", style="filled, solid, bold"];
+	edge [arrowsize=.5, color="black", style="bold"]
+
+  n0 [label="ROOT"];
+  n1 [label="METHOD"];
+  n1 [label="METHOD"];
+  n2 [label="void"];
+  n3 [label="main"];
+  n4 [label="BLOCK"];
+  n4 [label="BLOCK"];
+  n5 [label="VARS"];
+  n5 [label="VARS"];
+  n6 [label="int"];
+  n7 [label="a"];
+  n8 [label="b"];
+  n9 [label="c"];
+  n10 [label="VARS"];
+  n10 [label="VARS"];
+  n11 [label="int"];
+  n12 [label="d"];
+  n13 [label="e"];
+  n14 [label="STATEMENT"];
+  n14 [label="STATEMENT"];
+  n15 [label="a"];
+  n16 [label="="];
+  n17 [label="10"];
+  n18 [label="STATEMENT"];
+  n18 [label="STATEMENT"];
+  n19 [label="b"];
+  n20 [label="="];
+  n21 [label="20"];
+  n22 [label="STATEMENT"];
+  n22 [label="STATEMENT"];
+  n23 [label="c"];
+  n24 [label="="];
+  n25 [label="30"];
+  n26 [label="STATEMENT"];
+  n26 [label="STATEMENT"];
+  n27 [label="d"];
+  n28 [label="="];
+  n29 [label="+"];
+  n29 [label="+"];
+  n30 [label="EX"];
+  n30 [label="EX"];
+  n31 [label="a"];
+  n32 [label="EX"];
+  n32 [label="EX"];
+  n33 [label="b"];
+  n34 [label="STATEMENT"];
+  n34 [label="STATEMENT"];
+  n35 [label="e"];
+  n36 [label="="];
+  n37 [label="*"];
+  n37 [label="*"];
+  n38 [label="EX"];
+  n38 [label="EX"];
+  n39 [label="c"];
+  n40 [label="3"];
+  n41 [label="STATEMENT"];
+  n41 [label="STATEMENT"];
+  n42 [label="e"];
+  n43 [label="="];
+  n44 [label="-"];
+  n44 [label="-"];
+  n45 [label="*"];
+  n45 [label="*"];
+  n46 [label="EX"];
+  n46 [label="EX"];
+  n47 [label="d"];
+  n48 [label="EX"];
+  n48 [label="EX"];
+  n49 [label="e"];
+  n50 [label="100"];
+  n51 [label="STATEMENT"];
+  n51 [label="STATEMENT"];
+  n52 [label="callout(... %d\n\","];
+  n53 [label="d"];
+  n54 [label="d,"];
+  n55 [label="e"];
+  n56 [label="e);"];
+
+  n0 -> n1 // "ROOT" -> "METHOD"
+  n1 -> n2 // "METHOD" -> "void"
+  n1 -> n3 // "METHOD" -> "main"
+  n1 -> n4 // "METHOD" -> "BLOCK"
+  n4 -> n5 // "BLOCK" -> "VARS"
+  n5 -> n6 // "VARS" -> "int"
+  n5 -> n7 // "VARS" -> "a"
+  n5 -> n8 // "VARS" -> "b"
+  n5 -> n9 // "VARS" -> "c"
+  n4 -> n10 // "BLOCK" -> "VARS"
+  n10 -> n11 // "VARS" -> "int"
+  n10 -> n12 // "VARS" -> "d"
+  n10 -> n13 // "VARS" -> "e"
+  n4 -> n14 // "BLOCK" -> "STATEMENT"
+  n14 -> n15 // "STATEMENT" -> "a"
+  n14 -> n16 // "STATEMENT" -> "="
+  n14 -> n17 // "STATEMENT" -> "10"
+  n4 -> n18 // "BLOCK" -> "STATEMENT"
+  n18 -> n19 // "STATEMENT" -> "b"
+  n18 -> n20 // "STATEMENT" -> "="
+  n18 -> n21 // "STATEMENT" -> "20"
+  n4 -> n22 // "BLOCK" -> "STATEMENT"
+  n22 -> n23 // "STATEMENT" -> "c"
+  n22 -> n24 // "STATEMENT" -> "="
+  n22 -> n25 // "STATEMENT" -> "30"
+  n4 -> n26 // "BLOCK" -> "STATEMENT"
+  n26 -> n27 // "STATEMENT" -> "d"
+  n26 -> n28 // "STATEMENT" -> "="
+  n26 -> n29 // "STATEMENT" -> "+"
+  n29 -> n30 // "+" -> "EX"
+  n30 -> n31 // "EX" -> "a"
+  n29 -> n32 // "+" -> "EX"
+  n32 -> n33 // "EX" -> "b"
+  n4 -> n34 // "BLOCK" -> "STATEMENT"
+  n34 -> n35 // "STATEMENT" -> "e"
+  n34 -> n36 // "STATEMENT" -> "="
+  n34 -> n37 // "STATEMENT" -> "*"
+  n37 -> n38 // "*" -> "EX"
+  n38 -> n39 // "EX" -> "c"
+  n37 -> n40 // "*" -> "3"
+  n4 -> n41 // "BLOCK" -> "STATEMENT"
+  n41 -> n42 // "STATEMENT" -> "e"
+  n41 -> n43 // "STATEMENT" -> "="
+  n41 -> n44 // "STATEMENT" -> "-"
+  n44 -> n45 // "-" -> "*"
+  n45 -> n46 // "*" -> "EX"
+  n46 -> n47 // "EX" -> "d"
+  n45 -> n48 // "*" -> "EX"
+  n48 -> n49 // "EX" -> "e"
+  n44 -> n50 // "-" -> "100"
+  n4 -> n51 // "BLOCK" -> "STATEMENT"
+  n51 -> n52 // "STATEMENT" -> "callout(... %d\n\","
+  n4 -> n53 // "BLOCK" -> "d"
+  n4 -> n54 // "BLOCK" -> "d,"
+  n4 -> n55 // "BLOCK" -> "e"
+  n4 -> n56 // "BLOCK" -> "e);"
+
+}
+
