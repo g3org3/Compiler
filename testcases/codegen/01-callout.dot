@@ -15,14 +15,19 @@ digraph {
   n4 [label="BLOCK"];
   n5 [label="STATEMENT"];
   n5 [label="STATEMENT"];
-  n6 [label="callout(...ld.\n\")"];
+  n6 [label="PRINTF"];
+  n6 [label="PRINTF"];
+  n7 [label="printStr"];
+  n8 [label="\"Hello, World.\n\""];
 
   n0 -> n1 // "ROOT" -> "METHOD"
   n1 -> n2 // "METHOD" -> "void"
   n1 -> n3 // "METHOD" -> "main"
   n1 -> n4 // "METHOD" -> "BLOCK"
   n4 -> n5 // "BLOCK" -> "STATEMENT"
-  n5 -> n6 // "STATEMENT" -> "callout(...ld.\n\")"
+  n5 -> n6 // "STATEMENT" -> "PRINTF"
+  n6 -> n7 // "PRINTF" -> "printStr"
+  n6 -> n8 // "PRINTF" -> "\"Hello, World.\n\""
 
 }
 

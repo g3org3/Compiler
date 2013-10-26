@@ -78,11 +78,16 @@ digraph {
   n50 [label="100"];
   n51 [label="STATEMENT"];
   n51 [label="STATEMENT"];
-  n52 [label="callout(... %d\n\","];
-  n53 [label="d"];
-  n54 [label="d,"];
-  n55 [label="e"];
-  n56 [label="e);"];
+  n52 [label="PRINTF"];
+  n52 [label="PRINTF"];
+  n53 [label="printStr"];
+  n54 [label="\"%d %d\n\""];
+  n55 [label="EX"];
+  n55 [label="EX"];
+  n56 [label="d"];
+  n57 [label="EX"];
+  n57 [label="EX"];
+  n58 [label="e"];
 
   n0 -> n1 // "ROOT" -> "METHOD"
   n1 -> n2 // "METHOD" -> "void"
@@ -135,11 +140,13 @@ digraph {
   n48 -> n49 // "EX" -> "e"
   n44 -> n50 // "-" -> "100"
   n4 -> n51 // "BLOCK" -> "STATEMENT"
-  n51 -> n52 // "STATEMENT" -> "callout(... %d\n\","
-  n4 -> n53 // "BLOCK" -> "d"
-  n4 -> n54 // "BLOCK" -> "d,"
-  n4 -> n55 // "BLOCK" -> "e"
-  n4 -> n56 // "BLOCK" -> "e);"
+  n51 -> n52 // "STATEMENT" -> "PRINTF"
+  n52 -> n53 // "PRINTF" -> "printStr"
+  n52 -> n54 // "PRINTF" -> "\"%d %d\n\""
+  n52 -> n55 // "PRINTF" -> "EX"
+  n55 -> n56 // "EX" -> "d"
+  n52 -> n57 // "PRINTF" -> "EX"
+  n57 -> n58 // "EX" -> "e"
 
 }
 

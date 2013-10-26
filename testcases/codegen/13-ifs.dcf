@@ -16,82 +16,82 @@ class Program
 	     boolean g,boolean h,boolean i,boolean j )
     {    
         if (a) {
-            callout("printf","H");
+            printStr("H");
             if (b) {
-                callout("printf","e");
+                printStr("e");
                 if (c) {
-                    callout("printf","l");
+                    printStr("l");
                     if (d) {
-                        callout("printf","l");
+                        printStr("l");
                         if (e) {
-                            callout("printf","*");
+                            printStr("*");
                         }
                         if (not2(e)) {
-                            callout("printf","o");
+                            printStr("o");
                         }
                     }
                     if (not2(d)) {
-                        callout("printf","*");
+                        printStr("*");
                     }
                 }
                 if (not2(c)) {
-                    callout("printf","*");
+                    printStr("*");
                 }
             }
             if (not2(b)) {
-                callout("printf","*");
+                printStr("*");
             }
         }
 
         if (not2(a)) {
-            callout("printf","*");
+            printStr("*");
         }
 
-        callout("printf"," ");
+        printStr(" ");
 
         if (not2(f)) { callout ("printf","*"); }
         
 	if (g) { 
             if (not2(h)) { 
-	        callout("printf","W"); 
+	        printStr("W"); 
                 if (i) { 
-		    callout("printf","o");
-                    if (j) { callout("printf","r"); }
+		    printStr("o");
+                    if (j) { printStr("r"); }
                 }
             }
         }
         if (not2(g)) {
-            callout("printf","*");
+            printStr("*");
         }   
     
-        callout("printf","l");
-        callout("printf","d");
+        printStr("l");
+        printStr("d");
     }
  
     void main()
     {
-        callout("printf","[");
+        printStr("[");
         phw(true,true,true,true,false,true,true,false,true,true);
-        callout("printf","]");
-        callout("printf","\n");
+        printStr("]");
+        printStr("\n");
 
         if (2 > (3 - 5)*2)
 	{
-            callout("printf","should be here\n");
+            printStr("should be here\n");
 
 	    if (2 > 5)
 	    {
-                callout("printf","should not be here\n");
+                printStr("should not be here\n");
 	    }
 	    else
 	    {
-                callout("printf","should be here\n");
+                printStr("should be here\n");
 	    }
 	} 
 
 	else 
 	{
-            callout("printf","should not be here\n");
+            printStr("should not be here\n");
 	}
      
     }

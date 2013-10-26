@@ -1,4 +1,4 @@
-make: GRAMATICA DECAF SCANNER GRAPARSER PARSER CC4PARSER GRAAST ASTJAVA AST TABLESS SEMANTIC.CLASS IRT.CLASS programa
+make: GRAMATICA DECAF SCANNER GRAPARSER PARSER CC4PARSER GRAAST ASTJAVA AST TABLESS SEMANTIC.CLASS IRT.CLASS DEBUG.CLASS programa
 
 INSTALL: ../../../Developer/lib/antlr-3.4-complete.jar
 	export CLASSPATH=".:/Developer/lib/antlr-3.4-complete.jar:$$CLASSPATH"
@@ -41,9 +41,36 @@ SEMANTIC.CLASS: compiler/semantic/Semantic.java
 
 IRT.CLASS: compiler/irt/Irt.java
 	javac compiler/irt/Irt.java
+	javac compiler/codegen/Codegen.java
+
+DEBUG.CLASS: compiler/lib/Debug.java
+	javac compiler/lib/Debug.java
+	javac compiler/lib/ErrorHandler.java
 
 programa:
 	javac Compiler.java
+
+testcases:	Compiler.java
+	javac Compiler.java
+	java Compiler -target codegen testcases/codegen/00-empty.dcf
+	java Compiler -target codegen testcases/codegen/01-callout.dcf
+	java Compiler -target codegen testcases/codegen/02-expr.dcf
+	java Compiler -target codegen testcases/codegen/03-math.dcf
+	java Compiler -target codegen testcases/codegen/04-math2.dcf
+	java Compiler -target codegen testcases/codegen/05-calls.dcf
+	java Compiler -target codegen testcases/codegen/06-control-flow.dcf
+	java Compiler -target codegen testcases/codegen/07-recursion.dcf
+	java Compiler -target codegen testcases/codegen/08-array.dcf
+	java Compiler -target codegen testcases/codegen/09-global.dcf
+	java Compiler -target codegen testcases/codegen/10-bounds.dcf
+	java Compiler -target codegen testcases/codegen/11-big-array.dcf
+	java Compiler -target codegen testcases/codegen/12-huge.dcf
+	java Compiler -target codegen testcases/codegen/13-ifs.dcf
+	java Compiler -target codegen testcases/codegen/14-shortcircuit.dcf
+	java Compiler -target codegen testcases/codegen/15-not.dcf
+	java Compiler -target codegen testcases/codegen/16-qsort.dcf
+	rm testcases/codegen/*.dot
+	mv testcases/codegen/*.s testcases/codegen/salidas/
 
 clean: 
 	rm *.class
@@ -56,11 +83,11 @@ clean:
 	rm compiler/ast/*.class
 	rm compiler/ast/*.tokens
 	rm compiler/ast/GramaticaAst.java
-	rm testcases/parser/*.dot
-	rm testcases/parser/*.s
+#	rm testcases/parser/*.dot
+#	rm testcases/parser/*.s
+	rm testcases/codegen/salidas/*.s
 	rm compiler/semantic/*.class
 	rm compiler/irt/*.class
-#	rm compiler/codegen/*.class
-#	rm compiler/opt/*.class
-#	rm compiler/lib/*.class
+	rm compiler/codegen/*.class
+	rm compiler/lib/*.class
 #	clear

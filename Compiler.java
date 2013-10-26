@@ -14,10 +14,12 @@ import java.util.ArrayList;
 public class Compiler {
 	public String[] args;
 	public int size;
+	public boolean dev;
 
 	public Compiler(String[] args){
 		this.args = args;
 		this.size = args.length;
+		dev = false;
 	}
 
 	// METODOS
@@ -26,43 +28,23 @@ public class Compiler {
 		error(o, d);
 	}
 	public void error(int o, int d){
+		error(o, d, -1);
+	}
+	public void error(int o, int d, int type){
 		System.out.println("-------------------------------------------------------------------------------------");
 		//	DEBUG
-		System.out.println("*Error on line "+d+".");
-		System.out.println("\n\t\t\t\t::Ayuda::");
-		System.out.println("Para poder ejecuar el compilador correctamente necesita ingresar en la linea de");
-		System.out.println("comandos 'java Compiler <opcion> <filename>' donde <opcion> puede ser una lista");
-		System.out.println("de opciones que se le otorga a usted el usuario para el compilador, las opciones");
-		System.out.println("se le especifican con detalle adelante. Y <filename> sera el archivo el cual");
-		System.out.println("sera compilado y tiene que ser ingresado correctamente como '(filename).dcf'.");
-		System.out.println(" ");
-		System.out.println("-------------------------------------------------------------------------------------");
-		System.out.println("\t\t\t\t::Opciones::");
-		System.out.println("Estas son las opciones que seran aceptadas por el compilador:");
-		System.out.println(" ");
-	    System.out.println("-o\t<outname>\tEsta opcion es la cual <outname> es el archivo que sera");
-		System.out.println("\t\t\tel destino donde el compilador dejara lo generado.");
-		System.out.println(" ");
-		System.out.println("-target\t<stage>\t\tEsta opcion lo que realiza es que lleva a un punto en ");
-		System.out.println("\t\t\tespecifico el compilador de su eleccion donde <stage> ");
-		System.out.println("\t\t\tpodria ser (scan, parse, ast, irt, semantic o codegen).");
-		System.out.println(" ");
-		System.out.println("-opt\t<optimization>\tEsta opcion es la cual optimiza el compilador y ");
-		System.out.println("\t\t\t<optimization> puede ser constant o algebraic.");
-		System.out.println(" ");
-		System.out.println("-debug\t<stage>\t\tEsta opcion es la cual debuguea su programa o archivo ");
-		System.out.println("\t\t\tingresado y <stage> hasta donde usted desea que se");
-		System.out.println("\t\t\tdebuguee y puede ser ingresado de esta manera ");
-		System.out.println("\t\t\t'scan:parse:ast:irt:semantic:codegen:'.");
-		System.out.println(" ");
-		System.out.println("-h\t\t\tEsta opcion es la cual usted utiliza para que se le ");
-		System.out.println("\t\t\totorgue la ayuda.");
-		System.out.println("-------------------------------------------------------------------------------------");
-		System.exit(1);
+		new ErrorHandler().displayError(type);
+		if(dev)
+			System.out.println("*Error on line "+d+".");
+		
 	}
 	public void noArguments(){
 		if (this.args.length==0)
-			this.error(1, 35);
+			this.error(1, 35, 0);
+		else {
+			if(args[args.length-1].equals("-dev"))
+				size = size -1;
+		}
 	}
 	public int counter(String str){
 		int x=0;
@@ -80,7 +62,7 @@ public class Compiler {
 	}
 	public void verificar(String str){
 		int x = this.position(str);
-		if(x+1>=args.length || (x+2)>=args.length)
+		if(x+1>=size || (x+2)>=size)
 			this.error(1, 53);
 		if(args[x+1].substring(0,1).equals("-"))
 			this.error(1,55);
@@ -169,6 +151,7 @@ public class Compiler {
 
 	public static void main(String[] args) throws Exception {
 		// Define variables
+		Debug outputFileDebug = new Debug();
 		int x					= 0;
 		String str 				= "";
 		String filename 		= "";
@@ -195,22 +178,23 @@ public class Compiler {
 
 		// if no option recognized
 		if(o==0&&target==0&&opt==0&&debug==0)
-			compilador.error(1, 149);
+			compilador.error(1, 149, 1);
 
 		// checks for filename
-		if(args.length<3) compilador.error(1, 201);
+		if(args.length<3) compilador.error(1, 201, 2);
 		else if(args[args.length-3].substring(0,1).equals("-"))
 			if(args[args.length-2].substring(0,1).equals("-"))
-				compilador.error(1, 155);
+				compilador.error(1, 155, 5);
 			else
 				//if(args[args.length-1].indexOf(".txt")>0)
 					filename = args[args.length-1];
 				//else
 				//	compilador.error(1,160);
-
+		else
+			compilador.error(1, 193, 5);
 		// exists?
 		File file = new File(filename);
-		if(!(file.exists())) compilador.error(1, 163);
+		if(!(file.exists())) compilador.error(1, 163, 3);
 
 		// checks if the options have valid arguments
 		for (int i=0; i<options.length; i++) {
@@ -219,16 +203,16 @@ public class Compiler {
 			if(x>=0 && i==0){										//VERIFY -O
 				compilador.verificar("-o");
 				if(str.indexOf(".s")<0)
-					compilador.error(1,172);
+					compilador.error(1,172, 4);
 			}
 			else if(x>=0 && i==1){									//VERIFY -TARGET
 				x = -1;
 				for (int j=0; j<targets.length; j++)
 					if(str.equals(targets[j])) x=1;
-				if(x<0) compilador.error(1,178);
+				if(x<0) compilador.error(1,178, 6);
 			} else if (x>=0 && i==2){								//VERIFY -OPT
 				if(!(str.equals("algebraic")||str.equals("constant")))
-					compilador.error(1, 181);
+					compilador.error(1, 181, 7);
 			} else if (x>=0 && i==3){								//VERIFY -DEGUB
 				x = 0;
 				String[] stages = compilador.separate(str);
@@ -236,20 +220,20 @@ public class Compiler {
 					for (int j=0; j<targets.length; j++)
 						if(stages[k].equals(targets[j]))
 							x++;
-				if (!(x==stages.length)) compilador.error(1, 191);
+				if (!(x==stages.length)) compilador.error(1, 191, 8);
 			}
 		}
 
 		// all ok!
 		System.out.println("------------------------------");
-		System.out.println("Input  File: "+filename);
+		System.out.println("Input   File: "+filename);
 
 
 		// o
 		if(o>0){
 			x = compilador.position("-o");
 			output = args[x+1];
-			System.out.println("Output File: "+output);
+			System.out.println("Output  File: "+output);
 			try {
 				outFile = new File(output);
 				outputFile = new PrintWriter(outFile);
@@ -262,14 +246,14 @@ public class Compiler {
 				str = filename.substring(0, x);
 			str = str + ".s";
 			output = str;
-			System.out.println("Output File: "+str);
+			System.out.println("Output  File: "+str);
 			
 			try {
 				outFile = new File(output);
 				outputFile = new PrintWriter(outFile);
 			} catch (Exception e) {compilador.error(1, 219);}
 		}
-		System.out.println(" ");
+		//System.out.println(" ");
 
 
 		// Creating objects
@@ -293,24 +277,24 @@ public class Compiler {
 			}
 			if(x>-1){
 				//SCANNER
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Scanner");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Scanner");
+				outputFileDebug.println("------------------------------");
 				
 				myScanner.scanIt();
 				targetout = myScanner.getList();
 				for (int i=0; i<targetout.size(); i++) {
-					outputFile.println(targetout.get(i));
+					outputFileDebug.println(targetout.get(i));
 				}
-				outputFile.println("\n");
+				outputFileDebug.println("\n");
 
 				myScannerErrors = myScanner.getErrores();
 			}
 			if(x>0){
 				//PARSER
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Parser");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Parser");
+				outputFileDebug.println("------------------------------");
 				myScanner = new Scanner(filename);
 				myParser = new CC4Parser(myScanner);
 				myParser.parserIt();
@@ -318,43 +302,43 @@ public class Compiler {
 				String msg = (targetout.size()==1)?"  Invalido, se ha detecdado "+targetout.size()+" error.": "";
 				msg = (targetout.size()>1)?"  Invalido, se han detecdado "+targetout.size()+" errores.": msg;
 				if (targetout.size()!=0){
-					outputFile.println(msg);
-					outputFile.println(myParser);
+					outputFileDebug.println(msg);
+					outputFileDebug.println(myParser);
 				} else {
-					outputFile.println("  Valido, no se han detecdado errores.");
-					outputFile.print(myParser.toStringX());
+					outputFileDebug.println("  Valido, no se han detecdado errores.");
+					outputFileDebug.println(myParser.toStringX());
 				}
-				outputFile.println("\n");
+				outputFileDebug.println("\n");
 			}
 			if(x>1){
 				//AST
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Ast");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Ast");
+				outputFileDebug.println("------------------------------");
 				myScanner = new Scanner(filename);
 				myParser = new CC4Parser(myScanner);
 				myAst = new Ast(myParser);
 				myAst.makeTree();
-				outputFile.println(myAst);
-				outputFile.println("\n");
+				outputFileDebug.println(myAst);
+				outputFileDebug.println("\n");
 				myAst.setScanErrors(myScannerErrors);
 			}
 			if(x>2){
 				//SEMANTIC
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Semantic");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Semantic");
+				outputFileDebug.println("------------------------------");
 				mySemantic = new Semantic(myAst);
 				mySemantic.fillTables();
 
-				outputFile.println(mySemantic);
-				outputFile.println("\n");
+				outputFileDebug.println(mySemantic);
+				outputFileDebug.println("\n");
 			}
 			if(x>3){
 				//IRT
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Irt");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Irt");
+				outputFileDebug.println("------------------------------");
 
 				myScanner = new Scanner(filename);
 				myParser = new CC4Parser(myScanner);
@@ -364,40 +348,43 @@ public class Compiler {
 				myIrt = new Irt(mySemantic);
 				myIrt.setTree(myAst2);
 
-				outputFile.println(myIrt);
-				outputFile.println("\n");
+				outputFileDebug.println(myIrt);
+				outputFileDebug.println("\n");
 			}
+			if(x<5)
+				outputFile.println(outputFileDebug);
 			if(x>4){
 				//CODEGEN
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Codegen");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Codegen");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println(myIrt);
 				if(myIrt.getValid()){
-					PrintWriter mips	= new PrintWriter(new File("mips.s"));
 					outputFile.println(myIrt);
-					mips.println(myIrt);
-					mips.close();
-				} else
-					System.out.println("  invalid.");
+					System.out.println("Compile File: Success\n");
+				} else {
+					System.out.println("Compile File: Fail\n");
+					outputFile.println(outputFileDebug);
+				}
 			}
 		} else{
 			try {
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Scanner");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Scanner");
+				outputFileDebug.println("------------------------------");
 				
 				myScanner.scanIt();
 				targetout = myScanner.getList();
 				for (int i=0; i<targetout.size(); i++) {
-					outputFile.println(targetout.get(i));
+					outputFileDebug.println(targetout.get(i));
 				}
-				outputFile.println("\n");
+				outputFileDebug.println("\n");
 				myScannerErrors = myScanner.getErrores();
 
 				//PARSER
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Parser");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Parser");
+				outputFileDebug.println("------------------------------");
 				myScanner = new Scanner(filename);
 				myParser = new CC4Parser(myScanner);
 				myParser.parserIt();
@@ -405,40 +392,40 @@ public class Compiler {
 				String msg = (targetout.size()==1)?"  Invalido, se ha detecdado "+targetout.size()+" error.": "";
 				msg = (targetout.size()>1)?"  Invalido, se han detecdado "+targetout.size()+" errores.": msg;
 				if (targetout.size()!=0){
-					outputFile.println(msg);
-					outputFile.println(myParser);
+					outputFileDebug.println(msg);
+					outputFileDebug.println(myParser);
 				} else {
-					outputFile.println("  Valido, no se han detecdado errores.");
-					outputFile.print(myParser.toStringX());
+					outputFileDebug.println("  Valido, no se han detecdado errores.");
+					outputFileDebug.println(myParser.toStringX());
 				}
-				outputFile.println("\n");
+				outputFileDebug.println("\n");
 				
 				//AST
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Ast");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Ast");
+				outputFileDebug.println("------------------------------");
 				myScanner = new Scanner(filename);
 				myParser = new CC4Parser(myScanner);
 				myAst = new Ast(myParser);
 				myAst.makeTree();
-				outputFile.println(myAst);
-				outputFile.println("\n");
+				outputFileDebug.println(myAst);
+				outputFileDebug.println("\n");
 
 				myAst.setScanErrors(myScannerErrors);
 				//SEMANTIC
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Semantic");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Semantic");
+				outputFileDebug.println("------------------------------");
 				mySemantic = new Semantic(myAst);
 				mySemantic.fillTables();
 
-				outputFile.println(mySemantic);
-				outputFile.println("\n");
+				outputFileDebug.println(mySemantic);
+				outputFileDebug.println("\n");
 
 
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Irt");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Irt");
+				outputFileDebug.println("------------------------------");
 
 				myScanner = new Scanner(filename);
 				myParser = new CC4Parser(myScanner);
@@ -448,20 +435,21 @@ public class Compiler {
 				myIrt = new Irt(mySemantic);
 				myIrt.setTree(myAst2);
 
-				outputFile.println(myIrt);
-				outputFile.println("\n");
+				outputFileDebug.println(myIrt);
+				outputFileDebug.println("\n");
 
-				outputFile.println("------------------------------");
-				outputFile.println("stage: Codegen");
-				outputFile.println("------------------------------");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println("stage: Codegen");
+				outputFileDebug.println("------------------------------");
+				outputFileDebug.println(myIrt);
 
 				if(myIrt.getValid()){
-					PrintWriter mips	= new PrintWriter(new File("mips.s"));
 					outputFile.println(myIrt);
-					mips.println(myIrt);
-					mips.close();
-				} else
-					System.out.println("  invalid.");				
+					System.out.println("Compile File: Success\n");
+				} else {
+					System.out.println("Compile File: Fail\n");
+					outputFile.println(outputFileDebug);
+				}				
 
 				for (int i=0; i<targets.length; i++)
 					myOptions.add(targets[i]);
@@ -476,10 +464,10 @@ public class Compiler {
 			x = compilador.position("-opt");
 			str = args[x+1];
 			if(str.equals("algebraic")){
-				outputFile.println("\noptimizing: algebraic simplification");
+				outputFileDebug.println("\noptimizing: algebraic simplification");
 				Algebraic al = new Algebraic();
 			} else {
-				outputFile.println("\noptimizing: constant folding");
+				outputFileDebug.println("\noptimizing: constant folding");
 				ConstantFolding cf = new ConstantFolding();
 			}
 		}
@@ -557,7 +545,7 @@ public class Compiler {
 						System.out.println("  Debug: Codegen");
 						System.out.println("  ----------------------------");
 						if(myIrt.getValid())
-							System.out.println(myIrt);
+							System.out.println("  El Programa es valido.");
 						else
 							System.out.println("  No se pudo hacer el codegen ya que el programa no es valido.");
 					}

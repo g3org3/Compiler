@@ -32,9 +32,9 @@ class Program
 
         
 	for j = 0, 1000 {
-            callout("printf", "%d ", y[j]);
+            printStr("%d ", y[j]);
         }
         
-        callout("printf", "\n");
+        printStr("\n");
     }
 }

@@ -3,47 +3,47 @@ class Program
 
 	boolean fail(boolean b)
 	{
-		callout("printf", "INCORRECT - shorcircuiting failed\n");
+		printStr("INCORRECT - shorcircuiting failed\n");
 		return b;
 	}
 
 	void main()
 	{
 		boolean a, b, c;
-		callout("printf", "should see 6 corrects and no incorrects\n");
+		printStr("should see 6 corrects and no incorrects\n");
 		a = (0 == 0);
 		b = (0 - 3) == 1;
-		c = ! a;
-		if (! a && fail(false)) {
-			callout("printf", "INCORRECT\n");
+		c = !a;
+		if (!a && fail(false)) {
+			printStr("INCORRECT\n");
 		} else {
-			callout("printf", "correct\n");
+			printStr("correct\n");
 		}
 		if (! b || fail(true)) {
-			callout("printf", "correct\n");
+			printStr("correct\n");
 		} else {
-			callout("printf", "INCORRECT\n");
+			printStr("INCORRECT\n");
 		}
 		if (c) {
-			callout("printf", "INCORRECT\n");
+			printStr("INCORRECT\n");
 		} else {
-			callout("printf", "correct\n");
+			printStr("correct\n");
 		}
-		if (! ! c && fail(false)) {
-			callout("printf", "INCORRECT\n");
+		if (! (! c) && fail(false)) {
+			printStr("INCORRECT\n");
 		} else {
-			callout("printf", "correct\n"); 
+			printStr("correct\n"); 
 		}
-		if (! ! ! c) {
-			callout("printf", "correct\n");
+		if (! (! (! c))) {
+			printStr("correct\n");
 		} else {
-			callout("printf", "INCORRECT\n");
+			printStr("INCORRECT\n");
 		}
-		c = ! ! a;
+		c = ! (! a);
 		if ( ! a != c) {
-			callout("printf", "correct\n");
+			printStr("correct\n");
 		} else {
-			callout("printf", "INCORRECT\n");
+			printStr("INCORRECT\n");
 		}
 	}
 }

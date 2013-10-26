@@ -2,8 +2,5 @@
 class Program {
     void main(){
         int x;
-        printStr("num: ");
-        x = readInt();
-        printStr("%d + 1 = %d", x, x+1);
     }
 }

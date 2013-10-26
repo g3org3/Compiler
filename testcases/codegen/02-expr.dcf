@@ -1,5 +1,4 @@
-class Program
-{
+class Program {
     void main()
     {
         int a, b, c;
@@ -14,7 +13,7 @@ class Program
 
         e = d * e - 100;
 
-        callout("printf", "%d %d\n", d, e);
+        printStr("%d %d\n", d, e);
     }
 }
 

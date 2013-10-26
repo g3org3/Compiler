@@ -11,7 +11,7 @@ class Program
         }
 
         if (sum != 45) {
-            callout("printf", "ERROR: for loop is bad (1)\n");
+            printStr("ERROR: for loop is bad (1)\n");
         }
 
         i = 11;
@@ -21,11 +21,11 @@ class Program
 	}
 
         if (i != 11) {
-            callout("printf", "ERROR: for loop is bad (2)\n");
+            printStr("ERROR: for loop is bad (2)\n");
         }            
 
         if (1 > 2) {
-            callout("printf", "ERROR: true branch is bad (2)\n");
+            printStr("ERROR: true branch is bad (2)\n");
         } else {
             // don't do anything here
         }            
@@ -33,9 +33,9 @@ class Program
         if (1 < 2) {
             // don't do anything here
         } else {
-            callout("printf", "ERROR: else branch is bad (2)\n");
+            printStr("ERROR: else branch is bad (2)\n");
         }
 
-        callout("printf", "control flow OK if no previous output\n");
+        printStr("control flow OK if no previous output\n");
     }
 }

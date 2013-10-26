@@ -3,7 +3,7 @@ class Program {
   int a[10];
   
   void main() {
-    callout("printf", "expecting an error next:\n\n");
+    printStr("expecting an error next:\n\n");
     a[100] = 0;
   }
 }
