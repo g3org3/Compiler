@@ -16,6 +16,7 @@ public class Tables {
 		variables.add(new ArrayList<String>()); // 1 type
 		variables.add(new ArrayList<String>()); // 2 name
 		variables.add(new ArrayList<String>()); // 3 mips
+		variables.add(new ArrayList<String>()); // 4 array size
 	}
 
 	public void addTable(String parent, String name){
@@ -66,6 +67,12 @@ public class Tables {
 		x = x * 4;
 		//System.out.println(x);
 		return x+"";
+	}
+	public String getMipsOfArray(String var, String scope){
+		int x = getPositionInTable(var, scope);
+		
+		String aux = variables.get(4).get(x);
+		return aux;
 	}
 	public String getMipsOf(String var, int sp){
 		String scope = getName(sp);
@@ -131,6 +138,7 @@ public class Tables {
 			variables.get(1).add(type);
 			variables.get(2).add(name);
 			variables.get(3).add(mips+"");
+			variables.get(3).add(0+"");
 			mips+=4;
 		}
 	}
@@ -144,6 +152,7 @@ public class Tables {
 			variables.get(1).add(type);
 			variables.get(2).add(name+"["+p+"]");
 			variables.get(3).add(mips+"");
+			variables.get(4).add(size+"");
 			mips+=4;
 		}
 	}

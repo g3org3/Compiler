@@ -285,6 +285,7 @@ public class Semantic {
 				this.fillTables(t.getChild(i), tablename);
 			} else if(childs==2){ 
 				if(t.getChild(0).getText().equals("return")){
+					tablename = tables.getParentIfFor(tablename);
 					int y = tables.containsTable(tablename);
 					String tipo = tables.getMethodType(tablename);
 					String p = this.checkEx(t.getChild(1), tipo, tablename, 1);
@@ -383,9 +384,6 @@ public class Semantic {
 				} else {
 					valid = false;
 					tipos++; fix++;
-					/**
-
-					**/
 					erroresSemantic.add("Expecting: "+type+", Found: "+tipo+", Scope: "+tablename);
 				}
 			}

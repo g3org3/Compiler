@@ -344,7 +344,6 @@ public class Compiler {
 				myParser = new CC4Parser(myScanner);
 				myAst2 = new Ast(myParser);
 				myAst2.makeTree();
-
 				myIrt = new Irt(mySemantic);
 				myIrt.setTree(myAst2);
 

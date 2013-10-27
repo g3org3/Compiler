@@ -50,7 +50,7 @@ DEBUG.CLASS: compiler/lib/Debug.java
 programa:
 	javac Compiler.java
 
-testcases:	Compiler.java
+testcases.do:	Compiler.java
 	javac Compiler.java
 	java Compiler -target codegen testcases/codegen/00-empty.dcf
 	java Compiler -target codegen testcases/codegen/01-callout.dcf
@@ -71,6 +71,8 @@ testcases:	Compiler.java
 	java Compiler -target codegen testcases/codegen/16-qsort.dcf
 	rm testcases/codegen/*.dot
 	mv testcases/codegen/*.s testcases/codegen/salidas/
+caso3: testcases/codegen/03-math.dcf
+	java Compiler -target codegen testcases/codegen/03-math.dcf
 
 clean: 
 	rm *.class

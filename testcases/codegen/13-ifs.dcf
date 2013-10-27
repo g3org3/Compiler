@@ -12,8 +12,7 @@ class Program
         return b;
     }
 
-    void phw(boolean a,boolean b,boolean c,boolean d,boolean e,boolean f,
-	     boolean g,boolean h,boolean i,boolean j )
+    void phw(boolean a,boolean b,boolean c,boolean d,boolean e,boolean f, boolean g,boolean h,boolean i,boolean j )
     {    
         if (a) {
             printStr("H");
@@ -49,7 +48,7 @@ class Program
 
         printStr(" ");
 
-        if (not2(f)) { callout ("printf","*"); }
+        if (not2(f)) { printStr("*"); }
         
 	if (g) { 
             if (not2(h)) { 

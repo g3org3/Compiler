@@ -20,6 +20,7 @@ public class Irt {
 	public int elseCount = 1;
 	public int forCount = 1;
 	public int ifelfix = 1;
+	public int id = 1;
 
 	// contructor
 	public Irt(Semantic smt){
@@ -48,6 +49,7 @@ public class Irt {
 		x = x * 4;
 		//System.out.println(tables.getVariables());
 		code.add("addi $sp $sp -"+x);
+		code.add("move $s7 $sp");
 		code.add("j main #start program");
 	}
 
@@ -127,6 +129,7 @@ public class Irt {
 				code.add("move $t7 $v0");
 				getExVal(t.getChild(4), scopeName);
 				code.add("move $t8 $v0");
+				code.add("blt $t8 $t7 "+nombrefix+"done");
 				code.add(nombrefix+":");
 				code.add("beq $t7 $t8 "+nombrefix+"done");
 				readTree(t.getChild(5), nombrefix);
@@ -149,7 +152,32 @@ public class Irt {
 					//*
 					getExVal(t.getChild(0).getChild(1), scopeName);
 					String var = t.getChild(0).getChild(0).getText()+"[0]";
+					String var2 = tables.getMipsOfArray(var, scopeName);
 					var = tables.getMipsOf(var, scopeName);
+					int x = 0;
+
+					code.add("blt $v0 "+var2+" errorArray"+id);
+					if(!code.get(0).equals(".data"))
+						code.add(0, ".data");
+
+					for (int i=0; i<code.size(); i++) {
+						x = i+1;
+						if(code.get(i+1).equals(".text"))
+							i = code.size();
+					}
+					if(!code.get(x-1).equals("errorArray: .asciiz \"Error, array out of range.\""))
+						code.add(x, "errorArray: .asciiz \"Error, array out of range.\"");
+						//System.out.println(code.get(x));
+
+					code.add("la $a0 errorArray");
+					code.add("li $v0 4");
+					code.add("syscall");
+					code.add("li $v0 10");
+					code.add("syscall");
+					code.add("errorArray"+id+":");
+					id++;
+
+
 					code.add("mul $v0 $v0 4");
 					code.add("addi $s0 $v0 "+var);
 					getExVal(t.getChild(2), scopeName);
@@ -216,7 +244,11 @@ public class Irt {
 		} else if(rootName.equals("PRINTF")){
 			if(!code.get(0).equals(".data"))
 				code.add(0, ".data");
-			int x = 1;
+			if(!code.get(1).equals("strEnter: .asciiz \"\\n\"") && !code.get(2).equals("strEnter: .asciiz \"\\n\""))
+				code.add(1, ("strEnter: .asciiz \"\\n\""));
+			int x = 2;
+			int j = 1;
+			int pcount = 0;
 			int porcen = 0;
 			int pos = 0;
 			String str = "str";
@@ -225,13 +257,12 @@ public class Irt {
 			String var2 = "";
 
 			for (int i=0; i<code.size(); i++) {
-				if(code.get(i).indexOf("str")!=-1)
+				if(code.get(i).indexOf("str")!=-1 && (code.get(i).indexOf("strEnter")==-1))
 					x++;
-
 				if(code.get(i+1).equals(".text"))
 					i = code.size();
 			}
-			label = str+x;
+			label = str+(x-1);
 			// tiene porcentaje
 			for (int i=0; i<childs; i++) {
 				if(t.getChild(i).getText().indexOf("%")!=-1)
@@ -239,48 +270,86 @@ public class Irt {
 			}
 			if(porcen==0){
 				for (int i=1; i<childs; i++) {
-					code.add(x, label+": .asciiz "+t.getChild(i).getText());
-					code.add("la $a0 "+label);
-					code.add("li $v0 4");
-					code.add("syscall");
-					x++;
-					label = str+x;
+					var = t.getChild(i).getText();
+					if(var.equals("\"\\n\"")){
+						code.add("la $a0 strEnter");
+						code.add("li $v0 4");
+						code.add("syscall");
+					} else if(var.equals("\"\"")){
+					} else {
+						code.add(x, label+": .asciiz "+var);
+						code.add("la $a0 "+label);
+						code.add("li $v0 4");
+						code.add("syscall");
+						x++; label = str+(x-1);
+					}
 				}
 			} else {
 				for (int i=1; i<childs; i++) {
 					var = t.getChild(i).getText();
+					pcount = percenCount(var);
 					pos = var.indexOf("%");
 					if(pos!=-1){
-						var2 = var.substring(0, pos);
-						var = var.substring(pos+2, var.length());
-
-						code.add(x, label+": .asciiz "+var2+"\"");
-						code.add("la $a0 "+label);
-						code.add("li $v0 4");
-						code.add("syscall");
-
-						getExVal(t.getChild(i+1), scopeName);
-						code.add("move $a0 $v0");
-						code.add("li $v0 1");
-						code.add("syscall");
-
-						x++; label = str+x;
-						code.add(x, label+": .asciiz "+var+"\"");
-						code.add("la $a0 "+label);
-						code.add("li $v0 4");
-						code.add("syscall");
-						x++; label = str+x;
-						i++;
 						while(pos!=-1){
-							
+							var2 = var.substring(0, pos);
+
+							if(var2.length()==0){
+								var2 = "\"\"";
+							} else if(!var2.substring(0,1).equals("\""))
+								var2 = "\"" + var2;
+							if(!var2.substring(var2.length()-1,var2.length()).equals("\""))
+								var2 = var2+"\"";
+							else if(var2.substring(0,1).equals("\"") && var2.length()==1)
+								var2 = var2 + "\"";
+							if(var2.equals("\"\\n\"")){
+								code.add("la $a0 strEnter");
+								code.add("li $v0 4");
+								code.add("syscall");
+							} else if(var2.equals("\"\"")){
+							} else {
+								code.add(x, label+": .asciiz "+var2);
+								code.add("la $a0 "+label);
+								code.add("li $v0 4");
+								code.add("syscall");
+								x++; label = str+(x-1);
+							}
+							getExVal(t.getChild(i+j), scopeName);
+							code.add("move $a0 $v0");
+							code.add("li $v0 1");
+							code.add("syscall");
+
+							j++;
+							var = var.substring(pos+2, var.length());
+							pos = var.indexOf("%");
 						}
+						var = "\"" + var;
+						if(var.equals("\"\\n\"")){
+							code.add("la $a0 strEnter");
+							code.add("li $v0 4");
+							code.add("syscall");
+						} else if(var.equals("\"\"")){
+						} else {
+							code.add(x, label+": .asciiz "+var);
+							code.add("la $a0 "+label);
+							code.add("li $v0 4");
+							code.add("syscall");
+							x++; label = str+(x-1);
+						}
+						i = i + pcount;
 					} else {
-						code.add(x, label+": .asciiz "+t.getChild(i).getText());
-						code.add("la $a0 "+label);
-						code.add("li $v0 4");
-						code.add("syscall");
-						x++;
-						label = str+x;
+						var = t.getChild(i).getText();
+						if(var.equals("\"\\n\"")){
+							code.add("la $a0 strEnter");
+							code.add("li $v0 4");
+							code.add("syscall");
+						} else if(var.equals("\"\"")){
+						} else {
+							code.add(x, label+": .asciiz "+var);
+							code.add("la $a0 "+label);
+							code.add("li $v0 4");
+							code.add("syscall");
+							x++; label = str+(x-1);
+						}
 
 					}
 					
@@ -328,19 +397,27 @@ public class Irt {
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
 					
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+
 					getExVal(t.getChild(1), scopeName);
 					code.add("move $a1 $v0");
+
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
 					
 					code.add("add $v0 $a0 $a1");
 					i=childs;
 				} else if(rootName.equals("-")){
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
-					
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
 					if(childs==2) {
 						getExVal(t.getChild(1), scopeName);
 						code.add("move $a1 $v0");
-					
+						code.add("lw $a0 0($s7)");
+						code.add("addi $s7 $s7 4");
 						code.add("sub $v0 $a0 $a1");
 					} else {
 						code.add("sub $v0 $0 $a0");
@@ -350,8 +427,14 @@ public class Irt {
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
 					
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+
 					getExVal(t.getChild(1), scopeName);
 					code.add("move $a1 $v0");
+
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
 					
 					code.add("mult $a0 $a1");
 					code.add("mflo $v0");
@@ -359,19 +442,29 @@ public class Irt {
 				} else if(rootName.equals("/")){
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
-					
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+
 					getExVal(t.getChild(1), scopeName);
 					code.add("move $a1 $v0");
 					
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
+
 					code.add("div $a0 $a1");
 					code.add("mflo $v0");
 					i=childs;
 				}  else if(rootName.equals("%")){
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
-					
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+
 					getExVal(t.getChild(1), scopeName);
 					code.add("move $a1 $v0");
+
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
 					
 					code.add("div $a0 $a1");
 					code.add("mfhi $v0");
@@ -390,7 +483,14 @@ public class Irt {
 				} else if(rootName.equals("==")) {
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+
 					getExVal(t.getChild(1), scopeName);
+					
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
+					
 					code.add("move $a1 $v0");
 					code.add("bne $a0 $a1 else"+scopeName+ifelfix);
 					code.add("addi $v0 $0 1");
@@ -403,8 +503,15 @@ public class Irt {
 				} else if(rootName.equals("!=")) {
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+
 					getExVal(t.getChild(1), scopeName);
+					
 					code.add("move $a1 $v0");
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
+
 					code.add("beq $a0 $a1 else"+scopeName+ifelfix);
 					code.add("addi $v0 $0 1");
 					code.add("j done"+scopeName+ifelfix);
@@ -416,8 +523,15 @@ public class Irt {
 				} else if(rootName.equals("<")) {
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+
 					getExVal(t.getChild(1), scopeName);
+					
 					code.add("move $a1 $v0");
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
+
 					code.add("bge $a0 $a1 else"+scopeName+ifelfix);
 					code.add("addi $v0 $0 1");
 					code.add("j done"+scopeName+ifelfix);
@@ -429,8 +543,15 @@ public class Irt {
 				}  else if(rootName.equals(">")) {
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+
 					getExVal(t.getChild(1), scopeName);
+					
 					code.add("move $a1 $v0");
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
+
 					code.add("ble $a0 $a1 else"+scopeName+ifelfix);
 					code.add("addi $v0 $0 1");
 					code.add("j done"+scopeName+ifelfix);
@@ -442,8 +563,15 @@ public class Irt {
 				}  else if(rootName.equals(">=")) {
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+
 					getExVal(t.getChild(1), scopeName);
+					
 					code.add("move $a1 $v0");
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
+
 					code.add("blt $a0 $a1 else"+scopeName+ifelfix);
 					code.add("addi $v0 $0 1");
 					code.add("j done"+scopeName+ifelfix);
@@ -455,8 +583,15 @@ public class Irt {
 				}  else if(rootName.equals("<=")) {
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $a0 0($s7)");
+					
 					getExVal(t.getChild(1), scopeName);
+					
 					code.add("move $a1 $v0");
+					code.add("lw $a0 0($s7)");
+					code.add("addi $s7 $s7 4");
+
 					code.add("bgt $a0 $a1 else"+scopeName+ifelfix);
 					code.add("addi $v0 $0 1");
 					code.add("j done"+scopeName+ifelfix);
