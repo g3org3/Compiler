@@ -80,11 +80,16 @@ public class Irt {
 			String type = t.getChild(0).getText();
 			String name = t.getChild(1).getText();
 			code.add(name+":");//# "+type+" "+name+"()");
-			
+			code.add("addi $s7 $s7 -4");
+			code.add("sw $ra 0($s7)");
+
 			for (int i=0; i<childs; i++)
 				readTree(t.getChild(i), t.getChild(1).getText());
-			if(type.equals("void")&& !(name.equals("main")))
+			if(type.equals("void")&& !(name.equals("main"))){
+				code.add("lw $ra 0($s7)");
+				code.add("addi $s7 $s7 4");
 				code.add("jr $ra");
+			}
 
 		} else if(rootName.equals("BLOCK")){
 			for (int i=0; i<childs; i++)
@@ -98,6 +103,8 @@ public class Irt {
 				ifCount++;
 
 				code.add(nombrefix+":");
+				//code.add("addi $s7 $s7 -4");
+				//code.add("sw $ra 0($s7)");
 
 				if(childs<4){
 					getExVal(t.getChild(1), scopeName);
@@ -118,6 +125,13 @@ public class Irt {
 				}
 
 				code.add(nombrefix+"done:");
+				//code.add("lw $ra 0($s7)");
+				//code.add("addi $s7 $s7 4");
+
+			} else if(t.getChild(0).getText().equals("break")){
+				String forname = tables.getBreakParent(scopeName);
+				code.add("j "+forname+"done");
+
 			} else if(t.getChild(0).getText().equals("for")){
 				nombre = "for";
 				nombrefix = (forCount==1)? nombre: nombre+forCount;
@@ -131,13 +145,24 @@ public class Irt {
 				code.add("move $t8 $v0");
 				code.add("blt $t8 $t7 "+nombrefix+"done");
 				code.add(nombrefix+":");
+				
+				code.add("addi $s7 $s7 -4");
+				code.add("sw $t8 0($s7)");
+
 				code.add("beq $t7 $t8 "+nombrefix+"done");
 				readTree(t.getChild(5), nombrefix);
+
 				code.add("lw $t7 "+var+"($sp)");
 				code.add("addi $t7 $t7 1");
 				code.add("sw $t7 "+var+"($sp)");
+				
+				code.add("lw $t8 0($s7)");
+				code.add("addi $s7 $s7 4");
+
 				code.add("j "+nombrefix);
 				code.add(nombrefix+"done:");
+				code.add("lw $t8 0($s7)");
+				code.add("addi $s7 $s7 4");
 
 			} else if(childs>2){
 				// ASIGN
@@ -180,7 +205,11 @@ public class Irt {
 
 					code.add("mul $v0 $v0 4");
 					code.add("addi $s0 $v0 "+var);
+					code.add("addi $s7 $s7 -4");
+					code.add("sw $s0 0($s7)");
 					getExVal(t.getChild(2), scopeName);
+					code.add("lw $s0 0($s7)");
+					code.add("addi $s7 $s7 4");
 					code.add("add $sp $sp $s0");
 					code.add("sw $v0 0($sp)");
 					code.add("sub $sp $sp $s0");
@@ -206,8 +235,15 @@ public class Irt {
 			} else if(childs==2){
 				if(t.getChild(0).getText().equals("return")){
 					getExVal(t.getChild(1), scopeName);
-					if(!scopeName.equals("main"))
+					if(!scopeName.equals("main")){
+						if(tables.isParentFor(scopeName)){
+							int x = tables.getNumOfFors(scopeName);
+							code.add("addi $s7 $s7 "+(x*4)+" #saliendo");
+						}
+						code.add("lw $ra 0($s7)");
+						code.add("addi $s7 $s7 4");
 						code.add("jr $ra");
+					}
 				}
 			} else {
 				for (int i=0; i<childs; i++) {
@@ -375,9 +411,9 @@ public class Irt {
 		if(childs==0){
 			if(rootName.equals("true")||rootName.equals("false")){
 				if(rootName.equals("true"))
-					code.add("addi $v0 $0 1");
+					code.add("li $v0 1");
 				else
-					code.add("add $v0 $0 $0");
+					code.add("li $v0 0");
 			} else {
 				try {
 					Integer.parseInt(rootName);
@@ -411,9 +447,9 @@ public class Irt {
 				} else if(rootName.equals("-")){
 					getExVal(t.getChild(0), scopeName);
 					code.add("move $a0 $v0");
-					code.add("addi $s7 $s7 -4");
-					code.add("sw $a0 0($s7)");
 					if(childs==2) {
+						code.add("addi $s7 $s7 -4");
+						code.add("sw $a0 0($s7)");
 						getExVal(t.getChild(1), scopeName);
 						code.add("move $a1 $v0");
 						code.add("lw $a0 0($s7)");
@@ -648,11 +684,42 @@ public class Irt {
 					getExVal(t.getChild(1), scopeName);
 					rootName = t.getChild(0).getText()+"[0]";
 					val = tables.getMipsOf(rootName, scopeName);
+					String var = rootName;
+					String var2 = tables.getMipsOfArray(var, scopeName);
+					//var = tables.getMipsOf(var, scopeName);
+					x = 0;
+
+					code.add("blt $v0 "+var2+" errorArray"+id);
+					if(!code.get(0).equals(".data"))
+						code.add(0, ".data");
+
+					for (int k=0; k<code.size(); k++) {
+						x = k+1;
+						if(code.get(k+1).equals(".text"))
+							k = code.size();
+					}
+					if(!code.get(x-1).equals("errorArray: .asciiz \"Error, array out of range.\""))
+						code.add(x, "errorArray: .asciiz \"Error, array out of range.\"");
+						//System.out.println(code.get(x));
+
+					code.add("la $a0 errorArray");
+					code.add("li $v0 4");
+					code.add("syscall");
+					code.add("li $v0 10");
+					code.add("syscall");
+					code.add("errorArray"+id+":");
+					id++;
+
+
+
+
 					code.add("mul $v0 $v0 4");
 					code.add("addi $s0 $v0 "+val);
 					code.add("add $sp $sp $s0");
 					code.add("lw $v0 0($sp)");
 					code.add("sub $sp $sp $s0");
+
+					
 				}
 			}
 		}

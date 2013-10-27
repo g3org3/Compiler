@@ -1,86 +1,42 @@
-// a quicksort program.  set the "length" parameter in main() to the
-// desired size of the sorted array.  if you want to sort an array
-// bigger than 100 elements, you'll also need to adjust the declaration
-// of the global array A.
-
-class Program
-{
-    int A[100];
-    int length;
-    
-    int partition(int p, int r) 
-    {
-	int x, i, j, t;
-        int z;
-        
-	x = A[p];
-	i = p - 1;
-	j = r + 1;
-
-  	for z = 0, length * length {
-	  j = j - 1;
-	    for a = 0, length {
-	      if (A[j] <= x) {
-		break;
-	      }
-	      j = j - 1;
-	    }
-
-	    for a = i + 1, length {
-	      if (A[a] >= x) {
-		i = a;
-		break;
-	      }
-	    }
-
-   	    if (i < j) {
-  		t = A[i];
-  		A[i] = A[j];
-  		A[j] = t;
-  	    } else {
- 		return j;
-  	    }
-  	}
-	return -1;
+class Program {
+    int a[10];
+    int size;
+    void insertionSort(){
+        int n, j, key, aux;
+        n = size;
+        for i=1, n {
+            key = a[i];
+            j = i - 1;
+            if(j>=0 && (a[j]>key)){
+                for z=0, 1{
+                    if(j<0 || a[j]<= key){
+                        break;
+                    }
+                    aux = a[j];
+                    a[j+1] = aux;
+                    j = j - 1;
+                    z = z - 1 ;
+                }
+            }
+            a[j+1] = key;
+        }   
     }
+    void main(){
+        size = 10;
 
-    void quicksort(int p, int r)
-    {
-  	int q;
-        
-  	if (p < r) {
-  	    q = partition (p, r);
-  	    quicksort (p, q);
-  	    quicksort (q+1, r);
-  	}
-    }
-    
-    void main() 
-    {
-	int temp;
-        
-	length = 10; // adjust for sort length
-        
-        printStr("creating random array of %d elements\n", length);
-
-        //srandom(17);
-        
-	for i = 0, length {
-            //temp = callout("random");
-            temp = 0;
-            A[i] = temp;
+        for i=0, size {
+            a[i] = size-i;
         }
-        
-        printStr("\nbefore sort:\n");
-	for i = 0, length {
-   	    printStr("%d\n", A[i]); 
+        printStr("Antes del insertionSort\n");
+        for i=0, size {
+            printStr("a[%d] = %d\n", i, a[i]);
         }
-        
-        quicksort (0, length - 1);
 
-        printStr("\nafter sort\n");
-	for i = 0, length {
-	  printStr("%d\n", A[i]); 
-  	}
+        insertionSort();
+
+        printStr("Despues del insertionSort\n");
+        for i=0, size {
+            printStr("a[%d] = %d\n", i, a[i]);
+        }
     }
 }

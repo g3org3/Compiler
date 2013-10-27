@@ -12,19 +12,23 @@ class Program
         return b;
     }
 
-    void phw(boolean a,boolean b,boolean c,boolean d,boolean e,boolean f, boolean g,boolean h,boolean i,boolean j )
-    {    
+    void phw(boolean a,boolean b,boolean c,boolean d,boolean e,boolean f, boolean g,boolean h,boolean i,boolean j ) {    
         if (a) {
             printStr("H");
-            if (b) {
+            
+            if (b) { 
                 printStr("e");
+                
                 if (c) {
                     printStr("l");
+                    
                     if (d) {
                         printStr("l");
+                        
                         if (e) {
                             printStr("*");
                         }
+                        
                         if (not2(e)) {
                             printStr("o");
                         }

@@ -62,6 +62,10 @@ public class Tables {
 	public String getParent(int i){
 		return new String(tablas.get(i).get(0).get(0));
 	}
+	public String getParent(String scopeName){
+		int i = containsTable(scopeName);
+		return new String(tablas.get(i).get(0).get(0));
+	}
 	public String getMipsOf(String var, String scope){
 		int x = getPositionInTable(var, scope);
 		x = x * 4;
@@ -221,6 +225,36 @@ public class Tables {
 			parent = getParent(scope);
 		}
 		return entro;
+	}
+	public String getBreakParent(String scopeName){
+		int scope = 0;			// containsTable(scopeName);
+		String parent = ""; 	// getParent(scope);
+		boolean entro = false;
+		
+		scope = containsTable(scopeName);
+		parent = getParent(scope);
+		while(!entro){
+			if(parent.indexOf("for")!=-1){
+				entro = true;
+			} else {
+				scope = containsTable(parent);
+				parent = getParent(scope);
+			}
+		}
+		return parent;
+	}
+	public int getNumOfFors(String scopeName){
+		int x = 0;
+		int scope = 0;
+		String parent = scopeName;
+		while(!parent.equals("-")){
+			if(parent.indexOf("for")!=-1)
+				x++;
+			scope = containsTable(parent);
+			parent = getParent(scope);
+		}
+
+		return x;
 	}
 	public String getVarType(int position, int scope){
 		ArrayList<ArrayList<String>> tabla = tablas.get(scope);

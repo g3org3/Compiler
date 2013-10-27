@@ -71,8 +71,15 @@ testcases.do:	Compiler.java
 	java Compiler -target codegen testcases/codegen/16-qsort.dcf
 	rm testcases/codegen/*.dot
 	mv testcases/codegen/*.s testcases/codegen/salidas/
-caso3: testcases/codegen/03-math.dcf
-	java Compiler -target codegen testcases/codegen/03-math.dcf
+caso16: testcases/codegen/03-math.dcf
+	java Compiler -target codegen testcases/codegen/16-qsort.dcf
+	mv testcases/codegen/*.s testcases/codegen/salidas/
+caso7: testcases/codegen/03-math.dcf
+	java Compiler -target codegen testcases/codegen/07-recursion.dcf
+	mv testcases/codegen/*.s testcases/codegen/salidas/
+caso0: testcases/codegen/03-math.dcf
+	java Compiler -target codegen filename2.txt
+	mv *.s testcases/codegen/salidas/
 
 clean: 
 	rm *.class
