@@ -1,0 +1,9 @@
+class Program{
+
+	void main(){
+		int x;
+		//x = readInt();
+		x = 1 + 2 + 4;
+		printInt(x);
+	}
+}

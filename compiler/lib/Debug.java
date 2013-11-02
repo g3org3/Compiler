@@ -5,6 +5,7 @@ import compiler.parser.CC4Parser;
 import compiler.ast.Ast;
 import compiler.semantic.Semantic;
 import compiler.irt.Irt;
+import compiler.opt.ConstantFolding;
 import java.util.ArrayList;
 
 
@@ -31,6 +32,9 @@ public class Debug {
 		output.add(str.toString());
 	}
 	public void println(Irt str){
+		output.add(str.toString());
+	}
+	public void println(ConstantFolding str){
 		output.add(str.toString());
 	}
 

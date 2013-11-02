@@ -42,6 +42,9 @@ public class Irt {
 			endMips();
 		}
 	}
+	public ArrayList<String> getCode(){
+		return code;
+	}
 
 	public void setMips(){
 		code.add(".text");
@@ -79,9 +82,13 @@ public class Irt {
 		} else if(rootName.equals("METHOD")){
 			String type = t.getChild(0).getText();
 			String name = t.getChild(1).getText();
-			code.add(name+":");//# "+type+" "+name+"()");
-			code.add("addi $s7 $s7 -4");
-			code.add("sw $ra 0($s7)");
+			if(!name.equals("main")){
+				code.add(name+":");//# "+type+" "+name+"()");
+				code.add("addi $s7 $s7 -4");
+				code.add("sw $ra 0($s7)");
+			} else {
+				code.add(name+":");//# "+type+" "+name+"()");
+			}
 
 			for (int i=0; i<childs; i++)
 				readTree(t.getChild(i), t.getChild(1).getText());

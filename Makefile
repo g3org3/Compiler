@@ -77,10 +77,16 @@ caso16: testcases/codegen/03-math.dcf
 caso7: testcases/codegen/03-math.dcf
 	java Compiler -target codegen testcases/codegen/07-recursion.dcf
 	mv testcases/codegen/*.s testcases/codegen/salidas/
-caso0: testcases/codegen/03-math.dcf
-	java Compiler -target codegen filename2.txt
+caso0: miPrograma.dcf
+	java Compiler -target codegen miPrograma.dcf
+	rm *.dot
 	mv *.s testcases/codegen/salidas/
-
+caso0.opt: miPrograma.dcf
+	java Compiler -target codegen -opt constant miPrograma.dcf
+	rm *.dot
+	mv *.s testcases/codegen/salidas/
+limpio:
+	rm testcases/codegen/salidas/*.s
 clean: 
 	rm *.class
 	rm compiler/scanner/*.class

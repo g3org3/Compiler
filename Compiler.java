@@ -359,7 +359,8 @@ public class Compiler {
 				outputFileDebug.println("------------------------------");
 				outputFileDebug.println(myIrt);
 				if(myIrt.getValid()){
-					outputFile.println(myIrt);
+					if(opt<=0)
+						outputFile.println(myIrt);
 					System.out.println("Compile File: Success\n");
 				} else {
 					System.out.println("Compile File: Fail\n");
@@ -443,7 +444,8 @@ public class Compiler {
 				outputFileDebug.println(myIrt);
 
 				if(myIrt.getValid()){
-					outputFile.println(myIrt);
+					if(opt<=0)
+						outputFile.println(myIrt);
 					System.out.println("Compile File: Success\n");
 				} else {
 					System.out.println("Compile File: Fail\n");
@@ -466,8 +468,9 @@ public class Compiler {
 				outputFileDebug.println("\noptimizing: algebraic simplification");
 				Algebraic al = new Algebraic();
 			} else {
-				outputFileDebug.println("\noptimizing: constant folding");
-				ConstantFolding cf = new ConstantFolding();
+				System.out.println("Optimizing: constant folding");
+				ConstantFolding cf = new ConstantFolding(myIrt);
+				outputFile.println(cf);
 			}
 		}
 
