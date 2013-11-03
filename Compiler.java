@@ -359,9 +359,12 @@ public class Compiler {
 				outputFileDebug.println("------------------------------");
 				outputFileDebug.println(myIrt);
 				if(myIrt.getValid()){
-					if(opt<=0)
+					System.out.println("Compile File: Success");
+					if(opt<=0){
 						outputFile.println(myIrt);
-					System.out.println("Compile File: Success\n");
+						System.out.print("\n");
+					}
+					
 				} else {
 					System.out.println("Compile File: Fail\n");
 					outputFile.println(outputFileDebug);
@@ -444,9 +447,12 @@ public class Compiler {
 				outputFileDebug.println(myIrt);
 
 				if(myIrt.getValid()){
-					if(opt<=0)
+					System.out.println("Compile File: Success");
+					if(opt<=0){
 						outputFile.println(myIrt);
-					System.out.println("Compile File: Success\n");
+						System.out.print("\n");
+					}
+					
 				} else {
 					System.out.println("Compile File: Fail\n");
 					outputFile.println(outputFileDebug);

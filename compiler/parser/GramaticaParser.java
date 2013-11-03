@@ -1,4 +1,4 @@
-// $ANTLR 3.4 compiler/parser/GramaticaParser.g 2013-10-31 11:37:24
+// $ANTLR 3.4 compiler/parser/GramaticaParser.g 2013-11-02 17:56:49
 
 	package compiler.parser;
 	import compiler.scanner.*;
